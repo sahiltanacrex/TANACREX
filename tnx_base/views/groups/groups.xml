@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="0">
+
+        <record id="group_direction_tnx" model="res.groups">
+            <field name="name">Direction</field>
+        </record>
+
+    </data>
+</odoo>
