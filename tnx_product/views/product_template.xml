@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <record id="inherited_product_template_tnx_view_form" model="ir.ui.view">
+            <field name="name">inherited.product_template.form.inherit.test</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <!-- find field description and add the field
+                     new_field after it -->
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="hs_code"/>
+                            <field name="product_format_id"/>
+                            <field name="length"/>
+                            <field name="height"/>
+                            <field name="diameter"/>
+                        </group>
+
+                    </group>
+
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+<!--                    <page name="additional_information" string="Additional information" >-->
+                    <page name="additional_information" string="Additional information" groups="tnx_base.group_direction_tnx">
+                        <div>
+                            <group>
+                                <group>
+                                    <field name="origin"/>
+                                    <field name="supplier"/>
+                                    <field name="latin_name"/>
+                                    <field name="collection_site"/>
+                                    <field name="info_frs"/>
+                                    <field name="miscellaneous"/>
+                                </group>
+
+                            </group>
+                        </div>
+
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -20,13 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base'],
+    'depends': ['base','tnx_base','stock','product'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/product_format.xml',
+        'views/product_template.xml',
         'views/templates.xml',
+        'security/ir.model.access.csv',
+
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_tnx_product_tnx_product,tnx_product.tnx_product,model_tnx_product_tnx_product,base.group_user,1,1,1,1
+access_format_product,tnx_product.format_product,model_product_format,base.group_user,1,1,1,1
