@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="sale_order_inherit_tnx" model="ir.ui.view">
+            <field name="name">sale.order.form.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']" position='after'>
+                        <field name="sale_order_partner" />
+                        <field name="production_duration" />
+                        <field name="delivery_time" />
+                    </xpath>
+                    
+                </data>
+            </field>
+        </record>
+    
+    </data>
+    
+</odoo>
