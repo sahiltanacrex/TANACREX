@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="hr_employee_additional_information_inherit" model="ir.ui.view">
+            <field name="name">hr employee additional information malagasy</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='marital']" position='after'>
+                        <field name="cnaps" />
+                        <field name="cin" />
+                        <field name="matricule" />
+                        <field name="classification" />
+                    </xpath>
+
+                </data>
+            </field>
+        </record>
+    
+    </data>
+    
+</odoo>
