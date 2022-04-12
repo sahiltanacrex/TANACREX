@@ -20,13 +20,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base'],
+    'depends': ['base','tnx_base','account','sale','stock','sale_stock'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/account_move.xml',
+        "views/stock_view.xml",
+        "views/account_invoice_view.xml"
     ],
     # only loaded in demonstration mode
     'demo': [
