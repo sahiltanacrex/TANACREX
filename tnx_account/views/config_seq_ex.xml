@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="view_sequences_ex_view" model="ir.ui.view">
+            <field name="name">mds_form.form</field>
+            <field name="model">tnx.ex</field>
+            <field name="arch" type="xml">
+                <form string="Price rental">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="sequences_year" />
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_sequences_ex_tree" model="ir.ui.view">
+            <field name="name">sequences_ex.tree</field>
+            <field name="model">tnx.ex</field>
+            <field name="arch" type="xml">
+                <tree string="Abonnement">
+                    <field name="name" />
+                    <field name="sequences_year" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_sequences_ex">
+            <field name="name">Sequences EX</field>
+            <field name="res_model">tnx.ex</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="context">{"search_default_sector_id":1,"search_default_directory_id":1}</field> -->
+        </record>
+        <menuitem id="sequences_ex" 
+                    name="Sequences EX configurations" 
+                    action="action_sequences_ex" 
+                    parent="account.menu_finance_configuration" 
+                    groups="tnx_base.group_direction_tnx" />
+    
+    </data>
+    
+</odoo>

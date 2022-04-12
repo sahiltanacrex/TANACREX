@@ -24,12 +24,15 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
         'views/account_move.xml',
         "views/stock_view.xml",
-        "views/account_invoice_view.xml"
+        "views/account_invoice_view.xml",
+        "views/config_seq_ex.xml",
+        "views/config_seq_ls.xml",
+        "views/config_seq_vl.xml",
+        'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [
