@@ -71,11 +71,14 @@ class Account_move(models.Model):
         
         get_last_id = type.search([], limit=1, order='id desc')
         
-        last_create_date=get_last_id.create_date or 1993
+        last_create_date=get_last_id.create_date 
 
         #! TODO this get_year is for testing if it was new year and it restart count
+        if last_create_date != False:
+            get_last_year=last_create_date.strftime("%Y")
+        else:
+            get_last_year=1993
 
-        get_last_year=last_create_date.strftime("%Y")
         # import pudb; pudb.set_trace()
         
         get_year= self.set_sequence_year()
