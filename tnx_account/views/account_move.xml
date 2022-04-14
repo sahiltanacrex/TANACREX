@@ -11,7 +11,7 @@
                 <xpath expr="//field[@name='name']" position="after">
                     
                     <group >
-                        <field name="seq_bis" />
+                        <field name="seq_bis" readonly="1" force_save="1"/>
                     </group>
                 </xpath>
                 
