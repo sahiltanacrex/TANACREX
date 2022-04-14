@@ -31,73 +31,77 @@ class Account_move(models.Model):
         return year
 
     def action_post(self):
+
+        """if sequences is set and every param is right create sequences by button click
+
+        Returns:
+            _sequences_: test type of customer and set if EX, LS , VL
+        """
+
         check_partner_type=self.partner_id.partner_type
-        if not self.seq_bis:
+
+        if check_partner_type and not self.seq_bis:
             get_ex=self.env['tnx.ex']
             get_ls=self.env['tnx.ls']
             get_vl=self.env['tnx.vl']
+
             if check_partner_type == 'ex':
-                sec_last=0
-        
-                get_last = get_ex.search([], limit=1, order='create_date desc')
-                
-                get_year= self.set_sequence_year()
-
-                if get_last:
-                    sec_last+=get_last.name+1
-                
-                
-                get_year=str(get_year)
-                l = len(get_year)
-                get_year=get_year[l - 2:]
-                
-                get_ex.create({"name": sec_last,"sequences_year":get_year,"rel_invoice_id": self.id,"rel_state_invoice":'posted'})
-
-                seq_bis= f"{check_partner_type.upper()} {sec_last}/{get_year}"
-                self.write({'seq_bis':seq_bis})
+                self._set_seq(get_ex)
             
             if check_partner_type == 'ls':
-                sec_last=0
-        
-                get_last = get_ls.search([], limit=1, order='create_date desc')
+                self._set_seq(get_ls)
                 
-                get_year= self.set_sequence_year()
-
-                if get_last:
-                    sec_last+=get_last.name+1
-                
-                
-                get_year=str(get_year)
-                l = len(get_year)
-                get_year=get_year[l - 2:]
-                
-                get_ls.create({"name": sec_last,"sequences_year":get_year,"rel_invoice_id": self.id,"rel_state_invoice":'posted'})
-
-                seq_bis= f"{check_partner_type.upper()} {sec_last}/{get_year}"
-                self.write({'seq_bis':seq_bis})
             
             if check_partner_type == 'vl':
-                sec_last=0
-        
-                get_last = get_vl.search([], limit=1, order='create_date desc')
+                self._set_seq(get_vl)
                 
-                get_year= self.set_sequence_year()
-
-                if get_last:
-                    sec_last+=get_last.name+1
-                
-                
-                get_year=str(get_year)
-                l = len(get_year)
-                get_year=get_year[l - 2:]
-                
-                get_vl.create({"name": sec_last,"sequences_year":get_year,"rel_invoice_id": self.id,"rel_state_invoice":'posted'})
-
-                seq_bis= f"{check_partner_type.upper()} {sec_last}/{get_year}"
-                self.write({'seq_bis':seq_bis})
             
         values = super(Account_move, self).action_post()
+        self.update({'name':self.name + '-' + check_partner_type.upper()})
+
         return values
+
+    def _set_seq(self,type):
+        """
+            this function create the second sequences from invoice
+        """
+        check_partner_type=self.partner_id.partner_type
+
+        sec_last=1
+        
+        get_last_id = type.search([], limit=1, order='id desc')
+        
+        last_create_date=get_last_id.create_date
+
+        #! TODO this get_year is for testing if it was new year and it restart count
+
+        get_last_year=last_create_date.strftime("%Y")
+        # import pudb; pudb.set_trace()
+        
+        get_year= self.set_sequence_year()
+
+        if get_last_id:
+            if get_last_year == get_year:
+                sec_last=get_last_id.name+1
+            
+        
+        get_year=str(get_year)
+        l = len(get_year)
+        get_year=get_year[l - 2:]
+        
+        type.create({
+            "name": sec_last,
+            "sequences_year":get_year,
+            "rel_invoice_id": self.id,
+            "rel_state_invoice":'posted'
+            })
+
+        seq_bis= f"{check_partner_type.upper()} {sec_last}/{get_year}"
+        self.write({'seq_bis':seq_bis})
+        # self.update({'name':self.name + '-' + check_partner_type.upper()})
+
+    
+
 
     @api.depends("invoice_line_ids", "invoice_line_ids.move_line_ids")
     def _compute_picking_ids(self):
