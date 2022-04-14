@@ -71,7 +71,7 @@ class Account_move(models.Model):
         
         get_last_id = type.search([], limit=1, order='id desc')
         
-        last_create_date=get_last_id.create_date
+        last_create_date=get_last_id.create_date or 1993
 
         #! TODO this get_year is for testing if it was new year and it restart count
 
