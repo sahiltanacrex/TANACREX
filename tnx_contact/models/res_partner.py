@@ -28,5 +28,3 @@ class Res_partner(models.Model):
     # partner_type = fields.Selection(
     #     string='Type de client',
     #     selection=[('ex','EX'),('vl','VL'),('ls','LS')])
-
-    res_currency_id = fields.Many2one('res.currency', string='Devise client')
