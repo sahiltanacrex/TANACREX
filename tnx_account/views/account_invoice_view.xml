@@ -15,7 +15,7 @@
                     icon="fa-truck"
                     type="object"
                     attrs="{'invisible': [('picking_ids', '=', [])]}"
-                    string="Pickings"
+                    string="Transfert"
                 >
                 </button>
             </div>

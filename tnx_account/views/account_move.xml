@@ -14,6 +14,14 @@
                         <field name="seq_bis" readonly="1" force_save="1"/>
                     </group>
                 </xpath>
+                <xpath expr="//field[@name='payment_reference']" position="after">
+                    
+                    <field name="bank_company_ids" widget="many2many_tags" />
+                </xpath>
+                <!-- <xpath expr="//div[hasclass('tab')]" position="before">
+                    
+                        <field name="tax_group_id" />
+                </xpath> -->
                 
                 <xpath expr="//notebook" position="inside">
                     <page name="info_transfert" string="Infos transfert" groups="tnx_base.group_direction_tnx">

@@ -26,8 +26,3 @@ class Account_move_line(models.Model):
         help="Related stock moves "
         "(only when the invoice has been generated from a sale order).",
     )
-    
-# class Stock_picking(models.Model):
-#     _inherit='stock.picking'
-
-#     account_move_line_id = fields.Many2one('account.move.line', string='account_move_line_ids')

@@ -7,24 +7,46 @@ from odoo import models, fields, api
 class Account_move(models.Model):
     _inherit="account.move"
 
-    origin_tnx = fields.Char('Origin')
+    origin_tnx = fields.Char('Origine')
     c_f = fields.Char('C&F')
-    gross_weight = fields.Char('Poids brut')
+    gross_weight = fields.Char('Poids brute')
     net_weight = fields.Char('Poids net')
     volume = fields.Integer('Volume')
     seal_serial = fields.Char('Plombs')
-    container_serial= fields.Char('Container')
+    container_serial= fields.Char('Contenaire')
 
     seq_bis = fields.Char('Num de facture Bis')
 
     picking_ids = fields.Many2many(
         comodel_name="stock.picking",
-        string="Related Pickings",
+        string="Transfert relié",
         store=True,
         compute="_compute_picking_ids",
         help="Related pickings "
         "(only when the invoice has been generated from a sale order).",
     )
+    # @api.model
+    # def default_report_template(self):
+        
+    #     return filtered_report.id 
+        
+    
+    bank_company_ids = fields.Many2many('bank.company', 'account_move_id', string='Banque')
+
+    
+        
+    # field_name_ids = fields.One2many('bank.company', 'account_move_id', string='test')
+    # tax_group_ids = fields.Many2one('bank.company', default=default_report_template)
+    # def _default_tax_group(self):
+    #     return self.env['bank.company'].search(['id','=',2], limit=1)
+
+        
+    # tax_group_id = fields.Many2one('bank.company', string="Tax Group", default=_default_tax_group, required=True)
+    
+    def test(self):
+        return "rakoto"
+
+
     def set_sequence_year(self):
         date = datetime.date.today()
         year = date.strftime("%Y")

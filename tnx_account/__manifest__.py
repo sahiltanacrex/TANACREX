@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base','account','sale','stock','sale_stock'],
+    'depends': ['base','tnx_base','account','sale','stock','sale_stock','mail'],
 
     # always loaded
     'data': [
@@ -29,6 +29,8 @@
         'views/account_move.xml',
         "views/stock_view.xml",
         "views/account_invoice_view.xml",
+        "views/bank_company.xml",
+        "views/bank_company_line.xml",
         "views/config_seq_ex.xml",
         "views/config_seq_ls.xml",
         "views/config_seq_vl.xml",
