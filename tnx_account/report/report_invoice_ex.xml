@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <record id="invoice_ex" model="ir.actions.report">
+        <field name="name">Facture export (EX)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tnx_account.report_invoice_ex</field>
+        <field name="report_file">tnx_account.report_invoice_ex</field>
+        <field name="attachment_use" eval="True" />
+        <field name="binding_model_id" ref="model_account_move" />
+    </record>
+
+    <record id="paperformat_sale_summary_report" model="report.paperformat">
+        <field name="name">Sale Summary</field>
+        <field name="default" eval="False" />
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">28</field>
+        <field name="margin_right">7</field>
+        <field name="margin_left">7</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">5</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="tnx_account.invoice_ex" model="ir.actions.report">
+        <field name="paperformat_id" ref="tnx_account.paperformat_sale_summary_report" />
+    </record>
+
+    <!-- get old  -->
+    <template id="report_invoice_ex">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-if="not o" t-set="o" t-value="doc" />
+                <!-- ####odoo defaults#### -->
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
+                    </t>
+                    <t t-elif="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+                <div class="header" ></div>
+                <div class="article mt0 o_report_layout_standard" style="font-size:12px">
+                    <div class="header_body">
+                        <!-- TODO create div for the top for information and image company -->
+                        <div class="body_header">
+                            <div class="container">
+                                <div class="row" >
+                                    <div class="col-xs-6" >
+                                        
+                                        <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                                    </div>
+                                    <div class="col-xs-6 " style="margin-left:350px">
+                                        <table style="width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2">Slogan</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <b>
+                                                            Client:
+                                                        </b>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o.partner_id.name" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="white-space: nowrap;">
+                                                        <b>
+                                                            <span>
+                                                                Adresse de facturation: 
+                                                            </span>
+                                                        </b>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="o.partner_id.street">
+                                                            <span t-esc="o.partner_id.street" />
+                                                        </t>
+                                                        <t t-if="o.partner_id.street2">
+                                                            <span>,</span>
+                                                            <span t-esc="o.partner_id.street2" />
+                                                        </t>
+                                                        <t t-if="o.partner_id.city">
+                                                            <span>,</span>
+                                                            <span t-esc="o.partner_id.city" />
+
+                                                        </t>
+                                                        <t t-if="o.partner_id.state_id">
+                                                            <span>,</span>
+                                                            <span t-esc="o.partner_id.state_id.name" />
+
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="margin-top:20px">
+                            <table style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:30%">N° de facture :</td>
+                                        <td>N° de facture bis:</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span t-esc="o.name" />
+                                        </td>
+                                        <td>
+                                            <span t-esc="o.seq_bis" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="margin-top:20px">
+                            <table style="width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Date de facture:
+                                            <span t-esc="o.invoice_date" />
+                                        </td>
+                                        <td>
+                                            Date d'échéance:
+                                            <span t-esc="o.invoice_date_due" />
+                                        </td>
+                                        <td>
+                                            Origine:
+                                            <span t-esc="o.origin_tnx" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="margin-top:20px">
+                            <table style="width:100%; border:1px solid;border-collapse:collapse">
+                                <tbody>
+                                    <tr>
+                                        <td style="border:1px solid">BC Client</td>
+                                        <td style="border:1px solid">Bon de livraison</td>
+                                        <td style="border:1px solid">HS Code</td>
+                                        <td style="border:1px solid">Article</td>
+                                        <td style="border:1px solid">Libellé</td>
+                                        <td style="border:1px solid">Diamètre</td>
+                                        <td style="border:1px solid">Quantité</td>
+                                        <td style="border:1px solid">Prix unitaire / 100 pcs</td>
+                                        <td style="border:1px solid">Montant</td>
+                                    </tr>
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                                        <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                        <t t-foreach="bl_id" t-as="id_bl">
+                                            <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
+                                            
+                                            <tr>
+                                                <td style="border:1px solid">
+                                                    <!-- <span t-esc="o.get_customer_order(line.order_origin)" /> -->
+                                                    <span t-esc="line.order_origin" />
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <span t-esc="bl_name" />
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <t t-esc="line.product_id.hs_code" />
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <t t-esc="line.product_id.default_code" />                                           
+                                                    
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <t t-esc="line.product_id.diameter" />                                           
+                                                    
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <t t-esc="line.quantity" />                                           
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <!-- prix -->   
+                                                    <t t-set="unit_price" t-value="line.price_subtotal * 100" />
+                                                    <t t-esc="unit_price"/>
+                                                </td>
+                                                <td style="border:1px solid">
+                                                    <t t-esc="line.price_subtotal" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:right">
+                            <span>
+                                Montant HT:
+                                <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                <b>
+                                    <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
+
+                                </b>
+                            </span>
+                        </div>
+                        <t t-if="o.delivery_adress">
+                            <div>
+                                <b>
+                                    <span>Adresse de livraison: </span>
+                                </b>
+                                <t t-esc="o.delivery_adress" />
+
+                            </div>
+                        </t>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Poids brut</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Poids Net</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Colisage</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Origin</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:center">
+                            <span >
+                                Origin : The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, the products are of Madagascar preferential origin according to rules of origin of the Generalized System of Preferences of the European Union and that the origin criterion met is "Y"
+                            </span>
+                        </div>
+                        <t t-if="o.bank_company_ids">
+                            <div>
+                                <span>Information bancaires: </span>
+                                <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
+                                <span t-esc="bank_info" />
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="footer o_standard_footer" style="border-top: 1px solid black;">
+                    <div class="row text-center">
+                        <div class="col col-12 text-center">
+                            <div>
+                                <span>
+                                    All banking charges of foreign bank must be paid by the buyer, including correspondant reimbursing bank charges, commissions, faxes and postage
+                                </span>
+                            </div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">Page:</li>
+                                <li class="list-inline-item">
+                                    <span class="page" />
+                                </li>
+                                <li class="list-inline-item">/</li>
+                                <li class="list-inline-item">
+                                    <span class="topage" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </t>
+
+        </t>
+    </template>
+
+
+</odoo>

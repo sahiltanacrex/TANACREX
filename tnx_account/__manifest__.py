@@ -35,6 +35,9 @@
         "views/config_seq_ls.xml",
         "views/config_seq_vl.xml",
         'security/ir.model.access.csv',
+        # reporting
+        'report/report_invoice_ex.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

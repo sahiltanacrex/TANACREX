@@ -25,26 +25,11 @@ class Account_move(models.Model):
         help="Related pickings "
         "(only when the invoice has been generated from a sale order).",
     )
-    # @api.model
-    # def default_report_template(self):
-        
-    #     return filtered_report.id 
         
     
     bank_company_ids = fields.Many2many('bank.company', 'account_move_id', string='Banque')
 
-    
-        
-    # field_name_ids = fields.One2many('bank.company', 'account_move_id', string='test')
-    # tax_group_ids = fields.Many2one('bank.company', default=default_report_template)
-    # def _default_tax_group(self):
-    #     return self.env['bank.company'].search(['id','=',2], limit=1)
-
-        
-    # tax_group_id = fields.Many2one('bank.company', string="Tax Group", default=_default_tax_group, required=True)
-    
-    def test(self):
-        return "rakoto"
+    delivery_adress = fields.Char('Adresse de livraison')
 
 
     def set_sequence_year(self):
@@ -80,6 +65,7 @@ class Account_move(models.Model):
             
         values = super(Account_move, self).action_post()
         self.update({'name':self.name + '-' + check_partner_type.upper()})
+        # self.update({'name':self.name + '-' + check_partner_type.upper()})
 
         return values
 
@@ -152,4 +138,61 @@ class Account_move(models.Model):
             action["views"] = [(form_view.id, "form")]
             action["res_id"] = self.picking_ids.id
         return action
+
+    def get_customer_order(self,customer_bc):
+        """
+            get BC client dans BC original
+        """
+        so=self.env['sale.order'].search([('name', '=', customer_bc)])
+
+        # self._cr.execute(f"""
+        #     SELECT sale_order_partner
+        #     FROM sale_order
+        #     WHERE name = '{customer_bc}'
+        # """, [list(self.ids)])
+        
+        # customer_sale_order = self._cr.fetchone()
+        return so.sale_order_partner
+
+    def get_delivery_order_id(self,id):
+        """
+            get BL id
+        """
+        id_bl=[]
+
+        bc=self.env['sale.order'].search([('name', '=', id)])
+
+        bl=self.env['stock.picking'].search([('origin','=',bc.name)])
+
+        for i in bl:
+            id_bl.append(i.id)
+
+        return id_bl
+
+    def get_bl_name(self,id):
+        """
+            get BL name
+        """      
+        bl_name=self.env['stock.picking'].search([('id','=',id)])
+        return bl_name.name
+
+
+    def get_bank(self,bank_id,currency_id):
+        list_info=[]
+        get_len=len(bank_id)-1
+        count=0
+        
+        for i in bank_id:
+            serial_bank=self.env['bank.company.line'].search([('res_currency_id', '=', currency_id),('bank_id', '=', i.id)])
+            list_info.append(serial_bank.bank_id.bank)
+            
+            if count < get_len:
+                list_info.append(serial_bank.account_registration + ", ")
+                count+=1
+            else:
+                list_info.append(serial_bank.account_registration)
+
+
+        values=' '.join([str(item) for item in list_info])
+        return values
 

@@ -28,10 +28,7 @@ class SaleOrderLine(models.Model):
         if len(picking) > 1:
             for i in picking:
                 stock_move=self.env['stock.move'].search([('picking_id', 'in', tab),('state', '=', 'done')])
-                print('-----------------')
-                print('-----------------')
-                print('-----------------')
-                print(stock_move)
+                
                 if stock_move:
                     tab.append(i.id)
                     if all_picking == "":
