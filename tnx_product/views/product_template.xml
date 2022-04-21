@@ -22,7 +22,7 @@
                 </xpath>
                 <xpath expr="//notebook" position="inside">
 <!--                    <page name="additional_information" string="Additional information" >-->
-                    <page name="additional_information" string="Additional information" groups="tnx_base.group_direction_tnx">
+                    <page name="additional_information" string="Autres informations" groups="tnx_base.group_direction_tnx">
                         <div>
                             <group>
                                 <group>
@@ -32,6 +32,21 @@
                                     <field name="collection_site"/>
                                     <field name="info_frs"/>
                                     <field name="miscellaneous"/>
+                                </group>
+
+                            </group>
+                        </div>
+
+                    </page>
+                    <page name="bat" string="BAT" groups="tnx_base.group_direction_tnx">
+                        <div>
+                            <group>
+                                <group>
+                                    <field name="employee_validator_id"/>
+                                    <field name="bat_date"/>
+                                    <field name="validation_tools"/>
+                                    <field name="attachment_ids" />
+                                    
                                 </group>
 
                             </group>

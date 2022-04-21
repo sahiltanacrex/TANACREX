@@ -39,3 +39,11 @@ class Product_template(models.Model):
         string='Miscellaneous', 
         required=False)
     
+
+    # TODO BAT here
+
+    employee_validator_id = fields.Many2one('hr.employee', string='Validateur')
+    bat_date = fields.Date('Date')
+    validation_tools = fields.Char('Moyen de validation')
+    # attachment_id = fields.Many2one('ir.attachment', string='Attachment', ondelete='cascade')
+    attachment_ids = fields.Binary("Attachment", required=True)
