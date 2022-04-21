@@ -46,4 +46,4 @@ class Product_template(models.Model):
     bat_date = fields.Date('Date')
     validation_tools = fields.Char('Moyen de validation')
     # attachment_id = fields.Many2one('ir.attachment', string='Attachment', ondelete='cascade')
-    attachment_ids = fields.Binary("Attachment")
+    attachment_ids = fields.Binary("Fichier BAT")
