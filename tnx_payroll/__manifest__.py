@@ -27,9 +27,16 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'report/payslip_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ],'license': 'LGPL-3',
+    ],
+    'license': 'LGPL-3',
+    'assets': {
+        'web.report_assets_common': [
+            'tnx_payroll/static/src/css/report_css.css',
+        ],
+    },
 }

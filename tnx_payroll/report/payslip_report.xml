@@ -1,0 +1,286 @@
+<odoo>
+    <data>
+        <template id="report_payslip_inherit" inherit_id="hr_payroll.report_payslip">
+            <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+                <t t-call="tnx_base.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-1">
+                                <img src="/tnx_base/static/img/company_logo.jpg" style="max-height: 85px;" />
+                            </div>
+                            <div class="col-5">
+                                <div class="invoice-header" name="moto">
+                                    Société des Peintures et des Produits Chimiques
+                                </div>
+                                <div>
+                                    <span class="invoice-title">Usine et siège:</span>
+                                    <br />
+                                    <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
+                                        <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city" />
+                                    </t>
+                                    <t t-else="">
+                                        <span>Route de l’aéroport, Salazamay, B.P 393 501 - Toamasina</span>
+                                    </t>
+                                    <br />
+                                    <span>Tel:</span>
+                                    <t t-if="o.company_id.phone">
+                                        <span t-esc="o.company_id.phone" />
+                                    </t>
+                                    <t t-if="o.company_id.phone and o.company_id.mobile">
+                                        <span>/</span>
+                                    </t>
+                                    <t t-if="o.company_id.mobile">
+                                        <span t-esc="o.company_id.mobile" />
+                                    </t>
+                                    <t t-else="">
+                                        <span>+261 32 05 707 91 / +261 32 07 184 88</span>
+                                    </t>
+                                    <br />
+                                    <span>Mail:</span>
+                                    <t t-if="o.company_id.email">
+                                        <span t-esc="o.company_id.email" />
+                                    </t>
+                                    <t t-else="">
+                                        <span>commercial@s2pc.mg</span>
+                                    </t>
+                                </div>
+
+                            </div>
+                            <div class="col-6 invoice-header">
+                                <br />
+                                <br />
+                                <br />
+                                <span t-field="o.name" />
+                                <br />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6"></div>
+                        </div>
+                        <!--<h2 t-field="o.name"/>-->
+                        <t t-set="is_invalid" t-value="o._is_invalid()" />
+                        <br />
+                        <t t-if="is_invalid">
+                            <br />
+                            <strong>
+                                <t t-esc="is_invalid" />
+                            </strong>
+                        </t>
+                        <table name="employee-infos" class="invoice-table">
+                            <thead>
+                                <th class="w-25">
+                                    <strong>Employé(e)</strong>
+                                </th>
+                                <th class="w-25">
+                                    <strong>Etat civil</strong>
+                                </th>
+                                <th class="w-25">
+                                    <strong>Désignation</strong>
+                                </th>
+                                <th class="w-25">
+                                    <strong>Période de paie</strong>
+                                </th>
+                            </thead>
+
+                            <tbody class="invoice-body">
+                                <td>
+                                    <span t-field="o.employee_id" />
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.marital" />
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.job_title" />
+                                </td>
+                                <td>
+                                    <t t-if="o.date_from &lt; o.contract_id.date_start">
+                                        <span t-field="o.contract_id.date_start" />
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="o.date_from" />
+                                    </t>
+                                    -
+                                    <t t-if="o.contract_id.date_end and o.date_to &gt; o.contract_id.date_end">
+                                        <span t-field="o.contract_id.date_end" />
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="o.date_to" />
+                                    </t>
+                                </td>
+                            </tbody>
+
+                            <tbody class="invoice-body">
+                                <td>
+                                    <span t-field="o.employee_id.address_home_id.street" />
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tbody>
+                            <thead>
+                                <th>
+                                    <span t-field="o.employee_id.address_home_id.city" />
+                                    <span t-field="o.employee_id.address_home_id.zip" />
+                                </th>
+                                <th>
+                                    <strong>Personne en charge</strong>
+                                </th>
+                                <th>
+                                    <strong>Identification</strong>
+                                </th>
+                                <th>
+                                    <strong>Calculé sur </strong>
+                                </th>
+                            </thead>
+                            <tbody class="invoice-body">
+                                <td>
+                                    <span t-field="o.employee_id.work_email" />
+                                </td>
+                                <td name="personne-in-charge">
+                                    <t t-esc="o.employee_id.children" />
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.identification_id" />
+                                </td>
+                                <td>
+                                    <span t-field="o.compute_date" />
+                                </td>
+                            </tbody>
+                            <thead>
+                                <th class="w-25">
+                                    <strong>Date de début du contrat</strong>
+                                </th>
+                                <th class="w-25">
+                                    <strong>Type de contrat</strong>
+                                </th>
+                                <th class="w-25">
+                                    <strong>Horaire de travail</strong>
+                                </th>
+                                <th class="w-25" name="company-car-title"></th>
+                            </thead>
+                            <tbody class="invoice-body">
+                                <td>
+                                    <span t-field="o.employee_id.first_contract_date" />
+                                </td>
+                                <td>
+                                    <span t-field="o.employee_id.contract_id.contract_type_id" />
+                                </td>
+                                <td>
+                                    <t t-if="o.employee_id.contract_id.hours_per_week == 40.0">
+                                        <span>173,33 (40h/semaine)</span>
+                                    </t>
+                                    <t t-if="o.employee_id.contract_id.hours_per_week == 56.0">
+                                        <span>242,66 (56h/semaine)</span>
+                                    </t>
+
+
+                                </td>
+                                <td class="w-25" name="company-car-model"></td>
+                            </tbody>
+
+                        </table>
+
+                        <!-- YTI TODO master: Remove this horrible bidouille and add a field on the structure to display the basic
+                             salary on the payslip report -->
+                        <t t-set="holiday_attest_n1" t-value="o.env.ref('l10n_be_hr_payroll.hr_payroll_structure_cp200_employee_departure_n1_holidays', raise_if_not_found=False)" />
+                        <t t-set="holiday_attest_n" t-value="o.env.ref('l10n_be_hr_payroll.hr_payroll_structure_cp200_employee_departure_n_holidays', raise_if_not_found=False)" />
+                        <table class="invoice-table" t-if="o.struct_id not in [holiday_attest_n, holiday_attest_n1]">
+                            <thead>
+                                <th class="w-25">
+                                    <strong>Salaire de base</strong>
+                                </th>
+                                <th style="color:#000000" class="w-25">
+                                    <span t-esc="o.contract_id.base_salary" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}" />
+                                </th>
+                                <!--<th class="w-25"></th>
+                                <th class="w-25"></th>-->
+                            </thead>
+                        </table>
+                        <table class="invoice-table">
+                            <thead>
+                                <th class="w-25">
+                                    <strong>Congés payés restants en Jours</strong>
+                                </th>
+
+                                <th class="w-25">
+                                    <span t-field="o.employee_id.remaining_leaves" />
+                                </th>
+                            </thead>
+                        </table>
+                        <div id="total">
+                            <table class="invoice-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Nombre d'heures</th>
+                                        <th>Nombre de jours</th>
+                                        <th class="text-center">Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice-body">
+                                    <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
+                                        <t t-if="worked_days.code != 'OUT' and  worked_days.code != 'WORK100'">
+                                            <tr style="color:none">
+                                                <td>
+                                                    <span t-field="worked_days.name" />
+                                                </td>
+                                                <td>
+                                                    <span t-field="worked_days.number_of_hours" />
+                                                </td>
+                                                <td>
+                                                    <span t-field="worked_days.number_of_days" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="worked_days.amount" digits="[42, 2]" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}' />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </span>
+                                    <span t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
+                                        <t t-set="line_style" />
+                                        <t t-set="line_class" />
+                                        <!--<t t-if="line.code == 'NET'">
+                                            <t t-set="line_style" t-value="'color:#000000;'"/>
+                                            <t t-set="line_class" t-value="'o_total o_border_bottom font-weight-bold'"/>
+                                        </t>-->
+                                        <t t-if="(line.code == 'BASIC') or (line.code == 'GROSS')">
+                                            <t t-set="line_style" t-value="'color:#000000;'" />
+                                            <t t-set="line_class" t-value="'o_subtotal o_border_bottom'" />
+                                        </t>
+                                        <tr t-att-class="line_class" t-att-style="line_style">
+                                            <td>
+                                                <span t-field="line.name" />
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <span t-if="line.quantity > 1" t-esc="line.quantity" />
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="line.total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}' t-att-style="'color:#000000;' if line.total &lt; 0 else ''" />
+                                            </td>
+                                        </tr>
+                                    </span>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p t-if="o.net_wage &gt;= 0">
+                            A payer
+                            <b>
+                                <span t-field="o.employee_id.bank_account_id" />
+                            </b>
+                            pour
+                            <i>
+                                <span t-field="o.employee_id" />
+                            </i>
+                            :
+                            <span t-field="o.net_wage" />
+                        </p>
+                        <p t-if="o.net_wage &lt; 0">Le montant net sera récupéré sur la première rémunération positive
+                            établie par la suite.</p>
+                    </div>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

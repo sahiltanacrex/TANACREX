@@ -28,6 +28,7 @@
         'views/company.xml',
         'views/views.xml',
         'views/templates.xml',
+        'views/tnx_external_layout.xml',
         'views/groups/groups.xml',
 
     ],

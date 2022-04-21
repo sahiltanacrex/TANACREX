@@ -20,7 +20,10 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base','hr'],
+    'depends': ['base', 'hr_contract',
+                'hr',
+                'hr_holidays',
+                'tnx_base', 'hr_payroll'],
 
     # always loaded
     'data': [
@@ -28,6 +31,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/hr_employee.xml',
+        'views/hr_contract_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
