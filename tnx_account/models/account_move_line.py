@@ -6,6 +6,7 @@ class Account_move_line(models.Model):
     _inherit="account.move.line"
     
     order_origin = fields.Char('Bon de commande')
+    order_customer = fields.Char('Bon de commande client')
     diameter = fields.Float('Diamètre')
     hs_code = fields.Char('Hs Code')
     # picking_name = fields.Char('Bon de livraison')

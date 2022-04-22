@@ -167,6 +167,8 @@ class Account_move(models.Model):
         for i in bl:
             id_bl.append(i.id)
 
+
+
         return id_bl
 
     def get_bl_name(self,id):

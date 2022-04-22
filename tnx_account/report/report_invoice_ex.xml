@@ -172,7 +172,7 @@
                                             <tr>
                                                 <td style="border:1px solid">
                                                     <!-- <span t-esc="o.get_customer_order(line.order_origin)" /> -->
-                                                    <span t-esc="line.order_origin" />
+                                                    <span t-esc="line.order_customer" />
                                                 </td>
                                                 <td style="border:1px solid">
                                                     <span t-esc="bl_name" />

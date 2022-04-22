@@ -55,6 +55,7 @@ class SaleOrderLine(models.Model):
             )
         values["move_line_ids"] = [(4, m.id) for m in stock_moves]
 
+        values['order_customer']=self.order_id.sale_order_partner
         values['order_origin']=self.order_id.name
         values['diameter']=self.product_id.diameter
         values['hs_code']=self.product_id.hs_code
