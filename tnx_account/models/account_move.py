@@ -64,7 +64,7 @@ class Account_move(models.Model):
                 
             
         values = super(Account_move, self).action_post()
-        self.update({'name':self.name + '-' + check_partner_type.upper()})
+        self.update({'payment_reference':self.name + '-' + check_partner_type.upper()})
         # self.update({'name':self.name + '-' + check_partner_type.upper()})
 
         return values
