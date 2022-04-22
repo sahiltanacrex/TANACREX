@@ -4,39 +4,39 @@ class Product_template(models.Model):
 
     hs_code = fields.Char(
         string='HS CODE',
-        required=False)
+        required=True)
     product_format_id = fields.Many2one(
         comodel_name='product.format',
-        string='Product Format',
-        required=False)
+        string='Format du produit',
+        required=True)
     length = fields.Float(
-        string='Length mm',
+        string='Longueur mm',
         required=False)
     height = fields.Float(
-        string='Height mm',
+        string='Hauteur mm',
         required=False)
     diameter = fields.Float(
-        string='Diameter mm',
+        string='Diamètre mm',
         required=False)
     
     origin = fields.Char(
-        string='Origin', 
+        string='Origine', 
         required=False)
     supplier = fields.Char(
-        string='Supplier', 
+        string='Fournisseur', 
         required=False)
     latin_name = fields.Char(
-        string='Latin name', 
+        string='Nom latin', 
         required=False)
     collection_site = fields.Char(
-        string='Collection site',
+        string='Site de collecte',
         required=False)
     info_frs = fields.Char(
         string='Info frs',
         required=False)
     # divers
     miscellaneous = fields.Char(
-        string='Miscellaneous', 
+        string='Divers', 
         required=False)
     
 
