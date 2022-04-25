@@ -212,15 +212,15 @@
     
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.quantity" />
+                                                        <t t-esc="'{0:,.0f}'.format(round(line.quantity)).replace('.','%').replace(',',' ').replace('%',',')" />
                                                     </td>
                                                     <td>
                                                         <!-- prix -->
                                                         <t t-set="unit_price" t-value="line.price_subtotal * 100" />
-                                                        <t t-esc="unit_price" />
+                                                        <t t-esc="'{0:,.0f}'.format(round(unit_price)).replace('.','%').replace(',',' ').replace('%',',')" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.price_subtotal" />
+                                                        <t t-esc="'{0:,.0f}'.format(round(line.price_subtotal)).replace('.','%').replace(',',' ').replace('%',',')" />
                                                     </td>
                                                 </tr>
                                             </t>
@@ -231,7 +231,7 @@
                             <div style="text-align:right">
                                 <span>
                                     Montant HT:
-                                    <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                    <span  t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                 </span>
                             </div>
                             <div>
