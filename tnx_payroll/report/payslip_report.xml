@@ -10,17 +10,15 @@
                             </div>
                             <div class="col-5">
                                 <div class="invoice-header" name="moto">
-                                    Société des Peintures et des Produits Chimiques
+                                    TANACREX SARL
                                 </div>
                                 <div>
-                                    <span class="invoice-title">Usine et siège:</span>
+
                                     <br />
                                     <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
                                         <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city" />
                                     </t>
-                                    <t t-else="">
-                                        <span>Route de l’aéroport, Salazamay, B.P 393 501 - Toamasina</span>
-                                    </t>
+
                                     <br />
                                     <span>Tel:</span>
                                     <t t-if="o.company_id.phone">
@@ -32,17 +30,13 @@
                                     <t t-if="o.company_id.mobile">
                                         <span t-esc="o.company_id.mobile" />
                                     </t>
-                                    <t t-else="">
-                                        <span>+261 32 05 707 91 / +261 32 07 184 88</span>
-                                    </t>
+
                                     <br />
                                     <span>Mail:</span>
                                     <t t-if="o.company_id.email">
                                         <span t-esc="o.company_id.email" />
                                     </t>
-                                    <t t-else="">
-                                        <span>commercial@s2pc.mg</span>
-                                    </t>
+
                                 </div>
 
                             </div>
@@ -76,7 +70,7 @@
                                     <strong>Etat civil</strong>
                                 </th>
                                 <th class="w-25">
-                                    <strong>Désignation</strong>
+                                    <strong>Fonction</strong>
                                 </th>
                                 <th class="w-25">
                                     <strong>Période de paie</strong>
@@ -127,10 +121,10 @@
                                     <strong>Personne en charge</strong>
                                 </th>
                                 <th>
-                                    <strong>Identification</strong>
+                                    <strong>Matricule</strong>
                                 </th>
                                 <th>
-                                    <strong>Calculé sur </strong>
+                                    <strong>Calculé le </strong>
                                 </th>
                             </thead>
                             <tbody class="invoice-body">
@@ -152,12 +146,12 @@
                                     <strong>Date de début du contrat</strong>
                                 </th>
                                 <th class="w-25">
-                                    <strong>Type de contrat</strong>
+                                    <strong>Classification professionnelle</strong>
                                 </th>
                                 <th class="w-25">
                                     <strong>Horaire de travail</strong>
                                 </th>
-                                <th class="w-25" name="company-car-title"></th>
+                                <th class="w-25" name="company-car-title">CIN</th>
                             </thead>
                             <tbody class="invoice-body">
                                 <td>
@@ -176,7 +170,9 @@
 
 
                                 </td>
-                                <td class="w-25" name="company-car-model"></td>
+                                <td class="w-25" name="company-car-model">
+                                    <span t-field="o.employee_id.cin"/>
+                                </td>
                             </tbody>
 
                         </table>
@@ -188,7 +184,7 @@
                         <table class="invoice-table" t-if="o.struct_id not in [holiday_attest_n, holiday_attest_n1]">
                             <thead>
                                 <th class="w-25">
-                                    <strong>Salaire de base</strong>
+                                    <strong>Salaire de base/ Journalier</strong>
                                 </th>
                                 <th style="color:#000000" class="w-25">
                                     <span t-esc="o.contract_id.base_salary" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}" />
@@ -197,24 +193,14 @@
                                 <th class="w-25"></th>-->
                             </thead>
                         </table>
-                        <table class="invoice-table">
-                            <thead>
-                                <th class="w-25">
-                                    <strong>Congés payés restants en Jours</strong>
-                                </th>
 
-                                <th class="w-25">
-                                    <span t-field="o.employee_id.remaining_leaves" />
-                                </th>
-                            </thead>
-                        </table>
                         <div id="total">
                             <table class="invoice-table">
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
                                         <th>Nombre d'heures</th>
-                                        <th>Nombre de jours</th>
+
                                         <th class="text-center">Montant</th>
                                     </tr>
                                 </thead>
@@ -228,9 +214,7 @@
                                                 <td>
                                                     <span t-field="worked_days.number_of_hours" />
                                                 </td>
-                                                <td>
-                                                    <span t-field="worked_days.number_of_days" />
-                                                </td>
+
                                                 <td class="text-right">
                                                     <span t-esc="worked_days.amount" digits="[42, 2]" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}' />
                                                 </td>
@@ -253,9 +237,9 @@
                                                 <span t-field="line.name" />
                                             </td>
                                             <td></td>
-                                            <td>
+                                            <!--<td>
                                                 <span t-if="line.quantity > 1" t-esc="line.quantity" />
-                                            </td>
+                                            </td>-->
                                             <td class="text-right">
                                                 <span t-esc="line.total" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}' t-att-style="'color:#000000;' if line.total &lt; 0 else ''" />
                                             </td>
