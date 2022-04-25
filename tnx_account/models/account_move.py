@@ -4,10 +4,12 @@ import datetime
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+
 class Account_move(models.Model):
     _inherit="account.move"
 
     origin_tnx = fields.Char('Origine')
+    name_bis = fields.Char('name_bis')
     c_f = fields.Char('C&F')
     gross_weight = fields.Char('Poids brute')
     net_weight = fields.Char('Poids net')
@@ -15,7 +17,7 @@ class Account_move(models.Model):
     seal_serial = fields.Char('Plombs')
     container_serial= fields.Char('Contenaire')
 
-    seq_bis = fields.Char('Num de facture Bis')
+    seq_bis = fields.Char('Reférence facture', store=True, index=True)
 
     picking_ids = fields.Many2many(
         comodel_name="stock.picking",
@@ -44,28 +46,32 @@ class Account_move(models.Model):
         Returns:
             _sequences_: test type of customer and set if EX, LS , VL
         """
+        if self.move_type == 'out_invoice':
+            check_partner_type=self.partner_id.partner_type
 
-        check_partner_type=self.partner_id.partner_type
+            if check_partner_type and not self.seq_bis:
+                get_ex=self.env['tnx.ex']
+                get_ls=self.env['tnx.ls']
+                get_vl=self.env['tnx.vl']
 
-        if check_partner_type and not self.seq_bis:
-            get_ex=self.env['tnx.ex']
-            get_ls=self.env['tnx.ls']
-            get_vl=self.env['tnx.vl']
-
-            if check_partner_type == 'ex':
-                self._set_seq(get_ex)
-            
-            if check_partner_type == 'ls':
-                self._set_seq(get_ls)
+                if check_partner_type == 'ex':
+                    self._set_seq(get_ex)
                 
-            
-            if check_partner_type == 'vl':
-                self._set_seq(get_vl)
+                if check_partner_type == 'ls':
+                    self._set_seq(get_ls)
+                    
                 
-            
+                if check_partner_type == 'vl':
+                    self._set_seq(get_vl)
+                    
+                
+        
         values = super(Account_move, self).action_post()
-        self.update({'payment_reference':self.name + '-' + check_partner_type.upper()})
-        # self.update({'name':self.name + '-' + check_partner_type.upper()})
+        # TODO arakaraka eto no name mipoitra satria ilay name natao invisible de name bis no afficher am form fa name tsotra ny any am tree
+        if self.move_type == 'out_invoice':
+            self.update({'name_bis':self.name + '-' + check_partner_type.upper()})
+        else:
+            self.update({'name_bis':self.name})
 
         return values
 
@@ -73,43 +79,44 @@ class Account_move(models.Model):
         """
             this function create the second sequences from invoice
         """
-        check_partner_type=self.partner_id.partner_type
+        if self.state=='draft' and self.move_type == 'out_invoice':
+            check_partner_type=self.partner_id.partner_type
 
-        sec_last=1
-        
-        get_last_id = type.search([], limit=1, order='id desc')
-        
-        last_create_date=get_last_id.create_date 
-
-        #! TODO this get_year is for testing if it was new year and it restart count
-        if last_create_date != False:
-            get_last_year=last_create_date.strftime("%Y")
-        else:
-            get_last_year=1993
-
-        # import pudb; pudb.set_trace()
-        
-        get_year= self.set_sequence_year()
-
-        if get_last_id:
-            if get_last_year == get_year:
-                sec_last=get_last_id.name+1
+            sec_last=1
             
-        
-        get_year=str(get_year)
-        l = len(get_year)
-        get_year=get_year[l - 2:]
-        
-        type.create({
-            "name": sec_last,
-            "sequences_year":get_year,
-            "rel_invoice_id": self.id,
-            "rel_state_invoice":'posted'
-            })
+            get_last_id = type.search([], limit=1, order='id desc')
+            
+            last_create_date=get_last_id.create_date 
 
-        seq_bis= f"{check_partner_type.upper()} {sec_last}/{get_year}"
-        self.write({'seq_bis':seq_bis})
-        # self.update({'name':self.name + '-' + check_partner_type.upper()})
+            #! TODO this get_year is for testing if it was new year and it restart count
+            if last_create_date != False:
+                get_last_year=last_create_date.strftime("%Y")
+            else:
+                get_last_year=1993
+
+            # import pudb; pudb.set_trace()
+            
+            get_year= self.set_sequence_year()
+
+            if get_last_id:
+                if get_last_year == get_year:
+                    sec_last=get_last_id.name+1
+                
+            
+            get_year=str(get_year)
+            l = len(get_year)
+            get_year=get_year[l - 2:]
+            
+            type.create({
+                "name": sec_last,
+                "sequences_year":get_year,
+                "rel_invoice_id": self.id,
+                "rel_state_invoice":'posted'
+                })
+
+            seq_bis= f"{check_partner_type.upper()} {sec_last}/{get_year}"
+            self.write({'seq_bis':seq_bis})
+            # self.update({'name':self.name + '-' + check_partner_type.upper()})
 
     
 
@@ -197,4 +204,3 @@ class Account_move(models.Model):
 
         values=' '.join([str(item) for item in list_info])
         return values
-

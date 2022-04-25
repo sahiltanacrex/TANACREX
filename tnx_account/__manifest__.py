@@ -37,6 +37,8 @@
         'security/ir.model.access.csv',
         # reporting
         'report/report_invoice_ex.xml',
+        'report/report_invoice_vl.xml',
+        'report/report_invoice_ls.xml',
 
     ],
     # only loaded in demonstration mode

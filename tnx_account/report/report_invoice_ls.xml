@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <odoo>
-    <record id="invoice_ex" model="ir.actions.report">
-        <field name="name">Facture (EX)</field>
+    <record id="invoice_ls" model="ir.actions.report">
+        <field name="name">Facture (LS)</field>
         <field name="model">account.move</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">tnx_account.report_invoice_ex</field>
-        <field name="report_file">tnx_account.report_invoice_ex</field>
+        <field name="report_name">tnx_account.report_invoice_ls</field>
+        <field name="report_file">tnx_account.report_invoice_ls</field>
         <field name="attachment_use" eval="True" />
         <field name="binding_model_id" ref="model_account_move" />
     </record>
@@ -27,16 +27,16 @@
         <field name="dpi">90</field>
     </record>
 
-    <record id="tnx_account.invoice_ex" model="ir.actions.report">
+    <record id="tnx_account.invoice_ls" model="ir.actions.report">
         <field name="paperformat_id" ref="tnx_account.paperformat_sale_summary_report" />
     </record>
 
     <!-- get old  -->
-    <template id="report_invoice_ex">
+    <template id="report_invoice_ls">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-if="o.partner_id.partner_type == 'ex'">
-
+                <t t-if="o.partner_id.partner_type == 'ls'">
+                    
                     <t t-if="not o" t-set="o" t-value="doc" />
                     <!-- ####odoo defaults#### -->
                     <t t-if="not company">
@@ -251,34 +251,8 @@
     
                                 </div>
                             </t>
-                            <div>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>Poids brut</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Poids Net</td>
-                                            <td></td>
-                                        </tr>
-                                        <!-- <tr>
-                                            <td>Colisage</td>
-                                            <td></td>
-                                        </tr> -->
-                                        <tr>
-                                            <td>Origin</td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div style="text-align:center;margin-top:20px">
-                                <span>
-                                    <b>Origin : </b>
-                                    The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, the products are of Madagascar preferential origin according to rules of origin of the Generalized System of Preferences of the European Union and that the origin criterion met is "Y"
-                                </span>
-                            </div>
+                            
+                            
                             <t t-if="o.bank_company_ids">
                                 <div style="font-size:13px;margin-top:20px">
                                     <span>Compte N°: </span>
@@ -310,14 +284,11 @@
                         </div>
                     </div>
                 </t>
-
-                
                 <t t-else="">
                     <span>
-                        Cette facture n'est pas une facture EX
+                        Cette facture n'est pas une facture ls
                     </span>
                 </t>
-
             </t>
 
         </t>
