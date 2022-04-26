@@ -22,7 +22,6 @@
     # any module necessary for this one to work correctly
     'depends': ['base', 'hr_contract',
                 'hr',
-                'hr_holidays',
                 'tnx_base', 'hr_payroll'],
 
     # always loaded
@@ -36,5 +35,5 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ],'license': 'LGPL-3',
+    ], 'license': 'LGPL-3',
 }
