@@ -82,6 +82,18 @@
             </field>
         </record>
 
+        <!-- TODO create filter for seq_bis here -->
+        <record id="account_invoice_groupby_inherit_tsiky" model="ir.ui.view">
+            <field name="name">account.move.groupby</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="seq_bis" string="Reférence facture"/>
+                </xpath>
+            </field>
+        </record>
+
     
     </data>
     
