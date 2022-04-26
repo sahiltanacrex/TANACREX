@@ -1,3 +1,4 @@
+from math import pi
 from odoo import models, fields, api
 class Product_template(models.Model):
     _inherit='product.template'
@@ -5,10 +6,33 @@ class Product_template(models.Model):
     hs_code = fields.Char(
         string='HS CODE',
         required=True)
-    product_format_id = fields.Many2one(
-        comodel_name='product.format',
-        string='Format du produit',
-        required=True)
+
+    product_format = fields.Selection([
+        ('circle', 'Cercle'),
+        ('rectangle', 'Rectangle'),
+        ('other', 'Autres'),
+    ], string='Format du produit')
+
+    surface = fields.Float('Surface' )
+
+    @api.onchange('product_format')
+    def _onchange_product_format(self):
+        for record in self:
+            record.length=0
+            record.height=0
+            record.diameter=0
+    
+    @api.onchange('diameter')
+    def _change_surface_circle(self):
+        for record in self:
+            record.surface= pi * record.diameter     
+
+    @api.onchange('height','length')
+    def _change_surface_rectangle(self):
+        for record in self:
+            record.surface= record.length * record.height
+            
+     
     length = fields.Float(
         string='Longueur mm',
         required=False)

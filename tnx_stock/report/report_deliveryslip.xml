@@ -155,6 +155,7 @@
                             <td>Quantité</td>
                             <td>Reférence</td>
                             <td>Designation</td>
+                            <td>Surface</td>
                             <td>Colisage</td>
                         </tr>
                         <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)" />
@@ -168,6 +169,9 @@
                                 </td>
                                 <td>
                                     <span t-field="move.product_id.name" />
+                                </td>
+                                <td>
+                                    <span t-field="move.product_id.surface" />
                                 </td>
                                 <td>
                                     
