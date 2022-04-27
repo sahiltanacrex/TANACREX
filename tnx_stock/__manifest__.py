@@ -20,14 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base','stock'],
+    'depends': ['base','tnx_base','stock','product',],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'report/report_deliveryslip.xml'
+        'report/hide_report_picking.xml',
+        'report/report_deliveryslip.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

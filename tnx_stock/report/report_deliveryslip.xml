@@ -2,12 +2,14 @@
 
 <odoo>
     <record id="tnx_stock_picking" model="ir.actions.report">
-        <field name="name">Bon de livraison tnx</field>
+        <field name="name">Bon de livraisons</field>
         <field name="model">stock.picking</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">tnx_stock.tnx_stock_picking</field>
         <field name="report_file">tnx_stock.tnx_stock_picking</field>
         <field name="attachment_use" eval="True" />
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+
     </record>
 
     <record id="paperformat_sale_summary_report" model="report.paperformat">
