@@ -135,7 +135,7 @@
                                     <t t-esc="o.employee_id.children"/>
                                 </td>
                                 <td>
-                                    <span t-field="o.employee_id.identification_id"/>
+                                    <span t-field="o.employee_id.matricule"/>
                                 </td>
                                 <td>
                                     <span t-field="o.compute_date"/>
@@ -149,7 +149,7 @@
                                     <strong>Classification professionnelle</strong>
                                 </th>
                                 <th class="w-25">
-                                    <strong>Horaire de travail</strong>
+                                    <strong>Base</strong>
                                 </th>
                                 <th class="w-25" name="company-car-title">CIN</th>
                             </thead>
@@ -164,7 +164,7 @@
                                     <t t-if="o.struct_id.type_id.name == 'Temporaire'">
                                         <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
                                             <t t-if="worked_days.code == 'WORK100'">
-                                                <span t-field="worked_days.number_of_days"/>
+                                                <span t-field="worked_days.number_of_days"/><span> jours</span>
                                             </t>
                                         </span>
                                     </t>
