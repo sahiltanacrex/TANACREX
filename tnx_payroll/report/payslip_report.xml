@@ -114,8 +114,7 @@
                             </tbody>
                             <thead>
                                 <th>
-                                    <span t-field="o.employee_id.address_home_id.city"/>
-                                    <span t-field="o.employee_id.address_home_id.zip"/>
+                                    <strong>Type de contrat</strong>
                                 </th>
                                 <th>
                                     <strong>Personne en charge</strong>
@@ -128,16 +127,16 @@
                                 </th>
                             </thead>
                             <tbody class="invoice-body">
-                                <td>
-                                    <span t-field="o.employee_id.work_email"/>
+                                <td style="text-align:center;">
+                                    <span t-field="o.contract_id.contrat_categorie"/>
                                 </td>
-                                <td name="personne-in-charge">
+                                <td name="personne-in-charge" style="text-align:center;">
                                     <t t-esc="o.employee_id.children"/>
                                 </td>
-                                <td>
+                                <td style="text-align:center;">
                                     <span t-field="o.employee_id.matricule"/>
                                 </td>
-                                <td>
+                                <td style="text-align:center;">
                                     <span t-field="o.compute_date"/>
                                 </td>
                             </tbody>
