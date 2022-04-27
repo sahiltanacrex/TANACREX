@@ -72,13 +72,25 @@
             </field>
         </record>
 
-        <record id="ref_bis_view_search" model="ir.ui.view">
+        <!-- <record id="ref_bis_view_search" model="ir.ui.view">
             <field name="name">account.move.view.search</field>
             <field name="model">account.move</field>
             <field name="arch" type="xml">
                 <search string="Reférence facture">
                     <field name="seq_bis" filter_domain="[('seq_bis.name', 'ilike', self)]" />
                 </search>
+            </field>
+        </record> -->
+
+        <!-- TODO create filter for seq_bis here -->
+        <record id="account_invoice_groupby_inherit_seq_bis" model="ir.ui.view">
+            <field name="name">account.move.groupby</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="seq_bis" string="Reférences facture"/>
+                </xpath>
             </field>
         </record>
 
