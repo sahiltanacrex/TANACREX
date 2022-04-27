@@ -11,7 +11,7 @@ class HrContractInherit(models.Model):
     hour_per_week = fields.Float(
         string="Nombre d'heures travaillé par semaine", related="resource_calendar_id.full_time_required_hours",
         required=True)
-    base_salary = fields.Monetary('Salaire de base mensuel')
+    base_salary = fields.Monetary('Salaire de base')
     hourly_salary = fields.Monetary('Salaire horaire ', compute='_get_hourly_salary')
     bonus = fields.Monetary('Prime')
     production_bonus_participant = fields.Monetary('Prime de production participant')
