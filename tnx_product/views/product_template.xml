@@ -58,8 +58,9 @@
                                     <field name="bat_date"/>
                                     <field name="validation_tools"/>
                                     <field name="attachment_ids" />
-                                    
+                                    <button name="action_send_mail_bat" string="Envoyer BAT par e-mail" type="object" class="oe_highlight" />
                                 </group>
+
 
                             </group>
                         </div>
