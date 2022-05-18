@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base','stock','product'],
+    'depends': ['base','tnx_base','stock','product','mail'],
 
     # always loaded
     'data': [
@@ -28,6 +28,8 @@
         'views/product_template.xml',
         'views/templates.xml',
         'security/ir.model.access.csv',
+        # send mail
+        'data/mail_templates/template_bat.xml',
 
     ],
     # only loaded in demonstration mode
