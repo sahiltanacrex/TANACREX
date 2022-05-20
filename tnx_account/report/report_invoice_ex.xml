@@ -274,7 +274,9 @@
                                         </tr>
                                         <tr>
                                             <td>Incoterm</td>
-                                            <td></td>
+                                            <td>
+                                                <span t-esc="o.invoice_incoterm_id.name" />
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
