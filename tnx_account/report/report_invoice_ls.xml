@@ -158,11 +158,11 @@
     
                                                 <span t-esc="o.invoice_date_due" />
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <b>Origine:</b>
     
                                                 <span t-esc="o.origin_tnx" />
-                                            </td>
+                                            </td> -->
                                         </tr>
                                     </tbody>
                                 </table>

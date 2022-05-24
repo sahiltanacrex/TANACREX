@@ -185,7 +185,7 @@
                         </span>
                     </div>
                     <div>
-                        <table style="width:100%;font-size:20px;text-align:center">
+                        <table style="width:100%;text-align:center;margin-top:20px">
                             <tbody>
                                 <tr>
                                     <td>Contrôle</td>

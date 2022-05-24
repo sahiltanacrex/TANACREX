@@ -233,15 +233,14 @@
                                     Montant HT:
                                     <span  t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                 </span>
+                                
+
                             </div>
-                            <div>
-                                <span>
-                                    <b>
-                                        <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
-    
-                                    </b>
-                                </span>
+                            <div style="text-align:right">
+                                <span>Arrêté la présente Facture à la somme de :</span>
+                                <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                             </div>
+                            
                             <t t-if="o.delivery_adress">
                                 <div>
                                     <b>
@@ -255,30 +254,43 @@
                                 <table>
                                     <tbody>
                                         <tr>
+                                            <td>Origin</td>
+                                            <td>
+                                                <span t-esc="o.origin_tnx"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>Poids brut</td>
-                                            <td></td>
+                                            <td>
+                                                <span t-esc="o.gross_weight" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Poids Net</td>
-                                            <td></td>
+                                            
+                                            <td>
+                                                <span t-esc="o.net_weight" />
+                                            </td>
                                         </tr>
-                                        <!-- <tr>
-                                            <td>Colisage</td>
-                                            <td></td>
-                                        </tr> -->
                                         <tr>
-                                            <td>Origin</td>
-                                            <td></td>
+                                            <td>Incoterm</td>
+                                            <td>
+                                                <span t-esc="o.invoice_incoterm_id.name" />
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                             <div style="text-align:center;margin-top:20px">
                                 <span>
-                                    <b>Origin : </b>
-                                    The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, the products are of Madagascar preferential origin according to rules of origin of the Generalized System of Preferences of the European Union and that the origin criterion met is "Y"
+                                    "L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine préférentielle Madagascar"
                                 </span>
                             </div>
+                            <!-- <div style="text-align:center;margin-top:20px">
+                                <span>
+                                    The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, the products are of Madagascar preferential origin
+                                </span>
+                            </div> -->
                             <t t-if="o.bank_company_ids">
                                 <div style="font-size:13px;margin-top:20px">
                                     <span>Compte N°: </span>
