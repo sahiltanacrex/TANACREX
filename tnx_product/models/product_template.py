@@ -11,7 +11,8 @@ class Product_template(models.Model):
         string='HS CODE',
         required=True)   
 
-    qty_min = fields.Char('Quantité minimum')
+    qty_min = fields.Float('Quantité minimum',store=True,)
+    
     
 
     @api.onchange('product_type')
