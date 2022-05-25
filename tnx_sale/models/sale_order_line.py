@@ -21,6 +21,7 @@ class Sale_order_line(models.Model):
     def _onchange_product_uom_qty(self):
 
         if self.product_id and self.product_uom_qty :
+            self.product_uom_qty=0
             if self.product_uom_qty <= self.product_id.qty_min:
                 if self.product_uom_qty <= self.product_id.qty_min:
                     self.product_uom_qty=0
