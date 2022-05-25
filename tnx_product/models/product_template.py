@@ -10,6 +10,8 @@ class Product_template(models.Model):
     hs_code = fields.Char(
         string='HS CODE',
         required=True)   
+
+    qty_min = fields.Char('Quantité minimum')
     
 
     @api.onchange('product_type')

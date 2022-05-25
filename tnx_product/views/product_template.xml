@@ -5,6 +5,9 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
+                
+                
+                
                 <!-- find field description and add the field
                      new_field after it -->
                 <xpath expr="//notebook" position="before">
@@ -21,6 +24,10 @@
 
                             <!-- if surface of a button -->
                             <field name="surface"/>
+                            <!-- add min qty for sale order -->
+                            <field name="qty_min" />
+
+
                         </group>
                         <group>
                             <field name="material" />
