@@ -7,3 +7,5 @@ class Sale_order(models.Model):
     sale_order_partner = fields.Char('BC client')
     production_duration = fields.Char('Durée de fabrication',required=True)
     delivery_time = fields.Char('Délais de livraison',required=True)
+
+    

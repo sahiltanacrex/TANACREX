@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/sale_order.xml',
+        'views/sale_order_line.xml',
         # report
         'report/report_sale_order.xml',
     ],
