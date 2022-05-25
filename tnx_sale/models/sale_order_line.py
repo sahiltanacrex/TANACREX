@@ -17,11 +17,18 @@ class Sale_order_line(models.Model):
                 'price_subtotal': price_subtotal,
             })
 
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        self.product_uom_qty=0
+        print('----------')
+        print(self.product_id.detailed_type)
+        # if self.product_id.detailed_type == 'product':
+        
+
     @api.onchange('product_uom_qty')
     def _onchange_product_uom_qty(self):
-
-        if self.product_id and self.product_uom_qty :
-            self.product_uom_qty=0
+    
+        if self.product_id and self.product_uom_qty and self.product_id.detailed_type == 'product' :
             if self.product_uom_qty <= self.product_id.qty_min:
                 if self.product_uom_qty <= self.product_id.qty_min:
                     self.product_uom_qty=0
@@ -34,6 +41,8 @@ class Sale_order_line(models.Model):
                             'message': f'Attention ! La quantité minimum pour ce produit {self.product_id.name} n\'a pas été atteint. Merci de prévoir un forfait.'}
 
                     }
+        else: 
+            pass
 
 
 
