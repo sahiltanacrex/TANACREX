@@ -24,9 +24,6 @@
 
                             <!-- if surface of a button -->
                             <field name="surface"/>
-                            <!-- add min qty for sale order -->
-                            <field name="qty_min" />
-
 
                         </group>
                         <group>
@@ -74,6 +71,12 @@
 
                     </page>
                 </xpath>
+                
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <!-- add min qty for sale order -->
+                    <field name="qty_min" />
+                </xpath>
+                
 
             </field>
         </record>
