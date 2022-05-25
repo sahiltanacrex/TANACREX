@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api,_
+from odoo.exceptions import UserError, Warning
 
 class Sale_order_line(models.Model):
     _inherit='sale.order.line'
@@ -16,4 +17,22 @@ class Sale_order_line(models.Model):
                 'price_subtotal': price_subtotal,
             })
 
-    
+    @api.onchange('product_uom_qty')
+    def _onchange_product_uom_qty(self):
+
+        if self.product_id and self.product_uom_qty :
+            if self.product_uom_qty <= self.product_id.qty_min:
+                if self.product_uom_qty <= self.product_id.qty_min:
+                    self.product_uom_qty=0
+                    return {
+
+                        'warning': {
+
+                            'title': 'Quantité minimum Non atteint!',
+
+                            'message': f'Attention ! La quantité minimum pour ce produit {self.product_id.name} n\'a pas été atteint. Merci de prévoir un forfait.'}
+
+                    }
+
+
+
