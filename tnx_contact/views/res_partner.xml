@@ -11,6 +11,7 @@
                     <field name="nif" />
                     <field name="stat" />
                     <field name="rcs" />
+                    <field name="cif" />
                 </xpath>
                 <xpath expr="//field[@name='category_id']" position="after">
                     <field name="partner_type" widget="radio" options="{'horizontal': true}" />

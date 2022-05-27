@@ -15,6 +15,8 @@ class Res_partner(models.Model):
         string='RCS',
         required=False)
 
+    cif = fields.Char('CIF')
+
     partner_type = fields.Selection([
         ('ex', 'EX'),
         ('vl', 'VL'),
