@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="inherit_mrp_form" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_send_mail_odf" string="Envoyer mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('origin','=',False)]}" />
+                </xpath>
+                
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="partner_id" />
+                    <field name="order_id" />
+                    <field name="developments" widget="selection" />
+                </xpath>
+
+                
+                <!-- <xpath expr="//field[@name='origin']" position="attributes">
+                    
+                </xpath> -->
+                
+                
+            </field>
+        </record>
+
+        <!-- inherit view tree -->
+        <record id="inherit_mrp_tree" model="ir.ui.view">
+            <field name="name">mrp.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <button name="action_send_mail_odf" string="Mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('origin','=',False)]}" />
+                    <field name="developments" 
+                        decoration-danger="developments == '1'" 
+                        decoration-info="developments == '2'" 
+                        decoration-muted="developments == '3'" 
+                        decoration-primary="developments == '4'" 
+                        decoration-success="developments == '5'" 
+                        widget="badge" attrs="{'invisible': [('origin','=',False)]}"
+                    />
+                </field>
+            </field>
+        </record>
+    
+    </data>
+    
+</odoo>

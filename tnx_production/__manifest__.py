@@ -20,13 +20,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base'],
+    'depends': ['base','tnx_base','mrp'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/mrp_production_view.xml',
+        'data/mail_templates/template_manufacture_order.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

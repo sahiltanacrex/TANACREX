@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- must add noupdate="1" in send mail -->
+    <data noupdate="1">
+        <record id="send_mail_order_manufacture" model="mail.template">
+            <field name="name">Manufacture Order</field>
+            <field name="email_from">{{ (user.email_formatted or object.user_id.email_formatted) }}</field>
+            <field name="partner_to">{{ ctx['mail_partner_id'] }}</field>
+            <field name="subject">Ordre de fabrication</field>
+            <!-- <field name="email_to">{{ object.partner_id.id }}</field> -->
+            <field name="model_id" ref="product.model_product_template" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html" type="html">
+                <span>
+                    Bonjour cher 
+                </span>
+                    <span t-out="ctx['mail_partner_name'] or ''" />
+                <span>
+                    Par la présente nous souhaitons vous notifier que la production de votre commande : n° 
+                </span>
+                
+                    <span t-out="ctx['order_origin'] or ''" />
+
+                
+                <span>
+                    est de 
+                </span>
+                    <span t-out="ctx['developments_states'] or ''" />
+
+                <br/>
+                <span>
+
+                    Bien à vous.
+
+                </span>
+            </field>
+        </record>
+    </data>
+</odoo>
