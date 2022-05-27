@@ -33,12 +33,13 @@
         <xpath expr="//div[@id='informations']//div[3]" position="after">
             <div class="col-auto col-3 mw-100 mb-2">
                 <strong>Temps de livraison:</strong>
-                <p class="m-0" t-field="doc.delivery_time" t-options='{"widget": "date"}' />
+                <p class="m-0" t-field="doc.delivery_time"  />
+                <!-- <p class="m-0" t-field="doc.delivery_time" t-options='{"widget": "date"}' /> -->
 
             </div>
             <div class="col-auto col-3 mw-100 mb-2">
                 <strong>Durée de production:</strong>
-                <p class="m-0" t-field="doc.production_duration" t-options='{"widget": "date"}' />
+                <p class="m-0" t-field="doc.production_duration"  />
 
             </div>
         </xpath>
@@ -54,7 +55,7 @@
         </xpath>
 
         <!-- TODO:if tanacrex want diameter, lenght, width, surface. it is in the product template informations -->
-        
+
         <!-- <xpath expr="//div[hasclass('page')]//table[1]//th[@name='th_description']" position="after">
             <th name="th_mensuration" class="text-left">Mensuration</th>
         </xpath>
