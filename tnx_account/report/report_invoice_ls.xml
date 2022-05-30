@@ -234,13 +234,9 @@
                                     <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                 </span>
                             </div>
-                            <div>
-                                <span>
-                                    <b>
-                                        <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
-    
-                                    </b>
-                                </span>
+                            <div style="text-align:right">
+                                <span>Arrêté la présente Facture à la somme de :</span>
+                                <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                             </div>
                             <t t-if="o.delivery_adress">
                                 <div>
