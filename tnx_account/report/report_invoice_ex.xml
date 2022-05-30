@@ -198,7 +198,7 @@
                                                         <span t-esc="bl_name" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.product_id.hs_code" />
+                                                        <t t-esc="line.product_id.hs_code.hs_code" />
                                                     </td>
                                                     <td>
                                                         <t t-esc="line.product_id.name" />

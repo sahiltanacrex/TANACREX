@@ -7,9 +7,7 @@ from odoo.exceptions import UserError, Warning
 class Product_template(models.Model):
     _inherit='product.template'
 
-    hs_code = fields.Char(
-        string='HS CODE',
-        required=True)   
+    hs_code = fields.Many2one('hscode.product', string='Hs Code')
 
     qty_min = fields.Float('Quantité minimum',store=True,)
     
@@ -152,3 +150,7 @@ class Product_template(models.Model):
             'context': ctx,
         }
     
+class HsCode(models.Model):
+    _name='hscode.product'
+    name = fields.Char('Désignation')
+    hs_code = fields.Char('Hs Code')

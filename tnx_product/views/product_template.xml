@@ -13,7 +13,7 @@
                 <xpath expr="//notebook" position="before">
                     <group>
                         <group>
-                            <field name="hs_code"/>
+                            <field name="hs_code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
                             <field name="product_type"/>
                             <!-- if button -->
                             <field name="line" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />

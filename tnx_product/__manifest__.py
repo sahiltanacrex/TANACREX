@@ -27,6 +27,7 @@
         'views/product_format.xml',
         'views/product_template.xml',
         'views/templates.xml',
+        'views/hscode_product.xml',
         'security/ir.model.access.csv',
         # send mail
         'data/mail_templates/template_bat.xml',
