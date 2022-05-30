@@ -6,22 +6,19 @@ class MrpProduction(models.Model):
     """ Manufacturing Orders """
     _inherit = 'mrp.production'
 
-    partner_id = fields.Many2one('res.partner', string='client',store=True)
-    order_id = fields.Many2one('sale.order', string='BC',store=True)
+    partner_id = fields.Many2one('res.partner', string='client',store=True, compute='_compute_source_id')
+    order_id = fields.Many2one('sale.order', string='BC',store=True, compute='_compute_source_id')
     developments = fields.Selection([('1', '0%'), ('2', '25%'), ('3', '50%'), ('4', '75%'),('5', '100%')], default='1',string="Avancement")
+    check_bc = fields.Boolean('Check Bc')
+    image_1920 = fields.Image("Image", compute='_compute_product_id')
+    bc_client = fields.Char('Bc Client')
+    line_product = fields.Float('Ligne')
+    product_type = fields.Char('Type de produit')
+    color_product = fields.Char('Couleur')
+    
 
 
     def action_send_mail_odf(self):
-        order=self.env['sale.order']
-        if self.origin:
-            get_str_origin=self.origin 
-            origin=get_str_origin.split(" - ")
-            get_sale_order_origin=origin[1]
-            
-            if get_sale_order_origin:
-                origin_sale=order.search([('name', '=', get_sale_order_origin)])
-                self.partner_id= origin_sale.partner_id
-                self.order_id= origin_sale
         developments_perccent=dict(self._fields['developments'].selection).get(self.developments)
 
         if self.partner_id:
@@ -50,4 +47,38 @@ class MrpProduction(models.Model):
                 'target': 'new',
                 'context': ctx,
             }
-        
+    
+    @api.depends('product_id')
+    def _compute_product_id(self):
+        for val in self:
+            if val.product_id:
+                val.image_1920=val.product_id.image_1920
+    @api.depends('origin')
+    def _compute_source_id(self):
+        for production in self :
+            if production.origin :
+                devis_name = production.origin.split(" - ")
+                if len(devis_name) > 1:
+                    source = self.env['sale.order'].search([('name','=', devis_name[1])])
+                    print('---------------------')
+                    print(source)
+                    if source :
+                        try :
+                            production.order_id = source
+                            production.partner_id = source.partner_id 
+                            production.check_bc = True
+                            production.bc_client = source.sale_order_partner
+                            production.line_product = production.product_id.line
+                            production.product_type = production.product_id.product_type
+                            production.color_product = production.product_id.product_tmpl_id.color
+                        except Exception as e:
+                            # production.order_id = False
+                            raise UserError(e)
+                            
+                    else :
+                        # production.order_id = False
+                        print('ato ary hoe')
+    
+                    print('---------------------')
+                    print(source)
+    

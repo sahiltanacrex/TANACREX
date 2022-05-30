@@ -8,19 +8,20 @@
             <field name="inherit_id" ref="mrp.mrp_production_form_view" />
             <field name="arch" type="xml">
                 <xpath expr="//header" position="inside">
-                    <button name="action_send_mail_odf" string="Envoyer mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('origin','=',False)]}" />
+                    <button name="action_send_mail_odf" string="Envoyer mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('check_bc','=',False)]}" />
                 </xpath>
                 
                 <xpath expr="//field[@name='product_id']" position="after">
                     <field name="partner_id" />
                     <field name="order_id" />
                     <field name="developments" widget="selection" />
+                    <field name="check_bc" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="force_save">1</attribute>
                 </xpath>
 
-                
-                <!-- <xpath expr="//field[@name='origin']" position="attributes">
-                    
-                </xpath> -->
                 
                 
             </field>
@@ -33,16 +34,33 @@
             <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
             <field name="arch" type="xml">
                 <field name="state" position="after">
-                    <button name="action_send_mail_odf" string="Mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('origin','=',False)]}" />
-                    <field name="developments" 
-                        decoration-danger="developments == '1'" 
-                        decoration-info="developments == '2'" 
-                        decoration-muted="developments == '3'" 
-                        decoration-primary="developments == '4'" 
-                        decoration-success="developments == '5'" 
-                        widget="badge" attrs="{'invisible': [('origin','=',False)]}"
+                    <field name="order_id" />
+                    <field name="check_bc" invisible="1"/>
+
+                    <button name="action_send_mail_odf" string="Mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('check_bc','=',False)]}" />
+                    <field name="developments" decoration-danger="developments == '1'" decoration-info="developments == '2'" decoration-muted="developments == '3'" decoration-primary="developments == '4'" decoration-success="developments == '5'" widget="badge" attrs="{'invisible': [('check_bc','=',False)]}"
                     />
                 </field>
+                <xpath expr="//field[@name='origin']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="partner_id" />
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" />
+                    <field name="product_type"  optional="show"/>
+                    <field name="color_product" widget="color" />
+                    
+                </xpath>
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="image_1920" widget="image" height="70" />
+                    <field name="order_id" attrs="{'invisible': [('check_bc','=',False)]}" />
+                    <field name="bc_client" attrs="{'invisible': [('check_bc','=',False)]}" />
+                </xpath>
             </field>
         </record>
     
