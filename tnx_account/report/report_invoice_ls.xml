@@ -174,7 +174,7 @@
                                             <tr>
                                                 <th style=" font-size:13px">BC Client</th>
                                                 <th style=" font-size:13px">Bon de livraison</th>
-                                                <th style=" font-size:13px">HS Code</th>
+                                                <!-- <th style=" font-size:13px">HS Code</th> -->
                                                 <th style=" font-size:13px">Article</th>
                                                 <!-- <th style=" font-size:13px">Libellé</th>
                                                 <th style=" font-size:13px">Diamètre</th> -->
@@ -197,9 +197,9 @@
                                                     <td>
                                                         <span t-esc="bl_name" />
                                                     </td>
-                                                    <td>
+                                                    <!-- <td>
                                                         <t t-esc="line.product_id.hs_code.hs_code" />
-                                                    </td>
+                                                    </td> -->
                                                     <td>
                                                         <t t-esc="line.product_id.name" />
                                                     </td>
