@@ -176,8 +176,8 @@
                                                 <th style=" font-size:13px">Bon de livraison</th>
                                                 <!-- <th style=" font-size:13px">HS Code</th> -->
                                                 <th style=" font-size:13px">Article</th>
-                                                <!-- <th style=" font-size:13px">Libellé</th>
-                                                <th style=" font-size:13px">Diamètre</th> -->
+                                                <th style=" font-size:13px">Type du produit</th>
+                                                <th style=" font-size:13px">Référence Client</th>
                                                 <th style=" font-size:13px">Quantité</th>
                                                 <th style=" font-size:13px">Prix unitaire / 100 pcs</th>
                                                 <th style=" font-size:13px">Montant</th>
@@ -203,14 +203,14 @@
                                                     <td>
                                                         <t t-esc="line.product_id.name" />
                                                     </td>
-                                                    <!-- <td>
-                                                        <t t-esc="line.product_id.default_code" />
-    
+                                                    <td>
+                                                        <t t-esc="line.product_id.product_type" />
+
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.product_id.diameter" />
-    
-                                                    </td> -->
+                                                        <t t-esc="line.product_id.customer_reference" />
+
+                                                    </td>
                                                     <td>
                                                         <t t-esc="line.quantity" />
                                                     </td>
