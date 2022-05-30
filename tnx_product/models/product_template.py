@@ -13,7 +13,10 @@ class Product_template(models.Model):
 
     qty_min = fields.Float('Quantité minimum',store=True,)
     
-    
+    color = fields.Char(
+    string="Couleur",
+    help="Choose your color"
+)
 
     @api.onchange('product_type')
     def _onchange_surface(self):
