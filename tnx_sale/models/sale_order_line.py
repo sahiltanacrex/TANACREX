@@ -9,11 +9,16 @@ class Sale_order_line(models.Model):
     development_expenses = fields.Monetary('Frais de développement')
 
     unit_qty = fields.Float('Quantité unitaire')
-    product_uom_qty = fields.Float('Quantité cond.')    
+    product_uom_qty = fields.Float('Quantité cond.' , )
+    
+    @api.onchange('unit_qty')
+    def _onchange_unit_qty(self):
+        if self.unit_qty >0:
+            self.product_uom_qty = self.unit_qty/self.product_uom.ratio
 
 
     @api.depends('product_uom_qty', 'discount', 'price_unit',
-                 'tax_id', 'development_expenses')
+                 'tax_id', 'development_expenses','unit_qty')
     def _compute_amount(self):
         """
         tsy override tsony fa tonga dia notsindrina tanteraka sinon tsy miainga
@@ -28,6 +33,9 @@ class Sale_order_line(models.Model):
                 self.price_unit= self.product_id.list_price
             else:
                 self.price_unit=0
+        if self.unit_qty > 0:
+
+            self.product_uom_qty = self.unit_qty / self.product_uom.ratio
 
         for line in self:
             price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
