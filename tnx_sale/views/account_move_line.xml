@@ -11,6 +11,9 @@
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='price_subtotal']" position="before">
                     <field name="development_expenses" readonly="1" force_save="1" />
                 </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']//field[@name='quantity']" position="before">
+                    <field name="unit_qty" readonly="1" force_save="1" />
+                </xpath>
             </field>
         </record>
     

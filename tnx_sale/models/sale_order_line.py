@@ -59,6 +59,7 @@ class Sale_order_line(models.Model):
 
         values['development_expenses']=self.development_expenses
         values['price_subtotal']= self.development_expenses + self.price_subtotal
+        values['unit_qty']= self.unit_qty
         
         # values["move_line_ids"] = [(4, m.id) for m in stock_moves]
 
@@ -118,6 +119,8 @@ class Sale_order_line(models.Model):
 class Account_move_line(models.Model):
     _inherit='account.move.line'
     development_expenses = fields.Monetary('Frais de développement')
+    unit_qty = fields.Float('Quantité unitaire')
+    
     # price_subtotal = fields.Monetary(compute='_compute_price_subtotal')
 
 
