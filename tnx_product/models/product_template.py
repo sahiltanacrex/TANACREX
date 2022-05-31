@@ -159,5 +159,5 @@ class HsCode(models.Model):
         result = []
         for rec in self:
             name=rec.hs_code
-        result.append((rec.id,name))
+            result.append((rec.id,name))
         return result
