@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base','sale'],
+    'depends': ['base','tnx_base','sale','account'],
 
     # always loaded
     'data': [
@@ -29,6 +29,7 @@
         'views/templates.xml',
         'views/sale_order.xml',
         'views/sale_order_line.xml',
+        'views/account_move_line.xml',
         # report
         'report/report_sale_order.xml',
     ],
