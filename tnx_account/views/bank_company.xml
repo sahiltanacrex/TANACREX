@@ -33,6 +33,10 @@
                                 </div>
 
                             </page>
+                        
+                            <page name="bank_info" string="Informations bancaire">
+                                <field name="bank_info" />
+                            </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">

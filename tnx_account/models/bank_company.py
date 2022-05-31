@@ -8,6 +8,7 @@ class Bank(models.Model):
     bank = fields.Char('Nom de la banque', track_visibility='onchange')
     bank_company_line_ids = fields.One2many('bank.company.line', 'bank_id', string='Numero de compte bancaire', track_visibility='onchange')
     account_move_id = fields.Many2one('account.move', string='Account move')
+    bank_info = fields.Text('Information de la banque')
 
 
 class Bank_line(models.Model):
