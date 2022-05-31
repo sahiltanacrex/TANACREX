@@ -154,3 +154,10 @@ class HsCode(models.Model):
     _name='hscode.product'
     name = fields.Char('Désignation')
     hs_code = fields.Char('Hs Code')
+
+    def name_get(self):
+        result = []
+        for rec in self:
+            name=rec.hs_code
+        result.append((rec.id,name))
+        return result
