@@ -29,6 +29,7 @@
         'views/templates.xml',
         'report/hide_report_picking.xml',
         'report/report_deliveryslip.xml',
+        'report/product_product_templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
