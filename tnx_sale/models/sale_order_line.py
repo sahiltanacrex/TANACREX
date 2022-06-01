@@ -130,11 +130,15 @@ class Account_move_line(models.Model):
     #         if val.development_expenses > 0:
     #             val.update(val._get_price_total_and_subtotal())
     #             val.price_subtotal += val.development_expenses
+
+    @api.model
+    def _get_price_total_and_subtotal_model(self, price_unit, quantity, discount, currency, product, partner, taxes, move_type):
+        values = super(Account_move_line, self)._get_price_total_and_subtotal_model( price_unit, quantity, discount, currency, product, partner, taxes, move_type)
+        
+        values['price_subtotal'] += self.development_expenses
+
+        return values
+    
     
     # def _get_price_total_and_subtotal_model(self, price_unit, quantity, discount, currency, product, partner, taxes, move_type):
-    #     values = super(Account_move_line, self)._get_price_total_and_subtotal_model( price_unit, quantity, discount, currency, product, partner, taxes, move_type)
-        
-    #     values['price_subtotal'] += self.development_expenses
-
-    #     return values
         
