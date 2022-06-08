@@ -9,8 +9,7 @@
                 <div style="margin-left:503px;">
                     <div>
                         NIF:
-                        <span t-esc="doc.partner_id.nif" />
-
+                        <span t-esc="doc.partner_id.nif" /> 
                     </div>
                     <div>
                         STAT:
@@ -25,11 +24,29 @@
                         <span t-esc="doc.partner_id.rcs" />
                     </div>
                 </div>
-                
-
             </div>
         </xpath>
         <!-- bc client -->
+        <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="replace">
+            <th name="th_priceunit" class="text-right">Prix unitaire</th>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
+            <th name="th_priceunit" class="text-right">UdM</th>
+        </xpath>    
+        <xpath expr="//table[hasclass('table')]//thead//tr//th[2]" position="replace">
+            <th name="th_priceunit" class="text-right">Quantité unitaire</th>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//tbody//tr//td[2]" position="replace">
+            <td name="td_quantity" class="text-right">
+                <span t-field="line.product_uom_qty"/>
+            </td>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
+            <td name="td_quantity" class="text-right">
+                <span t-field="line.product_uom"/>
+            </td>
+        </xpath>
+
         <xpath expr="//div[hasclass('page')]//h2[hasclass('mt16')]" position="replace">
             <h2 class="mt16">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
@@ -42,7 +59,6 @@
                 <!-- <span t-field="doc.name" /> -->
                 <span t-field="doc.sale_order_partner" />
             </h2>
-
         </xpath>
 
         <!-- Temps de livraison -->
