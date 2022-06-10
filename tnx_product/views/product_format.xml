@@ -23,8 +23,7 @@
             <field name="model">product.format</field>
             <field name="arch" type="xml">
                 <tree string="Format product">
-                    <field name="name"/>
-                         
+                    <field name="name"/>      
                 </tree>
             </field>
         </record>

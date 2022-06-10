@@ -9,12 +9,12 @@ class Product_template(models.Model):
 
     hs_code = fields.Many2one('hscode.product', string='Hs Code')
 
-    qty_min = fields.Float('Quantité minimum',store=True,)
+    
     
     color = fields.Char(
-    string="Couleur",
-    help="Choose your color"
-)
+        string="Couleur",
+        help="Choose your color"
+    )
 
     @api.onchange('product_type')
     def _onchange_surface(self):
@@ -26,9 +26,7 @@ class Product_template(models.Model):
                 record.line=0
                 record.diameter=0
                 record.number_holes=0
-
-            
-    
+ 
     origin = fields.Char(
         string='Origine', 
         required=False)
@@ -149,6 +147,22 @@ class Product_template(models.Model):
             'target': 'new',
             'context': ctx,
         }
+    
+
+    minimum_price = fields.Float(
+        'Prix au forfait', default=0,
+        digits='Prix au forfait',
+        help="Prix de vente minimum pour l'articles",
+    )
+
+    qty_min = fields.Float('Quantité minimum',store=True, default=0)
+    
+    tax_string_min = fields.Char(compute='_compute_tax_string_min')
+
+    @api.depends('taxes_id', 'minimum_price')
+    def _compute_tax_string_min(self):
+        for record in self:
+            record.tax_string_min = record._construct_tax_string(record.minimum_price)
     
 class HsCode(models.Model):
     _name='hscode.product'

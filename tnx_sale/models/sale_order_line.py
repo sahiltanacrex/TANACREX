@@ -13,12 +13,12 @@ class Sale_order_line(models.Model):
     
     @api.onchange('unit_qty')
     def _onchange_unit_qty(self):
-        if self.unit_qty >0:
-            self.product_uom_qty = self.unit_qty/self.product_uom.ratio
+        if self.unit_qty : 
+            if self.unit_qty > 0:
+                self.product_uom_qty = self.unit_qty/self.product_uom.ratio
 
 
-    @api.depends('product_uom_qty', 'discount', 'price_unit',
-                 'tax_id', 'development_expenses','unit_qty')
+    @api.depends('discount', 'price_unit','tax_id', 'development_expenses','unit_qty')
     def _compute_amount(self):
         """
         tsy override tsony fa tonga dia notsindrina tanteraka sinon tsy miainga
@@ -28,27 +28,36 @@ class Sale_order_line(models.Model):
         Fully overridden to add field development_expenses to the
         formula and triggers.
         """
-        if self.product_id.qty_min>0:
-            if self.product_uom_qty > self.product_id.qty_min:
-                self.price_unit= self.product_id.list_price
-            else:
-                self.price_unit=0
-        if self.unit_qty > 0:
+        for rec in self :
+            for line in rec:
+                price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+                # new: substract development_expenses
+                taxes = line.tax_id.compute_all(price, line.order_id.currency_id, line.product_uom_qty, product=line.product_id, partner=line.order_id.partner_shipping_id)
+                line.update({
+                    'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
+                    'price_total': taxes['total_included'],
+                    'price_subtotal': taxes['total_excluded'] + line.development_expenses,
+                })
+                if rec.env.context.get('import_file', False) and not rec.env.user.user_has_groups('account.group_account_manager'):
+                    line.tax_id.invalidate_cache(['invoice_repartition_line_ids'], [line.tax_id.id])
+            if rec.unit_qty :
+                if rec.unit_qty > 0:
+                    rec.product_uom_qty = rec.unit_qty / rec.product_uom.ratio
 
-            self.product_uom_qty = self.unit_qty / self.product_uom.ratio
+            if rec.product_id.qty_min :
+                if rec.unit_qty > rec.product_id.qty_min:
+                    rec.price_unit = rec.product_id.list_price
+                else:
+                    self.price_subtotal = self.product_id.minimum_price
+                    return {
 
-        for line in self:
-            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
-            
-            # new: substract development_expenses
-            taxes = line.tax_id.compute_all(price, line.order_id.currency_id, line.product_uom_qty, product=line.product_id, partner=line.order_id.partner_shipping_id)
-            line.update({
-                'price_tax': sum(t.get('amount', 0.0) for t in taxes.get('taxes', [])),
-                'price_total': taxes['total_included'],
-                'price_subtotal': taxes['total_excluded'] + line.development_expenses,
-            })
-            if self.env.context.get('import_file', False) and not self.env.user.user_has_groups('account.group_account_manager'):
-                line.tax_id.invalidate_cache(['invoice_repartition_line_ids'], [line.tax_id.id])
+                        'warning': {
+
+                            'title': 'Quantité minimum Non atteint!',
+
+                            'message': f'Attention ! La quantité minimum pour ce produit {self.product_id.name} n\'a pas été atteint. Merci de prévoir un forfait.'}
+
+                    }
 
 
     def _prepare_invoice_line(self, **optional_values):
@@ -64,13 +73,9 @@ class Sale_order_line(models.Model):
         # values["move_line_ids"] = [(4, m.id) for m in stock_moves]
 
         return values
+        
 
-    @api.onchange('product_id')
-    def _onchange_product_it(self):
-        if self.product_id.qty_min > 0:
-            self.price_unit=0
-
-    @api.onchange('price_unit')
+    @api.onchange('price_unit','product_id')
     def _onchange_price_unit(self):
         """test price units
 
@@ -79,27 +84,27 @@ class Sale_order_line(models.Model):
             raise a pop up and put price_unit at zero
 
         """
-        if self.product_uom_qty <= self.product_id.qty_min:
-            self.price_unit=0
-            #! this return pop up
-            return {
+        if self.product_id.qty_min : 
+            if self.unit_qty < self.product_id.qty_min:
+                self.price_subtotal =  self.product_id.minimum_price
+                #! this return pop up
+                return {
 
-                    'warning': {
+                        'warning': {
 
-                        'title': 'Quantité minimum Non atteint!',
+                            'title': 'Quantité minimum Non atteint!',
 
-                        'message': f'Attention ! La quantité minimum pour ce produit {self.product_id.name} n\'a pas été atteint. Merci de prévoir un forfait.'}
+                            'message': f'Attention ! La quantité minimum pour ce produit {self.product_id.name} n\'a pas été atteint. Merci de prévoir un forfait.'}
 
                 }
-        else:
-            pass
         
 
     @api.onchange('product_uom_qty')
-    def _onchange_product_uom_qty(self):
-    
-        if self.product_id and self.product_uom_qty and self.product_id.detailed_type == 'product' :
-            if self.product_uom_qty <= self.product_id.qty_min:
+    def _onchangeqty_min_product_uom_qty(self):
+        self.unit_qty  = self.product_uom_qty * self.product_uom.ratio
+        if self.product_id.qty_min and self.product_id and self.product_uom_qty and self.product_id.detailed_type == 'product' :
+            if self.unit_qty < self.product_id.qty_min:
+                self.price_subtotal =  self.product_id.minimum_price
                 return {
 
                     'warning': {
@@ -109,10 +114,6 @@ class Sale_order_line(models.Model):
                         'message': f'Attention ! La quantité minimum pour ce produit {self.product_id.name} n\'a pas été atteint. Merci de prévoir un forfait.'}
 
                 }
-            else:
-                pass
-        else: 
-            pass
 
 
 

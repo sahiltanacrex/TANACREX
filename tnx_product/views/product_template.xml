@@ -74,9 +74,17 @@
                 </xpath>
                 
                 <xpath expr="//field[@name='barcode']" position="after">
-                    <!-- add min qty for sale order -->
+                    <!-- add min qty  and min price for sale order -->
+                    <label for="minimum_price" class="mt-1"/>
+                        <div name="minimum_pricing">
+                            <field name="minimum_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1" modifiers="{}"/>
+                            <span class="ml-2"/><field name="tax_string_min" modifiers="{&quot;readonly&quot;: true}"/>
+                        </div>
                     <field name="qty_min" />
                 </xpath>
+                
+
+    
                 
 
             </field>

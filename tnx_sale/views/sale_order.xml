@@ -13,7 +13,6 @@
                         <field name="production_duration" />
                         <field name="delivery_time" />
                     </xpath>
-                    
                 </data>
             </field>
         </record>

@@ -28,7 +28,7 @@
         </xpath>
         <!-- bc client -->
         <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="replace">
-            <th name="th_priceunit" class="text-right">Prix unitaire</th>
+            <th name="th_priceunit" class="text-right">Prix / UdM</th>
         </xpath>
         <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
             <th name="th_priceunit" class="text-right">UdM</th>
@@ -43,7 +43,7 @@
         </xpath>
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
             <td name="td_quantity" class="text-right">
-                <span t-field="line.product_uom"/>
+                <span t-field="line.unit_qty"/>
             </td>
         </xpath>
 
