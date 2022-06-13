@@ -1,16 +1,11 @@
 import math
-import calendar
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
-from odoo import models, fields, api,_
-from odoo.exceptions import UserError, Warning
 
 class Product_template(models.Model):
-    _inherit='product.template'
-
+    _inherit = 'product.template'
     hs_code = fields.Many2one('hscode.product', string='Hs Code')
-
-    
-    
     color = fields.Char(
         string="Couleur",
         help="Choose your color"
@@ -20,21 +15,20 @@ class Product_template(models.Model):
     def _onchange_surface(self):
         for record in self:
             if record.product_type == 'button':
-                record.length=0
-                record.height=0
-            elif record.product_type in ['label','sticker']:
-                record.line=0
-                record.diameter=0
-                record.number_holes=0
- 
+                record.length = 0
+                record.height = 0
+            elif record.product_type in ['label', 'sticker']:
+                record.line = 0
+                record.diameter = 0
+                record.number_holes = 0
     origin = fields.Char(
-        string='Origine', 
+        string='Origine',
         required=False)
     supplier = fields.Char(
-        string='Fournisseur', 
+        string='Fournisseur',
         required=False)
     latin_name = fields.Char(
-        string='Nom latin', 
+        string='Nom latin',
         required=False)
     collection_site = fields.Char(
         string='Site de collecte',
@@ -44,10 +38,10 @@ class Product_template(models.Model):
         required=False)
     # divers
     miscellaneous = fields.Char(
-        string='Divers', 
+        string='Divers',
         required=False)
 
-    #! add fields
+    # ! add fields
     product_type = fields.Selection([
         ('button', 'Boutton'),
         ('label', 'Etiquette'),
@@ -58,67 +52,56 @@ class Product_template(models.Model):
     material = fields.Char('Matière')
     thickness = fields.Char('Epaisseur')
     customer_reference = fields.Char('Référence Client')
-    partner_id = fields.Many2one('res.partner', string='Client',store=True)
+    partner_id = fields.Many2one('res.partner', string='Client', store=True)
 
     # field based on condition
-    #?if button_type = button
+    # ?if button_type = button
     line = fields.Float('Ligne')
     diameter = fields.Float(
         string='Diamètre',
         required=False)
-
     surface = fields.Float('Surface',)
 
-    @api.onchange('line','diameter','length','height')
+    @api.onchange('line', 'diameter', 'length', 'height')
     def _onchange_(self):
         for record in self:
             if self.product_type == 'button':
-                self.surface= math.pi * self.diameter   
-            elif self.product_type in ['label','sticker']:
+                self.surface = math.pi * self.diameter
+            elif self.product_type in ['label', 'sticker']:
                 self.surface = self.length * self.height
-
-    
     number_holes = fields.Integer('Nombre de trous')
 
-    #? if sticker or a label
-    #! search surface  by this fields
+    # ? if sticker or a label
+    # ! search surface  by this fields
     length = fields.Float(
         string='Longueur',
         required=False)
     height = fields.Float(
         string='Hauteur',
         required=False)
-
-
     # TODO BAT here
 
     employee_validator_id = fields.Many2one('hr.employee', string='Validateur')
     bat_date = fields.Date('Date')
     validation_tools = fields.Char('Moyen de validation')
-    attachment_ids = fields.Binary("Fichier BAT",attachment=True)
-
+    attachment_ids = fields.Binary("Fichier BAT", attachment=True)
 
     def action_send_mail_bat(self):
         # import pudb; pudb.set_trace()
-        if not self.name or  not self.partner_id.name or  not self.bat_date:
+        if not self.name or not self.partner_id.name or not self.bat_date:
             raise UserError(_(f'Veuillez remplir les champs {self.name} et {self.partner_id.name} et {self.bat_date}'))
         else:
-            file_name=f"BAT_{self.name}_{self.partner_id.name}_{self.bat_date}"
-
+            file_name = f"BAT_{self.name}_{self.partner_id.name}_{self.bat_date}"
         self.ensure_one()
-        
-        
         attachment = {
+            'name': file_name,
 
-               'name': file_name,
+            'datas': self.attachment_ids,
 
-               'datas': self.attachment_ids,
+            'res_model': 'product_template',
 
-               'res_model': 'product_template',
-
-               'type': 'binary'
-
-           }
+            'type': 'binary'
+        }
 
         id = self.env['ir.attachment'].create(attachment)
 
@@ -147,25 +130,22 @@ class Product_template(models.Model):
             'target': 'new',
             'context': ctx,
         }
-    
-
-    minimum_price = fields.Float(
+    minimum_price = fields.Monetary(
         'Prix au forfait', default=0,
         digits='Prix au forfait',
         help="Prix de vente minimum pour l'articles",
     )
 
-    qty_min = fields.Float('Quantité minimum',store=True, default=0)
-    
+    qty_min = fields.Float('Quantité minimum', store=True, default=0)
     tax_string_min = fields.Char(compute='_compute_tax_string_min')
 
     @api.depends('taxes_id', 'minimum_price')
     def _compute_tax_string_min(self):
         for record in self:
             record.tax_string_min = record._construct_tax_string(record.minimum_price)
-    
+
+
 class HsCode(models.Model):
-    _name='hscode.product'
+    _name = 'hscode.product'
     name = fields.Char('Désignation')
     hs_code = fields.Char('Hs Code')
-
