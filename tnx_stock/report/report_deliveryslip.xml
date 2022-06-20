@@ -126,7 +126,7 @@
                                 border: 1px solid black;
                               }
                         </style>
-                        <table class="table" name="stock_move_table" style="font-size:14px;">
+                        <table class="table" clearname="stock_move_table" style="font-size:14px;">
                             <tr>
                                 <td>Quantité</td>
                                 <td>Reférence</td>

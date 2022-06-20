@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="note_de_colisage_paperformat" model="report.paperformat">
+        <field name="name">[TNX] Quant package report </field>
+        <field name="default" eval="False" />
+        <field name="format">A4</field>
+        <field name="page_width">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">40</field>
+        <field name="margin_right">10</field>
+        <field name="margin_left">10</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">40</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_tnx_package_report" model="ir.actions.report">
+        <field name="name">Note de colisage</field>
+        <field name="model">stock.quant.package</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tnx_stock.tnx_package_report</field>
+        <field name="report_file">tnx_stock.tnx_package_report</field>
+        <field name="binding_model_id" ref="stock.model_stock_quant_package" />
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_tnx_package_report" model="ir.actions.report">
+        <field name="paperformat_id" ref="tnx_stock.note_de_colisage_paperformat" />
+    </record>
+    <!-- Template Note de colisage -->
+    <template id="tnx_package_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <!-- <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" /> -->
+                <t t-if="not o" t-set="o" t-value="o" />
+                <!-- ####odoo defaults#### -->
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
+                    </t>
+                    <t t-elif="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+                <div class="header" style="margin-top : 20 px;">
+                    <div>
+                        <div>
+                            <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                        </div>
+                        <h4>
+                            BOUTONS  -  ETIQUETTES
+                        </h4>
+                    </div>
+                    <div>
+                        <br />
+                        <div class="text-center">
+                            <h2 class="font-weight-bold">
+                                NOTE DE COLISAGE
+                                </h2>
+                            <h3>
+                                Nom du client
+                                </h3>
+                            <h4 class="font-weight-bold">
+                                FACTURE
+                                <span> 506891 </span>
+                            </h4>
+                            <h5>
+                                2 Cartons contenant 1 156 000 pièces de boutons
+                            </h5>
+                        </div>
+                        <br />
+                        <div class="row gx-1" style="margin-left: 50px; margin-right : 50px; font-size : 20px;">
+                            <div class="col-lg-2 col-md-12">
+                                <u>
+                                    <span>Poids brut:</span>
+                                </u>
+                                <span>50 kg</span>
+                            </div>
+                            <div class="col-6 .col-sm-4">
+                                <u>
+                                    <span>Poids net:</span>
+                                </u>
+                                <span>30 kg</span>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div>
+                        <div class=" footer o_standard_footer" style=" font-size:20px;">
+                            <div class=" row text-center">
+                                <div class=" col col-12 text-center">
+                                    <ul class=" list-inline">
+                                        <li class=" list-inline-item">Page:</li>
+                                        <li class=" list-inline-item">
+                                            <span class=" page" />
+                                        </li>
+                                        <li class=" list-inline-item">/</li>
+                                        <li class=" list-inline-item">
+                                            <span class=" topage" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </t>
+
+        </t>
+    </template>
+
+
+</odoo>

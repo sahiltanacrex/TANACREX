@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- stock.picking -->
     <record id="view_picking_form" model="ir.ui.view">
@@ -8,16 +8,29 @@
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
                 <field name="invoice_ids" invisible="1" />
-                <button
-                    name="action_view_invoice"
-                    class="oe_stat_button"
-                    icon="fa-pencil-square-o"
-                    type="object"
-                    attrs="{'invisible': [('invoice_ids', '=', [])]}"
-                    string="Invoices"
-                >
-                </button>
+                <button name="action_view_invoice" class="oe_stat_button" icon="fa-pencil-square-o" type="object" attrs="{'invisible': [('invoice_ids', '=', [])]}" string="Invoices"></button>
             </div>
+        </field>
+    </record>
+
+    <record id="stock_move_form_tree" model="ir.ui.view">
+        <field name="name">stock_line.stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='detailed_operations']/field[@name='move_line_ids_without_package']" position="replace">
+                <field name="move_line_ids_without_package" attrs="{'readonly': ['|', '|', ('show_operations', '=', False), ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)], 'invisible': [('show_reserved', '=', False)]}" context="{'tree_view_ref': 'stock.view_stock_move_line_detailed_operation_tree', 'default_picking_id': id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_company_id': company_id}" />
+            </xpath>
+        </field>
+    </record>
+    <record id="stock_move_line_form_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.stock.picking.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_uom_id']" position="after">
+                <field name="packaging_id" string="Conditionnement" />
+            </xpath>
         </field>
     </record>
     <!-- stock.move -->
@@ -27,18 +40,8 @@
         <field name="inherit_id" ref="stock.view_move_form" />
         <field name="arch" type="xml">
             <group name="linked_group" position="after">
-                <group
-                    name="invoice_line"
-                    string="Invoice Lines"
-                    colspan="2"
-                    attrs="{'invisible':[('invoice_line_ids', '=', [])]}"
-                >
-                    <field
-                        name="invoice_line_ids"
-                        nolabel="1"
-                        groups="account.group_account_invoice"
-                        widget="one2many_list"
-                    />
+                <group name="invoice_line" string="Invoice Lines" colspan="2" attrs="{'invisible':[('invoice_line_ids', '=', [])]}">
+                    <field name="invoice_line_ids" nolabel="1" groups="account.group_account_invoice" widget="one2many_list" />
                 </group>
             </group>
         </field>
@@ -49,17 +52,8 @@
         <field name="inherit_id" ref="stock.view_move_form" />
         <field name="arch" type="xml">
             <group position="after">
-                <group
-                    name="invoice_line"
-                    string="Invoice Lines"
-                    attrs="{'invisible':[('invoice_line_ids', '=', [])]}"
-                >
-                    <field
-                        name="invoice_line_ids"
-                        nolabel="1"
-                        groups="account.group_account_invoice"
-                        widget="one2many_list"
-                    />
+                <group name="invoice_line" string="Invoice Lines" attrs="{'invisible':[('invoice_line_ids', '=', [])]}">
+                    <field name="invoice_line_ids" nolabel="1" groups="account.group_account_invoice" widget="one2many_list" />
                 </group>
             </group>
         </field>
