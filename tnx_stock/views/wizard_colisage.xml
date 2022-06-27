@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="note_colisage_form_view">
+        <field name="name">Note de colisafe Form view</field>
+        <field name="model">note.colisage.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="My Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" string="Nom" />
+                        </group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one" string="Client" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="stock_picking_ids" nolabel="1" readonly="1" mode="tree">
+                            <tree string="Bon de livraisons">
+                                <field name="company_id" invisible="1" />
+                                <field name="name" string="Nom" />
+                                <field name="partner_id" string="Contact" />
+                                <field name="origin" string="Document d'origine" />
+                                <field name="state" string="Etat" />
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="report_colisage" type="object" string="Imprimer" />
+                </footer>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_open_wizard_colisage" model="ir.actions.act_window">
+        <field name="name">Open Wizard Note De colisage</field>
+        <field name="res_model">note.colisage.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

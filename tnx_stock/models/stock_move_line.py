@@ -14,10 +14,6 @@ class StockMoveLine(models.Model):
 
     @api.onchange("qty_done")
     def onchange_done(self):
-        print(
-            """
-            >>>
-            >>><<"""
-        )
-        res = ceil(self.qty_done / self.packaging_id.qty)
-        self.sudo().write({"packaging_qty": res})
+        if self.packaging_id.qty > 0 :
+            res = ceil(self.qty_done / self.packaging_id.qty)
+            self.sudo().write({"packaging_qty": res})
