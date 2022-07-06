@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
         <record id="view_order_form_with_carrier" model="ir.ui.view">
             <field name="name">delivery.sale.order.form.view.with_carrier</field>
             <field name="model">sale.order</field>
@@ -9,21 +8,19 @@
             <field name="arch" type="xml">
                 <data>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
-                        <field name="development_expenses"  />
+                        <field name="development_expenses" />
                     </xpath>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                         <field name="unit_qty" />
                     </xpath>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
-                        <attribute name="string">Quantité/UdM</attribute>
+                        <attribute name="string">Quantiy/UoM</attribute>
                     </xpath>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
-                        <attribute name="string">Prix/UdM</attribute>
+                        <attribute name="string">Price/UoM</attribute>
                     </xpath>
                 </data>
             </field>
         </record>
-    
     </data>
-    
 </odoo>

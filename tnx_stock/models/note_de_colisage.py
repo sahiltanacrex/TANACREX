@@ -9,7 +9,5 @@ class NoteDeColisage(models.TransientModel):
         "stock.picking", "colisage_id", string="Stock selected"
     )
 
-
     def report_colisage(self):
         return self.env.ref("tnx_stock.action_tnx_package_report").report_action(self)
-

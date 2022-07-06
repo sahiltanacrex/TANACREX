@@ -5,41 +5,43 @@ from odoo.tools import float_compare
 
 
 class SaleOrderLine(models.Model):
-    _inherit = 'sale.order.line'
+    _inherit = "sale.order.line"
+
     def _prepare_invoice_line(self, **optional_values):
         """
-            add order_id.name 
+        add order_id.name
         """
-        picking=self.env['stock.picking'].search([('origin', '=', self.order_id.name), ('state', '=', 'done')])
-        
-        stock_move=self.env['stock.move']
-        all_picking=""
-        tab=[]
+        picking = self.env["stock.picking"].search(
+            [("origin", "=", self.order_id.name), ("state", "=", "done")]
+        )
+
+        stock_move = self.env["stock.move"]
+        all_picking = ""
+        tab = []
 
         print(len(picking))
         for i in picking:
             tab.append(i.id)
 
         # stock_move=self.env['stock.move'].search([('picking_id', 'in', tab),('product_id', '=', self.product_id.id)])
-        
-        
+
         # print(stock_move)
 
         if len(picking) > 1:
             for i in picking:
-                stock_move=self.env['stock.move'].search([('picking_id', 'in', tab),('state', '=', 'done')])
-                
+                stock_move = self.env["stock.move"].search(
+                    [("picking_id", "in", tab), ("state", "=", "done")]
+                )
+
                 if stock_move:
                     tab.append(i.id)
                     if all_picking == "":
-                        all_picking+=i.name
+                        all_picking += i.name
                     else:
-                        all_picking+= ", " + i.name
+                        all_picking += ", " + i.name
         else:
-            all_picking=picking.name
-        
-        
-        
+            all_picking = picking.name
+
         values = super(SaleOrderLine, self)._prepare_invoice_line(**optional_values)
 
         stock_moves = self.get_stock_moves_link_invoice()
@@ -55,12 +57,12 @@ class SaleOrderLine(models.Model):
             )
         values["move_line_ids"] = [(4, m.id) for m in stock_moves]
 
-        values['order_customer']=self.order_id.sale_order_partner
-        values['order_origin']=self.order_id.name
-        values['diameter']=self.product_id.diameter
-        values['hs_code']=self.product_id.hs_code.hs_code
-        values['picking_name']=all_picking
-        
+        values["order_customer"] = self.order_id.sale_order_partner
+        values["order_origin"] = self.order_id.name
+        values["diameter"] = self.product_id.diameter
+        values["hs_code"] = self.product_id.hs_code.hs_code
+        values["picking_name"] = all_picking
+
         return values
 
     def get_stock_moves_link_invoice(self):

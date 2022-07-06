@@ -2,14 +2,14 @@
 
 <odoo>
     <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
-        
+
         <!-- customer informations -->
         <xpath expr="//div[hasclass('page')]" position="before">
             <div style="width:100%;">
                 <div style="margin-left:503px;">
                     <div>
                         NIF:
-                        <span t-esc="doc.partner_id.nif" /> 
+                        <span t-esc="doc.partner_id.nif" />
                     </div>
                     <div>
                         STAT:
@@ -28,30 +28,30 @@
         </xpath>
         <!-- bc client -->
         <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="replace">
-            <th name="th_priceunit" class="text-right">Prix / UdM</th>
+            <th name="th_priceunit" class="text-right">Price / UoM</th>
         </xpath>
         <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
-            <th name="th_priceunit" class="text-right">UdM</th>
-        </xpath>    
+            <th name="th_priceunit" class="text-right">UoM</th>
+        </xpath>
         <xpath expr="//table[hasclass('table')]//thead//tr//th[2]" position="replace">
-            <th name="th_priceunit" class="text-right">Quantité unitaire</th>
+            <th name="th_priceunit" class="text-right">Unitary quantity</th>
         </xpath>
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[2]" position="replace">
             <td name="td_quantity" class="text-right">
-                 <span t-field="line.unit_qty"/>
+                <span t-field="line.unit_qty" />
             </td>
         </xpath>
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
             <td name="td_quantity" class="text-right">
-                <span t-field="line.product_uom"/>
+                <span t-field="line.product_uom" />
             </td>
         </xpath>
 
         <xpath expr="//div[hasclass('page')]//h2[hasclass('mt16')]" position="replace">
             <h2 class="mt16">
                 <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                    <span t-if="doc.state not in ['draft','sent']">Bon de commande # </span>
-                    <span t-if="doc.state in ['draft','sent']">Devis # </span>
+                    <span t-if="doc.state not in ['draft','sent']">Purchase order</span>
+                    <span t-if="doc.state in ['draft','sent']">Quotation</span>
                 </t>
                 <t t-if="env.context.get('proforma', False) or is_pro_forma">
                     <span>Pro-Forma Invoice # </span>
@@ -64,14 +64,14 @@
         <!-- Temps de livraison -->
         <xpath expr="//div[@id='informations']//div[3]" position="after">
             <div class="col-auto col-3 mw-100 mb-2">
-                <strong>Temps de livraison:</strong>
-                <p class="m-0" t-field="doc.delivery_time"  />
+                <strong>Delivery time:</strong>
+                <p class="m-0" t-field="doc.delivery_time" />
                 <!-- <p class="m-0" t-field="doc.delivery_time" t-options='{"widget": "date"}' /> -->
 
             </div>
             <div class="col-auto col-3 mw-100 mb-2">
-                <strong>Durée de production:</strong>
-                <p class="m-0" t-field="doc.production_duration"  />
+                <strong>Production time</strong>
+                <p class="m-0" t-field="doc.production_duration" />
 
             </div>
         </xpath>
@@ -84,10 +84,8 @@
             <td name="td_image">
                 <t t-if="line.product_id.image_1920">
                     <img t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height: 4cm; max-width: 4cm;" />
-                    
                 </t>
-                <t t-else="">
-                </t>
+                <t t-else=""></t>
             </td>
         </xpath>
 
@@ -100,8 +98,6 @@
             <td name="td_mensuration">
             </td>
         </xpath> -->
-
-
 
 
     </template>

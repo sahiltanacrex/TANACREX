@@ -5,9 +5,9 @@ from odoo import models, api, fields
 
 class Sale_order_line(models.Model):
     _inherit = "sale.order.line"
-    development_expenses = fields.Monetary("Frais de développement")
-    unit_qty = fields.Float("Quantité unitaire")
-    product_uom_qty = fields.Float("Quantité cond.")
+    development_expenses = fields.Monetary("Development costs")
+    unit_qty = fields.Float("Unitary quantity")
+    product_uom_qty = fields.Float("Cond Quantity")
 
     @api.depends("discount", "price_unit", "tax_id", "development_expenses", "unit_qty")
     def _compute_amount(self):
@@ -112,8 +112,8 @@ class Sale_order_line(models.Model):
 
 class Account_move_line(models.Model):
     _inherit = "account.move.line"
-    development_expenses = fields.Monetary("Frais de développement")
-    unit_qty = fields.Float("Quantité unitaire")
+    development_expenses = fields.Monetary("Development costs")
+    unit_qty = fields.Float("Unitary quantity")
 
     # price_subtotal = fields.Monetary(compute='_compute_price_subtotal')
     # @api.depends('development_expenses')

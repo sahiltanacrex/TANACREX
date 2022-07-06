@@ -2,7 +2,7 @@
 
 <odoo>
     <record id="invoice_ls" model="ir.actions.report">
-        <field name="name">Facture (LS)</field>
+        <field name="name">Invoice (LS)</field>
         <field name="model">account.move</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">tnx_account.report_invoice_ls</field>
@@ -35,23 +35,26 @@
     <template id="report_invoice_ls">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-if="o.partner_id.partner_type == 'ls'">
-                    
-                    <t t-if="not o" t-set="o" t-value="doc" />
-                    <!-- ####odoo defaults#### -->
-                    <t t-if="not company">
-                        <!-- Multicompany -->
-                        <t t-if="company_id">
-                            <t t-set="company" t-value="company_id" />
-                        </t>
-                        <t t-elif="o and 'company_id' in o">
-                            <t t-set="company" t-value="o.company_id.sudo()" />
-                        </t>
-                        <t t-else="else">
-                            <t t-set="company" t-value="res_company" />
-                        </t>
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                <t t-if="not o" t-set="o" t-value="o" />
+                <!-- ####odoo defaults#### -->
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
                     </t>
-                    <div class="header"></div>
+                    <t t-elif="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+
+                <div class="header">
+                    <!-- TODO here we can create header -->
+                </div>
+                <t t-if="o.partner_id.partner_type == 'ls'">
                     <div class="article mt0 o_report_layout_standard" style="font-size:12px">
                         <div class="header_body">
                             <!-- TODO create div for the top for information and image company -->
@@ -59,7 +62,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-xs-6">
-    
+
                                             <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                         </div>
                                         <div class="col-xs-6 " style="margin-left:300px; text-align:center">
@@ -68,7 +71,6 @@
                                                     <tr>
                                                         <td colspan="2" style="font-weight:bold;font-size:15px;">Manufacturing Buttons and Labels since 1983</td>
                                                     </tr>
-    
                                                 </tbody>
                                             </table>
                                             <div>
@@ -83,12 +85,11 @@
                                                 <span>
                                                     Lot 18 D Imerinafovoany
                                                 </span>
-                                                
-                                                
                                             </div>
                                             <div>
                                                 <span>
-                                                    B.p.:11064 - tel.: <span t-esc="company.phone" />
+                                                    B.p.:11064 - tel.:
+                                                    <span t-esc="company.phone" />
                                                 </span>
                                             </div>
                                             <div>
@@ -96,32 +97,35 @@
                                                     e-mail:contact@tanacrex.com
                                                 </span>
                                             </div>
-                                            <div>ANTANANARIVO - <b>MADAGASCAR</b></div>
-    
+                                            <div>
+                                                ANTANANARIVO -
+                                                <b>MADAGASCAR</b>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-    
+
                             </div>
                             <div style="margin-top:20px">
                                 <table style="width:100%">
                                     <tbody>
                                         <tr>
-                                            <td style="width:10%">N° de facture :</td>
+                                            <td style="width:10%">N° invoice :</td>
                                             <td>
                                                 <span t-esc="o.name_bis" />
                                             </td>
-                                            <td style="width:20%">Client:</td>
+                                            <td style="width:20%">Customer:</td>
                                             <td>
                                                 <span t-esc="o.partner_id.name" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Reférence:</td>
+                                            <td>Reference:</td>
                                             <td>
                                                 <span t-esc="o.seq_bis" />
                                             </td>
-                                            <td>Adresse de facturation:</td>
+                                            <td>Billing address:</td>
                                             <td>
                                                 <t t-if="o.partner_id.street">
                                                     <span t-esc="o.partner_id.street" />
@@ -133,7 +137,7 @@
                                                 <t t-if="o.partner_id.city">
                                                     <span>,</span>
                                                     <span t-esc="o.partner_id.city" />
-    
+
                                                 </t>
                                                 <t t-if="o.partner_id.state_id">
                                                     <span>,</span>
@@ -149,13 +153,13 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <b>Date de facture:</b>
-    
+                                                <b>Date of invoice:</b>
+
                                                 <span t-esc="o.invoice_date" />
                                             </td>
                                             <td>
-                                                <b>Date d'échéance:</b>
-    
+                                                <b>Due date:</b>
+
                                                 <span t-esc="o.invoice_date_due" />
                                             </td>
                                             <!-- <td>
@@ -172,23 +176,22 @@
                                     <tbody>
                                         <thead class="thead-light">
                                             <tr>
-                                                <th style=" font-size:13px">BC Client</th>
-                                                <th style=" font-size:13px">Bon de livraison</th>
+                                                <th style=" font-size:13px">PO customer</th>
+                                                <th style=" font-size:13px">Delivery ship</th>
                                                 <!-- <th style=" font-size:13px">HS Code</th> -->
                                                 <th style=" font-size:13px">Article</th>
-                                                <th style=" font-size:13px">Type du produit</th>
-                                                <th style=" font-size:13px">Référence Client</th>
-                                                <th style=" font-size:13px">Quantité</th>
-                                                <th style=" font-size:13px">Prix unitaire / 100 pcs</th>
-                                                <th style=" font-size:13px">Montant</th>
+                                                <th style=" font-size:13px">Type of product</th>
+                                                <th style=" font-size:13px">Customer reference</th>
+                                                <th style=" font-size:13px">Quantity</th>
+                                                <th style=" font-size:13px">Unity price / 100 pcs</th>
+                                                <th style=" font-size:13px">Amount</th>
                                             </tr>
-    
+
                                         </thead>
                                         <t t-foreach="o.invoice_line_ids" t-as="line">
                                             <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                             <t t-foreach="bl_id" t-as="id_bl">
                                                 <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
-    
                                                 <tr>
                                                     <td>
                                                         <!-- <span t-esc="o.get_customer_order(line.order_origin)" /> -->
@@ -230,28 +233,28 @@
                             </div>
                             <div style="text-align:right">
                                 <span>
-                                    Montant HT:
+                                    Amount HT:
                                     <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                 </span>
                             </div>
                             <div style="text-align:right">
-                                <span>Arrêté la présente Facture à la somme de :</span>
+                                <span>Approved this Invoice for the sum of:</span>
                                 <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                             </div>
                             <t t-if="o.delivery_adress">
                                 <div>
                                     <b>
-                                        <span>Adresse de livraison: </span>
+                                        <span>Delivery address: </span>
                                     </b>
                                     <t t-esc="o.delivery_adress" />
-    
+
                                 </div>
                             </t>
-                            
-                            
+
+
                             <t t-if="o.bank_company_ids">
                                 <div style="font-size:13px;margin-top:20px">
-                                    <span>Compte N°: </span>
+                                    <span>Account N°: </span>
                                     <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
                                     <span t-esc="bank_info" />
                                 </div>
@@ -282,7 +285,7 @@
                 </t>
                 <t t-else="">
                     <span>
-                        Cette facture n'est pas une facture ls
+                        This invoice is not an LS invoice
                     </span>
                 </t>
             </t>
