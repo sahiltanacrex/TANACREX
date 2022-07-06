@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-    
+
         <record id="infoadditional_tnx_inherit_account_move" model="ir.ui.view">
             <field name="name">account.move.view.form.inherit</field>
             <field name="model">account.move</field>
@@ -11,23 +11,24 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
-                    
+
                     <field name="name_bis" readonly="1" force_save="1" />
-                    <group >
-                        <field name="seq_bis" readonly="1" force_save="1"/>
+                    <group>
+                        <field name="seq_bis" readonly="1" force_save="1" />
                     </group>
                 </xpath>
                 <xpath expr="//field[@name='payment_reference']" position="after">
-                    
+
                     <field name="bank_company_ids" widget="many2many_tags" />
                     <field name="delivery_adress" />
                 </xpath>
-                
+
                 <xpath expr="//notebook" position="inside">
                     <page name="info_transfert" string="Infos transfert" groups="tnx_base.group_direction_tnx">
                         <div>
                             <group>
                                 <group name="order_transfert" string="Order of transfert">
+                                    <field name="origin_sale_id" string="BO Origine" readonly="1" />
                                     <field name="origin_tnx" />
                                     <field name="c_f" />
                                     <field name="gross_weight" />
@@ -35,10 +36,7 @@
                                     <field name="volume" />
                                     <field name="seal_serial" />
                                     <field name="container_serial" />
-
                                 </group>
-                                                               
-                                
                             </group>
                         </div>
 
@@ -46,20 +44,12 @@
 
                 </xpath>
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='product_id']" position="before">
-                    <field name="order_customer"
-                    readonly="1"
-                    />
-                    <field name="picking_name" 
-                    readonly="1"
-                    />
-                    <field name="name" 
-                    invisible="1"
-                    />
+                    <field name="order_customer" readonly="1" />
+                    <field name="picking_name" readonly="1" />
+                    <field name="name" invisible="1" />
                 </xpath>
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='product_id']" position="after">
-                    <field name="hs_code" 
-                    readonly="1"
-                    />
+                    <field name="hs_code" readonly="1" />
                 </xpath>
             </field>
         </record>
@@ -92,12 +82,12 @@
             <field name="inherit_id" ref="account.view_account_invoice_filter" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="before">
-                    <field name="seq_bis" string="Reférences facture"/>
+                    <field name="seq_bis" string="Reférences facture" />
                 </xpath>
             </field>
         </record>
 
-    
+
     </data>
-    
+
 </odoo>

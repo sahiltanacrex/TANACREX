@@ -24,7 +24,7 @@ class SequencesVl(models.Model):
 class SequencesLs(models.Model):
     _name = "tnx.ls"
 
-    name = fields.Integer("Séquences ls")
-    sequences_year = fields.Integer("field_name")
+    name = fields.Integer("Séquence LS ")
+    sequences_year = fields.Integer("Sequence année")
     rel_invoice_id = fields.Integer("Rel invoice id")
-    rel_state_invoice = fields.Char("Rel STate Invoice")
+    rel_state_invoice = fields.Char("Rel state invoice")

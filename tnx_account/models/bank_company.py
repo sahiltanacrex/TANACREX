@@ -14,7 +14,7 @@ class Bank(models.Model):
         track_visibility="onchange",
     )
     account_move_id = fields.Many2one("account.move", string="Account move")
-    bank_info = fields.Text("Bank information")
+    bank_info = fields.Text("Information banque")
 
 
 class Bank_line(models.Model):

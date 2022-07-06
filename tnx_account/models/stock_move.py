@@ -27,5 +27,7 @@ class StockMove(models.Model):
         ):
             for move in self:
                 if move.state == "done" and move.invoice_line_ids:
-                    raise UserError(_("You can not modify an invoiced stock move"))
+                    raise UserError(
+                        _("Vous ne pouvez pas modifier un mouvement de stock facturé")
+                    )
         return super().write(vals)

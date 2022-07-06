@@ -8,31 +8,43 @@ from odoo import models, fields, api
 class Account_move(models.Model):
     _inherit = "account.move"
 
-    origin_tnx = fields.Char("Origin")
+    origin_tnx = fields.Char("Oringine")
     name_bis = fields.Char("name_bis")
     c_f = fields.Char("C&F")
-    gross_weight = fields.Char("Gross weight")
-    net_weight = fields.Char("Net weight")
+    gross_weight = fields.Char("Poids brute")
+    net_weight = fields.Char("Poids neet")
     volume = fields.Integer("Volume")
     seal_serial = fields.Char("Leads")
-    container_serial = fields.Char("Container")
+    container_serial = fields.Char("Conteneur")
 
-    seq_bis = fields.Char("Invoice reference", store=True, index=True)
+    seq_bis = fields.Char("Réference Facture", store=True, index=True)
 
+    @api.model
+    def default_origin_sale_id(self):
+        sale_line_ids = self.invoice_line_ids.mapped("sale_line_ids")
+        if sale_line_ids:
+            for sale in sale_line_ids:
+                if sale.order_id:
+                    return sale.order_id
+        return False
+
+    origin_sale_id = fields.Many2one(
+        "sale.order", string="Bank", default=default_origin_sale_id
+    )
     picking_ids = fields.Many2many(
         comodel_name="stock.picking",
         string="Bound transfer",
         store=True,
         compute="_compute_picking_ids",
         help="Related pickings "
-        "(only when the invoice has been generated from a sale order).",
+        "(Seulement quand la facture a été generer depuis un bot de commande).",
     )
 
     bank_company_ids = fields.Many2many(
         "bank.company", "account_move_id", string="Banque"
     )
 
-    delivery_adress = fields.Char("Delivery adress")
+    delivery_adress = fields.Char("Addresse de livraison")
 
     def set_sequence_year(self):
         date = datetime.date.today()
@@ -74,7 +86,7 @@ class Account_move(models.Model):
 
     def _set_seq(self, type):
         """
-        this function create the second sequences from invoice
+        This function create the second sequences from invoice
         """
         if self.state == "draft" and self.move_type == "out_invoice":
             check_partner_type = self.partner_id.partner_type
@@ -85,8 +97,8 @@ class Account_move(models.Model):
 
             last_create_date = get_last_id.create_date
 
-            #! TODO this get_year is for testing if it was new year and it restart count
-            if last_create_date != False:
+            # !TODO this get_year is for testing if it was new year and it restart count
+            if last_create_date:
                 get_last_year = last_create_date.strftime("%Y")
             else:
                 get_last_year = 1993
@@ -124,7 +136,8 @@ class Account_move(models.Model):
             )
 
     def action_show_picking(self):
-        """This function returns an action that display existing pickings
+        """
+        This function returns an action that display existing pickings
         of given invoice.
         It can either be a in a list or in a form view, if there is only
         one picking to show.
@@ -143,17 +156,9 @@ class Account_move(models.Model):
 
     def get_customer_order(self, customer_bc):
         """
-        get BC client dans BC original
+        Get BC client dans BC original
         """
         so = self.env["sale.order"].search([("name", "=", customer_bc)])
-
-        # self._cr.execute(f"""
-        #     SELECT sale_order_partner
-        #     FROM sale_order
-        #     WHERE name = '{customer_bc}'
-        # """, [list(self.ids)])
-
-        # customer_sale_order = self._cr.fetchone()
         return so.sale_order_partner
 
     def get_delivery_order_id(self, id):

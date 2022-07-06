@@ -2,7 +2,7 @@
 
 <odoo>
     <record id="invoice_ex" model="ir.actions.report">
-        <field name="name">Invoice (EX)</field>
+        <field name="name">Facture (EX)</field>
         <field name="model">account.move</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">tnx_account.report_invoice_ex</field>
@@ -10,7 +10,6 @@
         <field name="attachment_use" eval="True" />
         <field name="binding_model_id" ref="model_account_move" />
     </record>
-
     <record id="paperformat_sale_summary_report" model="report.paperformat">
         <field name="name">Sale Summary</field>
         <field name="default" eval="False" />
@@ -26,11 +25,9 @@
         <field name="header_spacing">5</field>
         <field name="dpi">90</field>
     </record>
-
     <record id="tnx_account.invoice_ex" model="ir.actions.report">
         <field name="paperformat_id" ref="tnx_account.paperformat_sale_summary_report" />
     </record>
-
     <!-- get old  -->
     <template id="report_invoice_ex">
         <t t-call="web.html_container">
@@ -68,136 +65,108 @@
                                             <table style="width:100%;">
                                                 <tbody>
                                                     <tr>
-                                                        <td colspan="2" style="font-weight:bold;font-size:15px;">Manufacturing Buttons and Labels since 1983</td>
+                                                        <td colspan="2" style="font-weight:bold;font-size:15px;">Fabricant de boutons et d'étiquettes depuis 1983</td>
                                                     </tr>
-
                                                 </tbody>
                                             </table>
                                             <div>
-                                                STAT:
+                                                <span>STAT:</span>
                                                 <span t-esc="company.stat" />
                                             </div>
                                             <div>
-                                                NIF:
+                                                <span>NIF:</span>
                                                 <span t-esc="company.nif" />
                                             </div>
                                             <div>
-                                                <span>
-                                                    Lot 18 D Imerinafovoany
-                                                </span>
-
-
+                                                <span>Lot 18 D Imerinafovoany </span>
                                             </div>
                                             <div>
-                                                <span>
-                                                    B.p.:11064 - tel.:
-                                                    <span t-esc="company.phone" />
-                                                </span>
+                                                <span>B.p.:11064 - Tél : </span>
+                                                <span t-esc="company.phone" />
                                             </div>
                                             <div>
-                                                <span>
-                                                    e-mail:contact@tanacrex.com
-                                                </span>
+                                                <span>e-mail:contact@tanacrex.com</span>
                                             </div>
                                             <div>
-                                                ANTANANARIVO -
+                                                <span>ANTANANARIVO -</span>
                                                 <b>MADAGASCAR</b>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div style="margin-top:20px">
-                                <table style="width:100%">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width:10%">N° de facture :</td>
-                                            <td>
-                                                <span t-esc="o.name_bis" />
-                                            </td>
-                                            <td style="width:20%">Client:</td>
-                                            <td>
-                                                <span t-esc="o.partner_id.name" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Reference:</td>
-                                            <td>
-                                                <span t-esc="o.seq_bis" />
-                                            </td>
-                                            <td>Billing address :</td>
-                                            <td>
-                                                <t t-if="o.partner_id.street">
-                                                    <span t-esc="o.partner_id.street" />
-                                                </t>
-                                                <t t-if="o.partner_id.street2">
-                                                    <span>,</span>
-                                                    <span t-esc="o.partner_id.street2" />
-                                                </t>
-                                                <t t-if="o.partner_id.city">
-                                                    <span>,</span>
-                                                    <span t-esc="o.partner_id.city" />
-
-                                                </t>
-                                                <t t-if="o.partner_id.state_id">
-                                                    <span>,</span>
-                                                    <span t-esc="o.partner_id.state_id.name" />
-                                                </t>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Réference :</b>
+                                <span t-esc="o.name_bis" />
                             </div>
-                            <div style="margin-top:20px">
-                                <table style="width:100%">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <b>Bill date :</b>
-
-                                                <span t-esc="o.invoice_date" />
-                                            </td>
-                                            <td>
-                                                <b>Due date:</b>
-
-                                                <span t-esc="o.invoice_date_due" />
-                                            </td>
-                                            <td>
-                                                <b>Origin:</b>
-
-                                                <span t-esc="o.origin_tnx" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-4">
+                                    <b>Numéro de compte :</b>
+                                    <span t-esc="o.seq_bis" />
+                                </div>
+                                <div class="col-4">
+                                    <b>Client :</b>
+                                    <span t-esc="o.partner_id.name" />
+                                </div>
+                                <div class="col-4">
+                                    <b>Adresse de facturation :</b>
+                                    <t t-if="o.partner_id.street">
+                                        <span t-esc="o.partner_id.street" />
+                                    </t>
+                                    <t t-if="o.partner_id.street2">
+                                        <span>,</span>
+                                        <span t-esc="o.partner_id.street2" />
+                                    </t>
+                                    <t t-if="o.partner_id.city">
+                                        <span>,</span>
+                                        <span t-esc="o.partner_id.city" />
+                                    </t>
+                                    <t t-if="o.partner_id.state_id">
+                                        <span>,</span>
+                                        <span t-esc="o.partner_id.state_id.name" />
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <b> Date de facturation :</b>
+                                    <span t-esc="o.invoice_date" />
+                                </div>
+                                <div class="col-4">
+                                    <b>Date d'écheance:</b>
+                                    <span t-esc="o.invoice_date_due" />
+                                </div>
+                                <div class="col-4">
+                                    <b>Condition de paiement : </b>
+                                    <t t-if="o.origin_sale_id">
+                                        <t t-if="o.origin_sale_id.payment_term_id">
+                                            <span t-esc="o.origin_sale_id.payment_term_id.name" />
+                                        </t>
+                                    </t>
+                                </div>
                             </div>
                             <div style="margin-top:20px">
                                 <table class="table " style="width:100%;">
                                     <tbody>
                                         <thead class="thead-light">
                                             <tr>
-                                                <th style=" font-size:13px">PO Customer</th>
-                                                <th style=" font-size:13px">Delivery ship</th>
+                                                <th style=" font-size:13px">BC Client</th>
+                                                <th style=" font-size:13px">Bon de livraison</th>
                                                 <th style=" font-size:13px">HS Code</th>
                                                 <th style=" font-size:13px">Article</th>
-                                                <th style=" font-size:13px">Type of product</th>
-                                                <th style=" font-size:13px">Customer reference</th>
-                                                <th style=" font-size:13px">Quantity</th>
-                                                <th style=" font-size:13px">Unitary price / 100 pcs</th>
-                                                <th style=" font-size:13px">Amount</th>
+                                                <th style=" font-size:13px">Type de produit</th>
+                                                <th style=" font-size:13px">Reference client</th>
+                                                <th style=" font-size:13px">Quantité</th>
+                                                <th style=" font-size:13px">Prix unitaire / 100 pcs</th>
+                                                <th style=" font-size:13px">Montant</th>
                                             </tr>
-
                                         </thead>
                                         <t t-foreach="o.invoice_line_ids" t-as="line">
                                             <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                             <t t-foreach="bl_id" t-as="id_bl">
                                                 <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
-
                                                 <tr>
                                                     <td>
-                                                        <!-- <span t-esc="o.get_customer_order(line.order_origin)" /> -->
                                                         <span t-esc="line.order_customer" />
                                                     </td>
                                                     <td>
@@ -211,11 +180,9 @@
                                                     </td>
                                                     <td>
                                                         <t t-esc="line.product_id.product_type" />
-
                                                     </td>
                                                     <td>
                                                         <t t-esc="line.product_id.customer_reference" />
-
                                                     </td>
                                                     <td>
                                                         <t t-esc="'{0:,.0f}'.format(round(line.quantity)).replace('.','%').replace(',',' ').replace('%',',')" />
@@ -235,62 +202,39 @@
                                 </table>
                             </div>
                             <div style="text-align:right">
-                                <span>
-                                    Amount HT:
-                                    <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
-                                </span>
-
-
+                                <span>Montant HT:</span>
+                                <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                             </div>
                             <div style="text-align:right">
-                                <span>Approved this Invoice for the sum of :</span>
+                                <span>A approuvé cette facture pour la somme de </span>
                                 <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                             </div>
-
                             <t t-if="o.delivery_adress">
                                 <div>
-                                    <b>
-                                        <span>Delivery address</span>
-                                    </b>
+                                    <b>Adresse de livraison</b>
                                     <t t-esc="o.delivery_adress" />
-
                                 </div>
                             </t>
                             <div>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>Origin</td>
-                                            <td>
-                                                <span t-esc="o.origin_tnx" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gross weight</td>
-                                            <td>
-                                                <span t-esc="o.gross_weight" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Net weight</td>
-
-                                            <td>
-                                                <span t-esc="o.net_weight" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Incoterm</td>
-                                            <td>
-                                                <span t-esc="o.invoice_incoterm_id.name" />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div>
+                                    <b> - Origine :</b>
+                                    <span t-esc="o.origin_tnx" />
+                                </div>
+                                <div>
+                                    <b> - Poids brute : </b>
+                                    <span t-esc="o.gross_weight" />
+                                </div>
+                                <div>
+                                    <b> - Poids net :</b>
+                                    <span t-esc="o.net_weight" />
+                                </div>
+                                <div>
+                                    <b>- Incoterm :</b>
+                                    <span t-esc="o.invoice_incoterm_id.name" />
+                                </div>
                             </div>
                             <div style="text-align:center;margin-top:20px">
-                                <span>
-                                    "The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, unless clearly indicated to the contrary, the products are of preferential origin Madagascar"
-                                </span>
+                                <span>"L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine préférentielle Madagascar"</span>
                             </div>
                             <!-- <div style="text-align:center;margin-top:20px">
                                 <span>
@@ -310,9 +254,7 @@
                         <div class="row text-center">
                             <div class="col col-12 text-center">
                                 <div>
-                                    <span>
-                                        All banking charges of foreign bank must be paid by the buyer, including correspondant reimbursing bank charges, commissions, faxes and postage
-                                    </span>
+                                    <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux</span>
                                 </div>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">Page:</li>
@@ -331,9 +273,7 @@
 
 
                 <t t-else="">
-                    <span>
-                        This invoice is not an EX invoice
-                    </span>
+                    <span>Cette facture n'est pas une facture EX</span>
                 </t>
 
             </t>
