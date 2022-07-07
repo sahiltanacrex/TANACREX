@@ -5,9 +5,8 @@ import datetime
 from odoo import models, fields, api
 
 
-class Account_move(models.Model):
+class AccountMoveInherit(models.Model):
     _inherit = "account.move"
-
     origin_tnx = fields.Char("Oringine")
     name_bis = fields.Char("name_bis")
     c_f = fields.Char("C&F")
@@ -20,16 +19,19 @@ class Account_move(models.Model):
     seq_bis = fields.Char("Réference Facture", store=True, index=True)
 
     @api.model
-    def default_origin_sale_id(self):
-        sale_line_ids = self.invoice_line_ids.mapped("sale_line_ids")
+    def create(self, vals):
+        res = super(AccountMoveInherit, self).create(vals)
+        sale_line_ids = res.invoice_line_ids.mapped("sale_line_ids")
         if sale_line_ids:
             for sale in sale_line_ids:
                 if sale.order_id:
-                    return sale.order_id
-        return False
+                    res.origin_sale_id = sale.order_id
+                    break
+        return res
 
     origin_sale_id = fields.Many2one(
-        "sale.order", string="Bank", default=default_origin_sale_id
+        "sale.order",
+        string="Bank",
     )
     picking_ids = fields.Many2many(
         comodel_name="stock.picking",
@@ -75,7 +77,7 @@ class Account_move(models.Model):
                 if check_partner_type == "vl":
                     self._set_seq(get_vl)
 
-        values = super(Account_move, self).action_post()
+        values = super(AccountMoveInherit, self).action_post()
         # TODO arakaraka eto no name mipoitra satria ilay name natao invisible de name bis no afficher am form fa name tsotra ny any am tree
         if self.move_type == "out_invoice":
             self.update({"name_bis": self.name + "-" + check_partner_type.upper()})

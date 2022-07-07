@@ -14,7 +14,7 @@
 
                     <field name="name_bis" readonly="1" force_save="1" />
                     <group>
-                        <field name="seq_bis" readonly="1" force_save="1" />
+                        <field name="seq_bis" string="Réference facture" readonly="1" force_save="1" />
                     </group>
                 </xpath>
                 <xpath expr="//field[@name='payment_reference']" position="after">
@@ -85,6 +85,14 @@
                     <field name="seq_bis" string="Reférences facture" />
                 </xpath>
             </field>
+        </record>
+
+        <record id="account.account_invoices" model="ir.actions.report">
+            <field name="binding_model_id" eval="False" />
+        </record>
+
+        <record id="account.account_invoices_without_payment" model="ir.actions.report">
+            <field name="binding_model_id" eval="False" />
         </record>
 
 

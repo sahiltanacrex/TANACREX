@@ -50,7 +50,6 @@
                         <t t-set="company" t-value="res_company" />
                     </t>
                 </t>
-
                 <div class="header">
                     <!-- TODO here we can create header -->
                 </div>
@@ -149,7 +148,7 @@
                                 </div>
                             </div>
                             <div style="margin-top:20px">
-                                <table class="table " style="width:100%;">
+                                <table class="table " style="width:100%; font-size:12px;">
                                     <tbody>
                                         <thead class="thead-light">
                                             <tr>
