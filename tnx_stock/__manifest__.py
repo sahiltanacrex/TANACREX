@@ -23,12 +23,9 @@
     ],
     # always loaded
     "data": [
-        'security/ir.model.access.csv',
-
+        "security/ir.model.access.csv",
         "views/wizard_colisage.xml",
         "views/stock_picking.xml",
-        "views/stock_move_line.xml",
-        
         "report/hide_report_picking.xml",
         "report/report_deliveryslip.xml",
         "report/product_product_templates.xml",

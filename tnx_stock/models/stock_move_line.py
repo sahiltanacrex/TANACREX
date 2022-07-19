@@ -5,15 +5,4 @@ from math import ceil
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
-
-    packaging_id = fields.Many2one(
-        "product.packaging", related="move_id.product_packaging_id"
-    )
-
-    packaging_qty = fields.Integer()
-
-    @api.onchange("qty_done")
-    def onchange_done(self):
-        if self.packaging_id.qty > 0 :
-            res = ceil(self.qty_done / self.packaging_id.qty)
-            self.sudo().write({"packaging_qty": res})
+    carton_id = fields.Many2one(string="Carton", comodel_name="stock.carton")

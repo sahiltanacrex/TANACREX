@@ -16,6 +16,14 @@
                         </group>
                     </group>
                     <group>
+                        <group>
+                            <field name="poids_net" string="Poids net" />
+                        </group>
+                        <group>
+                            <field name="poids_brut" sting="Poids brut" />
+                        </group>
+                    </group>
+                    <group>
                         <field name="stock_picking_ids" nolabel="1" readonly="1" mode="tree">
                             <tree string="Bon de livraisons">
                                 <field name="company_id" invisible="1" />
