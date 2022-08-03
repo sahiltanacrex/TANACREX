@@ -24,6 +24,7 @@
     # always loaded
     "data": [
         "security/ir.model.access.csv",
+        "data/carton_sequence.xml",
         "views/wizard_colisage.xml",
         "views/stock_picking.xml",
         "report/hide_report_picking.xml",

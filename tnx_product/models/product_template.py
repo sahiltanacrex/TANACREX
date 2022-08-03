@@ -137,5 +137,6 @@ class Product_template(models.Model):
 
 class HsCode(models.Model):
     _name = "hscode.product"
+    _rec_name = "hs_code"
     name = fields.Char("Désignation")
     hs_code = fields.Char("Hs Code")
