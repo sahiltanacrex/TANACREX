@@ -140,11 +140,7 @@
                                 </div>
                                 <div class="col-4">
                                     <b>Condition de paiement : </b>
-                                    <t t-if="o.origin_sale_id">
-                                        <t t-if="o.origin_sale_id.payment_term_id">
-                                            <span t-esc="o.origin_sale_id.payment_term_id.name" />
-                                        </t>
-                                    </t>
+                                    <span t-if="o.invoice_payment_term_id" t-esc="o.invoice_payment_term_id.name" />
                                 </div>
                             </div>
                             <div style="margin-top:20px">

@@ -27,6 +27,7 @@
         "data/carton_sequence.xml",
         "views/wizard_colisage.xml",
         "views/stock_picking.xml",
+        "report/report_label.xml",
         "report/hide_report_picking.xml",
         "report/report_deliveryslip.xml",
         "report/product_product_templates.xml",

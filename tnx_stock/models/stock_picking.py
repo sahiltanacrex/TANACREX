@@ -22,3 +22,9 @@ class StockPickingInherit(models.Model):
             "res_id": wiz.id,
             "context": self.env.context,
         }
+
+    def action_open_label_custom(self):
+        print("Moment d'importation.")
+        return self.env.ref("tnx_stock.action_etiquette_nexource_report").report_action(
+            self
+        )

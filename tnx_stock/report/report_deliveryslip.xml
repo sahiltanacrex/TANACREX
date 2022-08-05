@@ -14,12 +14,12 @@
     <record id="paperformat_sale_summary_report" model="report.paperformat">
         <field name="name">picking report </field>
         <field name="default" eval="False" />
-        <field name="format">A5</field>
+        <field name="format">A4</field>
         <field name="page_width">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Landscape</field>
         <field name="margin_top">40</field>
-        <field name="margin_bottom">15</field>
+        <field name="margin_bottom">20</field>
         <field name="margin_right">4</field>
         <field name="margin_left">4</field>
         <field name="header_line" eval="False" />
@@ -65,7 +65,7 @@
                                 </span>
                                 <br />
                                 <div>Lot 18 D Imerinafovoany </div>
-                                <div class="text-left" style="font-size:14px;">BP. 11064 - Antananarivo - Madagascar</div>
+                                <div style="font-size:14px;">BP.11064-Antananarivo-Madagascar</div>
                                 <div>
                                     <span>Tél :</span>
                                     <span>22 441 35 / 03402 02 441 35</span>
@@ -101,7 +101,7 @@
                                 <div class="text-right" style="font-size: 18px;">
                                     <div>
                                         <span>Date :</span>
-                                        <span t-esc="o.date_done" />
+                                        <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')" />
                                     </div>
                                     <br />
                                     <div>
@@ -120,44 +120,43 @@
                             </div>
                         </div>
                     </div>
-                    <div class="article mt0 o_report_layout_standard text-center">
+                    <div class="text-center">
                         <style type="text/css">
-                            table, th, td {
-                                border: 1px solid black;
+                            table, th, tr, td {
+                                border: 1px solid black !important;
                               }
                         </style>
-                        <table class="table" clearname="stock_move_table" style="font-size:14px;">
+                        <table class="table" clearname="stock_move_table" style="font-size:16px !important;">
                             <tr>
                                 <td>Quantité</td>
                                 <td>Reférence</td>
                                 <td>Designation</td>
                                 <td>Colisage</td>
                             </tr>
-                            <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)" />
-                            <tr t-foreach="lines" t-as="move">
+                            <t t-set="lines" t-value="o.move_line_ids_without_package" />
+                            <tr t-foreach="lines" t-as="line">
                                 <tr>
                                     <td>
-                                        <span t-field="move.product_uom_qty" />
+                                        <span t-field="line.qty_done" />
                                     </td>
                                     <td>
-                                        <span t-field="move.product_id.default_code" />
+                                        <span t-field="line.product_id.default_code" />
                                     </td>
                                     <td>
-                                        <span t-field="move.product_id.name" />
+                                        <span t-field="line.product_id.name" />
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <span t-field="line.carton_id" t-if="line.carton_id" />
+                                    </td>
                                 </tr>
                             </tr>
                         </table>
-                        <br />
                         <div>
-                            <span style="font-size:12px;">
+                            <span style="font-size:14x;">
                                 Aucune réclamation ne sera admise aprés la validation. La marchandise livrée reste la propriété du vendeur jusqu'au pauement intégral de la facture
                             </span>
                         </div>
-
                         <br />
-
                         <div class=" row text-center">
                             <div class=" col-4">
                                 <span>CONTRÔLE</span>
@@ -171,8 +170,8 @@
                         </div>
 
                     </div>
-                    <div class=" footer o_standard_footer" style=" font-size:10px">
-                        <div class=" row text-center">
+                    <!-- <div class=" footer o_standard_footer" style="font-size:15px;">
+                        <div class="row text-center">
                             <div class=" col col-12 text-center">
                                 <ul class=" list-inline">
                                     <li class=" list-inline-item">Page:</li>
@@ -186,7 +185,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </t>
 

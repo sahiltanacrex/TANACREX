@@ -25,7 +25,15 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='note']" position="after"></xpath>
+            <xpath expr="//header/button[@name='action_open_label_layout']" position="after">
+                <button string="Imprimer les étiquettes" type="object" name="action_open_label_custom" options="{'no_create': True}" />
+            </xpath>
+            <xpath expr="//header/button[@name='action_open_label_layout']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='346']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
         </field>
     </record>
 </odoo> 
