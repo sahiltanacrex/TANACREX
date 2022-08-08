@@ -1,23 +1,22 @@
 <odoo>
     <data>
         <template id="report_etiquette_nexource">
-            <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
                 <t t-foreach="docs" t-as="o">
-                    <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
-                    <t t-if="not o" t-set="o" t-value="o" />
-                    <t t-if="not company">
-                        <t t-if="company_id">
-                            <t t-set="company" t-value="company_id" />
+                    <div class="page">
+                        <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                        <t t-if="not o" t-set="o" t-value="o" />
+                        <t t-if="not company">
+                            <t t-if="company_id">
+                                <t t-set="company" t-value="company_id" />
+                            </t>
+                            <t t-elif="o and 'company_id' in o">
+                                <t t-set="company" t-value="o.company_id.sudo()" />
+                            </t>
+                            <t t-else="else">
+                                <t t-set="company" t-value="res_company" />
+                            </t>
                         </t>
-                        <t t-elif="o and 'company_id' in o">
-                            <t t-set="company" t-value="o.company_id.sudo()" />
-                        </t>
-                        <t t-else="else">
-                            <t t-set="company" t-value="res_company" />
-                        </t>
-                    </t>
-
-                    <div class="header">
                         <style type="text/css">
                             .tg  {border-collapse:collapse;border-spacing:0;}
                             .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -25,15 +24,20 @@
                             .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
                               font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
                             .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-                        </style>
-                        <div class="row">
-
-                            <t t-foreach="[1,2,3]" t-as="line">
-                                <div class="col-6" style="text-align:center;">
+                            </style>
+                        <div class="header"></div>
+                        <div class="">
+                            <t t-set="i" t-value="int(0)" />
+                            <t t-foreach="o.move_line_ids_without_package" t-as="line">
+                                <t t-if="int(i)==2">
+                                    <!-- <br /> -->
+                                    <t t-set="i" t-value="int(0)" />
+                                </t>
+                                <div class="" style="padding-bottom:10px;">
                                     <table class="tg" style="undefined;table-layout: fixed; width: 320px">
                                         <colgroup>
-                                            <col style="width: 162px" />
-                                            <col style="width: 162px" />
+                                            <col style="width: 160px" />
+                                            <col style="width: 160px" />
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -54,20 +58,34 @@
                                         </thead>
                                         <tbody style="font-size : 11px !important;">
                                             <tr>
-                                                <td class="tg-0pky" colspan="2">PO# ORDINATEUR 7856922</td>
+                                                <td class="tg-0pky" colspan="2">
+                                                    <span t-esc="o.name" />
+                                                    <t t-if="line.carton_id">
+                                                        (
+                                                        <span t-esc="line.carton_id.name" />
+                                                        )
+                                                    </t>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="tg-0pky">
                                                     <u>
                                                         <b>ART :</b>
                                                     </u>
-                                                    <div class="text-right">BOUTON TEST</div>
+                                                    <div class="text-right">
+                                                        <t t-if="line.product_id">
+                                                            <span t-esc="line.product_id.name" />
+
+                                                        </t>
+                                                    </div>
                                                 </td>
                                                 <td class="tg-0pky">
                                                     <u>
                                                         <b>QTY :</b>
                                                     </u>
-                                                    <div class="text-right">10 000</div>
+                                                    <div class="text-right">
+                                                        <span t-if="line.product_id" t-esc=" line.qty_done" />
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -75,29 +93,39 @@
                                                     <u>
                                                         <b>TAILLE :</b>
                                                     </u>
-                                                    <div class="text-right">BOUTON TEST</div>
+                                                    <div class="text-right">
+                                                        <t t-if="line.product_id">
+                                                            <span t-esc="line.product_id.diameter" />
+                                                            cm
+                                                        </t>
+                                                    </div>
                                                 </td>
                                                 <td class="tg-0pky">
                                                     <u>
                                                         <b>POIDS :</b>
                                                     </u>
-                                                    <div class="text-right">BOUTON TEST</div>
+                                                    <div class="text-right">
+                                                        <t t-if="line.carton_id">
+                                                            <span t-esc="line.carton_id.poids_brut" />
+                                                            kg
+                                                        </t>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
+                                <t t-set="i" t-value=" int(1) + int(i)" />
                             </t>
                         </div>
-
                     </div>
                 </t>
             </t>
         </template>
         <record id="paperformat_etiquette_report" model="report.paperformat">
             <field name="name">paperformat.etiquette.nexource</field>
-            <field name="default" eval="False" />
-            <field name="disable_shrinking" eval="True" />
+            <field name="default" eval=" False" />
+            <field name="disable_shrinking" eval=" True" />
             <field name="format">A4</field>
             <field name="page_width">0</field>
             <field name="page_width">0</field>
@@ -106,7 +134,7 @@
             <field name="margin_bottom">2</field>
             <field name="margin_right">2</field>
             <field name="margin_left">2</field>
-            <field name="header_line" eval="False" />
+            <field name="header_line" eval=" False" />
             <field name="header_spacing">1</field>
             <field name="dpi">90</field>
         </record>

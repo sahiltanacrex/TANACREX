@@ -56,7 +56,6 @@
                             <span>PO Customer:</span>
                             <span t-field="o.sale_order_partner" />
                         </h2>
-
                     </div>
 
                     <!-- TODO here for custom body -->

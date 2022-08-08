@@ -24,7 +24,6 @@ class StockPickingInherit(models.Model):
         }
 
     def action_open_label_custom(self):
-        print("Moment d'importation.")
         return self.env.ref("tnx_stock.action_etiquette_nexource_report").report_action(
-            self
+            self,
         )
