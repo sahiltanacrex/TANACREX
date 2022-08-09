@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="stock_carton_form" model="ir.ui.view">
+            <field name="name">stock.carton.form</field>
+            <field name="model">stock.carton</field>
+            <field name="arch" type="xml">
+                <form string="Numéro carton">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field string="Poids net" name="poids_net" />
+                            </group>
+                            <group>
+                                <field string="Poids brut" name="poids_brut" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

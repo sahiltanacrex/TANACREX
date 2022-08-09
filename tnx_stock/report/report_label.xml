@@ -4,6 +4,15 @@
             <t t-call="web.basic_layout">
                 <t t-foreach="docs" t-as="o">
                     <div class="page">
+                        <div class="oe_structure" />
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0;}
+                            .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                              overflow:hidden;padding:10px 5px;word-break:normal;}
+                            .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                              font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                            .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                        </style>
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
                         <t t-if="not o" t-set="o" t-value="o" />
                         <t t-if="not company">
@@ -17,23 +26,10 @@
                                 <t t-set="company" t-value="res_company" />
                             </t>
                         </t>
-                        <style type="text/css">
-                            .tg  {border-collapse:collapse;border-spacing:0;}
-                            .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-                              overflow:hidden;padding:10px 5px;word-break:normal;}
-                            .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-                              font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-                            .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-                            </style>
                         <div class="header"></div>
-                        <div class="">
-                            <t t-set="i" t-value="int(0)" />
+                        <div style="display: grid !important; grid-template-columns:1fr 1fr !important;">
                             <t t-foreach="o.move_line_ids_without_package" t-as="line">
-                                <t t-if="int(i)==2">
-                                    <!-- <br /> -->
-                                    <t t-set="i" t-value="int(0)" />
-                                </t>
-                                <div class="" style="padding-bottom:10px;">
+                                <div style="padding-bottom:10px;">
                                     <table class="tg" style="undefined;table-layout: fixed; width: 320px">
                                         <colgroup>
                                             <col style="width: 160px" />
@@ -115,7 +111,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <t t-set="i" t-value=" int(1) + int(i)" />
                             </t>
                         </div>
                     </div>

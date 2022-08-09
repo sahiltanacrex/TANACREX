@@ -36,7 +36,8 @@
                     </group>
                 </sheet>
                 <footer>
-                    <button name="report_colisage" type="object" string="Imprimer" />
+                    <button name="report_colisage" type="object" string="Imprimer" class="btn-primary" data-hotkey="q" />
+                    <button string="Annuler" class="btn-secondary" special="cancel" data-hotkey="z" />
                 </footer>
 
             </form>

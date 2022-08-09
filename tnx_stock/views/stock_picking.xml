@@ -16,7 +16,7 @@
         <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='product_uom_id']" position="after">
-                <field name="carton_id" string="Numéro de carton" />
+                <field name="carton_id" string="Numéro de carton" options="{'no_create_edit': True}" />
             </xpath>
         </field>
     </record>

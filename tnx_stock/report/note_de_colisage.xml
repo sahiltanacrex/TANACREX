@@ -8,12 +8,12 @@
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">40</field>
-        <field name="margin_bottom">15</field>
-        <field name="margin_right">4</field>
-        <field name="margin_left">4</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_right">1</field>
+        <field name="margin_left">1</field>
         <field name="header_line" eval="False" />
-        <field name="header_spacing">40</field>
+        <field name="header_spacing">10</field>
         <field name="dpi">90</field>
     </record>
     <record id="action_tnx_package_report" model="ir.actions.report">
@@ -35,9 +35,7 @@
             <t t-foreach="docs" t-as="o">
                 <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
                 <t t-if="not o" t-set="o" t-value="o" />
-                <!-- ####odoo defaults#### -->
                 <t t-if="not company">
-                    <!-- Multicompany -->
                     <t t-if="company_id">
                         <t t-set="company" t-value="company_id" />
                     </t>
@@ -88,49 +86,39 @@
                     <div>
                         <div class="text-center ">
                             <h6 class="font-weight-bold">
-                                NOTE DE COLISAGE
-                            </h6>
-                            <h6>
-                                <span>Client :</span>
+                                NOTE DE COLISAGE  :
                                 <span t-esc="o.partner_id.name" />
                             </h6>
                         </div>
                     </div>
                     <div class="row">
-                        <span>
-                            <u>Poids net :</u>
-                            <t t-esc="o.poids_net" />
+                        <div class="col-6">
+                            <span>
+                                <b>Poids net :</b>
+                            </span>
+                            <span t-esc="o.poids_net" />
                             kg
-                        </span>
-                        <br />
-                        <span>
-                            <u>Poids brut :</u>
-                            <t t-esc="o.poids_brut" />
+                        </div>
+                        <div class="col-6 text-right">
+                            <b>Poids brut :</b>
+                            <span t-esc="o.poids_brut" />
                             kg
-                        </span>
+                        </div>
                     </div>
                     <br />
-                    <br />
-
                     <style type="text/css">
-                        .tg  {border-collapse:collapse;border-spacing:0;}
-                        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-                          overflow:hidden;padding:10px 5px;word-break:normal;}
-                        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-                          font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-                        .tg .tg-mn8v{background-color:#9b9b9b;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-                        .tg .tg-iucd{border-color:inherit;font-family:"Times New Roman", Times, serif !important;text-align:left;vertical-align:top}
-                        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                        td,th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; padding:3px 3px;}
+                        th{background-color:#9b9b9b;font-weight:bold;text-align:center;vertical-align:top}
                     </style>
 
-                    <table class="tg" style="undefined;table-layout: fixed; width: 658px">
+                    <table class="tg" style="undefined;table-layout: fixed; width:100%">
                         <colgroup>
                             <col style="width: 106px" />
                             <col style="width: 119px" />
-                            <col style="width: 175px" />
+                            <col style="width: 185px" />
                             <col style="width: 73px" />
                             <col style="width: 95px" />
-                            <col style="width: 90px" />
+                            <col style="width: 108px" />
                         </colgroup>
                         <thead>
                             <tr>
@@ -181,7 +169,6 @@
                         </tbody>
                     </table>
                 </div>
-
             </t>
         </t>
     </template>

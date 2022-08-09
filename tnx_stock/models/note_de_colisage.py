@@ -12,6 +12,4 @@ class NoteDeColisage(models.TransientModel):
     poids_brut = fields.Float()
 
     def report_colisage(self):
-        return self.env.ref("tnx_stock.action_tnx_package_report").report_action(
-            self, data=["1", "2", "3"]
-        )
+        return self.env.ref("tnx_stock.action_tnx_package_report").report_action(self)
