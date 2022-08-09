@@ -96,3 +96,10 @@ class MrpProduction(models.Model):
 
                     print("---------------------")
                     print(source)
+
+    def report_analyse(self):
+        ids = self.env.context.get("active_ids", [])
+        productions = self.env["mrp.production"].browse(ids)
+        return self.env.ref(
+            "tnx_production.action_production_nexource_report"
+        ).report_action(productions)
