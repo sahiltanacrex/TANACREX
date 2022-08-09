@@ -27,7 +27,7 @@
                             </t>
                         </t>
                         <div class="header"></div>
-                        <div style="display: grid !important; grid-template-columns:1fr 1fr !important;">
+                        <div style="display: grid !important; grid-templates-columns:1fr 1fr !important;">
                             <t t-foreach="o.move_line_ids_without_package" t-as="line">
                                 <div style="padding-bottom:10px;">
                                     <table class="tg" style="undefined;table-layout: fixed; width: 320px">

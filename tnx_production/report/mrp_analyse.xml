@@ -42,7 +42,6 @@
                                 </tr>
                             </thead>
                             <t t-foreach="docs" t-as="line">
-                                <t t-set="line" t-value="line.with_context(lang=line.partner_id.lang)" />
                                 <t t-if="not line" t-set="line" t-value="line" />
                                 <tr>
                                     <td>
@@ -102,12 +101,12 @@
             <field name="dpi">90</field>
         </record>
         <record id="action_production_nexource_report" model="ir.actions.report">
-            <field name="name">Analyse production nexources</field>
+            <field name="name">analyse.production.nexources</field>
             <field name="model">mrp.production</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">tnx_production.report_production_nexource</field>
             <field name="report_file">tnx_production.report_production_nexource</field>
-            <field name="print_report_name">Analyse production</field>
+            <field name="print_report_name">'Analyse production'</field>
             <field name="binding_model_id" ref="tnx_production.model_mrp_production" />
             <field name="binding_model_id" eval="False" />
             <field name="binding_type">report</field>
