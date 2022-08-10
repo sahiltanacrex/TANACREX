@@ -15,7 +15,7 @@
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "tnx_base", "hr_contract", "hr_work_entry", "hr", "hr_payroll"],
+    "depends": ["base", "hr_contract", "hr_work_entry", "hr", "hr_payroll"],
     # always loaded
     "data": [
         # 'security/ir.model.access.csv',
