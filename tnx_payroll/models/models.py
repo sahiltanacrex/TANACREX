@@ -3,9 +3,9 @@
 # from odoo import models, fields, api
 
 
-# class tnx_payroll(models.Model):
-#     _name = 'tnx_payroll.tnx_payroll'
-#     _description = 'tnx_payroll.tnx_payroll'
+# class tnx_payslip(models.Model):
+#     _name = 'tnx_payslip.tnx_payslip'
+#     _description = 'tnx_payslip.tnx_payslip'
 
 #     name = fields.Char()
 #     value = fields.Integer()

@@ -33,6 +33,7 @@
                             <field name="production_bonus_participant" />
                             <field name="allow_transport" />
                             <field name="allow_family" />
+                            <field name="participation_cantine" />
                         </group>
                     </group>
 
