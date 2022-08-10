@@ -27,10 +27,10 @@
                             </t>
                         </t>
                         <div class="header"></div>
-                        <div style="display: grid !important; grid-templates-columns:1fr 1fr !important;">
+                        <div class="body" style="display: grid; grid-template-columns:1fr 1fr;">
                             <t t-foreach="o.move_line_ids_without_package" t-as="line">
                                 <div style="padding-bottom:10px;">
-                                    <table class="tg" style="undefined;table-layout: fixed; width: 320px">
+                                    <table class="tg" style="width: 300px;">
                                         <colgroup>
                                             <col style="width: 160px" />
                                             <col style="width: 160px" />

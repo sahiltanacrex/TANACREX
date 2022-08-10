@@ -9,24 +9,7 @@
         <field name="report_file">tnx_account.report_invoice_ex</field>
         <field name="attachment_use" eval="True" />
         <field name="binding_model_id" ref="model_account_move" />
-    </record>
-    <record id="paperformat_sale_summary_report" model="report.paperformat">
-        <field name="name">Sale Summary</field>
-        <field name="default" eval="False" />
-        <field name="format">A4</field>
-        <field name="page_width">0</field>
-        <field name="page_width">0</field>
-        <field name="orientation">Portrait</field>
-        <field name="margin_top">10</field>
-        <field name="margin_bottom">28</field>
-        <field name="margin_right">7</field>
-        <field name="margin_left">7</field>
-        <field name="header_line" eval="False" />
-        <field name="header_spacing">5</field>
-        <field name="dpi">90</field>
-    </record>
-    <record id="tnx_account.invoice_ex" model="ir.actions.report">
-        <field name="paperformat_id" ref="tnx_account.paperformat_sale_summary_report" />
+        <field name="paperformat_id" ref="tnx_base.paperformat_tanacrex_report" />
     </record>
     <!-- get old  -->
     <template id="report_invoice_ex">
@@ -53,21 +36,16 @@
                 <t t-if="o.partner_id.partner_type == 'ex'">
                     <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
                         <div class="header_body">
-                            <!-- TODO create div for the top for information and image company -->
                             <div class="body_header">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                         </div>
-                                        <div class="col-xs-6 " style="margin-left:300px; text-align:center">
-                                            <table style="width:100%;">
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="2" style="font-weight:bold;font-size:15px;">Fabricant de boutons et d'étiquettes depuis 1983</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                        <div class="col-xs-6 " style="margin-left:270px; text-align:center">
+                                            <div>
+                                                <b>Fabricant de boutons et d'étiquettes depuis 1983</b>
+                                            </div>
                                             <div>
                                                 <span>STAT:</span>
                                                 <span t-esc="company.stat" />
@@ -140,22 +118,25 @@
                                     <span t-if="o.invoice_payment_term_id" t-esc="o.invoice_payment_term_id.name" />
                                 </div>
                             </div>
-                            <div style="margin-top:20px">
-                                <table class="table " style="width:100%; font-size:12px;">
+                            <div style="margin-top:15px; margin-bottom:15px">
+                                <style type="text/css">
+                                    td,th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                                    table {width:100%; font-size:15px;}
+                                    </style>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>BC Client</th>
+                                            <th>Bon de livraison</th>
+                                            <th>Article</th>
+                                            <th>Type de produit</th>
+                                            <th>Réference client</th>
+                                            <th>Quantité</th>
+                                            <th>Prix unitaire / 100 pcs</th>
+                                            <th>Montant</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th style=" font-size:13px">BC Client</th>
-                                                <th style=" font-size:13px">Bon de livraison</th>
-                                                <th style=" font-size:13px">HS Code</th>
-                                                <th style=" font-size:13px">Article</th>
-                                                <th style=" font-size:13px">Type de produit</th>
-                                                <th style=" font-size:13px">Reference client</th>
-                                                <th style=" font-size:13px">Quantité</th>
-                                                <th style=" font-size:13px">Prix unitaire / 100 pcs</th>
-                                                <th style=" font-size:13px">Montant</th>
-                                            </tr>
-                                        </thead>
                                         <t t-foreach="o.invoice_line_ids" t-as="line">
                                             <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                             <t t-foreach="bl_id" t-as="id_bl">
@@ -168,9 +149,6 @@
                                                         <span t-esc="bl_name" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.product_id.hs_code.hs_code" />
-                                                    </td>
-                                                    <td>
                                                         <t t-esc="line.product_id.name" />
                                                     </td>
                                                     <td>
@@ -180,15 +158,14 @@
                                                         <t t-esc="line.product_id.customer_reference" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="'{0:,.0f}'.format(round(line.quantity)).replace('.','%').replace(',',' ').replace('%',',')" />
+                                                        <t t-esc="line.quantity" />
                                                     </td>
                                                     <td>
-                                                        <!-- prix -->
                                                         <t t-set="unit_price" t-value="line.price_subtotal * 100" />
-                                                        <t t-esc="'{0:,.0f}'.format(round(unit_price)).replace('.','%').replace(',',' ').replace('%',',')" />
+                                                        <t t-esc="unit_price" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="'{0:,.0f}'.format(round(line.price_subtotal)).replace('.','%').replace(',',' ').replace('%',',')" />
+                                                        <t t-esc="line.price_subtotal" />
                                                     </td>
                                                 </tr>
                                             </t>

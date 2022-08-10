@@ -2,7 +2,6 @@
 
 <odoo>
     <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
-
         <!-- customer informations -->
         <xpath expr="//div[hasclass('page')]" position="before">
             <div style="width:100%;">
