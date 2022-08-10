@@ -15,7 +15,7 @@ class StockMoveLine(models.Model):
         #         if rec.carton_id:
         #             res.append(rec.carton_id.id)
         # res = list(set(res))
-        return []
+        return [("id", "in", [])]
 
     carton_id = fields.Many2one(
         string="Carton",
