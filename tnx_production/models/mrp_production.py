@@ -73,8 +73,6 @@ class MrpProduction(models.Model):
                     source = self.env["sale.order"].search(
                         [("name", "=", devis_name[1])]
                     )
-                    print("---------------------")
-                    print(source)
                     if source:
                         try:
                             production.order_id = source
