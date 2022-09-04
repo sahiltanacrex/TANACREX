@@ -29,8 +29,8 @@
                                 <span> / heure</span>
                             </div>
 
-                            <field name="bonus" />
-                            <field name="production_bonus_participant" />
+                            <field name="bonus" invisible="1" />
+                            <field name="production_bonus_participant" invisible="1" />
                             <field name="allow_transport" />
                             <field name="allow_family" />
                             <field name="participation_cantine" />

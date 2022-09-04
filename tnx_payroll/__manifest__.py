@@ -24,6 +24,7 @@
         "views/hr_contract_view.xml",
         "views/hr_payslip.xml",
         "views/hr_salary_rule.xml",
+        "report/base_external_layout.xml",
         "report/payslip_report.xml",
     ],
     # only loaded in demonstration mode

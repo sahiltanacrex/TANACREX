@@ -5,13 +5,21 @@
             <field name="name">Alpha Inherit Payslip</field>
             <field name="model">hr.payslip</field>
             <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
-            <field name="priority" eval="8" />
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page[@name='salary_computation']/field/tree/field[@name='rate']" position="after">
                     <field name="nombre" />
                     <field name="base" />
                 </xpath>
-
+            </field>
+        </record>
+        <record id="hr_payslip_view_tree_inherit" model="ir.ui.view">
+            <field name="name">Alpha Inherit Payslip Tree</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='basic_wage']" position="attributes">
+                    <attribute name="string">Salaire de base</attribute>
+                </xpath>
             </field>
         </record>
     </data>
