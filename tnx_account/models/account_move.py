@@ -7,11 +7,11 @@ from odoo import models, fields, api
 
 class AccountMoveInherit(models.Model):
     _inherit = "account.move"
-    origin_tnx = fields.Char("Oringine")
+    origin_tnx = fields.Char("Origine")
     name_bis = fields.Char("name_bis")
     c_f = fields.Char("C&F")
     gross_weight = fields.Char("Poids brute")
-    net_weight = fields.Char("Poids neet")
+    net_weight = fields.Char("Poids net")
     volume = fields.Integer("Volume")
     seal_serial = fields.Char("Leads")
     container_serial = fields.Char("Conteneur")

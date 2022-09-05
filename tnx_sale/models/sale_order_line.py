@@ -112,8 +112,8 @@ class Sale_order_line(models.Model):
 
 class Account_move_line(models.Model):
     _inherit = "account.move.line"
-    development_expenses = fields.Monetary("Development costs")
-    unit_qty = fields.Float("Unitary quantity")
+    development_expenses = fields.Monetary("Prix de developpement")
+    unit_qty = fields.Float("Quantité unitaire")
 
     # price_subtotal = fields.Monetary(compute='_compute_price_subtotal')
     # @api.depends('development_expenses')

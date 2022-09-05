@@ -36,5 +36,8 @@
         "web.report_assets_common": [
             "tnx_payroll/static/src/css/report_css.css",
         ],
+        "web.assets_backend": [
+            "tnx_payroll/static/src/css/custom_widget.css",
+        ],
     },
 }

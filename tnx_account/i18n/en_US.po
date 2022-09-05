@@ -1,0 +1,939 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tnx_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-05 07:26+0000\n"
+"PO-Revision-Date: 2022-09-05 07:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid ""
+"<b>\n"
+"                                        <span>Adresse de livraison : </span>\n"
+"                                    </b>"
+msgstr ""
+"<b>\n"
+"                                        <span>Delivery address : </span>\n"
+"                                    </b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<b> - Origine :</b>"
+msgstr "<b> - Origin :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<b> - Poids brute : </b>"
+msgstr "<b> - Gross weight : </b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<b> - Poids net :</b>"
+msgstr "<b> - Net weight :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "<b> Adresse de livraison : </b>"
+msgstr "<b> Delivery address : </b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b> Date de facturation :</b>"
+msgstr "<b> Billing date :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<b>- Incoterm :</b>"
+msgstr "<b>- Incoterm :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Adresse de facturation :</b>"
+msgstr "<b>Billing address :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<b>Adresse de livraison</b>"
+msgstr "<b>Delivery address</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Client :</b>"
+msgstr "<b>Customer :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Condition de paiement : </b>"
+msgstr "<b>Payment condition : </b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Date d'écheance:</b>"
+msgstr "<b>Due date:</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Fabricant de boutons et d'étiquettes depuis 1983</b>"
+msgstr "<b>Manufacturer of buttons and labels since 1983</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Numéro de compte :</b>"
+msgstr "<b>Account number :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Réference :</b>"
+msgstr "<b>Reference :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid ""
+"<span>\"L'exportateur des produits couverts par le présent document "
+"(autorisation douanière MGREX1000002056) déclare que, sauf indication claire"
+" du contraire, les produits sont d'origine préférentielle "
+"Madagascar\"</span>"
+msgstr ""
+"<span>\"The exporter of the products covered by this document"
+"(customs authorization MGREX1000002056) declares that, unless clearly stated"
+"on the contrary, the products are of preferential origin"
+"Madagascar\"</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>,</span>"
+msgstr "<span>,</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<span>A approuvé cette facture pour la somme de </span>"
+msgstr "<span>Approved this invoice for the sum of </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid ""
+"<span>ANTANANARIVO -</span>\n"
+"                                                <b>MADAGASCAR</b>"
+msgstr ""
+"<span>ANTANANARIVO -</span>\n"
+"  
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "<span>Approuvé cette facture pour la somme de:</span>"
+msgstr "<span>Approved this invoice for the sum of </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Approuvé cette facture pour la somme de</span>"
+msgstr "<span>Approved this invoice for the sum of </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>B.p.:11064 - Tél : </span>"
+msgstr "<span>B.p.:11064 - Tél : </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "<span>Ce n'est pas une facture LS</span>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Ce n'est une facture  une facture VL</span>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<span>Cette facture n'est pas une facture EX</span>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "<span>Compte N°: </span>"
+msgstr "<span>Account No: </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+msgid "<span>Lot 18 D Imerinafovoany </span>"
+msgstr "<span>Lot 18 D Imerinafovoany </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Lot 18 D Imerinafovoany</span>"
+msgstr "<span>Lot 18 D Imerinafovoany</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Montant HT:</span>"
+msgstr "<span>Amount excluding VAT:</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>NIF: </span>"
+msgstr "<span>NIF: </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "<span>NIF:</span>"
+msgstr "<span>NIF:</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>N° compte: </span>"
+msgstr "<span>Account number: </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>STAT:</span>"
+msgstr "<span>STAT:</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid ""
+"<span>Tous les frais bancaires de la banque étrangère doivent être payés par"
+" l'acheteur, y compris le correspondant remboursant les frais bancaires, les"
+" commissions, les fax et les frais postaux.</span>"
+msgstr ""
+"<span>All bank charges from the foreign bank must be paid by"
+"the buyer, including the correspondent reimbursing the bank charges, the"
+" commissions, faxes and postage.</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid ""
+"<span>Tous les frais bancaires de la banque étrangère doivent être payés par"
+" l'acheteur, y compris le correspondant remboursant les frais bancaires, les"
+" commissions, les fax et les frais postaux</span>"
+msgstr ""
+"<span>All bank charges from the foreign bank must be paid by"
+"the buyer, including the correspondent reimbursing the bank charges, the"
+" commissions, faxes and postage</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>e-mail:contact@tanacrex.com</span>"
+msgstr "<span>e-mail:contact@tanacrex.com</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_ex_tree
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_ls_tree
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_vl_tree
+msgid "Abonnement"
+msgstr "Abonnement"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__account_move_id
+msgid "Account move"
+msgstr "Account move"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__account_registration
+msgid "Account number"
+msgstr "Account number"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_needaction
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_needaction
+msgid "Action Needed"
+msgstr "Action Needed"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__delivery_adress
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__delivery_adress
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__delivery_adress
+msgid "Addresse de livraison"
+msgstr "Delivery adress"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+msgid "Ajouter numéro"
+msgstr "Add number"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+msgid "Ajouter une note"
+msgstr "Add note"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+msgid "Ajouter une section"
+msgstr "Add section"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Article"
+msgstr "Article"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_attachment_count
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_attachment_count
+msgid "Attachment Count"
+msgstr "Attachment Count"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "BC Client"
+msgstr "PO Customer"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
+msgid "BO Origine"
+msgstr "BO Origin"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__origin_sale_id
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__origin_sale_id
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__origin_sale_id
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__bank_id
+msgid "Bank"
+msgstr "Bank"
+
+#. module: tnx_account
+#: model:ir.actions.act_window,name:tnx_account.action_bank_company
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__bank_company_ids
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__bank_company_ids
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__bank_company_ids
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_tree
+msgid "Banque"
+msgstr "Bank"
+
+#. module: tnx_account
+#: model:ir.ui.menu,name:tnx_account.bank_company_menu
+msgid "Banque de la compagnie"
+msgstr "Company bank"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Bon de livraison"
+msgstr "Delivery form"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__picking_ids
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__picking_ids
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__picking_ids
+msgid "Bound transfer"
+msgstr "Bound transfer"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__c_f
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__c_f
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__c_f
+msgid "C&F"
+msgstr "C&F"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+msgid "Compte banciare"
+msgstr "Bank account"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__container_serial
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__container_serial
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__container_serial
+msgid "Conteneur"
+msgstr "Containere"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__create_uid
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__create_uid
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__create_uid
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__create_uid
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__create_uid
+msgid "Created by"
+msgstr "Created by"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__create_date
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__create_date
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__create_date
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__create_date
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__order_customer
+msgid "Customer purchase order"
+msgstr "Customer purchase order"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__res_currency_id
+msgid "Customer quotation"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__picking_name
+msgid "Delivery ship"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__diameter
+msgid "Diameter"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__display_name
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__display_name
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__display_name
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__display_name
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.actions.report,name:tnx_account.invoice_ex
+msgid "Facture (EX)"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.actions.report,name:tnx_account.invoice_ls
+msgid "Facture (LS)"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.actions.report,name:tnx_account.invoice_vl
+msgid "Facture (VL)"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_follower_ids
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_partner_ids
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__has_message
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__hs_code
+msgid "Hs Code"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__id
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__id
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__id
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__id
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__id
+msgid "ID"
+msgstr "ID"
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_needaction
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_unread
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_needaction
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_has_error
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_has_sms_error
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_has_error
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank_info
+msgid "Information banque"
+msgstr "Bank information"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+msgid "Informations bancaire"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
+msgid "Infos transfert"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_stock_move__invoice_line_ids
+msgid "Invoice Line"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_move_form
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_move_picking_form
+msgid "Invoice Lines"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_stock_picking__invoice_ids
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_picking_form
+msgid "Invoices"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_is_follower
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company____last_update
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line____last_update
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex____last_update
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls____last_update
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__write_uid
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__write_uid
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__write_uid
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__write_uid
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__write_date
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__write_date
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__write_date
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__write_date
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__seal_serial
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__seal_serial
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__seal_serial
+msgid "Leads"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_main_attachment_id
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_has_error
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_ids
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Montant"
+msgstr "Amount"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank
+msgid "Nom de la banque"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_needaction_counter
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_has_error_counter
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_needaction_counter
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_has_error_counter
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_bank_company__message_unread_counter
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank_company_line_ids
+msgid "Numero de compte bancaire"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+msgid "Numéro compte bancaire"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_line_company_tree
+msgid "Numéro de carte bancaire"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.actions.act_window,name:tnx_account.action_bank_company_line
+#: model:ir.ui.menu,name:tnx_account.bank_company_line_menu
+msgid "Numéro de compte"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
+msgid "Order of transfert"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__origin_tnx
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__origin_tnx
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__origin_tnx
+msgid "Origine"
+msgstr "Origin"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Page:"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__gross_weight
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__gross_weight
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__gross_weight
+msgid "Poids brute"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__net_weight
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__net_weight
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__net_weight
+msgid "Poids net"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_line_company_view
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_ex_view
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_ls_view
+#: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_vl_view
+msgid "Price rental"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Prix unitaire / 100 pcs"
+msgstr "Unit price / 100 pcs"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__order_origin
+msgid "Purchase order"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Quantité"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.account_invoice_groupby_inherit_seq_bis
+msgid "Reférences facture"
+msgstr "Invoice references"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__rel_invoice_id
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__rel_invoice_id
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__rel_invoice_id
+msgid "Rel invoice id"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__rel_state_invoice
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__rel_state_invoice
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__rel_state_invoice
+msgid "Rel state invoice"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__move_line_ids
+msgid "Related Stock Moves"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_account_bank_statement_line__picking_ids
+#: model:ir.model.fields,help:tnx_account.field_account_move__picking_ids
+#: model:ir.model.fields,help:tnx_account.field_account_payment__picking_ids
+msgid ""
+"Related pickings (Seulement quand la facture a été generer depuis un bot de "
+"commande)."
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_account_move_line__move_line_ids
+msgid ""
+"Related stock moves (only when the invoice has been generated from a sale "
+"order)."
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__seq_bis
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__seq_bis
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__seq_bis
+msgid "Réference Facture"
+msgstr "Invoice reference"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Réference client"
+msgstr "Réference client"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
+msgid "Réference facture"
+msgstr "Invoice reference"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_has_sms_error
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__sequences_year
+msgid "Sequence année"
+msgstr "Year sequence"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__name
+msgid "Sequence ex"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__name
+msgid "Sequence vl"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__sequences_year
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_vl__sequences_year
+msgid "Sequence year"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.actions.act_window,name:tnx_account.action_sequences_ex
+msgid "Sequences EX"
+msgstr "EX Sequences"
+
+#. module: tnx_account
+#: model:ir.ui.menu,name:tnx_account.sequences_ex
+msgid "Sequences EX configurations"
+msgstr "Sequences EX setups"
+
+#. module: tnx_account
+#: model:ir.actions.act_window,name:tnx_account.action_sequences_ls
+msgid "Sequences ls"
+msgstr "LS Sequences"
+
+#. module: tnx_account
+#: model:ir.ui.menu,name:tnx_account.sequences_ls
+msgid "Sequences ls configurations"
+msgstr "Sequences ls configurations"
+
+#. module: tnx_account
+#: model:ir.actions.act_window,name:tnx_account.action_sequences_vl
+msgid "Sequences vl"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.ui.menu,name:tnx_account.sequences_vl
+msgid "Sequences vl configurations"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__name
+msgid "Séquence LS "
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_stock_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.invoice_form
+msgid "Transfert"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ex
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Type de produit"
+msgstr "Type of product"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_unread
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_unread_counter
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__volume
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__volume
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__volume
+msgid "Volume"
+msgstr ""
+
+#. module: tnx_account
+#: code:addons/tnx_account/models/stock_move.py:0
+#, python-format
+msgid "Vous ne pouvez pas modifier un mouvement de stock facturé"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__website_message_ids
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,help:tnx_account.field_bank_company__website_message_ids
+#: model:ir.model.fields,help:tnx_account.field_bank_company_line__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_bank_company
+msgid "bank.company"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_bank_company_line
+msgid "bank.company.line"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__name_bis
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__name_bis
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__name_bis
+msgid "name_bis"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_tnx_ex
+msgid "tnx.ex"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_tnx_ls
+msgid "tnx.ls"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_tnx_vl
+msgid "tnx.vl"
+msgstr ""

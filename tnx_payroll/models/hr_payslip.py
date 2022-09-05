@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
+from re import A
 
 from odoo import fields, models, api, _
 from odoo.tools import float_round, date_utils, convert_file, html2plaintext
