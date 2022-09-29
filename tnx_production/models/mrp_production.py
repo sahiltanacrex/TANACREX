@@ -31,6 +31,7 @@ class MrpProduction(models.Model):
         related="product_id.categ_id",
         store=True,
     )
+    date_communication = fields.Date("Date communiquée")
 
     def action_send_mail_odf(self):
         developments_perccent = dict(self._fields["developments"].selection).get(

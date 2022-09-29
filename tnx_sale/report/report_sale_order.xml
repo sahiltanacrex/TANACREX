@@ -29,6 +29,7 @@
         <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="replace">
             <th name="th_priceunit" class="text-right">Prix / Udm</th>
         </xpath>
+
         <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
             <th name="th_priceunit" class="text-right">UdM</th>
         </xpath>
@@ -62,12 +63,12 @@
         <!-- Temps de livraison -->
         <xpath expr="//div[@id='informations']//div[3]" position="after">
             <div class="col-auto col-3 mw-100 mb-2">
-                <strong>Date de livraison:</strong>
+                <strong>Indicatif de livraison:</strong>
                 <p class="m-0" t-field="doc.delivery_time" />
                 <!-- <p class="m-0" t-field="doc.delivery_time" t-options='{"widget": "date"}' /> -->
             </div>
             <div class="col-auto col-3 mw-100 mb-2">
-                <strong>Date de production</strong>
+                <strong>Indicatif de fabrication:</strong>
                 <p class="m-0" t-field="doc.production_duration" />
 
             </div>
@@ -84,6 +85,7 @@
                 <t t-else=""></t>
             </td>
         </xpath>
+        <xpath expr="//span[@t-field='doc.payment_term_id.note']" position="replace"></xpath>
     </template>
 
 

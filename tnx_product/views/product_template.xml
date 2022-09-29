@@ -3,18 +3,17 @@
         <record id="inherited_product_template_tnx_view_form" model="ir.ui.view">
             <field name="name">inherited.product_template.form.inherit.test</field>
             <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />
             <field name="arch" type="xml">
-                
-                
-                
+
+
                 <!-- find field description and add the field
                      new_field after it -->
                 <xpath expr="//notebook" position="before">
                     <group>
                         <group>
                             <field name="hs_code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
-                            <field name="product_type"/>
+                            <field name="product_type" />
                             <!-- if button -->
                             <field name="line" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />
                             <field name="diameter" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />
@@ -24,7 +23,7 @@
 
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
-                            <field name="surface"/>
+                            <field name="surface" />
 
                         </group>
                         <group>
@@ -32,23 +31,25 @@
                             <field name="thickness" />
                             <field name="customer_reference" />
                             <field name="partner_id" />
+                            <field name="donneur_ordre" options="{'no_create': True}" />
+                            <field name="ref_donneur_ordre" options="{'no_create': True}" />
                         </group>
 
                     </group>
 
                 </xpath>
                 <xpath expr="//notebook" position="inside">
-<!--                    <page name="additional_information" string="Additional information" >-->
+                    <!--                    <page name="additional_information" string="Additional information" >-->
                     <page name="additional_information" string="Autres informations" groups="tnx_base.group_direction_tnx">
                         <div>
                             <group>
                                 <group>
-                                    <field name="origin"/>
-                                    <field name="supplier"/>
-                                    <field name="latin_name"/>
-                                    <field name="collection_site"/>
-                                    <field name="info_frs"/>
-                                    <field name="miscellaneous"/>
+                                    <field name="origin" />
+                                    <field name="supplier" />
+                                    <field name="latin_name" />
+                                    <field name="collection_site" />
+                                    <field name="info_frs" />
+                                    <field name="miscellaneous" />
                                 </group>
 
                             </group>
@@ -59,9 +60,9 @@
                         <div>
                             <group>
                                 <group>
-                                    <field name="employee_validator_id"/>
-                                    <field name="bat_date"/>
-                                    <field name="validation_tools"/>
+                                    <field name="employee_validator_id" />
+                                    <field name="bat_date" />
+                                    <field name="validation_tools" />
                                     <field name="attachment_ids" />
                                     <button name="action_send_mail_bat" string="Envoyer BAT par e-mail" type="object" class="oe_highlight" />
                                 </group>
@@ -72,20 +73,18 @@
 
                     </page>
                 </xpath>
-                
+
                 <xpath expr="//field[@name='barcode']" position="after">
                     <!-- add min qty  and min price for sale order -->
-                    <label for="minimum_price" class="mt-1"/>
-                        <div name="minimum_pricing">
-                            <field name="minimum_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1" modifiers="{}"/>
-                            <span class="ml-2"/><field name="tax_string_min" modifiers="{&quot;readonly&quot;: true}"/>
-                        </div>
+                    <label for="minimum_price" class="mt-1" />
+                    <div name="minimum_pricing">
+                        <field name="minimum_price" class="oe_inline" widget="monetary" options="{'currency_field': 'currency_id', 'field_digits': True}" on_change="1" modifiers="{}" />
+                        <span class="ml-2" />
+                        <field name="tax_string_min" modifiers="{&quot;readonly&quot;: true}" />
+                    </div>
                     <field name="qty_min" />
                 </xpath>
-                
 
-    
-                
 
             </field>
         </record>

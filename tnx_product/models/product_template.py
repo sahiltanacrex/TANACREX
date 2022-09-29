@@ -1,3 +1,4 @@
+from email.policy import default
 import math
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
@@ -7,6 +8,10 @@ class Product_template(models.Model):
     _inherit = "product.template"
     hs_code = fields.Many2one("hscode.product", string="Hs Code")
     color = fields.Char(string="Couleur", help="Choose your color")
+
+    detailed_type = fields.Selection(default="product")
+    donneur_ordre = fields.Many2one("res.partner", string="Donneur d'ordre")
+    ref_donneur_ordre = fields.Many2one("res.partner", string=" Réf. donneur d'ordre")
 
     @api.onchange("product_type")
     def _onchange_surface(self):

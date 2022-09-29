@@ -15,7 +15,12 @@
                     <field name="developments" widget="selection" />
                     <field name="check_bc" invisible="1" />
                 </xpath>
-
+                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                    <attribute name="string">Date prévue fab</attribute>
+                </xpath>
+                <xpath expr="//label[@for='date_planned_start']" position="before">
+                    <field name="date_communication" string="Date communiquée" />
+                </xpath>
 
                 <xpath expr="//notebook/page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="attributes">
                     <attribute name="readonly">1</attribute>
@@ -49,6 +54,7 @@
                     <field name="partner_id" string="Client" />
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="date_communication" string="Date communiquée" />
                     <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" />
                     <field name="product_type" optional="show" readonly="1" />
                     <field name="color_product" widget="color" readonly="1" />

@@ -29,18 +29,16 @@
                                 <group name="order_transfert" string="Order of transfert">
                                     <field name="origin_sale_id" string="BO Origine" readonly="1" />
                                     <field name="origin_tnx" />
-                                    <field name="c_f" />
+                                    <field name="c_f" string="Incoterm" />
                                     <field name="gross_weight" />
                                     <field name="net_weight" />
                                     <field name="volume" />
-                                    <field name="seal_serial" />
-                                    <field name="container_serial" />
+                                    <field name="seal_serial" string="Colisage" />
+                                    <field name="container_serial" string="Notes" />
                                 </group>
                             </group>
                         </div>
-
                     </page>
-
                 </xpath>
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='product_id']" position="before">
                     <field name="order_customer" readonly="1" />
