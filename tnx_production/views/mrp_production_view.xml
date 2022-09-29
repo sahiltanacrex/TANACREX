@@ -15,6 +15,8 @@
                     <field name="developments" widget="selection" />
                     <field name="check_bc" invisible="1" />
                 </xpath>
+
+
                 <xpath expr="//notebook/page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="attributes">
                     <attribute name="readonly">1</attribute>
                     <attribute name="force_save">1</attribute>
@@ -37,6 +39,9 @@
                 <xpath expr="//field[@name='origin']" position="attributes">
                     <attribute name="optional">hide</attribute>
                 </xpath>
+                <xpath expr="//field[@name='activity_ids']" position="replace">
+                    <field name="categorie_id" string="Catégorie d'article" />
+                </xpath>
                 <xpath expr="//field[@name='date_planned_start']" position="attributes">
                     <attribute name="optional">hide</attribute>
                 </xpath>
@@ -55,6 +60,16 @@
                 </xpath>
                 <xpath expr="//header/button[@name='button_plan']" position="before">
                     <button name="report_analyse" string="Rapport" class="btn btn-sm btn-primary" type="object" />
+                </xpath>
+            </field>
+        </record>
+        <record id="mrp_production_search_view_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.search.view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='product']" position="after">
+                    <filter string="Catégorie d'article" name="categorie_id" domain="[]" context="{'group_by': 'categorie_id'}" />
                 </xpath>
             </field>
         </record>

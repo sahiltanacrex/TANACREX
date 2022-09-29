@@ -25,6 +25,12 @@ class MrpProduction(models.Model):
     line_product = fields.Float("Ligne")
     product_type = fields.Char("Type de produit")
     color_product = fields.Char("Couleur")
+    categorie_id = fields.Many2one(
+        "product.category",
+        "Catégorie d'article",
+        related="product_id.categ_id",
+        store=True,
+    )
 
     def action_send_mail_odf(self):
         developments_perccent = dict(self._fields["developments"].selection).get(
