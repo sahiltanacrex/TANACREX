@@ -10,6 +10,8 @@ class NoteDeColisage(models.TransientModel):
     )
     poids_net = fields.Float()
     poids_brut = fields.Float()
+    description = fields.Char()
+    move_id = fields.Many2one("account.move", string="Facture")
 
     def report_colisage(self):
         return self.env.ref("tnx_stock.action_tnx_package_report").report_action(self)

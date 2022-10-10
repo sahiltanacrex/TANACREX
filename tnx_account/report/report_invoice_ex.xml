@@ -161,7 +161,7 @@
                                                         <t t-esc="line.quantity" />
                                                     </td>
                                                     <td>
-                                                        <t t-set="unit_price" t-value="line.price_subtotal * 100" />
+                                                        <t t-set="unit_price" t-value="line.product_id.list_price * 100" />
                                                         <t t-esc="unit_price" />
                                                     </td>
                                                     <td>

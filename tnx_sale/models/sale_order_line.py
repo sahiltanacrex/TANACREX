@@ -11,14 +11,6 @@ class Sale_order_line(models.Model):
 
     @api.depends("discount", "price_unit", "tax_id", "development_expenses", "unit_qty")
     def _compute_amount(self):
-        """
-        tsy override tsony fa tonga dia notsindrina tanteraka sinon tsy miainga
-
-        Compute the amounts of the SO line.
-
-        Fully overridden to add field development_expenses to the
-        formula and triggers.
-        """
         for rec in self:
             for line in rec:
                 price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
@@ -26,6 +18,7 @@ class Sale_order_line(models.Model):
                     if line.product_id.qty_min > 0:
                         if line.unit_qty < line.product_id.qty_min:
                             price = line.product_id.minimum_price
+
                 # new: substract development_expenses
                 taxes = line.tax_id.compute_all(
                     price,

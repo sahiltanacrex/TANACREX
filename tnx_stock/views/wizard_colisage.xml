@@ -13,6 +13,7 @@
                         </group>
                         <group>
                             <field name="partner_id" widget="res_partner_many2one" string="Client" />
+                            <field name="move_id" string="Facture" />
                         </group>
                     </group>
                     <group>
@@ -20,7 +21,8 @@
                             <field name="poids_net" string="Poids net" />
                         </group>
                         <group>
-                            <field name="poids_brut" sting="Poids brut" />
+                            <field name="poids_brut" string="Poids brut" />
+                            <field name="description" string="Description" />
                         </group>
                     </group>
                     <group>
