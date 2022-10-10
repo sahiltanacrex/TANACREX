@@ -55,12 +55,7 @@
                                         <tbody style="font-size : 11px !important;">
                                             <tr>
                                                 <td class="tg-0pky" colspan="2">
-                                                    <span t-esc="o.name" />
-                                                    <t t-if="line.carton_id">
-                                                        (
-                                                        <span t-esc="line.carton_id.name" />
-                                                        )
-                                                    </t>
+                                                    <span t-if="o.sale_id" t-esc="o.sale_id.sale_order_partner" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -91,7 +86,7 @@
                                                     </u>
                                                     <div class="text-right">
                                                         <t t-if="line.product_id">
-                                                            <span t-esc="line.product_id.diameter" />
+                                                            <span t-esc="line.product_id.line" />
                                                             cm
                                                         </t>
                                                     </div>

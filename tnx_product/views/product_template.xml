@@ -20,11 +20,9 @@
                             <!-- else -->
                             <field name="length" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
                             <field name="height" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
-
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
                             <field name="surface" />
-
                         </group>
                         <group>
                             <field name="material" />
@@ -34,9 +32,7 @@
                             <field name="donneur_ordre" options="{'no_create': True}" />
                             <field name="ref_donneur_ordre" options="{'no_create': True}" />
                         </group>
-
                     </group>
-
                 </xpath>
                 <xpath expr="//notebook" position="inside">
                     <!--                    <page name="additional_information" string="Additional information" >-->
@@ -51,10 +47,8 @@
                                     <field name="info_frs" />
                                     <field name="miscellaneous" />
                                 </group>
-
                             </group>
                         </div>
-
                     </page>
                     <page name="bat" string="BAT" groups="tnx_base.group_direction_tnx">
                         <div>
@@ -66,11 +60,8 @@
                                     <field name="attachment_ids" />
                                     <button name="action_send_mail_bat" string="Envoyer BAT par e-mail" type="object" class="oe_highlight" />
                                 </group>
-
-
                             </group>
                         </div>
-
                     </page>
                 </xpath>
 
