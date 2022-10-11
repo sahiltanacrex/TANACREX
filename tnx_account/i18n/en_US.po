@@ -679,14 +679,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_account_move__gross_weight
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__gross_weight
 msgid "Poids brute"
-msgstr ""
+msgstr "Gross weight"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__net_weight
 #: model:ir.model.fields,field_description:tnx_account.field_account_move__net_weight
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__net_weight
 msgid "Poids net"
-msgstr ""
+msgstr "Net weight"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.view_bank_company_view

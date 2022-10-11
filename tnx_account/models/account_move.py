@@ -204,3 +204,16 @@ class AccountMoveInherit(models.Model):
 
         values = " ".join([str(item) for item in list_info])
         return values
+
+    def action_invoice_sent(self):
+        res = super(AccountMoveInherit, self).action_invoice_sent()
+        template = self.env["mail.template"].browse(
+            res["context"]["default_template_id"]
+        )
+        if self.partner_id.partner_type == "ex":
+            template.report_template = self.env.ref("tnx_account.invoice_ex")
+        elif self.partner_id.partner_type == "ls":
+            template.report_template = self.env.ref("tnx_account.invoice_ls")
+        elif self.partner_id.partner_type == "vl":
+            template.report_template = self.env.ref("tnx_account.invoice_vl")
+        return res
