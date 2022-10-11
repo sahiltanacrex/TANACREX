@@ -11,6 +11,7 @@
                   <field name="nif"/>
                   <field name="stat"/>
                   <field name="cif"/>
+                  <field name="description"/>
                 </xpath>
             </field>
         </record>

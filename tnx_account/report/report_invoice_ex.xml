@@ -44,7 +44,12 @@
                                         </div>
                                         <div class="col-xs-6 " style="margin-left:270px; text-align:center">
                                             <div>
-                                                <b>Fabricant de boutons et d'étiquettes depuis 1983</b>
+                                                <b>
+                                                    <t t-if="company.description">
+                                                        <t t-esc="company.description"/>
+                                                    </t>
+                                                    <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
+                                                </b>
                                             </div>
                                             <div>
                                                 <span>STAT:</span>
@@ -59,7 +64,7 @@
                                             </div>
                                             <div>
                                                 <span>B.p.:11064 - Tél : </span>
-                                                <span t-esc="company.phone" />
+                                                <span t-esc="company.phone or company.mobile" />
                                             </div>
                                             <div>
                                                 <span>e-mail:contact@tanacrex.com</span>
@@ -73,17 +78,16 @@
                                 </div>
                             </div>
                             <div style="font-size:18px; margin-top:20px">
-                                <b>Réference :</b>
+                                <b>Facture :</b>
                                 <span t-esc="o.name_bis" />
                             </div>
                             <div class="row" style="margin-top:20px">
                                 <div class="col-4">
-                                    <b>Numéro de compte :</b>
+                                    <b>Référence :</b>
                                     <span t-esc="o.seq_bis" />
                                 </div>
                                 <div class="col-4">
-                                    <b>Client :</b>
-                                    <span t-esc="o.partner_id.name" />
+                                    <b>Client : <span style="font-size: 16px" t-esc="o.partner_id.name" /></b>
                                 </div>
                                 <div class="col-4">
                                     <b>Adresse de facturation :</b>
@@ -127,9 +131,10 @@
                                     <thead>
                                         <tr>
                                             <th>BC Client</th>
-                                            <th>Bon de livraison</th>
+                                            <!-- <th>Bon de livraison</th> -->
                                             <th>Article</th>
                                             <th>Type de produit</th>
+                                            <th>HS Code</th>
                                             <th>Réference client</th>
                                             <th>Quantité</th>
                                             <th>Prix unitaire / 100 pcs</th>
@@ -138,16 +143,16 @@
                                     </thead>
                                     <tbody>
                                         <t t-foreach="o.invoice_line_ids" t-as="line">
-                                            <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
-                                            <t t-foreach="bl_id" t-as="id_bl">
+                                            <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                            <t t-foreach="bl_id" t-as="id_bl"> -->
                                                 <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
                                                 <tr>
                                                     <td>
                                                         <span t-esc="line.order_customer" />
                                                     </td>
-                                                    <td>
+                                                    <!-- <td>
                                                         <span t-esc="bl_name" />
-                                                    </td>
+                                                    </td> -->
                                                     <td>
                                                         <t t-esc="line.product_id.name" />
                                                     </td>
@@ -155,10 +160,13 @@
                                                         <t t-esc="line.product_id.product_type" />
                                                     </td>
                                                     <td>
+                                                        <t t-esc="line.product_id.hs_code.hs_code" />
+                                                    </td>
+                                                    <td>
                                                         <t t-esc="line.product_id.customer_reference" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.quantity" />
+                                                        <t t-esc="line.unit_qty" />
                                                     </td>
                                                     <td>
                                                         <t t-set="unit_price" t-value="line.product_id.list_price * 100" />
@@ -168,14 +176,15 @@
                                                         <t t-esc="line.price_subtotal" />
                                                     </td>
                                                 </tr>
-                                            </t>
+                                            <!-- </t> -->
                                         </t>
                                     </tbody>
                                 </table>
                             </div>
                             <div style="text-align:right">
-                                <span>Montant HT:</span>
-                                <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                <b>Montant HT:
+                                    <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                </b>
                             </div>
                             <div style="text-align:right">
                                 <span>A approuvé cette facture pour la somme de </span>
@@ -193,7 +202,7 @@
                                     <span t-esc="o.origin_tnx" />
                                 </div>
                                 <div>
-                                    <b> - Poids brute : </b>
+                                    <b> - Poids brut : </b>
                                     <span t-esc="o.gross_weight" />
                                 </div>
                                 <div>
@@ -205,7 +214,7 @@
                                     <span t-esc="o.c_f" />
                                 </div>
                                 <div>
-                                    <b>- Colisages :</b>
+                                    <b>- Nombre de cartons :</b>
                                     <span t-esc="o.seal_serial" />
                                 </div>
                                 <div>
@@ -234,7 +243,7 @@
                         <div class="row text-center">
                             <div class="col col-12 text-center">
                                 <div>
-                                    <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux</span>
+                                    <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
                                 </div>
                                 <ul class="list-inline">
                                     <li class="list-inline-item">Page:</li>
