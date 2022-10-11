@@ -214,7 +214,7 @@
                     </div>
                 </t>
                 <t t-else="">
-                    <span>Ce n'est une facture  une facture VL</span>
+                    <span>Ce n'est pas une facture VL</span>
                 </t>
             </t>
 
