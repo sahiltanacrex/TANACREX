@@ -1,3 +1,4 @@
+from ctypes.wintypes import PLARGE_INTEGER
 import datetime
 
 # -*- coding: utf-8 -*-
@@ -23,9 +24,9 @@ class AccountMoveInherit(models.Model):
         res = super(AccountMoveInherit, self).create(vals)
         sale_line_ids = res.invoice_line_ids.mapped("sale_line_ids")
         if sale_line_ids:
-            for sale in sale_line_ids:
-                if sale.order_id:
-                    res.origin_sale_id = sale.order_id
+            for line in sale_line_ids:
+                if line.order_id:
+                    res.origin_sale_id = line.order_id
                     break
         return res
 
@@ -210,10 +211,12 @@ class AccountMoveInherit(models.Model):
         template = self.env["mail.template"].browse(
             res["context"]["default_template_id"]
         )
-        if self.partner_id.partner_type == "ex":
-            template.report_template = self.env.ref("tnx_account.invoice_ex")
-        elif self.partner_id.partner_type == "ls":
-            template.report_template = self.env.ref("tnx_account.invoice_ls")
-        elif self.partner_id.partner_type == "vl":
-            template.report_template = self.env.ref("tnx_account.invoice_vl")
+        partner_type = {
+            "ex": "tnx_account.invoice_ex",
+            "ls": "tnx_account.invoice_ls",
+            "vl": "tnx_account.invoice_vl",
+        }
+        template.report_template = self.env.ref(
+            partner_type.get(self.partner_id.partner_type, "tnx_account.invoice_ex")
+        )
         return res

@@ -13,7 +13,6 @@
     </record>
     <template id="report_ex_document">
         <t t-if="not company">
-            <!-- Multicompany -->
             <t t-if="company_id">
                 <t t-set="company" t-value="company_id" />
             </t>
@@ -40,14 +39,9 @@
                                             <t t-if="company.description">
                                                 <t t-esc="company.description" />
                                             </t>
-
                                             <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
                                         </b>
                                         <br />
-                                        <span t-esc="o.partner_id.lang" />
-                                        <br />
-                                        <br />
-                                        <span t-esc="context" />
                                     </div>
                                     <div>
                                         <span>STAT:</span>
@@ -132,7 +126,6 @@
                             <thead>
                                 <tr>
                                     <th>BC Client</th>
-                                    <!-- <th>Bon de livraison</th> -->
                                     <th>Article</th>
                                     <th>Type de produit</th>
                                     <th>HS Code</th>
@@ -241,7 +234,7 @@
                     </t>
                 </div>
             </div>
-            <div class="footer" style="border-top: 1px solid black; font-size:16px;">
+            <div class="footer" style="border-top: 2px solid black; font-size:16px;">
                 <div class="row text-center">
                     <div class="col col-12 text-center">
                         <div>
