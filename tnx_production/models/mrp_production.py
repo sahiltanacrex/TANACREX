@@ -92,15 +92,7 @@ class MrpProduction(models.Model):
                                 production.product_id.product_tmpl_id.color
                             )
                         except Exception as e:
-                            # production.order_id = False
                             raise UserError(e)
-
-                    else:
-                        # production.order_id = False
-                        print("ato ary hoe")
-
-                    print("---------------------")
-                    print(source)
 
     def report_analyse(self):
         ids = self.env.context.get("active_ids", [])
