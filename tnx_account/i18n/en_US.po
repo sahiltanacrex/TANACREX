@@ -314,7 +314,7 @@ msgstr "Delivery adress"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Article"
-msgstr ""
+msgstr "Product"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_attachment_count
@@ -814,7 +814,7 @@ msgstr ""
 #: code:addons/tnx_account/models/stock_move.py:0
 #, python-format
 msgid "Vous ne pouvez pas modifier un mouvement de stock facturé"
-msgstr ""
+msgstr "Vous ne pouvez pas modifier un mouvement de stock facturé"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__website_message_ids
