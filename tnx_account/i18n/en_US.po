@@ -730,7 +730,7 @@ msgstr "Invoice reference"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Réference client"
-msgstr ""
+msgstr "Customer reference"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_has_sms_error
