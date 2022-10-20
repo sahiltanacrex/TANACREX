@@ -10,8 +10,8 @@
                     <button name="action_send_mail_odf" string="Envoyer mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('check_bc','=',False)]}" />
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="after">
-                    <field name="partner_id" string="BC" />
-                    <field name="order_id" string="Client" />
+                    <field name="partner_id" string="Client " />
+                    <field name="order_id" string="BC" />
                     <field name="developments" widget="selection" />
                     <field name="check_bc" invisible="1" />
                 </xpath>
@@ -49,8 +49,11 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="partner_id" string="Client" />
                 </xpath>
-                <xpath expr="//field[@name='product_id']" position="after">
+                <xpath expr="//field[@name='product_id']" position="before">
                     <field name="date_communication" string="Date communiquée" />
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+
                     <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" />
                     <field name="product_type" optional="show" readonly="1" />
                     <field name="color_product" widget="color" readonly="1" />

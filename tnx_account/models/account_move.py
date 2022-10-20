@@ -190,20 +190,20 @@ class AccountMoveInherit(models.Model):
         list_info = []
         get_len = len(bank_id) - 1
         count = 0
-
         for i in bank_id:
             serial_bank = self.env["bank.company.line"].search(
                 [("res_currency_id", "=", currency_id), ("bank_id", "=", i.id)]
             )
-            list_info.append(serial_bank.bank_id.bank)
-
+            if serial_bank:
+                list_info.append(serial_bank.bank_id.bank)
             if count < get_len:
-                list_info.append(serial_bank.account_registration + ", ")
+                list_info.append(serial_bank.account_registration)
+                list_info.append(" ,")
                 count += 1
             else:
                 list_info.append(serial_bank.account_registration)
 
-        values = " ".join([str(item) for item in list_info])
+        values = "".join([str(item) for item in list_info])
         return values
 
     def action_invoice_sent(self):

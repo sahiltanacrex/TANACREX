@@ -16,12 +16,8 @@ class Sale_order(models.Model):
         """,
             [list(self.ids)],
         )
-
         ids = self._cr.fetchall()
-
         moves = super()._create_invoices(grouped=grouped, final=final, date=date)
-
         for id in ids:
             moves.write({"bank_company_ids": [(4, id)]})
-
         return moves

@@ -11,7 +11,7 @@ class Product_template(models.Model):
 
     detailed_type = fields.Selection(default="product")
     donneur_ordre = fields.Many2one("res.partner", string="Donneur d'ordre")
-    ref_donneur_ordre = fields.Many2one("res.partner", string=" Réf. donneur d'ordre")
+    ref_donneur_ordre = fields.Char(string=" Réf. donneur d'ordre")
 
     @api.onchange("product_type")
     def _onchange_surface(self):

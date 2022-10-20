@@ -30,7 +30,7 @@
                             <field name="customer_reference" />
                             <field name="partner_id" />
                             <field name="donneur_ordre" options="{'no_create': True}" />
-                            <field name="ref_donneur_ordre" options="{'no_create': True}" />
+                            <field name="ref_donneur_ordre" />
                         </group>
                     </group>
                 </xpath>

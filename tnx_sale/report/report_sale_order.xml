@@ -1,15 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <odoo>
-    <template id="nexources_external_layout_striped" inherit_id="web.external_layout_striped">
-        <xpath expr="//div[hasclass('float-right')]" position="replace">
-            <div class="float-right">
-                <strong>
-                    <h3 class="mt0 text-right" t-field="company.report_header" />
-                </strong>
-            </div>
-        </xpath>
-    </template>
     <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
         <!-- customer informations -->
         <xpath expr="//div[hasclass('page')]" position="before">

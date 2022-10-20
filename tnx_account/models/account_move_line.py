@@ -6,16 +6,11 @@ from odoo import models, fields, api
 class Account_move_line(models.Model):
     _inherit = "account.move.line"
 
-    order_origin = fields.Char("Purchase order")
-    order_customer = fields.Char("Customer purchase order")
+    order_origin = fields.Char("Demande de prix")
+    order_customer = fields.Char("BC Client")
     diameter = fields.Float("Diameter")
     hs_code = fields.Char("Hs Code")
-    # picking_name = fields.Char('Bon de livraison')
-
-    picking_name = fields.Char(store=True, string="Delivery ship")
-
-    # picking_name = fields.One2many('stock.picking', 'account_move_line_id', string='Stock Picking')
-
+    picking_name = fields.Char(store=True, string="Bon de livraison")
     move_line_ids = fields.Many2many(
         comodel_name="stock.move",
         relation="stock_move_invoice_line_rel",
