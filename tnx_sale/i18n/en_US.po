@@ -110,7 +110,7 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Prix / Udm"
-msgstr ""
+msgstr "Price/ UoM"
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_account_move_line__development_expenses
@@ -141,7 +141,7 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "UdM"
-msgstr ""
+msgstr "UoM"
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order_line__unit_qty
