@@ -154,11 +154,10 @@
                                                 <t t-esc="line.quantity" />
                                             </td>
                                             <td>
-                                                <t t-set="unit_price" t-value="line.price_subtotal * 100" />
-                                                <t t-esc="unit_price" />
+                                                <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.price_subtotal" />
+                                                <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                             </td>
                                         </tr>
                                     </t>

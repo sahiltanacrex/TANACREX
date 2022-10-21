@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError, ValidationError
 
 
 class Account_move_line(models.Model):
@@ -21,3 +22,4 @@ class Account_move_line(models.Model):
         help="Related stock moves "
         "(only when the invoice has been generated from a sale order).",
     )
+    price_unit_udm = fields.Float("Prix/UDM")

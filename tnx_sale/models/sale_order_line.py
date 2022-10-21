@@ -49,7 +49,9 @@ class Sale_order_line(models.Model):
             if rec.product_id.qty_min:
                 if rec.product_id.qty_min > 0:
                     if rec.unit_qty < rec.product_id.qty_min:
-                        rec.price_subtotal = rec.product_id.minimum_price
+                        rec.price_subtotal = (
+                            rec.product_id.minimum_price + rec.development_expenses
+                        )
 
     def _prepare_invoice_line(self, **optional_values):
         """
@@ -128,9 +130,17 @@ class Account_move_line(models.Model):
         taxes,
         move_type,
     ):
-        values = super(Account_move_line, self)._get_price_total_and_subtotal_model(
+        vals = super(Account_move_line, self)._get_price_total_and_subtotal_model(
             price_unit, quantity, discount, currency, product, partner, taxes, move_type
         )
-        values["price_subtotal"] += self.development_expenses
 
-        return values
+        vals["price_subtotal"] += self.development_expenses
+
+        if self.product_id:
+            product = self.product_id
+            if product.qty_min > 0:
+                if self.unit_qty < product.qty_min:
+                    vals["price_subtotal"] = (
+                        self.development_expenses + product.minimum_price
+                    )
+        return vals
