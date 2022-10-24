@@ -367,7 +367,7 @@ msgstr ""
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "Client :"
-msgstr ""
+msgstr "Customer :"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__container_serial
@@ -594,7 +594,7 @@ msgstr "Amount"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "Montant HT:"
-msgstr ""
+msgstr "Amount excluding tax:"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank
@@ -681,7 +681,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Quantité"
-msgstr ""
+msgstr "Quantity"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_tnx_ex__rel_invoice_id
