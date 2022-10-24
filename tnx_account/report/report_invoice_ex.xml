@@ -85,7 +85,7 @@
                         <div class="col-4">
                             <b>
                                 Client :
-                                <span style="font-size: 16px" t-esc="o.partner_id.name" />
+                                <span style="font-size: 18px" t-esc="o.partner_id.name" />
                             </b>
                         </div>
                         <div class="col-4">
@@ -178,12 +178,14 @@
                             </tbody>
                         </table>
                     </div>
-                    <div style="text-align:right">
-                        <b>
-                            Montant HT:
-                            <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
-                        </b>
-                    </div>
+                    <h4>
+                        <div style="text-align:right">
+                            <b>
+                                Montant HT:
+                                <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            </b>
+                        </div>
+                    </h4>
                     <div style="text-align:right">
                         <span>A approuvé cette facture pour la somme de </span>
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
