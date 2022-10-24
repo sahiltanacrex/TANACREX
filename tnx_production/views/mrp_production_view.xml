@@ -15,7 +15,7 @@
                     <field name="developments" widget="selection" />
                     <field name="check_bc" invisible="1" />
                 </xpath>
-                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                <xpath expr="//label[@for='date_planned_start']" position="attributes">
                     <attribute name="string">Date prévue fab</attribute>
                 </xpath>
                 <xpath expr="//label[@for='date_planned_start']" position="before">
@@ -45,6 +45,9 @@
                 </xpath>
                 <xpath expr="//field[@name='activity_ids']" position="replace">
                     <field name="categorie_id" string="Catégorie d'article" />
+                </xpath>
+                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                    <attribute name="string">Date prévue fab</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="partner_id" string="Client" />

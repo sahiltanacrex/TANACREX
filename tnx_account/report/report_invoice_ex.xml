@@ -34,7 +34,7 @@
                                 <div class="col-xs-6">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6 " style="margin-left:270px; text-align:center">
+                                <div class="col-xs-6 " style="margin-left:250px; text-align:center">
                                     <div>
                                         <b>
                                             <t t-if="company.description">
@@ -63,8 +63,11 @@
                                         <span>e-mail:contact@tanacrex.com</span>
                                     </div>
                                     <div>
-                                        <span>ANTANANARIVO -</span>
-                                        <b>MADAGASCAR</b>
+                                        <span>
+                                            ANTANANARIVO -
+                                            <b>MADAGASCAR</b>
+                                        </span>
+
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +164,7 @@
                                             <t t-esc="line.product_id.customer_reference" />
                                         </td>
                                         <td>
-                                            <t t-esc="line.unit_qty" />
+                                            <t t-esc="line.quantity" />
                                         </td>
                                         <td>
                                             <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />

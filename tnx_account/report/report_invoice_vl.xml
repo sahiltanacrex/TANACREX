@@ -26,7 +26,7 @@
         </t>
         <div class="header"></div>
         <t t-if="o.partner_id.partner_type == 'vl'">
-            <div class="article mt0 o_report_layout_standard" style="font-size:15px">
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
                 <div class="header_body">
                     <div class="body_header">
                         <div class="container">
@@ -34,31 +34,40 @@
                                 <div class="col-xs-6">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6 " style="margin-left:300px; text-align:center">
+                                <div class="col-xs-6 " style="margin-left:250px; text-align:center">
                                     <div>
-                                        <b>Fabricant de boutons et d'étiquettes depuis 1983</b>
+                                        <b>
+                                            <t t-if="company.description">
+                                                <t t-esc="company.description" />
+                                            </t>
+                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
+                                        </b>
+                                        <br />
                                     </div>
                                     <div>
                                         <span>STAT:</span>
                                         <span t-esc="company.stat" />
                                     </div>
                                     <div>
-                                        <span>NIF: </span>
+                                        <span>NIF:</span>
                                         <span t-esc="company.nif" />
                                     </div>
                                     <div>
-                                        <span>Lot 18 D Imerinafovoany</span>
+                                        <span>Lot 18 D Imerinafovoany </span>
                                     </div>
                                     <div>
                                         <span>B.p.:11064 - Tél : </span>
-                                        <span t-esc="company.phone" />
+                                        <span t-esc="company.phone or company.mobile" />
                                     </div>
                                     <div>
                                         <span>e-mail:contact@tanacrex.com</span>
                                     </div>
                                     <div>
-                                        <span>ANTANANARIVO -</span>
-                                        <b>MADAGASCAR</b>
+                                        <span>
+                                            ANTANANARIVO -
+                                            <b>MADAGASCAR</b>
+                                        </span>
+
                                     </div>
                                 </div>
                             </div>
@@ -74,8 +83,10 @@
                             <span t-esc="o.seq_bis" />
                         </div>
                         <div class="col-4">
-                            <b>Client :</b>
-                            <span t-esc="o.partner_id.name" />
+                            <b>
+                                Client :
+                                <span t-esc="o.partner_id.name" />
+                            </b>
                         </div>
                         <div class="col-4">
                             <b>Adresse de facturation :</b>
