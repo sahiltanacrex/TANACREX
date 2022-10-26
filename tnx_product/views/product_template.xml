@@ -15,14 +15,14 @@
                             <field name="hs_code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
                             <field name="product_type" />
                             <!-- if button -->
-                            <field name="line" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />
+                            <field name="line" attrs="{'invisible': [('product_type',  '!=', 'button')]}" widget="integer"/>
                             <field name="diameter" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />
                             <!-- else -->
                             <field name="length" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
                             <field name="height" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
-                            <field name="surface" />
+                            <field name="surface" attrs="{'invisible': [('product_type',  '==', 'button')]}"/>
                         </group>
                         <group>
                             <field name="material" />
