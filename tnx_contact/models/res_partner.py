@@ -2,8 +2,8 @@
 
 from odoo import models, fields, api
 
-class Res_partner(models.Model):
-    _inherit="res.partner"
+class ResPartner(models.Model):
+    _inherit = "res.partner"
 
     nif = fields.Char(
         string='NIF',
@@ -23,10 +23,14 @@ class Res_partner(models.Model):
         ('ls', 'LS'),
     ], string='Type de client')
 
+    fax_number = fields.Char(
+        string='FAX',
+        required=False)
+
     # partner_type = fields.Selection(selection_add=[
     #     ('ex','EX'),('vl','VL'),('ls','LS')
     # ])
-    
+
     # partner_type = fields.Selection(
     #     string='Type de client',
     #     selection=[('ex','EX'),('vl','VL'),('ls','LS')])
