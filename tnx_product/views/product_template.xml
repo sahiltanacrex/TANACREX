@@ -22,7 +22,7 @@
                             <field name="height" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
-                            <field name="surface"  attrs="{'invisible': [('product_type',  '==', 'button')]}"/>
+                            <field name="surface" attrs="{'invisible': [('product_type',  '==', 'button')]}"/>
                         </group>
                         <group>
                             <field name="material" />
