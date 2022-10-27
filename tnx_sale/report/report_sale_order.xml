@@ -5,23 +5,23 @@
         <!-- customer informations -->
         <xpath expr="//div[hasclass('page')]" position="before">
             <div style="width:100%;">
-                <br />
+                <br/>
                 <div style="margin-left:503px;">
                     <div>
                         <strong>NIF:</strong>
-                        <span t-esc="doc.partner_id.nif" />
+                        <span t-esc="doc.partner_id.nif"/>
                     </div>
                     <div>
                         <strong>STAT:</strong>
-                        <span t-esc="doc.partner_id.stat" />
+                        <span t-esc="doc.partner_id.stat"/>
                     </div>
                     <div>
                         <strong>CIF:</strong>
-                        <span t-esc="doc.partner_id.cif" />
+                        <span t-esc="doc.partner_id.cif"/>
                     </div>
                     <div>
                         <strong>RCS:</strong>
-                        <span t-esc="doc.partner_id.rcs" />
+                        <span t-esc="doc.partner_id.rcs"/>
                     </div>
                 </div>
             </div>
@@ -40,9 +40,14 @@
         <xpath expr="//table[hasclass('table')]//thead//tr//th[6]" position="after">
             <th name="th_dev_price" class="text-right">Frais de developpement</th>
         </xpath>
+        <xpath expr="//table[hasclass('table')]//thead//tr//th[6]" position="after">
+            <t t-if="doc.partner_id.partner_type == 'ex'">
+                <th name="th_dev_price" class="text-right">HS CODE</th>
+            </t>
+        </xpath>
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[2]" position="replace">
             <td name="td_quantity" class="text-right">
-                <span t-field="line.unit_qty" />
+                <span t-field="line.unit_qty"/>
             </td>
         </xpath>
         <!-- <xpath expr="//t[@t-set='information_block']" position="replace">
@@ -70,13 +75,20 @@
         </xpath> -->
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
             <td name="td_quantity" class="text-right">
-                <span t-field="line.product_uom" />
+                <span t-field="line.product_uom"/>
             </td>
         </xpath>
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[6]" position="after">
             <td name="td_quantity" class="text-right">
-                <span t-field="line.development_expenses" />
+                <span t-field="line.development_expenses"/>
             </td>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//tbody//tr//td[6]" position="after">
+            <t t-if="doc.partner_id.partner_type == 'ex'">
+                <td name="td_quantity" class="text-right">
+                    <span t-field="line.product_id.hs_code"/>
+                </td>
+            </t>
         </xpath>
 
         <xpath expr="//div[hasclass('page')]//h2[hasclass('mt16')]" position="replace">
@@ -89,19 +101,19 @@
                     <span>Facture proforma</span>
                 </t>
                 <!-- <span t-field="doc.name" /> -->
-                <span t-field="doc.sale_order_partner" />
+                <span t-field="doc.sale_order_partner"/>
             </h2>
         </xpath>
         <!-- Temps de livraison -->
         <xpath expr="//div[@id='informations']//div[3]" position="after">
             <div class="col-auto col-3 mw-100 mb-2">
                 <strong>Indicatif de livraison:</strong>
-                <p class="m-0" t-field="doc.delivery_time" />
+                <p class="m-0" t-field="doc.delivery_time"/>
                 <!-- <p class="m-0" t-field="doc.delivery_time" t-options='{"widget": "date"}' /> -->
             </div>
             <div class="col-auto col-3 mw-100 mb-2">
                 <strong>Indicatif de fabrication:</strong>
-                <p class="m-0" t-field="doc.production_duration" />
+                <p class="m-0" t-field="doc.production_duration"/>
 
             </div>
         </xpath>
@@ -112,12 +124,13 @@
         <xpath expr="//div[hasclass('page')]//table[1]//td[1]" position="before">
             <td name="td_image">
                 <t t-if="line.product_id.image_1920">
-                    <img t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height: 4cm; max-width: 4cm;" />
+                    <img t-att-src="image_data_uri(line.product_id.image_1920)"
+                         style="max-height: 4cm; max-width: 4cm;"/>
                 </t>
                 <t t-else=""></t>
             </td>
         </xpath>
-        <xpath expr="//span[@t-field='doc.payment_term_id.note']" position="replace"></xpath>
+        <xpath expr="//span[@t-field='doc.payment_term_id.note']" position="before"></xpath>
     </template>
 
 

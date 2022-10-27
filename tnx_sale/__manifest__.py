@@ -15,7 +15,7 @@
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "tnx_base", "sale", "account", "web"],
+    "depends": ["base", "tnx_base", "sale", "account", "web", "tnx_product", "tnx_contact"],
     # always loaded
     "data": [
         # 'security/ir.model.access.csv',
