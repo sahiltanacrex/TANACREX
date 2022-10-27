@@ -130,7 +130,17 @@
                 <t t-else=""></t>
             </td>
         </xpath>
-        <xpath expr="//span[@t-field='doc.payment_term_id.note']" position="before"></xpath>
+        <xpath expr="//span[@t-field='doc.payment_term_id.note']" position="before">
+            <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                <div class="row">
+                    <div class="col-12">
+                        <span t-esc="doc.currency_id.amount_to_text(doc.amount_total)"
+                              style="font-size: 16px;font-weight: bold;"></span>
+                    </div>
+                </div>
+            </t>
+
+        </xpath>
     </template>
 
 
