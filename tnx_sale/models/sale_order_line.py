@@ -8,6 +8,23 @@ class Sale_order_line(models.Model):
     development_expenses = fields.Monetary("Development costs")
     unit_qty = fields.Float("Unitary quantity")
     product_uom_qty = fields.Float("Cond Quantity")
+    box_qty = fields.Float("Nombre de carton", compute="_compute_box_qty")
+    poids_en_kg = fields.Float(
+        compute="_compute_poids_total", store=True, required=False
+    )
+
+    @api.depends("product_id", "product_id.weight", "qty_delivered")
+    def _compute_poids_total(self):
+        for rec in self:
+            rec.poids_en_kg = rec.product_id.weight * rec.qty_delivered
+
+    @api.depends('product_uom_qty', 'product_packaging_id')
+    def _compute_box_qty(self):
+        for rec in self:
+            if rec.product_packaging_id.qty != 0:
+                rec.box_qty = rec.product_uom_qty / rec.product_packaging_id.qty
+            else:
+                rec.box_qty = 0
 
     @api.depends("discount", "price_unit", "tax_id", "development_expenses", "unit_qty")
     def _compute_amount(self):
@@ -34,11 +51,11 @@ class Sale_order_line(models.Model):
                         ),
                         "price_total": taxes["total_included"],
                         "price_subtotal": taxes["total_excluded"]
-                        + line.development_expenses,
+                                          + line.development_expenses,
                     }
                 )
                 if rec.env.context.get(
-                    "import_file", False
+                        "import_file", False
                 ) and not rec.env.user.user_has_groups("account.group_account_manager"):
                     line.tax_id.invalidate_cache(
                         ["invoice_repartition_line_ids"], [line.tax_id.id]
@@ -50,7 +67,7 @@ class Sale_order_line(models.Model):
                 if rec.product_id.qty_min > 0:
                     if rec.unit_qty < rec.product_id.qty_min:
                         rec.price_subtotal = (
-                            rec.product_id.minimum_price + rec.development_expenses
+                                rec.product_id.minimum_price + rec.development_expenses
                         )
 
     def _prepare_invoice_line(self, **optional_values):
@@ -95,10 +112,10 @@ class Sale_order_line(models.Model):
     def _onchangeqty_min_product_uom_qty(self):
         self.unit_qty = self.product_uom_qty * self.product_uom.ratio
         if (
-            self.product_id.qty_min
-            and self.product_id
-            and self.product_uom_qty
-            and self.product_id.detailed_type == "product"
+                self.product_id.qty_min
+                and self.product_id
+                and self.product_uom_qty
+                and self.product_id.detailed_type == "product"
         ):
             if self.product_id.qty_min > 0:
                 if self.unit_qty < self.product_id.qty_min:
@@ -120,15 +137,15 @@ class Account_move_line(models.Model):
 
     @api.model
     def _get_price_total_and_subtotal_model(
-        self,
-        price_unit,
-        quantity,
-        discount,
-        currency,
-        product,
-        partner,
-        taxes,
-        move_type,
+            self,
+            price_unit,
+            quantity,
+            discount,
+            currency,
+            product,
+            partner,
+            taxes,
+            move_type,
     ):
         vals = super(Account_move_line, self)._get_price_total_and_subtotal_model(
             price_unit, quantity, discount, currency, product, partner, taxes, move_type
@@ -141,6 +158,6 @@ class Account_move_line(models.Model):
             if product.qty_min > 0:
                 if self.unit_qty < product.qty_min:
                     vals["price_subtotal"] = (
-                        self.development_expenses + product.minimum_price
+                            self.development_expenses + product.minimum_price
                     )
         return vals

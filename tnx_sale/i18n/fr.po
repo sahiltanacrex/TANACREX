@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20220810\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 12:15+0000\n"
-"PO-Revision-Date: 2022-10-27 12:15+0000\n"
+"POT-Creation-Date: 2022-10-27 12:16+0000\n"
+"PO-Revision-Date: 2022-10-27 12:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,17 +18,17 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<span>Facture proforma</span>"
-msgstr "<span>Proforma Invoice</span>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<span>Nombre de carton : </span>"
-msgstr "<span>Number of boxes : </span>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<span>Poids approximatif : </span>"
-msgstr "<span>Approximate weight : </span>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
@@ -38,12 +38,12 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<strong>Indicatif de fabrication:</strong>"
-msgstr "<strong>Manufacturing date:</strong>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<strong>Indicatif de livraison:</strong>"
-msgstr "<strong>Delivery date:</strong>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
@@ -63,12 +63,12 @@ msgstr ""
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__sale_order_partner
 msgid "BC client"
-msgstr "Customer purchase order"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Bon de commande"
-msgstr "Purchase order"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__box_qty
@@ -88,12 +88,12 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Devis"
-msgstr "Quotation"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Frais de developpement"
-msgstr "Development costs"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
@@ -109,29 +109,29 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__production_duration
 #: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
 msgid "Indicatif de fabrication"
-msgstr "Manufacturing date"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__delivery_time
 #: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
 msgid "Indicatif de livraison"
-msgstr "Delivery date"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model,name:tnx_sale.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Écriture comptable"
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order_line__box_qty
 msgid "Nombre de carton"
-msgstr "Number of boxes"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__poids_en_kg
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order_line__poids_en_kg
 msgid "Poids En Kg"
-msgstr "Weight In Kg"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.view_order_form_with_carrier
@@ -141,18 +141,18 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Prix / Udm"
-msgstr "Price/ UoM"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_account_move_line__development_expenses
 msgid "Prix de developpement"
-msgstr "Development costs"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_account_move_line__unit_qty
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Quantité unitaire"
-msgstr "Unitary quantity"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.view_order_form_with_carrier
@@ -162,17 +162,17 @@ msgstr ""
 #. module: tnx_sale
 #: model:ir.model,name:tnx_sale.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Bon de commande"
 
 #. module: tnx_sale
 #: model:ir.model,name:tnx_sale.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "Ligne de bons de commande"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "UdM"
-msgstr "UoM"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order_line__unit_qty

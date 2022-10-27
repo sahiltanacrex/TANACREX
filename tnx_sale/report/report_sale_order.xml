@@ -138,8 +138,18 @@
                               style="font-size: 16px;font-weight: bold;"></span>
                     </div>
                 </div>
-            </t>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Poids approximatif : </span> <span t-esc="doc.poids_en_kg"> </span> <span> Kg</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <span>Nombre de carton : </span> <span t-esc="doc.box_qty"></span>
+                    </div>
 
+                </div>
+            </t>
         </xpath>
     </template>
 
