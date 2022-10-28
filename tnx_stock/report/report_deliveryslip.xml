@@ -117,7 +117,7 @@
                                     <br/>
                                     <div>
                                         <span>Bon de commande N° : </span>
-                                        <span t-esc="o.origin"/>
+                                        <span t-esc="o.bc_client"/>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                             <tr t-foreach="lines" t-as="line">
                                 <tr>
                                     <td>
-                                        <span t-field="line.qty_done"/>
+                                        <span t-field="line.unit_done"/>
                                     </td>
                                     <td>
                                         <span t-field="line.product_id.default_code"/>

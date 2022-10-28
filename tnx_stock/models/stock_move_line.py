@@ -35,3 +35,5 @@ class StockMoveLine(models.Model):
                 rec.qty_done = rec.unit_done
             else:
                 rec.qty_done = rec.unit_done / rec.product_uom_id.ratio
+
+
