@@ -3,6 +3,9 @@ from odoo import _, fields, models, api
 
 class StockPickingInherit(models.Model):
     _inherit = "stock.picking"
+    bc_client = fields.Char(
+        string='BC CLIENT',
+        required=False)
 
     def report_colisages(self):
         view = self.env.ref("tnx_stock.note_colisage_form_view")

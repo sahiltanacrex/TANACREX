@@ -20,6 +20,8 @@
         "tnx_base",
         "stock",
         "product",
+        "sale_stock",
+        "tnx_sale"
     ],
     # always loaded
     "data": [
