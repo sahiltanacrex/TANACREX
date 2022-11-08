@@ -26,6 +26,11 @@
                     <attribute name="readonly">1</attribute>
                     <attribute name="force_save">1</attribute>
                 </xpath>
+                <page name="miscellaneous" position="after">
+                    <page name="comment" string="Commentaire">
+                        <field name="comment" placeholder="commentaire..."/>
+                    </page>
+                </page>
             </field>
         </record>
         <!-- inherit view tree -->
@@ -40,30 +45,37 @@
                     <!-- attrs="{'invisible': [('check_bc','=',False)]}" -->
                     <button name="action_send_mail_odf" string="Mail Ordre de fabrication" type="object" class="oe_highlight" />
                     <field name="developments" decoration-danger="developments == '1'" decoration-info="developments == '2'" decoration-muted="developments == '3'" decoration-primary="developments == '4'" decoration-success="developments == '5'" widget="badge" />
+                    <field name="comment" />
                 </field>
+                <field name="name" position="attributes">
+                    <field name="string">ref ordre fab</field>
+                </field>
+
                 <xpath expr="//field[@name='origin']" position="attributes">
                     <attribute name="optional">hide</attribute>
                 </xpath>
-                <xpath expr="//field[@name='activity_ids']" position="replace">
+                <!-- <xpath expr="//field[@name='activity_ids']" position="replace">
                     <field name="categorie_id" string="Catégorie d'article" />
-                </xpath>
+                </xpath> -->
                 <xpath expr="//field[@name='date_planned_start']" position="attributes">
-                    <attribute name="string">Date prévue fab</attribute>
+                    <attribute name="string">Début Prod</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="partner_id" string="Client" />
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="before">
-                    <field name="date_communication" string="Date communiquée" />
+                    <field name="date_communication" string="Fin Prod" />
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="after">
 
-                    <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" />
-                    <field name="product_type" optional="show" readonly="1" />
+                    <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" string='Taille'/>
+                    <field name="product_type" optional="show" readonly="1" string="Type"/>
+                    <field name="material_product" optional="show" readonly="1" string="Matière"/>
                     <field name="color_product" widget="color" readonly="1" />
                 </xpath>
                 <xpath expr="//field[@name='name']" position="before">
                     <field name="image_1920" widget="image" height="70" />
+                    <field name="sale_order_date" string="Date BC" />
                     <field name="order_id" string="BC" />
                     <field name="bc_client" string="BC Client" />
                 </xpath>

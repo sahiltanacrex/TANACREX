@@ -10,6 +10,7 @@ class MrpProduction(models.Model):
 
     partner_id = fields.Many2one("res.partner", string="client")
     order_id = fields.Many2one("sale.order", string="BC")
+    sale_order_date = fields.Datetime(related='order_id.date_order')
     developments = fields.Selection(
         [("1", "0%"), ("2", "25%"), ("3", "50%"), ("4", "75%"), ("5", "100%")],
         default="1",
@@ -19,6 +20,7 @@ class MrpProduction(models.Model):
     image_1920 = fields.Image("Image", related="product_id.image_1920")
     bc_client = fields.Char("Bc Client")
     line_product = fields.Float("Ligne", related="product_id.line")
+    material_product = fields.Char(related="product_id.material")
     product_type = fields.Selection(
         "Type de produit", related="product_id.product_type"
     )
@@ -29,8 +31,12 @@ class MrpProduction(models.Model):
         related="product_id.categ_id",
     )
     date_communication = fields.Date("Date communiquée")
+    comment = fields.Text()
 
     def action_send_mail_odf(self):
+        self.clear_caches()
+        if self.partner_id.lang:
+            self = self.with_context(lang=self.partner_id.lang)
         developments_perccent = dict(self._fields["developments"].selection).get(
             self.developments
         )
@@ -44,12 +50,15 @@ class MrpProduction(models.Model):
                 "default_use_template": bool(template_id),
                 "default_template_id": template_id,
                 "default_composition_mode": "comment",
-                "custom_layout": "mail.mail_notification_paynow",
+                # "custom_layout": "mail.mail_notification_paynow",
                 "force_email": True,
+                "company_name": self.env.company.name,
+                "company_id": self.env.company.id,
                 "mail_partner_id": self.partner_id.id,
                 "mail_partner_name": self.partner_id.name,
                 "order_origin": self.order_id.name,
                 "developments_states": developments_perccent,
+                "subject": _('Status fabrication'),
             }
             return {
                 "type": "ir.actions.act_window",
@@ -73,7 +82,7 @@ class MrpProduction(models.Model):
     #                 )
     #                 if source:
     #                     try:
-    #                         production.order_id = source
+    #                         production.obc_clientrder_id = source
     #                         production.partner_id = source.partner_id
     #                         production.check_bc = True
     #                         production.bc_client = source.sale_order_partner
