@@ -20,7 +20,6 @@
         <field name="name">Note de colisage</field>
         <field name="model">note.colisage.wizard</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_type">qweb-pdf</field>
         <field name="report_name">tnx_stock.tnx_package_report</field>
         <field name="report_file">tnx_stock.tnx_package_report</field>
         <field name="print_report_name">'Note de colisage - %s' % (object.partner_id.name)</field>
@@ -29,148 +28,152 @@
         <field name="binding_type">report</field>
         <field name="paperformat_id" ref="tnx_stock.note_de_colisage_paperformat" />
     </record>
-    <!-- Template Note de colisage -->
-    <template id="tnx_package_report">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
-                <t t-if="not o" t-set="o" t-value="o" />
-                <t t-if="not company">
-                    <t t-if="company_id">
-                        <t t-set="company" t-value="company_id" />
-                    </t>
-                    <t t-elif="o and 'company_id' in o">
-                        <t t-set="company" t-value="o.company_id.sudo()" />
-                    </t>
-                    <t t-else="else">
-                        <t t-set="company" t-value="res_company" />
-                    </t>
-                </t>
+    <template id="tnx_package_document">
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <t t-if="not o" t-set="o" t-value="o" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
 
-                <div class="header" style="font-size : 13px !important;">
-                    <!-- TODO here we can create header -->
-                    <div class="body_header">
-                        <br />
-                        <div class="row text-center" style="margin-left: 1px; margin-right: 1px; ">
-                            <div class="col-6">
-                                <div>
-                                    <img t-if="company.logo" style="max-height:40px" t-att-src="image_data_uri(company.logo)" />
-                                </div>
-                                <span class="font-weight-bold">
+        <div class="header" style="font-size : 13px !important;">
+            <!-- TODO here we can create header -->
+            <div class="body_header">
+                <br />
+                <div class="row text-center" style="margin-left: 1px; margin-right: 1px; ">
+                    <div class="col-6">
+                        <div>
+                            <img t-if="company.logo" style="max-height:40px" t-att-src="image_data_uri(company.logo)" />
+                        </div>
+                        <span class="font-weight-bold">
                                     MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
                                 </span>
-                                <br />
-                                <div>Lot 18 D Imerinafovoany </div>
-                                <div style="font-size:13px;">BP. 11064 - Antananarivo - Madagascar</div>
-                                <div>
-                                    <span>Tél :</span>
-                                    <span>22 441 35 / 03402 02 441 35</span>
-                                </div>
-                                <div>
-                                    <span>E-mail : contact@tanacrex.com</span>
-                                </div>
-                                <div>
-                                    <div>
-                                        <span>R.C 13 332 - STAT :</span>
-                                        <span t-esc="company.stat" />
-                                    </div>
-                                    <div>
-                                        <span>NIF :</span>
-                                        <span t-esc="company.nif" />
-                                    </div>
-                                    <br />
-                                </div>
+                        <br />
+                        <div>Lot 18 D Imerinafovoany </div>
+                        <div style="font-size:13px;">BP. 11064 - Antananarivo - Madagascar</div>
+                        <div>
+                            <span>Tél :</span>
+                            <span>22 441 35 / 03402 02 441 35</span>
+                        </div>
+                        <div>
+                            <span>E-mail : contact@tanacrex.com</span>
+                        </div>
+                        <div>
+                            <div>
+                                <span>R.C 13 332 - STAT :</span>
+                                <span t-esc="company.stat" />
                             </div>
+                            <div>
+                                <span>NIF :</span>
+                                <span t-esc="company.nif" />
+                            </div>
+                            <br />
                         </div>
                     </div>
-                    <div>
-                        <div class="text-center ">
-                            <h6 class="font-weight-bold">
-                                NOTE DE COLISAGE  :
-                                <span t-esc="o.partner_id.name" />
-                            </h6>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            <span>
-                                <b>Poids net :</b>
-                            </span>
-                            <span t-esc="o.poids_net" />
-                            kg
-                        </div>
-                        <div class="col-3">
-                            <b>N° Facture client :</b>
-                            <span t-esc="o.move_id.name" t-if="o.move_id" />
-                        </div>
-                        <div class="col-3">
-                            <b>Description :</b>
-                            <span t-esc="o.description" />
-                        </div>
+                </div>
+            </div>
+            <div>
+                <div class="text-center ">
+                    <h6 class="font-weight-bold">
+                        NOTE DE COLISAGE  :
+                        <span t-esc="o.partner_id.name" />
+                    </h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <span>
+                        <b>Poids net :</b>
+                    </span>
+                    <span t-esc="o.poids_net" />
+                    kg
+                </div>
+                <div class="col-3">
+                    <b>N° Facture client :</b>
+                    <span t-esc="o.move_id.name" t-if="o.move_id" />
+                </div>
+                <div class="col-3">
+                    <b>Description :</b>
+                    <span t-esc="o.description" />
+                </div>
 
-                        <div class="col-3">
-                            <b>Poids brut :</b>
-                            <span t-esc="o.poids_brut" />
-                            kg
-                        </div>
-                    </div>
-                    <br />
-                    <style type="text/css">
+                <div class="col-3">
+                    <b>Poids brut :</b>
+                    <span t-esc="o.poids_brut" />
+                    kg
+                </div>
+            </div>
+            <br />
+            <style type="text/css">
                         td,th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; padding:3px 3px;}
                         th{background-color:#9b9b9b;font-weight:bold;text-align:center;vertical-align:top}
                     </style>
 
-                    <table class="tg" style="undefined;table-layout: fixed; width:100%">
-                        <thead>
-                            <tr>
-                                <th class="tg-mn8v">BC Client</th>
-                                <th class="tg-mn8v">Article</th>
-                                <th class="tg-mn8v">Quantité</th>
-                                <th class="tg-mn8v">UdM</th>
-                                <th class="tg-mn8v">Conditionnement</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <table class="tg" style="undefined;table-layout: fixed; width:100%">
+                <thead>
+                    <tr>
+                        <th class="tg-mn8v">BC Client</th>
+                        <th class="tg-mn8v">Article</th>
+                        <th class="tg-mn8v">Quantité</th>
+                        <th class="tg-mn8v">UdM</th>
+                        <th class="tg-mn8v">Conditionnement</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                            <t t-foreach="o.stock_picking_ids" t-as="picking">
-                                <t t-foreach="picking.move_line_ids_without_package" t-as="line">
-                                    <tr>
-                                        <td class="tg-iucd">
-                                            <t t-if="picking.sale_id" t-esc="picking.sale_id.sale_order_partner" />
-                                        </td>
-                                        <td class="tg-0pky">
-                                            <t t-if="line.product_id">
-                                                [
-                                                <t t-esc="line.product_id.default_code" />
-                                                ]
-                                                <t t-esc="line.product_id.name" />
-                                                |
-                                                <t t-esc="line.product_id.diameter" />
-                                                |
-                                                <t t-esc="line.product_id.line" />
-                                                |
-                                                <t t-esc="line.product_id.thickness" />
-                                                |
-                                                <t t-esc="line.product_id.color" />
-                                            </t>
-                                        </td>
-                                        <td class="tg-0pky">
-                                            <t t-if="line.product_uom_id" t-set="qty_udm" t-value="line.qty_done / line.product_uom_id.ratio" />
-                                            <t t-if="qty_udm" t-esc="qty_udm" />
-                                        </td>
-                                        <td class="tg-0pky">
-                                            <t t-if="line.product_uom_id" t-esc="line.product_uom_id.ratio" />
-                                            pièces
-                                        </td>
-                                        <td class="tg-0pky">
-                                            <t t-if="line.move_id.product_packaging_id" t-esc="line.move_id.product_packaging_id.name" />
-                                        </td>
-                                    </tr>
-                                </t>
-                            </t>
-                        </tbody>
-                    </table>
-                </div>
+                    <t t-foreach="o.stock_picking_ids" t-as="picking">
+                        <t t-foreach="picking.move_line_ids_without_package" t-as="line">
+                            <tr>
+                                <td class="tg-iucd">
+                                    <t t-if="picking.sale_id" t-esc="picking.sale_id.sale_order_partner" />
+                                </td>
+                                <td class="tg-0pky">
+                                    <t t-if="line.product_id">
+                                        [
+                                        <t t-esc="line.product_id.default_code" />
+                                        ]
+                                        <t t-esc="line.product_id.name" />
+                                        |
+                                        <t t-esc="line.product_id.diameter" />
+                                        |
+                                        <t t-esc="line.product_id.line" />
+                                        |
+                                        <t t-esc="line.product_id.thickness" />
+                                        |
+                                        <t t-esc="line.product_id.color" />
+                                    </t>
+                                </td>
+                                <td class="tg-0pky">
+                                    <t t-if="line.product_uom_id" t-set="qty_udm" t-value="line.qty_done / line.product_uom_id.ratio" />
+                                    <t t-if="qty_udm" t-esc="qty_udm" />
+                                </td>
+                                <td class="tg-0pky">
+                                    <t t-if="line.product_uom_id" t-esc="line.product_uom_id.ratio" />
+                                    pièces
+                                </td>
+                                <td class="tg-0pky">
+                                    <t t-if="line.move_id.product_packaging_id" t-esc="line.move_id.product_packaging_id.name" />
+                                </td>
+                            </tr>
+                        </t>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </template>
+    <!-- Template Note de colisage -->
+    <template id="tnx_package_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.sudo().lang" />
+                <t t-call="tnx_stock.tnx_package_document" t-lang="lang" />
             </t>
         </t>
     </template>
