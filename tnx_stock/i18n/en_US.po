@@ -34,14 +34,14 @@ msgid ""
 "                                            </b>"
 msgstr ""
 "<b>\n"
-"                                                BUTONS &amp; LABELS\n"
+"                                                BUTTONS &amp; LABELS\n"
 "\n"
 "                                            </b>"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_etiquette_nexource
 msgid "<b>BOUTONS  ETIQUETTES </b>"
-msgstr "<b>LABELS BUTONS </b>"
+msgstr "<b>LABELS BUTTONS </b>"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
@@ -162,7 +162,7 @@ msgstr "Cancel"
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid "Article"
-msgstr ""
+msgstr "Item"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_stock_picking__bc_client
@@ -329,7 +329,7 @@ msgstr ""
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid "NOTE DE COLISAGE  :"
-msgstr "PACKING NOTE :"
+msgstr "PACKING LIST :"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__name

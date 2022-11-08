@@ -19,7 +19,7 @@
     <record id="action_tnx_package_report" model="ir.actions.report">
         <field name="name">Note de colisage</field>
         <field name="model">note.colisage.wizard</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">tnx_stock.tnx_package_report</field>
         <field name="report_file">tnx_stock.tnx_package_report</field>
         <field name="print_report_name">'Note de colisage - %s' % (object.partner_id.name)</field>
@@ -92,8 +92,8 @@
                     <span>
                         <b>Poids net :</b>
                     </span>
-                    <span t-esc="o.poids_net" />
-                    kg
+                    <span t-esc="o.get_formatted_weight(o.poids_net)" />
+                    kgs
                 </div>
                 <div class="col-3">
                     <b>N° Facture client :</b>
@@ -106,8 +106,8 @@
 
                 <div class="col-3">
                     <b>Poids brut :</b>
-                    <span t-esc="o.poids_brut" />
-                    kg
+                    <span t-esc="o.get_formatted_weight(o.poids_brut)" />
+                    kgs
                 </div>
             </div>
             <br />
@@ -119,7 +119,7 @@
             <table class="tg" style="undefined;table-layout: fixed; width:100%">
                 <thead>
                     <tr>
-                        <th class="tg-mn8v">BC Client</th>
+                        <th class="tg-mn8v">Type</th>
                         <th class="tg-mn8v">Article</th>
                         <th class="tg-mn8v">Quantité</th>
                         <th class="tg-mn8v">UdM</th>
@@ -132,7 +132,7 @@
                         <t t-foreach="picking.move_line_ids_without_package" t-as="line">
                             <tr>
                                 <td class="tg-iucd">
-                                    <t t-if="picking.sale_id" t-esc="picking.sale_id.sale_order_partner" />
+                                    <t t-if="line.product_id.product_type" t-esc="dict(line.product_id._fields['product_type']._description_selection(o.env)).get(line.product_id.product_type)" />
                                 </td>
                                 <td class="tg-0pky">
                                     <t t-if="line.product_id">
@@ -152,11 +152,11 @@
                                 </td>
                                 <td class="tg-0pky">
                                     <t t-if="line.product_uom_id" t-set="qty_udm" t-value="line.qty_done / line.product_uom_id.ratio" />
-                                    <t t-if="qty_udm" t-esc="qty_udm" />
+                                    <t t-if="qty_udm" t-esc="o.get_formatted_qty(qty_udm)" />
                                 </td>
                                 <td class="tg-0pky">
-                                    <t t-if="line.product_uom_id" t-esc="line.product_uom_id.ratio" />
-                                    pièces
+                                    <!-- <t t-if="line.product_uom_id" t-esc="o.get_formatted_qty(line.product_uom_id.ratio)" /> -->
+                                    pcs
                                 </td>
                                 <td class="tg-0pky">
                                     <t t-if="line.move_id.product_packaging_id" t-esc="line.move_id.product_packaging_id.name" />

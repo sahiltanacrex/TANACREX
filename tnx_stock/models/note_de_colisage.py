@@ -15,3 +15,11 @@ class NoteDeColisage(models.TransientModel):
 
     def report_colisage(self):
         return self.env.ref("tnx_stock.action_tnx_package_report").report_action(self)
+    
+    def get_formatted_qty(self, qty):
+        result = f'{qty:,.2f}'.split('.')[0]
+        return result.replace(',', ' ')
+    
+    def get_formatted_weight(self, weight):
+        result = f'{weight:,.1f}'
+        return result.replace(',', ' ').replace('.', ',')

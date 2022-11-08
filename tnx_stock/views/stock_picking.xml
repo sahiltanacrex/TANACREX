@@ -8,6 +8,12 @@
             <xpath expr="//header/button[@name='action_assign']" position="after">
                 <button name="report_colisages" type="object" string="Colisage"/>
             </xpath>
+            <field name="partner_id" position="attributes">
+                <attribute name="string">Client</attribute>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="bc_client" string="BC Client"/>
+            </field>
         </field>
     </record>
     <record id="stock_move_line_inherit_tree_view" model="ir.ui.view">
