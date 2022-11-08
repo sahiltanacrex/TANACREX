@@ -3,6 +3,34 @@ import math
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
+LINE_DIAMETER = {
+    '10': 6.35,
+    '12': 7.62,
+    '13': 8.26,
+    '14': 8.90,
+    '16': 10.16,
+    '17': 10.80,
+    '18': 11.43,
+    '20': 12.70,
+    '22': 13.97,
+    '24': 15.24,
+    '26': 16.51,
+    '28': 17.78,
+    '30': 19.05,
+    '32': 20.32,
+    '34': 21.59,
+    '36': 22.86,
+    '40': 25.40,
+    '44': 27.94,
+    '48': 30.48,
+    '54': 34.29,
+    '60': 38.10,
+    '70': 44.45,
+    '80': 50.80,
+    '90': 57.15,
+    '100': 63.50
+}
+
 
 class Product_template(models.Model):
     _inherit = "product.template"
@@ -59,10 +87,17 @@ class Product_template(models.Model):
     @api.onchange("line", "diameter", "length", "height")
     def _onchange_(self):
         for record in self:
-            if self.product_type == "button":
-                self.surface = math.pi * self.diameter
-            elif self.product_type in ["label", "sticker"]:
-                self.surface = self.length * self.height
+            if record.product_type == "button":
+                record.surface = math.pi * record.diameter
+            elif record.product_type in ["label", "sticker"]:
+                record.surface = record.length * record.height
+    
+    @api.onchange('line')
+    def _onchange_line(self):
+        for rec in self:
+            if rec.line:
+                line = int(rec.line)
+                rec.diameter = LINE_DIAMETER.get(str(line)) or 0.0
 
     number_holes = fields.Integer("Nombre de trous")
 
@@ -137,7 +172,8 @@ class Product_template(models.Model):
     @api.depends("taxes_id", "minimum_price")
     def _compute_tax_string_min(self):
         for record in self:
-            record.tax_string_min = record._construct_tax_string(record.minimum_price)
+            record.tax_string_min = record._construct_tax_string(
+                record.minimum_price)
 
 
 class HsCode(models.Model):
