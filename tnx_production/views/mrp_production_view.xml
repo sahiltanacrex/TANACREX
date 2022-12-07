@@ -20,7 +20,7 @@
                     <attribute name="string">Début production</attribute>
                 </xpath>
                 <xpath expr="//label[@for='date_planned_start']" position="before">
-                    <field name="date_communication" string="Fin production" />
+                    <field name="end_of_production" string="Fin production" />
                 </xpath>
                 <xpath expr="//notebook/page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="attributes">
                     <attribute name="readonly">1</attribute>
@@ -48,7 +48,7 @@
                     <field name="comment" />
                 </field>
                 <field name="name" position="attributes">
-                    <field name="string">ref ordre fab</field>
+                    <attribute name="string">ref ordre fab</attribute>
                 </field>
 
                 <xpath expr="//field[@name='origin']" position="attributes">
@@ -64,7 +64,7 @@
                     <field name="partner_id" string="Client" />
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="before">
-                    <field name="date_communication" string="Fin Prod" />
+                    <field name="end_of_production" string="Fin Prod" />
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="after">
 

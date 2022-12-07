@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, Warning
+import datetime
 
 
 class MrpProduction(models.Model):
@@ -30,7 +31,14 @@ class MrpProduction(models.Model):
         "Catégorie d'article",
         related="product_id.categ_id",
     )
-    date_communication = fields.Date("Date communiquée")
+    end_of_production = fields.Date(compute="_compute_end_of_production")
+
+    @api.depends('date_planned_start', 'order_id.production_duration')
+    def _compute_end_of_production(self):
+        for record in self:
+
+            record.end_of_production = record.date_planned_start + datetime.timedelta(days=record.order_id.production_duration)
+
     comment = fields.Text()
 
     def action_send_mail_odf(self):
