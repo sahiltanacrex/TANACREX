@@ -11,16 +11,16 @@
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="after">
                     <field name="partner_id" string="Client" force_save="1" />
-                    <field name="order_id" string="BC" force_save="1" />
+                    <field name="order_id" string="Devis confirmé" force_save="1" />
                     <field name="bc_client" string="BC Client" force_save="1" />
                     <field name="developments" widget="selection" />
                     <field name="check_bc" invisible="1" />
                 </xpath>
                 <xpath expr="//label[@for='date_planned_start']" position="attributes">
-                    <attribute name="string">Date prévue fab</attribute>
+                    <attribute name="string">Début production</attribute>
                 </xpath>
                 <xpath expr="//label[@for='date_planned_start']" position="before">
-                    <field name="date_communication" string="Date communiquée" />
+                    <field name="date_communication" string="Fin production" />
                 </xpath>
                 <xpath expr="//notebook/page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="attributes">
                     <attribute name="readonly">1</attribute>

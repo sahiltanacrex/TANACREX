@@ -41,7 +41,7 @@ class Product_template(models.Model):
     donneur_ordre = fields.Many2one("res.partner", string="Donneur d'ordre")
     ref_donneur_ordre = fields.Char(string=" Réf. donneur d'ordre")
 
-    matiere_id = domain("[('type_id', '=', type_id)]")
+    # matiere_id = domain("[('type_id', '=', type_id)]")
 
     @tools.ormcache()
     def _get_default_uom_id(self):

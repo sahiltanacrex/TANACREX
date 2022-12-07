@@ -18,7 +18,5 @@ class ProductMaterial(models.Model):
         default='other'
     )
 
-    product_type_id = mr,ymrytr
-
     material = fields.Char()
 
