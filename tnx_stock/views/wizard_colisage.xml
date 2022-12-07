@@ -36,6 +36,14 @@
                             </tree>
                         </field>
                     </group>
+                    <group>
+                        <group>
+                            <field name="inconterm"/>
+                        </group>
+                        <group>
+                            <field name="origin" string="Origine"/>
+                        </group>
+                    </group>
                 </sheet>
                 <footer>
                     <button name="report_colisage" type="object" string="Imprimer" class="btn-primary" data-hotkey="q" />
