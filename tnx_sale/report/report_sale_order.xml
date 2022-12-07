@@ -31,9 +31,9 @@
             <th name="th_priceunit" class="text-right">Prix / Udm</th>
         </xpath>
 
-        <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
+        <!-- <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
             <th name="th_priceunit" class="text-right">UdM</th>
-        </xpath>
+        </xpath> -->
         <xpath expr="//table[hasclass('table')]//thead//tr//th[2]" position="replace">
             <th name="th_priceunit" class="text-right">Quantité unitaire</th>
         </xpath>
@@ -73,11 +73,11 @@
                 </t>
             </t>
         </xpath> -->
-        <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
+        <!-- <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
             <td name="td_quantity" class="text-right">
                 <span t-field="line.product_uom"/>
             </td>
-        </xpath>
+        </xpath> -->
         <xpath expr="//table[hasclass('table')]//tbody//tr//td[6]" position="after">
             <td name="td_quantity" class="text-right">
                 <span t-field="line.development_expenses"/>
