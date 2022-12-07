@@ -12,6 +12,12 @@ class NoteDeColisage(models.TransientModel):
     poids_brut = fields.Float()
     description = fields.Char()
     move_id = fields.Many2one("account.move", string="Facture")
+    origin = fields.Char()
+    inconterm = fields.Char()
+
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        self.name = 'Picking list' if self.partner_id.lang != 'fr_FR' else 'Note de colisage'
 
     def report_colisage(self):
         return self.env.ref("tnx_stock.action_tnx_package_report").report_action(self)
