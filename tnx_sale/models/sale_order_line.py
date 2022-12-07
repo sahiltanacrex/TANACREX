@@ -6,7 +6,7 @@ from odoo import models, api, fields
 class Sale_order_line(models.Model):
     _inherit = "sale.order.line"
     development_expenses = fields.Monetary("Development costs")
-    unit_qty = fields.Float("Unitary quantity")
+    unit_qty = fields.Integer("Unitary quantity")
     product_uom_qty = fields.Float("Cond Quantity")
     box_qty = fields.Float("Nombre de carton", compute="_compute_box_qty")
     poids_en_kg = fields.Float(
