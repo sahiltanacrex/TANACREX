@@ -6,13 +6,13 @@
                 <div class="o_label_full" t-att-style="table_style+'width:70mm !important; height: 40mm !important'">
                     <div class="o_label_name" style="width:100%; overflow: hidden;">
                         <div style="float: left;">
-                            <img src="/web/binary/company_logo" style="height: 30px; width: 100px" alt="Logo" />
+                            <img src="/web/binary/company_logo" style="height: 30px; width: 95px" alt="Logo"/>
                         </div>
                         <div>
-                            <table style="margin-left:115px;text-align:center;font-size:10px;line-height: 1px;">
+                            <table style="margin-left:110px;text-align:center;font-size:10px;line-height: 1px;">
                                 <tbody>
                                     <tr>
-                                        <td style="font-size: 9px">
+                                        <td style="font-size: 8px">
                                             <b>BOUTONS &amp; ETIQUETTES</b>
                                         </td>
                                     </tr>
@@ -47,22 +47,22 @@
                                     <tr>
                                         <td style="border:1px solid; width:50%">
                                             <b>ART:</b>
-                                            <t t-esc="product.name" />
+                                            <t t-esc="product.name"/>
                                         </td>
                                         <td style="border:1px solid">
                                             <b>QTY:</b>
-                                            <span t-field="product.qty_available" t-options="{'widget': 'float', 'precision': 0}" />
+                                            <span t-field="product.qty_available" t-options="{'widget': 'float', 'precision': 0}"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="border:1px solid">
                                             <b>SIZE:</b>
-                                            <t t-esc="product.line" />
+                                            <t t-esc="product.line"/>
                                             <span>L</span>
                                         </td>
                                         <td style="border:1px solid">
                                             <b>WEIGHT:</b>
-                                            <span t-field="product.weight" />
+                                            <span t-field="product.weight"/>
                                             kg
                                         </td>
                                     </tr>
@@ -78,7 +78,7 @@
                                 <strong class="o_label_price" t-field="product.list_price" t-options="{'widget': 'monetary', 'label_price': True}" />
                             </t> -->
                         </div>
-                        <div class="o_label_clear" />
+                        <div class="o_label_clear"/>
                     </div>
                 </div>
             </xpath>
