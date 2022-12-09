@@ -20,7 +20,7 @@
                         <br />
                         <div>
                             <div class="text-center ">
-                                <h6 class="font-weight-bold">ORDRE DE FABRICATION</h6>
+                                <h6 class="font-weight-bold">RAPPORT ORDRE DE FABRICATION : <t t-esc="datetime.date.today().strftime('%d/%m/%Y')"/></h6>
                             </div>
                         </div>
                         <style type="text/css">
@@ -31,14 +31,19 @@
                             <thead>
                                 <tr>
                                     <th>Image</th>
+                                    <th>Date BC</th>
                                     <th>BC</th>
                                     <th>BC Client</th>
-                                    <th>Réference</th>
                                     <th>Client</th>
                                     <th>Article</th>
+                                    <th>Type</th>
+                                    <th>Matière</th>
+                                    <th>Taille</th>
                                     <th>Couleur</th>
                                     <th>Quantité</th>
-                                    <th>Avancement</th>
+                                    <th>Udm</th>
+                                    <th>Fin Prod</th>
+                                    <th>Commentaire</th>
                                 </tr>
                             </thead>
                             <t t-foreach="docs" t-as="line">
@@ -50,13 +55,13 @@
                                         </t>
                                     </td>
                                     <td>
-                                        <span t-if="line.order_id" t-esc="line.order_id" />
+                                        <span t-field="line.sale_order_date" t-options="{'widget': 'date'}"/>
+                                    </td>
+                                    <td>Article
+                                        <span t-field="line.order_id" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.bc_client" />
-                                    </td>
-                                    <td>
-                                        <span t-esc="line.name" />
+                                        <span t-field="line.bc_client" />
                                     </td>
                                     <td>
                                         <t t-if="line.partner_id">
@@ -68,13 +73,28 @@
                                         <span t-esc="line.product_id.name" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.color_product" />
+                                        <span t-esc="line.product_type" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.product_qty" />
+                                        <span t-esc="line.material_product" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.developments" />
+                                        <span t-esc="line.line_product" />
+                                    </td>
+                                    <td>
+                                        <p t-attf-style="background-color: {{line.color_product}}; width: 25px; height: 25px; border-radius: 50%; border: 1px solid black; margin: auto;" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_qty" t-options="{'widget': 'float', 'precision': 0}"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_uom_id" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.date_communication" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.comment" />
                                     </td>
                                 </tr>
                             </t>
