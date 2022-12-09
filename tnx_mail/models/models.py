@@ -3,9 +3,9 @@
 # from odoo import models, fields, api
 
 
-# class tnx_product(models.Model):
-#     _name = 'tnx_product.tnx_product'
-#     _description = 'tnx_product.tnx_product'
+# class tnx_mail(models.Model):
+#     _name = 'tnx_mail.tnx_mail'
+#     _description = 'tnx_mail.tnx_mail'
 
 #     name = fields.Char()
 #     value = fields.Integer()

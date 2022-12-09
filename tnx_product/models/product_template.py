@@ -1,6 +1,6 @@
 from email.policy import default
 import math
-from odoo import models, fields, api, _
+from odoo import models, fields, api, tools, _
 from odoo.exceptions import UserError
 
 LINE_DIAMETER = {
@@ -41,6 +41,23 @@ class Product_template(models.Model):
     donneur_ordre = fields.Many2one("res.partner", string="Donneur d'ordre")
     ref_donneur_ordre = fields.Char(string=" Réf. donneur d'ordre")
 
+    # matiere_id = domain("[('type_id', '=', type_id)]")
+
+    @tools.ormcache()
+    def _get_default_uom_id(self):
+        # Deletion forbidden (at least through unlink)
+        return self.env.ref('tnx_product.product_uom_hundred')
+
+    uom_id = fields.Many2one(
+        'uom.uom', 'Unit of Measure',
+        default=_get_default_uom_id, required=True,
+        help="Default unit of measure used for all stock operations.")
+
+    uom_po_id = fields.Many2one(
+        'uom.uom', 'Purchase UoM',
+        default=_get_default_uom_id, required=True,
+        help="Default unit of measure used for purchase orders. It must be in the same category as the default unit of measure.")
+
     @api.onchange("product_type")
     def _onchange_surface(self):
         for record in self:
@@ -59,6 +76,7 @@ class Product_template(models.Model):
     info_frs = fields.Char(string="Info frs", required=False)
     # divers
     miscellaneous = fields.Char(string="Divers", required=False)
+    client_order = fields.Char(string="Bon de commande client", required=False)
 
     # ! add fields
     product_type = fields.Selection(
@@ -72,14 +90,14 @@ class Product_template(models.Model):
     )
 
     material = fields.Char("Matière")
-    thickness = fields.Char("Epaisseur")
+    thickness = fields.Float("Epaisseur (mm)")
     customer_reference = fields.Char("Référence Client")
     partner_id = fields.Many2one("res.partner", string="Client", store=True)
 
     # field based on condition
     # ?if button_type = button
     line = fields.Float("Ligne")
-    diameter = fields.Float(string="Diamètre", required=False)
+    diameter = fields.Float(string="Diamètre (mm)", required=False)
     surface = fields.Float(
         "Surface",
     )
@@ -91,7 +109,7 @@ class Product_template(models.Model):
                 record.surface = math.pi * record.diameter
             elif record.product_type in ["label", "sticker"]:
                 record.surface = record.length * record.height
-    
+
     @api.onchange('line')
     def _onchange_line(self):
         for rec in self:
@@ -160,13 +178,16 @@ class Product_template(models.Model):
             "context": ctx,
         }
 
+    devise = fields.Many2one(
+        'res.currency', string='Devise', default=lambda self: self.env['res.currency'].search([('name', '=', 'MGA')]))
     minimum_price = fields.Monetary(
         "Prix au forfait",
         default=0,
         digits="Prix au forfait",
         help="Prix de vente minimum pour l'articles",
+        currency_field='devise',
     )
-    qty_min = fields.Float("Quantité minimum", store=True, default=0)
+    qty_min = fields.Integer("Quantité minimum", store=True, default=0)
     tax_string_min = fields.Char(compute="_compute_tax_string_min")
 
     @api.depends("taxes_id", "minimum_price")
