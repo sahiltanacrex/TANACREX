@@ -58,7 +58,7 @@ class MrpProduction(models.Model):
                 "default_use_template": bool(template_id),
                 "default_template_id": template_id,
                 "default_composition_mode": "comment",
-                # "custom_layout": "mail.mail_notification_paynow",
+                "custom_layout": "mail.mail_notification_light",
                 "force_email": True,
                 "company_name": self.env.company.name,
                 "company_id": self.env.company.id,
@@ -66,7 +66,8 @@ class MrpProduction(models.Model):
                 "mail_partner_name": self.partner_id.name,
                 "order_origin": self.order_id.name,
                 "developments_states": developments_perccent,
-                "subject": _('Status fabrication'),
+                "subject": _('Status fabrication BC Client {}').format(self.bc_client if self.bc_client else '---'),
+                "bc_client": self.bc_client if self.bc_client else '---',
             }
             return {
                 "type": "ir.actions.act_window",

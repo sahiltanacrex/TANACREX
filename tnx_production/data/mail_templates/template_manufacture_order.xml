@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <!-- must add noupdate="1" in send mail -->
-    <data noupdate="0">
+    <data noupdate="1">
         <record id="send_mail_order_manufacture" model="mail.template">
             <field name="name">Manufacture Order</field>
             <field name="email_from">{{ (user.email_formatted or object.user_id.email_formatted) }}</field>
@@ -12,38 +12,20 @@
             <field name="auto_delete" eval="True" />
             <field name="body_html" type="html">
                 <p>
-                    Bonjour
+                    Bonjour,
                 </p>
                 <p>
-                    Par la présente, nous souhaitons vous notifier que la production de votre commande : n°
-                    <span t-out="ctx['order_origin'] or ''" />
+                    Par la présente, nous souhaitons vous notifier que la production de votre commande n°
+                    <span t-out="ctx['order_origin']+'('+ctx['bc_client']+')' or ''" />
                     est de
-                    <span t-out="ctx['developments_states'] or ''" />
+                    <span t-out="ctx['developments_states'] or ''" />.
                 </p>
                 <p>
                     Bien à vous,
                 </p>
-                <table>
-                    <tr>
-                        <td style="border-right: 1px solid black">
-                            <span class="small">
-                                ${object.env.company.partner_id.name}
-                            </span>
-                        </td>
-                        <td style="vertical-align: center" rowspan="2">
-                            <img src=" data:image/png;base64, ${object.env.company.logo}" height="50px" width="75px"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="border-right: 1px solid black">
-                            <span class="small">
-                                ${object.env.company.phone}<br/>
-                                ${object.env.company.street}<br/>
-                                ${object.env.company.street2}, ${object.env.company.city}, ${object.env.company.zip}<br/>
-                            </span>
-                        </td>
-                    </tr>
-                </table>
+                <p>
+                    <span t-esc="object.user_id.name" data-oe-t-inline="true"/>
+                </p>
             </field>
         </record>
     </data>
