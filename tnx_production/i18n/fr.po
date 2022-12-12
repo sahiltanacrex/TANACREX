@@ -1,0 +1,301 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tnx_production
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-12 08:01+0000\n"
+"PO-Revision-Date: 2022-12-12 08:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tnx_production
+#: model:ir.actions.report,print_report_name:tnx_production.action_production_nexource_report
+msgid "'Analyse production'"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields.selection,name:tnx_production.selection__mrp_production__developments__5
+msgid "100%"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields.selection,name:tnx_production.selection__mrp_production__developments__2
+msgid "25%"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields.selection,name:tnx_production.selection__mrp_production__developments__3
+msgid "50%"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields.selection,name:tnx_production.selection__mrp_production__developments__4
+msgid "75%"
+msgstr ""
+
+#. module: tnx_production
+#: model:mail.template,body_html:tnx_production.send_mail_order_manufacture
+msgid ""
+"<p>\n"
+"                    Bonjour,\n"
+"                </p>\n"
+"                <p>\n"
+"                    Par la présente, nous souhaitons vous notifier que la production de votre commande n°\n"
+"                    <span t-out=\"ctx['order_origin']+'('+ctx['bc_client']+')' or ''\"/>\n"
+"                    est de\n"
+"                    <span t-out=\"ctx['developments_states'] or ''\"/>.\n"
+"                </p>\n"
+"                <p>\n"
+"                    Bien à vous,\n"
+"                </p>\n"
+"                <p>\n"
+"                    <span t-esc=\"object.user_id.name\" data-oe-t-inline=\"true\"/>\n"
+"                </p>\n"
+"            "
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Article"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__developments
+msgid "Avancement"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__order_id
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "BC"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "BC Client"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__bc_client
+msgid "Bc Client"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__categorie_id
+#: model_terms:ir.ui.view,arch_db:tnx_production.mrp_production_search_view_inherit
+msgid "Catégorie d'article"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__check_bc
+msgid "Check Bc"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,help:tnx_production.field_mrp_production__color_product
+msgid "Choose your color"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Client"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__comment
+msgid "Comment"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Commentaire"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__color_product
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Couleur"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,help:tnx_production.field_mrp_production__sale_order_date
+msgid ""
+"Creation date of draft/sent orders,\n"
+"Confirmation date of confirmed orders."
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Date BC"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+msgid "Devis confirmé"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+msgid "Début Prod"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+msgid "Début production"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__end_of_production
+msgid "End Of Production"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+msgid "Envoyer mail Ordre de fabrication"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Fin Prod"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+msgid "Fin production"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__image_1920
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Image"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__line_product
+msgid "Ligne"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "MANUFACTURE DE BOUTONS"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+msgid "Mail Ordre de fabrication"
+msgstr ""
+
+#. module: tnx_production
+#: model:mail.template,name:tnx_production.send_mail_order_manufacture
+msgid "Manufacture Order"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__material_product
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Matière"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__sale_order_date
+msgid "Order Date"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model,name:tnx_production.model_mrp_production
+msgid "Production Order"
+msgstr "Ordre de fabrication"
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Quantité"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "RAPPORT ORDRE DE FABRICATION :"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+msgid "Rapport"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "SERVICE ETIQUETAGE"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,help:tnx_production.field_mrp_production__categorie_id
+msgid "Select category for the current product"
+msgstr ""
+
+#. module: tnx_production
+#: code:addons/tnx_production/models/mrp_production.py:0
+#, python-format
+msgid "Status fabrication BC Client {}"
+msgstr "Ordre de fabrication BC Client {}"
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Taille"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Type"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__product_type
+msgid "Type du produit"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Udm"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.actions.report,name:tnx_production.action_production_nexource_report
+msgid "analyse.production.nexources"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__partner_id
+msgid "client"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
+msgid "commentaire..."
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+msgid "ref ordre fab"
+msgstr ""
+
+#. module: tnx_production
+#: model:mail.template,subject:tnx_production.send_mail_order_manufacture
+msgid "{{ ctx['subject'] }}"
+msgstr ""
