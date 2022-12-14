@@ -79,93 +79,62 @@
                     </div>
                 </div>
             </div>
+            <t t-set="product_group_by_packings" t-value="o.get_clean_data()" />
             <div>
                 <div class="text-center ">
-                    <h6 class="font-weight-bold">
-                        NOTE DE COLISAGE  :
+                    <h4 class="font-weight-bold">
+                        <span t-field="o.name"/>
+                        <br/>
                         <span t-esc="o.partner_id.name" />
-                    </h6>
+                    </h4>
+                    <h6>Invoice <span t-field="o.move_id.name"/></h6>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    <span>
-                        <b>Poids net :</b>
-                    </span>
-                    <span t-esc="o.get_formatted_weight(o.poids_net)" />
-                    kgs
-                </div>
-                <div class="col-3">
-                    <b>N° Facture client :</b>
-                    <span t-esc="o.move_id.name" t-if="o.move_id" />
-                </div>
-                <div class="col-3">
-                    <b>Description :</b>
-                    <span t-esc="o.description" />
-                </div>
-
-                <div class="col-3">
-                    <b>Poids brut :</b>
-                    <span t-esc="o.get_formatted_weight(o.poids_brut)" />
-                    kgs
-                </div>
-            </div>
+            
             <br />
-            <style type="text/css">
-                        td,th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; padding:3px 3px;}
-                        th{background-color:#9b9b9b;font-weight:bold;text-align:center;vertical-align:top}
-                    </style>
-
-            <table class="tg" style="undefined;table-layout: fixed; width:100%">
-                <thead>
-                    <tr>
-                        <th class="tg-mn8v">Type</th>
-                        <th class="tg-mn8v">Article</th>
-                        <th class="tg-mn8v">Quantité</th>
-                        <th class="tg-mn8v">UdM</th>
-                        <th class="tg-mn8v">Conditionnement</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <t t-foreach="o.stock_picking_ids" t-as="picking">
-                        <t t-foreach="picking.move_line_ids_without_package" t-as="line">
-                            <tr>
-                                <td class="tg-iucd">
-                                    <t t-if="line.product_id.product_type" t-esc="dict(line.product_id._fields['product_type']._description_selection(o.env)).get(line.product_id.product_type)" />
-                                </td>
-                                <td class="tg-0pky">
-                                    <t t-if="line.product_id">
-                                        [
-                                        <t t-esc="line.product_id.default_code" />
-                                        ]
-                                        <t t-esc="line.product_id.name" />
-                                        |
-                                        <t t-esc="line.product_id.diameter" />
-                                        |
-                                        <t t-esc="line.product_id.line" />
-                                        |
-                                        <t t-esc="line.product_id.thickness" />
-                                        |
-                                        <t t-esc="line.product_id.color" />
-                                    </t>
-                                </td>
-                                <td class="tg-0pky">
-                                    <t t-if="line.product_uom_id" t-set="qty_udm" t-value="line.qty_done / line.product_uom_id.ratio" />
-                                    <t t-if="qty_udm" t-esc="o.get_formatted_qty(qty_udm)" />
-                                </td>
-                                <td class="tg-0pky">
-                                    <!-- <t t-if="line.product_uom_id" t-esc="o.get_formatted_qty(line.product_uom_id.ratio)" /> -->
-                                    pcs
-                                </td>
-                                <td class="tg-0pky">
-                                    <t t-if="line.move_id.product_packaging_id" t-esc="line.move_id.product_packaging_id.name" />
-                                </td>
-                            </tr>
-                        </t>
+            <t t-set="gross_weight_total" t-value="sum(product_group_by_packings[k].get('gross_weight', 0.0) for k in product_group_by_packings)" />
+            <t t-set="net_weight_total" t-value="sum(product_group_by_packings[k].get('net_weight', 0.0) for k in product_group_by_packings)" />
+            <div class="row p-4">
+                <div class="col-6 text-left">
+                    Gross weight:
+                    <t t-esc="gross_weight_total" />
+                    Kgs
+                </div>
+                <div class="col-6 text-right">
+                    Net weight:
+                    <t t-esc="net_weight_total" />
+                    Kgs
+                </div>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%">
+                <table style="width: 100%">
+                    <t t-foreach="product_group_by_packings" t-as="packing">
+                        <tr>
+                            <td colspan="5" class="text-center h5">
+                                Packing N°
+                                <span t-esc="packing" />
+                                :
+                                <t t-esc="product_group_by_packings[packing].get('gross_weight', 0.0)" />
+                                Kgs
+                            </td>
+                        </tr>
+                        <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])" t-as='line'>
+                            <td>
+                                <span t-field="line.product_id" />
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <t t-esc="round(line.items_count)" />
+                            </td>
+                            <td>x</td>
+                            <td>
+                                <t t-esc="line.bags" />
+                            </td>
+                        </tr>
                     </t>
-                </tbody>
-            </table>
+                </table>
+            </div>
+
         </div>
     </template>
     <!-- Template Note de colisage -->

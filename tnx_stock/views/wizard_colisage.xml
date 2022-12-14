@@ -16,7 +16,7 @@
                             <field name="move_id" string="Facture" />
                         </group>
                     </group>
-                    <group>
+                    <!-- <group>
                         <group>
                             <field name="poids_net" string="Poids net" />
                         </group>
@@ -24,24 +24,29 @@
                             <field name="poids_brut" string="Poids brut" />
                             <field name="description" string="Description" />
                         </group>
-                    </group>
+                    </group> -->
                     <group>
-                        <field name="stock_picking_ids" nolabel="1" readonly="1" mode="tree">
-                            <tree string="Bon de livraisons">
-                                <field name="company_id" invisible="1" />
-                                <field name="name" string="Nom" />
-                                <field name="partner_id" string="Contact" />
-                                <field name="origin" string="Document d'origine" />
-                                <field name="state" string="Etat" />
+                        <field name="note_de_colisage_line_ids">
+                            <tree string="Note de colisage ligne" editable="bottom">
+                                <control>
+                                    <create name="add_line_control" string="Add a line" />
+                                </control>
+                                <field name="product_ids" widget="many2many_tags" invisible="1"/>
+                                <field name="product_id" domain="[('id', 'in', product_ids)]" width="25%"/>
+                                <field name="packing_number" width="25%"/>
+                                <field name="gross_weight" width="12.5%"/>
+                                <field name="net_weight" width="12.5%"/>
+                                <field name="items_count" width="12.5%"/>
+                                <field name="bags" width="12.5%"/>
                             </tree>
                         </field>
                     </group>
                     <group>
                         <group>
-                            <field name="inconterm"/>
+                            <field name="inconterm" />
                         </group>
                         <group>
-                            <field name="origin" string="Origine"/>
+                            <field name="origin" string="Origine" />
                         </group>
                     </group>
                 </sheet>
