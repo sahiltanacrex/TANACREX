@@ -19,7 +19,7 @@
     <record id="action_tnx_package_report" model="ir.actions.report">
         <field name="name">Note de colisage</field>
         <field name="model">note.colisage.wizard</field>
-        <field name="report_type">qweb-html</field>
+        <field name="report_type">qweb-pdf</field>
         <field name="report_name">tnx_stock.tnx_package_report</field>
         <field name="report_file">tnx_stock.tnx_package_report</field>
         <field name="print_report_name">'Note de colisage - %s' % (object.partner_id.name)</field>
