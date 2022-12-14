@@ -82,11 +82,11 @@
             <t t-set="product_group_by_packings" t-value="o.get_clean_data()" />
             <div>
                 <div class="text-center ">
-                    <h4 class="font-weight-bold">
+                    <h5 class="font-weight-bold">
                         <span t-field="o.name"/>
                         <br/>
                         <span t-esc="o.partner_id.name" />
-                    </h4>
+                    </h5>
                     <h6>Invoice <span t-field="o.move_id.name"/></h6>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                 <table style="width: 100%">
                     <t t-foreach="product_group_by_packings" t-as="packing">
                         <tr>
-                            <td colspan="5" class="text-center h5">
+                            <td colspan="5" class="text-center h6">
                                 Packing N°
                                 <span t-esc="packing" />
                                 :
