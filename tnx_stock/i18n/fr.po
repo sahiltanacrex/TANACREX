@@ -309,7 +309,7 @@ msgstr ""
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_de_colisage_line__gross_weight
 msgid "Gross Weight"
-msgstr "Poids brut:"
+msgstr "Poids brut"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
