@@ -6,6 +6,9 @@ from odoo import models, fields, api
 class ProductMaterial(models.Model):
     _name = 'product.material'
     _description = 'Product.material'
+    name = fields.Char(
+        string='Name',
+        required=True)
 
     product_type = fields.Selection(
         [
@@ -15,8 +18,8 @@ class ProductMaterial(models.Model):
             ("other", "Autres"),
         ],
         string="Type du produit",
-        default='other'
+        default='other',
+        required=True
     )
 
-    material = fields.Char()
 

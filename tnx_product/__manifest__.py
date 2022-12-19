@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','tnx_base','stock','product','mail', 'uom'],
+    'depends': ['base', 'tnx_base', 'stock', 'product', 'mail', 'uom', 'sale'],
 
     # always loaded
     'data': [
@@ -28,6 +28,7 @@
         'views/product_template.xml',
         'views/templates.xml',
         'views/hscode_product.xml',
+        'views/product_template_views.xml',
         'security/ir.model.access.csv',
         # send mail
         'data/mail_templates/template_bat.xml',
@@ -37,5 +38,5 @@
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
-    ],'license': 'LGPL-3',
+    ], 'license': 'LGPL-3',
 }
