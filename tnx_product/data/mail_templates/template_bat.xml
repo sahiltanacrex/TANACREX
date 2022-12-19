@@ -68,29 +68,29 @@
                     <t t-esc="object.env.user.name"></t>,
 
                 </p>
-                <div class="row" style="color: #999999">
-                    <div class="text-left pr-2" style="border-right: 1px solid #999999">
-                        <t t-esc="company.phone"/>
-                        <br/>
-                        <t t-if="company.email">
-                            <a t-att-href="'mailto:%s' % company.email" style="text-decoration:none; color: #999999;">
-                                <t t-esc="company.email"/>
-                            </a>
-                        </t>
-                        <br/>
-                        <t t-if="company.website">
-                            <a t-att-href="'%s' % company.website" style="text-decoration:none; color: #999999;">
-                                <t t-esc="company.website"/>
-                            </a>
-                        </t>
-                    </div>
-                    <div class="ml-2">
-                        <img t-att-src="'/logo.png?company=%s' % (company.id or 0)"
-                             style="padding: 0px; margin: 0px; height: 48px;"
-                             t-att-alt="'%s' % company.name"/>
-                    </div>
+<!--                <div class="row" style="color: #999999">-->
+<!--                    <div class="text-left pr-2" style="border-right: 1px solid #999999">-->
+<!--                        <t t-esc="company.phone"/>-->
+<!--                        <br/>-->
+<!--                        <t t-if="company.email">-->
+<!--                            <a t-att-href="'mailto:%s' % company.email" style="text-decoration:none; color: #999999;">-->
+<!--                                <t t-esc="company.email"/>-->
+<!--                            </a>-->
+<!--                        </t>-->
+<!--                        <br/>-->
+<!--                        <t t-if="company.website">-->
+<!--                            <a t-att-href="'%s' % company.website" style="text-decoration:none; color: #999999;">-->
+<!--                                <t t-esc="company.website"/>-->
+<!--                            </a>-->
+<!--                        </t>-->
+<!--                    </div>-->
+<!--                    <div class="ml-2">-->
+<!--                        <img t-att-src="'/logo.png?company=%s' % (company.id or 0)"-->
+<!--                             style="padding: 0px; margin: 0px; height: 48px;"-->
+<!--                             t-att-alt="'%s' % company.name"/>-->
+<!--                    </div>-->
 
-                </div>
+<!--                </div>-->
 
             </field>
 
