@@ -25,7 +25,7 @@
                             <field name="surface" attrs="{'invisible': [('product_type',  '==', 'button')]}"/>
                         </group>
                         <group>
-                            <field name="material" />
+                            <field name="material_id" />
                             <field name="thickness" />
                             <field name="customer_reference" />
                             <field name="partner_id" />

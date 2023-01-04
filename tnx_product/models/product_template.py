@@ -90,6 +90,10 @@ class Product_template(models.Model):
     )
 
     material = fields.Char("Matière")
+    material_id = fields.Many2one(
+        comodel_name='product.material',
+        string='Matière',
+        required=False, domain="[('product_type','=', product_type)]")
     thickness = fields.Float("Epaisseur (mm)")
     customer_reference = fields.Char("Référence Client")
     partner_id = fields.Many2one("res.partner", string="Client", store=True)
