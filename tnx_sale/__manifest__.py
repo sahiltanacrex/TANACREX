@@ -26,6 +26,8 @@
         "views/account_move_line.xml",
         # report
         "report/report_sale_order.xml",
+        #data
+        "data/product_data.xml"
     ],
     # only loaded in demonstration mode
     "demo": [

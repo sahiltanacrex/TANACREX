@@ -120,75 +120,202 @@
                             <b>Condition de paiement : </b>
                             <span t-if="o.invoice_payment_term_id" t-esc="o.invoice_payment_term_id.name" />
                         </div>
-                    </div>
-                    <div style="margin-top:15px; margin-bottom:15px">
+                    </div><div style="margin-top:15px; margin-bottom:15px">
+                    
                         <style type="text/css">
-                                    td,th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                                    th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
                                     table {width:100%; font-size:15px;}
+                                    td {border: none;}
                                     </style>
                         <table>
                             <thead>
+                                <t t-set="currency" t-value="o.currency_id.name"/>
+                                <tr t-if="currency == USD">
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th><t t-esc="currency" /></th>
+                                    <th><t t-esc="currency" /></th>
+                                </tr>
                                 <tr>
-                                    <th>BC Client</th>
-                                    <th>Article</th>
-                                    <th>Type de produit</th>
-                                    <th>HS Code</th>
-                                    <th>Réference client</th>
-                                    <th>Quantité</th>
-                                    <th>Prix unitaire / 100 pcs</th>
-                                    <th>Montant</th>
+                                    <th>BON DE COMMANDE CLIENT</th>
+                                    <th>BON DE LIVRAISON</th>
+                                    <th>TYPE</th>
+                                    <th>HS CODE</th>
+                                    <th>DIMENSION</th>
+                                    <th>QUANTITE</th>
+                                    <th>DESIGNATION</th>
+                                    <th>PRIX UNITAIRE / 100 pcs</th>
+                                    <th>Montant HT</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="o.invoice_line_ids" t-as="line">
-                                    <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
-                                            <t t-foreach="bl_id" t-as="id_bl"> -->
-                                    <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
+                                <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
+                                <t t-foreach="all_type" t-as="type">
+                                    <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                                        <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                                <t t-foreach="bl_id" t-as="id_bl"> -->
+                                        
+                                            <!-- <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
+                                        <t t-if="line.product_id.product_type == type">    
+                                            <tr>
+                                                <td>
+                                                    <t t-if="line.order_customer">
+                                                        <span style="text-align: center" t-esc="line.order_customer" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span style="text-align: center">-</span>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="line.picking_name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.product_type" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.hs_code.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-if="line.product_id.product_type == 'button'">
+                                                        <t t-esc="line.product_id.product_tmpl_id.line"/>L
+                                                    </t>
+                                                    <t t-else="">
+                                                    <t t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.unit_qty" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> / <t t-esc="line.product_uom_id.name"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                </td>
+                                            </tr>
+                                            <!-- </t> -->
+                                        </t>
+                                    </t>
                                     <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
-                                            <span t-esc="line.order_customer" />
-                                        </td>
-                                        <!-- <td>
-                                                        <span t-esc="bl_name" />
-                                                    </td> -->
-                                        <td>
-                                            <t t-esc="line.product_id.name" />
-                                        </td>
-                                        <td>
-                                            <t t-esc="line.product_id.product_type" />
-                                        </td>
-                                        <td>
-                                            <t t-esc="line.product_id.hs_code.hs_code" />
-                                        </td>
-                                        <td>
-                                            <t t-esc="line.product_id.customer_reference" />
-                                        </td>
-                                        <td>
-                                            <t t-esc="line.quantity" />
-                                        </td>
-                                        <td>
-                                            <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
-                                        </td>
-                                        <td>
-                                            <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                            <t t-esc="total_price_type" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                         </td>
                                     </tr>
-                                    <!-- </t> -->
                                 </t>
+
+                                <t t-set="total_price_type_false" t-value="o.get_total_price_type(o.invoice_line_ids, False)"/>
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                                        <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
+                                        <!-- <t t-foreach="bl_id" t-as="id_bl">
+                                            <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
+                                            <t t-if="line.product_id.product_type == False and line.price_unit != 0">
+                                            <tr>
+                                                <td>
+                                                <t t-if="line.order_customer">
+                                                    <span t-esc="line.order_customer" />
+                                                </t>
+                                                <t t-else="">
+                                                    <span>-</span>
+                                                </t>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="line.picking_name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.product_type" />
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.quantity" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> 
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                                </td>
+                                            </tr>
+                                            </t>
+                                        <!-- </t> -->
+                                    </t>
+                                    <tr t-if="total_price_type_false">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="total_price_type_false" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="total_price_type_false">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Sub-total</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="total_price_type_false" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AIR FREIGHT</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="air_freight_price" t-value="o.env.ref('tnx_sale.product_air_freight').list_price"/>
+                                            <t t-esc="air_freight_price" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
                     <h4>
                         <div style="text-align:right">
+                        <t t-set="amount_total_with_air_freight" t-value="o.total_amount_ex(air_freight_price, o.amount_total)"/>
                             <b>
                                 Montant HT:
-                                <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                <span t-esc="amount_total_with_air_freight" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                             </b>
                         </div>
                     </h4>
                     <div style="text-align:right">
                         <span>A approuvé cette facture pour la somme de </span>
-                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
+                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" />
                     </div>
                     <t t-if="o.delivery_adress">
                         <div>

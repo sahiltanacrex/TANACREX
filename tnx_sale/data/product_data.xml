@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_air_freight" model="product.template">
+        <field name="name">AIR FREIGHT</field>
+        <field name="sale_ok">True</field>
+        <field name="uom_id" ref="uom.product_uom_unit"/>
+        <field name="uom_po_id" ref="uom.product_uom_unit"/>
+    </record>
+</odoo>

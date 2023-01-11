@@ -39,3 +39,24 @@ class Sale_order(models.Model):
             for line in rec.order_line:
                 res += line.box_qty
             rec.box_qty = res
+
+    def get_all_type(self, val):
+        product_type = val.mapped('product_id').mapped('product_type')
+        list_type = list(set(product_type))
+        try:
+            list_type.index(False)
+            list_type.remove(False)
+        except ValueError:
+            pass
+        list_type.sort()
+        return list_type
+
+    def get_total_price_type(self, val, type):
+        sub_total_price = 0
+        for el in val:
+            if el.product_id.product_type == type:
+                sub_total_price += el.price_subtotal
+        return sub_total_price
+    
+    def total_amount_ex(self, freight, amount_total):
+        return freight + amount_total

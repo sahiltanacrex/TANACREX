@@ -164,6 +164,32 @@ class AccountMoveInherit(models.Model):
         so = self.env["sale.order"].search([("name", "=", customer_bc)])
         return so.sale_order_partner
 
+    def get_all_order_line(self, val):
+        product_type = val.mapped('product_id').mapped('product_type')
+        for el in val:
+            print(el)
+
+    def get_all_type(self, val):
+        product_type = val.mapped('product_id').mapped('product_type')
+        list_type = list(set(product_type))
+        try:
+            list_type.index(False)
+            list_type.remove(False)
+        except ValueError:
+            pass
+        list_type.sort()
+        return list_type
+
+    def get_total_price_type(self, val, type):
+        sub_total_price = 0
+        for el in val:
+            if el.product_id.product_type == type:
+                sub_total_price += el.price_subtotal
+        return sub_total_price
+
+    def total_amount_ex(self, freight, amount_total):
+        return freight + amount_total
+        
     def get_delivery_order_id(self, id):
         """
         get BL id
