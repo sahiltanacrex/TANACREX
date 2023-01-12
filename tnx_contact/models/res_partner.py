@@ -27,6 +27,7 @@ class ResPartner(models.Model):
         string='FAX',
         required=False)
 
+    ref_client = fields.Char(string='ref')
     # partner_type = fields.Selection(selection_add=[
     #     ('ex','EX'),('vl','VL'),('ls','LS')
     # ])
