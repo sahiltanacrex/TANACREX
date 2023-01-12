@@ -3,7 +3,7 @@
 <odoo>
     <record id="paperformat_sale_summary_report" model="report.paperformat">
         <field name="name">picking report</field>
-        <field name="default" eval="False"/>
+        <field name="default" eval="False" />
         <field name="format">A4</field>
         <field name="page_width">0</field>
         <field name="page_width">0</field>
@@ -12,190 +12,235 @@
         <field name="margin_bottom">20</field>
         <field name="margin_right">4</field>
         <field name="margin_left">4</field>
-        <field name="header_line" eval="False"/>
+        <field name="header_line" eval="False" />
         <field name="header_spacing">40</field>
         <field name="dpi">90</field>
     </record>
-    
+
     <record id="tnx_stock_picking" model="ir.actions.report">
         <field name="name">Bon de livraisons</field>
         <field name="model">stock.picking</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">tnx_stock.tnx_stock_picking_template</field>
         <field name="report_file">tnx_stock.tnx_stock_picking_template</field>
-        <field name="attachment_use" eval="True"/>
-        <field name="binding_model_id" ref="stock.model_stock_picking"/>
-        <field name="paperformat_id" ref="tnx_stock.paperformat_sale_summary_report"/>
+        <field name="attachment_use" eval="True" />
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="paperformat_id" ref="tnx_stock.paperformat_sale_summary_report" />
     </record>
 
 
     <!-- <record id="tnx_stock.tnx_stock_picking" model="ir.actions.report">
     </record> -->
+    <template id="report_tnx_picking_document">
+        <!-- ####odoo defaults#### -->
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
 
+        <div class="header">
+            <!-- TODO here we can create header -->
+            <div class="body_header">
+                <br />
+                <div class="row text-center" style="margin-left: 05px; margin-right: 05px;">
+                    <div class="col-4">
+                        <div>
+                            <img t-if="company.logo" style="max-height:50px"
+                                t-att-src="image_data_uri(company.logo)" />
+                        </div>
+                        <span class="font-weight-bold">
+                            MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
+                        </span>
+                        <br />
+                        <div>Lot 18 D Imerinafovoany </div>
+                        <div style="font-size:14px;">BP.11064-Antananarivo-Madagascar</div>
+                        <div>
+                            <span>Tél :</span>
+                            <span>+261 20 22 441 35 / +261 34 02 441 35</span>
+                        </div>
+                        <div>
+                            <span>E-mail : contact@tanacrex.com</span>
+                        </div>
+                        <div>
+                            <div>
+                                <span>R.C 13 332 - STAT :</span>
+                                <span t-esc="company.stat" />
+                            </div>
+                            <div>
+                                <span>NIF :</span>
+                                <span t-esc="company.nif" />
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-7">
+                                <h3 class="text-center font-weight-bold">BON DE LIVRAISON</h3>
+                            </div>
+                            <div class="col-5">
+                                <h4>
+
+                                    <span class="font-weight-bold">
+                                        <span>N°</span>
+                                        <span t-esc="o.name" />
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="text-right" style="font-size: 18px;">
+                            <div>
+                                <span>Date :</span>
+                                <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')" />
+                            </div>
+                            <br />
+                            <div>
+                                <u>
+                                    <b>
+                                        <span>CLIENT</span>
+                                    </b>
+
+                                </u>
+                                <span>: </span>
+                                <span t-esc="o.partner_id.name" />
+                            </div>
+                            <br />
+                            <div>
+                                <span>Bon de commande N° : </span>
+                                <span t-esc="o.bc_client" />
+                            </div>
+                            <div>
+                                <span>Ref client : </span>
+                                <span t-esc="o.partner_id.ref_client" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <style type="text/css">
+                    table, th, tr, td {
+                    border: 1px solid black !important;
+                    }
+                </style>
+                <table class="table" clearname="stock_move_table" style="font-size:16px !important;">
+                    <tr>
+                        <td>Quantité</td>
+                        <td>Reférence</td>
+                        <td>Dimension</td>
+                        <td>Type</td>
+                        <td>Designation</td>
+                        <td>Modèle(Image)</td>
+                        <td>Colisage</td>
+                    </tr>
+                    <t t-set="lines" t-value="o.move_line_ids_without_package" />
+                    <tr t-foreach="lines" t-as="line">
+                        <tr>
+                            <td>
+                                <span t-field="line.unit_done"
+                                    t-options="{'widget': 'float', 'precision': 0}" />
+                            </td>
+                            <td>
+                                <span t-field="line.product_id.default_code" />
+                            </td>
+                            <td>
+                                <span
+                                    t-if="line.product_id.product_tmpl_id.product_type == 'button'"
+                                    t-field="line.product_id.product_tmpl_id.line"> L</span>
+                                <span
+                                    t-elif="line.product_id.product_tmpl_id.product_type in ('label', 'sticker')"><t
+                                        t-esc="line.product_id.product_tmpl_id.length" /> x <t
+                                        t-esc="line.product_id.product_tmpl_id.height" /></span>
+                                <span t-else="" t-field="line.product_id.product_tmpl_id.surface" />
+                            </td>
+                            <td>
+                                <span t-field="line.product_id.product_tmpl_id.product_type" />
+                            </td>
+                            <td>
+                                <span t-field="line.product_id.name" />
+                            </td>
+                            <td>
+                                <img
+                                    t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
+                                    t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
+                                    width="50" height="50" />
+                            </td>
+                            <td>
+                                <span t-field="line.carton_id" t-if="line.carton_id" />
+                            </td>
+                        </tr>
+                    </tr>
+                </table>
+                <div>
+                    <span style="font-size:14x;">
+                        Aucune réclamation ne sera admise aprés la validation. La marchandise livrée
+                        reste la
+                        propriété du vendeur jusqu'au pauement intégral de la facture
+                    </span>
+                </div>
+                <br />
+                <div class=" row text-center">
+                    <div class=" col-4">
+                        <b>
+                            <span>CONTRÔLE</span>
+                        </b>
+                    </div>
+                    <div class=" col-4">
+                        <b>
+                            <span>LIVREUR</span>
+                        </b>
+                    </div>
+                    <div class=" col-4">
+                        <b>
+                            <span>DESTINATAIRE</span>
+                        </b>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class=" footer o_standard_footer" style="font-size:15px;">
+                <div
+            class="row text-center">
+                    <div class=" col col-12 text-center">
+                        <ul
+            class=" list-inline">
+                            <li class="
+            list-inline-item">Page:</li>
+                            <li class=" list-inline-item">
+            <span class=" page" />
+                            </li>
+                            <li
+            class=" list-inline-item">/</li>
+                            <li class="
+            list-inline-item">
+                                <span class=" topage" />
+                            </li>
+            </ul>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="footer text-center">
+            <div class="text-muted"> Page: <span class="page" /> / <span class="topage" />
+            </div>
+        </div>
+    </template>
     <!-- template tsiky  -->
     <template id="tnx_stock_picking_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
-                <t t-if="not o" t-set="o" t-value="o"/>
-                <!-- ####odoo defaults#### -->
-                <t t-if="not company">
-                    <!-- Multicompany -->
-                    <t t-if="company_id">
-                        <t t-set="company" t-value="company_id"/>
-                    </t>
-                    <t t-elif="o and 'company_id' in o">
-                        <t t-set="company" t-value="o.company_id.sudo()"/>
-                    </t>
-                    <t t-else="else">
-                        <t t-set="company" t-value="res_company"/>
-                    </t>
-                </t>
-
-                <div class="header">
-                    <!-- TODO here we can create header -->
-                    <div class="body_header">
-                        <br/>
-                        <div class="row text-center" style="margin-left: 05px; margin-right: 05px;">
-                            <div class="col-4">
-                                <div>
-                                    <img t-if="company.logo" style="max-height:50px"
-                                         t-att-src="image_data_uri(company.logo)"/>
-                                </div>
-                                <span class="font-weight-bold">
-                                    MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
-                                </span>
-                                <br/>
-                                <div>Lot 18 D Imerinafovoany </div>
-                                <div style="font-size:14px;">BP.11064-Antananarivo-Madagascar</div>
-                                <div>
-                                    <span>Tél :</span>
-                                    <span>22 441 35 / 03402 02 441 35</span>
-                                </div>
-                                <div>
-                                    <span>E-mail : contact@tanacrex.com</span>
-                                </div>
-                                <div>
-                                    <div>
-                                        <span>R.C 13 332 - STAT :</span>
-                                        <span t-esc="company.stat"/>
-                                    </div>
-                                    <div>
-                                        <span>NIF :</span>
-                                        <span t-esc="company.nif"/>
-                                    </div>
-                                    <br/>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h3 class="text-center font-weight-bold">BON DE LIVRAISON</h3>
-                                    </div>
-                                    <div class="col-5">
-                                        <h4>
-
-                                            <span class="font-weight-bold"><span>N°</span>
-                                                <span t-esc="o.name"/></span>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="text-right" style="font-size: 18px;">
-                                    <div>
-                                        <span>Date :</span>
-                                        <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/>
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <u>
-                                            <b><span>CLIENT</span></b>
-
-                                        </u>
-                                        <span>: </span>
-                                        <span t-esc="o.partner_id.name"/>
-                                    </div>
-                                    <br/>
-                                    <div>
-                                        <span>Bon de commande N° : </span>
-                                        <span t-esc="o.bc_client"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <style type="text/css">
-                            table, th, tr, td {
-                            border: 1px solid black !important;
-                            }
-                        </style>
-                        <table class="table" clearname="stock_move_table" style="font-size:16px !important;">
-                            <tr>
-                                <td>Quantité</td>
-                                <td>Reférence</td>
-                                <td>Designation</td>
-                                <td>Colisage</td>
-                            </tr>
-                            <t t-set="lines" t-value="o.move_line_ids_without_package"/>
-                            <tr t-foreach="lines" t-as="line">
-                                <tr>
-                                    <td>
-                                        <span t-field="line.unit_done"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="line.product_id.default_code"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="line.product_id.name"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="line.carton_id" t-if="line.carton_id"/>
-                                    </td>
-                                </tr>
-                            </tr>
-                        </table>
-                        <div>
-                            <span style="font-size:14x;">
-                                Aucune réclamation ne sera admise aprés la validation. La marchandise livrée reste la
-                                propriété du vendeur jusqu'au pauement intégral de la facture
-                            </span>
-                        </div>
-                        <br/>
-                        <div class=" row text-center">
-                            <div class=" col-4">
-                                <b><span>CONTRÔLE</span></b>
-                            </div>
-                            <div class=" col-4">
-                                <b><span>LIVREUR</span></b>
-                            </div>
-                            <div class=" col-4">
-                                <b><span>DESTINATAIRE</span></b>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- <div class=" footer o_standard_footer" style="font-size:15px;">
-                        <div class="row text-center">
-                            <div class=" col col-12 text-center">
-                                <ul class=" list-inline">
-                                    <li class=" list-inline-item">Page:</li>
-                                    <li class=" list-inline-item">
-                                        <span class=" page" />
-                                    </li>
-                                    <li class=" list-inline-item">/</li>
-                                    <li class=" list-inline-item">
-                                        <span class=" topage" />
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
+                <t t-set="lang" t-value="o.partner_id.sudo().lang" />
+                <t t-call="tnx_stock.report_tnx_picking_document" t-lang="lang" />
             </t>
-
         </t>
     </template>
-
-
 </odoo>
