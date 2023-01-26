@@ -42,7 +42,7 @@
                             <table style="width:100%;height:80%;border:1px solid;margin-bottom:10px;boder-collapse:collapse:border:1px solid">
                                 <tbody style="font-size: 10px">
                                     <tr>
-                                        <td colspan="2" style="border:1px solid">Po # AI22105636</td>
+                                        <td colspan="2" style="border:1px solid">Po # <t t-esc="product.client_order"/></td>
                                     </tr>
                                     <tr>
                                         <td style="border:1px solid; width:50%">
