@@ -58,3 +58,4 @@ class NoteDeColisageLine(models.TransientModel):
     gross_weight = fields.Float()
     net_weight = fields.Float()
     items_count = fields.Float()
+    bc_client = fields.Char(related='product_id.product_tmpl_id.client_order')

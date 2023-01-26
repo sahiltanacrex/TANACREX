@@ -120,7 +120,7 @@
                         </tr>
                         <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])" t-as='line'>
                             <td>
-                                <span t-field="line.product_id" />
+                                <span t-field="line.product_id" /> <t t-if="line.bc_client">(<t t-esc="line.bc_client" />)</t>
                             </td>
                             <td>:</td>
                             <td>

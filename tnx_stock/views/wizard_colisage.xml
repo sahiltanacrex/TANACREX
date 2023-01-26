@@ -33,6 +33,7 @@
                                 </control>
                                 <field name="product_ids" widget="many2many_tags" invisible="1"/>
                                 <field name="product_id" domain="[('id', 'in', product_ids)]" width="25%"/>
+                                <field name="bc_client" width="12.5%"/>
                                 <field name="packing_number" width="25%"/>
                                 <field name="gross_weight" width="12.5%"/>
                                 <field name="net_weight" width="12.5%"/>
