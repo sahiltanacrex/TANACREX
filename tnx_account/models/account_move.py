@@ -18,6 +18,7 @@ class AccountMoveInherit(models.Model):
     container_serial = fields.Char("Conteneur")
 
     seq_bis = fields.Char("Réference Facture", store=True, index=True)
+    
 
     @api.model
     def create(self, vals):
@@ -47,7 +48,7 @@ class AccountMoveInherit(models.Model):
         "bank.company", "account_move_id", string="Banque"
     )
 
-    delivery_adress = fields.Char("Addresse de livraison")
+    delivery_adress = fields.Many2one("res.partner", string="Addresse de livraison")
 
     def set_sequence_year(self):
         date = datetime.date.today()

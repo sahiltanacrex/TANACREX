@@ -12,6 +12,7 @@
                     <field name="stat"/>
                     <field name="rcs"/>
                     <field name="cif"/>
+                    <field name="free_val" string=""/>
                 </xpath>
                 <xpath expr="//field[@name='category_id']" position="before">
                     <field name="fax_number"/>

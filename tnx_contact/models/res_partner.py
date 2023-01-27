@@ -16,6 +16,7 @@ class ResPartner(models.Model):
         required=False)
 
     cif = fields.Char('CIF')
+    free_val = fields.Char(string='')
 
     partner_type = fields.Selection([
         ('ex', 'EX'),

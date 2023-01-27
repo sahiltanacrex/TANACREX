@@ -34,7 +34,7 @@
                                 <div class="col-xs-6">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6 " style="margin-left:250px; text-align:center">
+                                <div class="col-xs-6" style="margin-left:250px; text-align:center">
                                     <div>
                                         <b>
                                             <t t-if="company.description">
@@ -44,11 +44,11 @@
                                         </b>
                                         <br />
                                     </div>
-                                    <div>
+                                    <div t-if="company.stat">
                                         <span>STAT:</span>
                                         <span t-esc="company.stat" />
                                     </div>
-                                    <div>
+                                    <div t-if="company.nif">
                                         <span>NIF:</span>
                                         <span t-esc="company.nif" />
                                     </div>
@@ -73,66 +73,66 @@
                             </div>
                         </div>
                     </div>
-                    <div style="font-size:18px; margin-top:20px">
-                        <b>Facture :</b>
-                        <span t-esc="o.name_bis" />
-                    </div>
-                    <div class="row" style="margin-top:20px">
-                        <div class="col-4">
-                            <b>Référence :</b>
-                            <span t-esc="o.seq_bis" />
-                        </div>
-                        <div class="col-4">
-                            <b>
-                                Client :
-                                <span style="font-size: 18px" t-esc="o.partner_id.name" />
-                            </b>
-                        </div>
-                        <div class="col-4">
-                            <b>Adresse de facturation :</b>
-                            <t t-if="o.partner_id.street">
-                                <span t-esc="o.partner_id.street" />
+                    <br/>
+                    <div class="row">
+                        <div class="col-6">
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Facture:</b>
+                                <span t-esc="o.name_bis" />
+                            </div>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Référence:</b>
+                                <span t-esc="o.seq_bis" />
+                            </div>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Date de facturation:</b>
+                                <span t-esc="o.invoice_date" />
+                            </div>
+                        </div>  
+                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                            <span t-field="o.partner_id"/>
+                           <t t-if="o.partner_id.street">
+                                <span t-field="o.partner_id.street"/> <br/> 
                             </t>
-                            <t t-if="o.partner_id.street2">
-                                <span>,</span>
-                                <span t-esc="o.partner_id.street2" />
+                            <t  t-if="o.partner_id.street2">
+                                <span t-field="o.partner_id.street2"/> <br/> 
                             </t>
                             <t t-if="o.partner_id.city">
-                                <span>,</span>
-                                <span t-esc="o.partner_id.city" />
+                                <span t-field="o.partner_id.city"/> <br/> 
                             </t>
                             <t t-if="o.partner_id.state_id">
-                                <span>,</span>
-                                <span t-esc="o.partner_id.state_id.name" />
+                                <span t-field="o.partner_id.state_id"/> <br/> 
                             </t>
-                        </div>
+                            <t t-if="o.partner_id.zip">
+                                <span t-field="o.partner_id.zip"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.country_id">
+                                <span t-field="o.partner_id.country_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.vat">
+                                <span>V.A.T: </span>
+                                <span t-field="o.partner_id.vat"/> <br/> 
+                            </t>
+                        </div>                      
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <b> Date de facturation :</b>
-                            <span t-esc="o.invoice_date" />
-                        </div>
-                        <div class="col-4">
-                            <b>Date d'écheance:</b>
-                            <span t-esc="o.invoice_date_due" />
-                        </div>
-                        <div class="col-4">
-                            <b>Condition de paiement : </b>
-                            <span t-if="o.invoice_payment_term_id" t-esc="o.invoice_payment_term_id.name" />
-                        </div>
-                    </div><div style="margin-top:15px; margin-bottom:15px">
+                    
+                    <div style="margin-top:15px; margin-bottom:15px">
                     
                         <style type="text/css">
                                     th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
-                                    table {width:100%; font-size:15px;}
-                                    td {border: none;}
+                                    table {width:100%; font-size:15px; }
+                                    td {border: none; text-align: center;}
                                     </style>
                         <table>
                             <thead>
                                 <t t-set="currency" t-value="o.currency_id.name"/>
-                                <tr t-if="currency == USD">
+                                <tr>
                                     <th style="border: none"></th>
-                                    <th style="border: none"></th>
+                                    <!-- <th style="border: none"></th> -->
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
@@ -141,15 +141,15 @@
                                     <th><t t-esc="currency" /></th>
                                     <th><t t-esc="currency" /></th>
                                 </tr>
-                                <tr>
-                                    <th>BON DE COMMANDE CLIENT</th>
-                                    <th>BON DE LIVRAISON</th>
-                                    <th>TYPE</th>
-                                    <th>HS CODE</th>
-                                    <th>DIMENSION</th>
-                                    <th>QUANTITE</th>
-                                    <th>DESIGNATION</th>
-                                    <th>PRIX UNITAIRE / 100 pcs</th>
+                                <tr style="background-color: rgb(211,209,209);">
+                                    <th>BC/PO</th>
+                                    <!-- <th>BON DE LIVRAISON</th> -->
+                                    <th>Designation</th>
+                                    <th>Type</th>
+                                    <th>Hs code</th>
+                                    <th>Dimension</th>
+                                    <th>Qte</th>
+                                    <th>PU/UDM</th>
                                     <th>Montant HT</th>
                                 </tr>
                             </thead>
@@ -172,8 +172,11 @@
                                                         <span style="text-align: center">-</span>
                                                     </t>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <span t-esc="line.picking_name" />
+                                                </td> -->
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
                                                 </td>
                                                 <td>
                                                     <t t-esc="line.product_id.product_type" />
@@ -183,30 +186,26 @@
                                                 </td>
                                                 <td>
                                                     <t t-if="line.product_id.product_type == 'button'">
-                                                        <t t-esc="line.product_id.product_tmpl_id.line"/>L
+                                                        <t t-esc="int(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
                                                     <t t-else="">
-                                                    <t t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm
+                                                    <t t-esc="int(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="int(line.product_id.product_tmpl_id.height)"/>mm
                                                     </t>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.unit_qty" />
+                                                    <t t-esc="int(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.product_id.name" />
+                                                    <t t-esc="int(line.price_unit_udm)"/> / <t t-esc="int(line.product_uom_id.factor_inv)"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> / <t t-esc="line.product_uom_id.name"/>
-                                                </td>
-                                                <td>
-                                                    <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                    <t t-esc="int(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             <!-- </t> -->
                                         </t>
                                     </t>
                                     <tr>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -246,16 +245,16 @@
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.quantity" />
+                                                    <t t-esc="int(line.quantity)" />
                                                 </td>
                                                 <td>
                                                     <t t-esc="line.product_id.name" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.price_unit_udm" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> 
+                                                    <t t-esc="int(line.price_unit_udm)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> 
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                                    <t t-esc="int(line.price_subtotal)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                                 </td>
                                             </tr>
                                             </t>
@@ -269,7 +268,6 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
                                         <td>
                                             <t t-esc="total_price_type_false" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                         </td>
@@ -280,14 +278,26 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
                                         <td>Sub-total</td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="total_price_type_false" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                            <t t-esc="int(total_price_type_false)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                         </td>
                                     </tr>
+                                    <tr/>
                                     <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Montan Total</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="int(o.amount_total)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -300,56 +310,58 @@
                                             <t t-set="air_freight_price" t-value="o.env.ref('tnx_sale.product_air_freight').list_price"/>
                                             <t t-esc="air_freight_price" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                         </td>
-                                    </tr>
+                                    </tr> -->
                             </tbody>
                         </table>
                     </div>
-                    <h4>
+                    <!-- <h4>
                         <div style="text-align:right">
                         <t t-set="amount_total_with_air_freight" t-value="o.total_amount_ex(air_freight_price, o.amount_total)"/>
                             <b>
                                 Montant HT:
-                                <span t-esc="amount_total_with_air_freight" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                <span t-esc="int(o.amount_total)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                             </b>
                         </div>
-                    </h4>
+                    </h4> -->
                     <div style="text-align:right">
                         <span>A approuvé cette facture pour la somme de </span>
-                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" />
+                        <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
+                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
                     </div>
-                    <t t-if="o.delivery_adress">
+                    <!-- <t t-if="o.delivery_adress">
                         <div>
                             <b>Adresse de livraison</b>
                             <t t-esc="o.delivery_adress" />
                         </div>
-                    </t>
+                    </t> -->
                     <div>
-                        <div>
+                        <div t-if="o.origin_tnx">
                             <b> - Origine :</b>
                             <span t-esc="o.origin_tnx" />
                         </div>
-                        <div>
+                        <div t-if="o.gross_weight">
                             <b> - Poids brut : </b>
                             <span t-esc="o.gross_weight" />
                         </div>
-                        <div>
+                        <div t-if="o.net_weight">
                             <b> - Poids net :</b>
                             <span t-esc="o.net_weight" />
                         </div>
-                        <div>
+                        <div t-if="o.c_f">
                             <b>- Incoterm :</b>
                             <span t-esc="o.c_f" />
                         </div>
-                        <div>
+                        <div t-if="o.seal_serial">
                             <b>- Nombre de cartons :</b>
                             <span t-esc="o.seal_serial" />
                         </div>
-                        <div>
+                        <div t-if="o.container_serial">
                             <b>- Notes :</b>
                             <span t-esc="o.container_serial" />
                         </div>
                     </div>
                     <div style="text-align:center;margin-top:20px">
+                        <span> Origin: </span>
                         <span>"L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine préférentielle Madagascar"</span>
                     </div>
                     <!-- <div style="text-align:center;margin-top:20px">
@@ -357,12 +369,32 @@
                                     The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, the products are of Madagascar preferential origin
                                 </span>
                             </div> -->
+                    <br/>
                     <t t-if="o.bank_company_ids">
-                        <div style="font-size:13px;margin-top:20px">
+                        <!-- <div style="font-size:13px;margin-top:20px">
                             <span>Compte N°: </span>
                             <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
                             <span t-esc="bank_info" />
+                        </div> -->
+                        <div class="row">
+                            <t t-foreach="o.bank_company_ids" t-as="bank">
+                                <div class="col-6" style="text-align: center;">
+                                    <style type="text/css">
+                                        p {margin-bottom: 0em;}
+                                    </style>
+                                    <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
+                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/>
+                                    <span t-esc="o.invoice_date_due"/>
+                                    <br/>
+                                    <span t-esc="bank.bank_address"/>
+                                    <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+
+
+                                </div>
+                            </t>
                         </div>
+                        
+                        
                     </t>
                 </div>
             </div>

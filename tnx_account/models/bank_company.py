@@ -15,6 +15,7 @@ class Bank(models.Model):
     )
     account_move_id = fields.Many2one("account.move", string="Account move")
     bank_info = fields.Text("Information banque")
+    bank_address = fields.Html(string="Bank address")
 
 
 class Bank_line(models.Model):
