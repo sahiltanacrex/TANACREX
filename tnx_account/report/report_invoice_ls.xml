@@ -182,20 +182,20 @@
                                             </td>
                                             <td>
                                                 <t t-if="line.product_id.product_type == 'button'">
-                                                    <t t-esc="int(line.product_id.product_tmpl_id.line)"/>L
+                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                 </t>
                                                 <t t-else="">
-                                                <t t-esc="int(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="int(line.product_id.product_tmpl_id.height)"/>mm
+                                                <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.height)"/>mm
                                                 </t>
                                             </td>
                                             <td>
-                                                <t t-esc="int(line.quantity)" />
+                                                <t t-esc="o.get_right_number(line.quantity)" />
                                             </td>
                                             <td>
-                                                <t t-esc="int(line.price_unit_udm)"/>
+                                                <t t-esc="o.get_right_number(line.price_unit_udm)"/>
                                             </td>
                                             <td>
-                                                <t t-esc="int(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                     </t>

@@ -37,7 +37,7 @@
                             <page name="bank_info" string="Informations bancaire">
                                 <field name="bank_info" />
                             </page>
-                            <page name="bank_address" string="Informations bancaire">
+                            <page name="bank_address" string="Adresse de la banque">
                                 <field name="bank_address" string="Adresse de la banque"/>
                             </page>
                             

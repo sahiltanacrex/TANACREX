@@ -119,7 +119,7 @@
                                 <span t-field="o.partner_id.free_val"/> <br/> 
                             </t>
                         </div>  
-                    </div>
+                    </div> <span>-</span>
                     <div style="margin-top:15px; margin-bottom:15px">
                         <style type="text/css">
                             th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
@@ -180,20 +180,20 @@
                                                 </td>
                                                 <td>
                                                     <t t-if="line.product_id.product_type == 'button'">
-                                                        <t t-esc="int(line.product_id.product_tmpl_id.line)"/>L
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
                                                     <t t-else="">
-                                                    <t t-esc="int(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="int(line.product_id.product_tmpl_id.height)"/>mm
+                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.height)"/>mm
                                                     </t>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="int(line.unit_qty)" />
+                                                    <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="int(line.price_unit_udm)"/> / <t t-esc="int(line.product_uom_id.factor_inv)"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="o.get_right_number(line.product_uom_id.factor_inv)"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="int(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             
@@ -211,7 +211,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="int(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
+                                            <t t-esc="o.get_right_number(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -243,13 +243,13 @@
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
                                                 <td>
-                                                    <t t-esc="int(line.quantity)" />
+                                                    <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="int(line.price_unit_udm)"/> 
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> 
                                                 </td>
                                                 <td>
-                                                    <t t-esc="int(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             </t>
@@ -268,7 +268,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="int(total_price_type_false)"/>
+                                            <t t-esc="o.get_right_number(total_price_type_false)"/>
                                         </td>
                                     </tr>
                                     
@@ -278,7 +278,7 @@
                     <h4>
                         <div style="text-align:right">
                             <span>Montant HT:</span>
-                            <span t-esc="int(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                            <span t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h4>
                     <div style="text-align:right">

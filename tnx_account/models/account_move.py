@@ -247,3 +247,13 @@ class AccountMoveInherit(models.Model):
             partner_type.get(self.partner_id.partner_type, "tnx_account.invoice_ex")
         )
         return res
+    
+    def get_right_number(self, val):
+        val_string = str(val)
+        val_split = val_string.split('.')
+        if len(val_split) == 1:
+            return val
+        if int(val_split[1]) > 0:
+            return val
+        else:
+            return int(val)

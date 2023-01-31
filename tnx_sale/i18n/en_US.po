@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e-20220810\n"
+"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 12:15+0000\n"
-"PO-Revision-Date: 2022-10-27 12:15+0000\n"
+"POT-Creation-Date: 2023-01-31 07:28+0000\n"
+"PO-Revision-Date: 2023-01-31 07:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,92 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid ""
+"<b>Facture: </b>\n"
+"                                <span>PROFORMA </span>"
+msgstr ""
+"<b>Invoice: </b>\n"
+"                                <span>PROFORMA </span>"
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<b>Référence:</b>"
+msgstr "<b>Reference:</b>"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid ""
+"<span>\n"
+"                                        ANTANANARIVO -\n"
+"                                        <b>MADAGASCAR</b>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
+msgid "<span> Delivery time duration</span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
+msgid "<span> Kg</span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
+msgid "<span> Production duration </span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid ""
+"<span>\"L'exportateur des produits couverts par le présent document (autorisation douanière\n"
+"                        MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine\n"
+"                        préférentielle Madagascar\"</span>"
+msgstr ""
+"<span>\"The exporter of the products covered by this document(customs "
+"authorization MGREX1000002056) declares that, unless clearly statedon the "
+"contrary, the products are of preferential originMadagascar\"</span>"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>"
+msgstr "<span>&amp;nbsp; &amp;nbsp; Due Date:</span>"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>-</span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>A approuvé cette facture pour la somme de </span>"
+msgstr "<span>Approved this invoice for the sum of </span>"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>B.p.:11064 - Tél : </span>"
+msgstr ""
+
+#. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<span>Facture proforma</span>"
 msgstr "<span>Proforma Invoice</span>"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>IBAN </span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>Lot 18 D Imerinafovoany </span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>NIF:</span>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
@@ -26,9 +109,42 @@ msgid "<span>Nombre de carton : </span>"
 msgstr "<span>Number of boxes : </span>"
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>Paiement:</span>"
+msgstr "<span>Payment:</span>"
+
+#. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "<span>Poids approximatif : </span>"
 msgstr "<span>Approximate weight : </span>"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>STAT:</span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>Tel: </span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid ""
+"<span>Tous les frais bancaires de la banque étrangère doivent être payés par"
+" l'acheteur, y compris remboursement des frais bancaires, des commissions, "
+"des fax et des frais postaux correspondants.</span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>V.A.T: </span>"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "<span>e-mail:contact@tanacrex.com</span>"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
@@ -61,9 +177,24 @@ msgid "<strong>STAT:</strong>"
 msgstr ""
 
 #. module: tnx_sale
+#: model:product.template,name:tnx_sale.product_air_freight
+msgid "AIR FREIGHT"
+msgstr ""
+
+#. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__sale_order_partner
 msgid "BC client"
 msgstr "Customer purchase order"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "BC/PO"
+msgstr ""
+
+#. module: tnx_sale
+#: model:ir.model.fields.selection,name:tnx_sale.selection__sale_order__payment_method__bank_transfer
+msgid "Bank Transfer"
+msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
@@ -73,6 +204,16 @@ msgstr "Purchase order"
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__box_qty
 msgid "Box Qty"
+msgstr ""
+
+#. module: tnx_sale
+#: model:ir.model.fields.selection,name:tnx_sale.selection__sale_order__payment_method__cash
+msgid "Cash"
+msgstr ""
+
+#. module: tnx_sale
+#: model:ir.model.fields.selection,name:tnx_sale.selection__sale_order__payment_method__check
+msgid "Check"
 msgstr ""
 
 #. module: tnx_sale
@@ -91,6 +232,21 @@ msgid "Devis"
 msgstr "Quotation"
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Dimension"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Désignation"
+msgstr "Designation"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Fabricant de boutons et d'étiquettes depuis 1983"
+msgstr ""
+
+#. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Frais de developpement"
 msgstr "Development costs"
@@ -101,19 +257,22 @@ msgid "HS CODE"
 msgstr ""
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "HS Code"
+msgstr ""
+
+#. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Image"
 msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__production_duration
-#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
 msgid "Indicatif de fabrication"
 msgstr "Manufacturing date"
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__delivery_time
-#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
 msgid "Indicatif de livraison"
 msgstr "Delivery date"
 
@@ -123,9 +282,44 @@ msgid "Journal Item"
 msgstr ""
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "MONTANT HT"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Montant HT"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Montant HT:"
+msgstr ""
+
+#. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order_line__box_qty
 msgid "Nombre de carton"
 msgstr "Number of boxes"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "PU / Udm"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "PU/UDM"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Page:"
+msgstr ""
+
+#. module: tnx_sale
+#: model:ir.model.fields,field_description:tnx_sale.field_sale_order__payment_method
+msgid "Payment Method"
+msgstr ""
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order__poids_en_kg
@@ -135,7 +329,7 @@ msgstr "Weight In Kg"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.view_order_form_with_carrier
-msgid "Price/UoM"
+msgid "Price"
 msgstr ""
 
 #. module: tnx_sale
@@ -149,6 +343,11 @@ msgid "Prix de developpement"
 msgstr "Development costs"
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Qté"
+msgstr ""
+
+#. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_account_move_line__unit_qty
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "Quantité unitaire"
@@ -156,8 +355,8 @@ msgstr "Unitary quantity"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.view_order_form_with_carrier
-msgid "Quantiy/UoM"
-msgstr ""
+msgid "Quantiy"
+msgstr "Quantity"
 
 #. module: tnx_sale
 #: model:ir.model,name:tnx_sale.model_sale_order
@@ -170,6 +369,16 @@ msgid "Sales Order Line"
 msgstr ""
 
 #. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "TYPE"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Type"
+msgstr ""
+
+#. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_sale_order_inherit
 msgid "UdM"
 msgstr "UoM"
@@ -177,4 +386,45 @@ msgstr "UoM"
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_sale_order_line__unit_qty
 msgid "Unitary quantity"
+msgstr ""
+
+#. module: tnx_sale
+#: model:product.template,uom_name:tnx_sale.product_air_freight
+msgid "Units"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
+msgid "Validity"
+msgstr ""
+
+#. module: tnx_sale
+#: model:ir.model.fields,field_description:tnx_sale.field_sale_order__validity_day
+msgid "Validity Day"
+msgstr ""
+
+#. module: tnx_sale
+#: code:addons/tnx_sale/models/sale_order.py:0
+#, python-format
+msgid "Validity period must be greater than 0."
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
+msgid "day(s)"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
+msgid "jour(s)"
+msgstr "day(s)"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "mm"
+msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "mm x"
 msgstr ""

@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import timedelta
 
 class Sale_order(models.Model):
     _inherit = "sale.order"
@@ -60,3 +61,27 @@ class Sale_order(models.Model):
     
     def total_amount_ex(self, freight, amount_total):
         return freight + amount_total
+
+    def get_bank_ids(self):
+        currency = self.currency_id
+        bank_company_line_ids = self.env['bank.company.line'].search([('res_currency_id', '=', currency.id)])
+        if bank_company_line_ids:
+            return bank_company_line_ids.mapped('bank_id')
+        return False
+
+    def get_validity_date(self):
+        validity_date = self.date_order.date() + timedelta(days=self.validity_day) 
+        return validity_date
+
+    def get_right_number(self, val):
+        val_string = str(val)
+        val_split = val_string.split('.')
+        if len(val_split) == 1:
+            return val
+        if int(val_split[1]) > 0:
+            return val
+        else:
+            return int(val)
+    
+    def amount_ttc_ls(self, val):
+        return val * 1.2
