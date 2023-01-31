@@ -113,9 +113,8 @@
                                 <span>Tel: </span>
                                 <span t-field="o.partner_id.phone"/> <br/> 
                             </t>
-                            <t t-if="o.partner_id.vat">
-                                <span>V.A.T: </span>
-                                <span t-field="o.partner_id.vat"/> <br/> 
+                            <t t-if="o.partner_id.free_val">
+                                <span t-field="o.partner_id.free_val"/> <br/> 
                             </t>
                         </div>                      
                     </div>

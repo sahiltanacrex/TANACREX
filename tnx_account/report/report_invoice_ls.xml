@@ -129,6 +129,9 @@
                                 <span>CIF: </span>
                                 <span t-field="o.partner_id.cif"/> <br/> 
                             </t>
+                            <t t-if="o.partner_id.free_val">
+                                <span t-field="o.partner_id.free_val"/> <br/> 
+                            </t>
                         </div>
                     </div>
                     <div style="margin-top:15px; margin-bottom:15px">

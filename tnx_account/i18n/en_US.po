@@ -196,7 +196,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>Montant HT:</span>"
-msgstr "<span>Amount excluding VAT:</span>"
+msgstr "<span>Amount:</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
@@ -694,7 +694,7 @@ msgstr "Amount"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Montant HT"
-msgstr "Amount excluding tax:"
+msgstr "Amount:"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank

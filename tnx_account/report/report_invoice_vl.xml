@@ -313,13 +313,12 @@
                             <t t-if="o.delivery_adress.country_id">
                                 <span t-field="o.delivery_adress.country_id"/> <br/> 
                             </t>
-                            <t t-if="o.delivery_adress.stat">
-                                <span>STAT: </span>
-                                <span t-field="o.delivery_adress.country_id"/> <br/> 
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/> 
                             </t>
-                            <t t-if="o.delivery_adress.nif">
-                                <span>NIF: </span>
-                                <span t-field="o.delivery_adress.nif"/> <br/> 
+                            <t t-if="o.partner_id.free_val">
+                                <span t-field="o.partner_id.free_val"/> <br/> 
                             </t>
                             </div>
                         </div>
