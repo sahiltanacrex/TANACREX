@@ -176,7 +176,7 @@
                                                     <t t-esc="line.product_id.name" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.product_id.product_type" />
+                                                    <span t-field="line.product_id.product_type" />
                                                 </td>
                                                 <td>
                                                     <t t-if="line.product_id.product_type == 'button'">

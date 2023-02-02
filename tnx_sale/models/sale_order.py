@@ -85,3 +85,13 @@ class Sale_order(models.Model):
     
     def amount_ttc_ls(self, val):
         return val * 1.2
+
+    def get_validity_date(self):
+        return self.date_order.date() + timedelta(days=self.validity_day)
+    
+    def get_production_date(self):
+        return self.date_order.date() + timedelta(days=self.production_duration)
+    
+    def get_delivery_date(self):
+        return self.date_order.date() + timedelta(days=self.delivery_time)
+    

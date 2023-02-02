@@ -1,176 +1,494 @@
 <?xml version='1.0' encoding='utf-8'?>
 
 <odoo>
-    <template id="report_sale_order_inherit" inherit_id="sale.report_saleorder_document">
-        <!-- customer informations -->
-        <xpath expr="//div[hasclass('page')]" position="before">
-            <div style="width:100%;">
-                <br/>
-                <div style="margin-left:503px;">
-                    <div t-if="doc.partner_id.nif">
-                        <strong>NIF:</strong>
-                        <span t-esc="doc.partner_id.nif"/>
+    <template id="report_saleorder_document">
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div class="header"></div>
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="header_body">
+                    <div class="body_header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                                </div>
+                                <div class="col-xs-6" style="margin-left:250px; text-align:center">
+                                    <div>
+                                        <b>
+                                            <t t-if="company.description">
+                                                <t t-esc="company.description" />
+                                            </t>
+                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
+                                        </b>
+                                        <br />
+                                    </div>
+                                    <div t-if="company.stat">
+                                        <span>STAT:</span>
+                                        <span t-esc="company.stat" />
+                                    </div>
+                                    <div t-if="company.nif">
+                                        <span>NIF:</span>
+                                        <span t-esc="company.nif" />
+                                    </div>
+                                    <div>
+                                        <span>Lot 18 D Imerinafovoany </span>
+                                    </div>
+                                    <div>
+                                        <span>B.p.:11064 - Tél : </span>
+                                        <span t-esc="company.phone or company.mobile" />
+                                    </div>
+                                    <div>
+                                        <span>e-mail:contact@tanacrex.com</span>
+                                    </div>
+                                    <div>
+                                        <span>
+                                            ANTANANARIVO -
+                                            <b>MADAGASCAR</b>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div t-if="doc.partner_id.stat">
-                        <strong>STAT:</strong>
-                        <span t-esc="doc.partner_id.stat"/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-4">
+                            <table>
+                                <tr style="font-size:15px; margin-top:20px">
+                                    <td><b>Devis:</b></td>
+                                    <td><span t-esc="o.name"/></td>
+                                </tr>
+                                <tr style="font-size:14px; margin-top:20px">
+                                    <td><b>BC Client:</b></td>
+                                    <td><span t-esc="o.sale_order_partner" /></td>
+                                </tr>
+                                <tr style="font-size:14px; margin-top:20px">
+                                    <td><b>Validité:</b></td>
+                                    <td><span t-esc="o.get_validity_date()" /></td>
+                                </tr>
+                                <tr style="font-size:14px; margin-top:20px">
+                                    <td><b>Date de fabrication:</b></td>
+                                    <td><span t-esc="o.get_production_date()" /> </td>
+                                </tr>
+                            </table>
+                            
+                        </div>  
+                        <div class="col-4">
+                            <table>
+                            <tr>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <td>
+                            
+                            <div style="font-size:14px; margin-top:20px">
+                                    <b>Date de livraison:</b>
+                                    <span t-esc="o.get_delivery_date()"/>
+                            </div>
+                            </td>
+                            </tr>
+                            </table>
+                        </div>
+                        <div class="col-4" style="border: 1px solid; text-align: center;">
+                            <span t-field="o.partner_id"/>
+                           <t t-if="o.partner_id.street">
+                                <span t-field="o.partner_id.street"/> <br/> 
+                            </t>
+                            <t  t-if="o.partner_id.street2">
+                                <span t-field="o.partner_id.street2"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.city">
+                                <span t-field="o.partner_id.city"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.state_id">
+                                <span t-field="o.partner_id.state_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.zip">
+                                <span t-field="o.partner_id.zip"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.country_id">
+                                <span t-field="o.partner_id.country_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/> 
+                            </t>
+                            
+                            <t t-if="o.partner_id.partner_type == 'ls'">
+                                <t t-if="o.partner_id.nif">
+                                <span>NIF: </span>
+                                <span t-field="o.partner_id.nif"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.stat">
+                                <span>STAT: </span>
+                                <span t-field="o.partner_id.stat"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.rcs">
+                                <span>RCS: </span>
+                                <span t-field="o.partner_id.rcs"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.cif">
+                                <span>CIF: </span>
+                                <span t-field="o.partner_id.cif"/> <br/> 
+                            </t>
+                            </t>
+                            <t t-else="">
+                                <t t-if="o.partner_id.free_val">
+                                    <span t-field="o.partner_id.free_val"/> <br/> 
+                                </t>
+                            </t>
+                            
+                        </div>                      
                     </div>
-                    <div t-if="doc.partner_id.cif">
-                        <strong>CIF:</strong>
-                        <span t-esc="doc.partner_id.cif"/>
+                    
+                    <div style="margin-top:15px; margin-bottom:15px">
+                    
+                        <style type="text/css">
+                                    th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                                    table {width:100%; font-size:13px; }
+                                    td {border: none; text-align: center;}
+                                    </style>
+                        <table>
+                            <thead>
+                                <t t-set="currency" t-value="o.currency_id.name"/>
+                                <tr>
+                                    <th style="border: none"></th>
+                                    <!-- <th style="border: none"></th> -->
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th><t t-esc="currency" /></th>
+                                    <th><t t-esc="currency" /></th>
+                                </tr>
+                                <tr style="background-color: rgb(211,209,209);">
+                                    <th>Image</th>
+                                    <!-- <th>BON DE LIVRAISON</th> -->
+                                    <th>Designation</th>
+                                    <th>Ref Interne</th>
+                                    <th>Ref Client</th>
+                                    <th>Hs code</th>
+                                    <th>Dimension</th>
+                                    <th>Type</th>
+                                    <th>Qte</th>
+                                    <th>PU/UDM</th>
+                                    <th>Montant HT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="all_type" t-value="o.get_all_type(o.order_line)"/>
+                                <t t-foreach="all_type" t-as="type">
+                                    <t t-set="total_price_type" t-value="o.get_total_price_type(o.order_line,type)"/>
+                                    <t t-foreach="o.order_line" t-as="line">
+                                        <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                                <t t-foreach="bl_id" t-as="id_bl"> -->
+                                        
+                                            <!-- <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
+                                        <t t-if="line.product_id.product_type == type">    
+                                            <tr>
+                                                <td>
+                                                    <t t-if="line.product_id.image_1920">
+                                                    <img t-att-src="image_data_uri(line.product_id.image_1920)"
+                                                        style="max-height: 3cm; max-width: 4cm;"/>
+                                                </t>
+                                                <t t-else=""></t>
+                                                </td>
+                                                <!-- <td>
+                                                    <span t-esc="line.picking_name" />
+                                                </td> -->
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.default_code" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.customer_reference" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.hs_code.name" />
+                                                </td>
+                                                <td>
+                                                    <span t-field="line.product_id.product_type" />
+                                                </td>
+                                                <td>
+                                                    <t t-if="line.product_id.product_type == 'button'">
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
+                                                    </t>
+                                                    <t t-else="">
+                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.height)"/>mm
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_unit)"/> / <t t-esc="o.get_right_number(line.product_uom.factor_inv)"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                </td>
+                                            </tr>
+                                            <!-- </t> -->
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="o.get_right_number(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <t t-set="total_price_type_false" t-value="o.get_total_price_type(o.order_line, False)"/>
+                                    <t t-foreach="o.order_line" t-as="line">
+                                        <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
+                                        <!-- <t t-foreach="bl_id" t-as="id_bl">
+                                            <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
+                                            <t t-if="line.product_id.product_type == False and line.price_unit != 0">
+                                            <tr>
+                                                <td>
+                                                <t t-if="line.product_id.image_1920">
+                                                    <img t-att-src="image_data_uri(line.product_id.image_1920)"
+                                                        style="max-height: 3cm; max-width: 4cm;"/>
+                                                </t>
+                                                <t t-else=""></t>
+                                                </td>
+                                                <!-- <td>
+                                                    <span t-esc="line.picking_name" />
+                                                </td> -->
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.default_code" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.customer_reference" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.hs_code.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.product_type" />
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.quantity)" />
+                                                </td>
+                                                
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_unit)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> 
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                                </td>
+                                            </tr>
+                                            </t>
+                                        <!-- </t> -->
+                                    </t>
+                                    <tr t-if="total_price_type_false">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="o.get_right_number(total_price_type_false)"/> <t t-esc="o.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                    <tr t-if="total_price_type_false">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Sub-total</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="o.get_right_number(total_price_type_false)"/>
+                                            <t t-esc="doc.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                    <tr/>
+                                    <t t-if="o.partner_id.partner_type == 'ls'">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Tax 20%</td>
+                                            <td></td>
+                                            <td>
+                                                <t t-esc="o.get_right_number(o.amount_tax)"/> <t t-esc="o.currency_id.symbol"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Montant TTC</td>
+                                            <td></td>
+                                            <td>
+                                                <t t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <t t-else="">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Montant Total</td>
+                                            <td></td>
+                                            <td>
+                                                <t t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <!-- <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AIR FREIGHT</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="air_freight_price" t-value="o.env.ref('tnx_sale.product_air_freight').list_price"/>
+                                            <t t-esc="air_freight_price" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr> -->
+                            </tbody>
+                        </table>
                     </div>
-                    <div t-esc="doc.partner_id.rcs">
-                        <strong>RCS:</strong>
-                        <span t-esc="doc.partner_id.rcs"/>
+                    <!-- <h4>
+                        <div style="text-align:right">
+                        <t t-set="amount_total_with_air_freight" t-value="o.total_amount_ex(air_freight_price, o.amount_total)"/>
+                            <b>
+                                Montant HT:
+                                <span t-esc="int(o.amount_total)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            </b>
+                        </div>
+                    </h4> -->
+                    <div style="text-align:right">
+                        <span>A approuvé cette facture pour la somme de </span>
+                        <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
+                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
+                    </div>
+                    <br/>
+                    <div t-if="o.payment_method">
+                        <span> Paiement: </span> <span t-field="o.payment_method"/>
+                    </div>
+                            <t t-set="bank_company_ids" t-value="o.get_bank_ids()"/>
+                            <t t-if="bank_company_ids">
+
+                                <div class="row">
+                                    <t t-foreach="bank_company_ids" t-as="bank">
+                                        <div class="col-6" style="text-align: center;">
+                                            <style type="text/css">
+                                                p {margin-bottom: 0em;}
+                                            </style>
+                                            <br/>
+                                            <div style="border: 1px solid; text-align: center;">
+                                                <span t-esc="bank.bank_address"/>
+                                            </div>
+                                            <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+
+
+                                        </div>
+                                    </t>
+                                </div>
+                            
+                            
+                            </t>
+
+                </div>
+            </div>
+            <div class="footer" style="border-top: 2px solid black; font-size:16px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <div>
+                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                        </div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </xpath>
-        <!-- bc client -->
-        <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="replace">
-            <th name="th_priceunit" class="text-right">Prix / Udm</th>
-        </xpath>
-
-        <xpath expr="//table[hasclass('table')]//thead//tr//th[3]" position="after">
-            <th name="th_priceunit" class="text-right" t-if="doc.partner_id.partner_type != 'vl'">UdM</th>
-        </xpath>
-        <xpath expr="//table[hasclass('table')]//thead//tr//th[2]" position="replace">
-            <th name="th_priceunit" class="text-right">Quantité unitaire</th>
-        </xpath>
-        <xpath expr="//table[hasclass('table')]//thead//tr//th[6]" position="after">
-            <th name="th_dev_price" class="text-right">Frais de developpement</th>
-        </xpath>
-        <xpath expr="//table[hasclass('table')]//thead//tr//th[6]" position="after">
-            <t t-if="doc.partner_id.partner_type == 'ex'">
-                <th name="th_dev_price" class="text-right">HS CODE</th>
-            </t>
-        </xpath>
-        <xpath expr="//table[hasclass('table')]//tbody//tr//td[2]" position="replace">
-            <td name="td_quantity" class="text-right">
-                <span t-field="line.unit_qty"/>
-            </td>
-        </xpath>
-        <!-- <xpath expr="//t[@t-set='information_block']" position="replace">
-            <t t-set="information_block">
-                <strong t-if="doc.partner_shipping_id == doc.partner_invoice_id">Invoicing and Shipping Address:</strong>
-                <strong t-if="doc.partner_shipping_id != doc.partner_invoice_id">Invoicing Address:</strong>
-                <div>
-                    <strong>
-                        <span t-field="doc.partner_invoice_id.name" />
-                        <br />
-                        <span t-field="doc.partner_invoice_id.address" />
-                        <br />
-                        <span t-field="doc.partner_invoice_id.city" />
-                        <br />
-                        <span t-field="doc.partner_invoice_id.state_id.name" />
-                        <br />
-                        <span t-field="doc.partner_invoice_id.country_id.name" />
-                    </strong>
-                </div>
-                <t t-if="doc.partner_shipping_id != doc.partner_invoice_id">
-                    <strong>Shipping Address:</strong>
-                    <div t-field="doc.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}' />
-                </t>
-            </t>
-        </xpath> -->
-        <xpath expr="//table[hasclass('table')]//tbody//tr//td[3]" position="after">
-            <td name="td_quantity" class="text-right" t-if="doc.partner_id.partner_type != 'vl'">
-                <span t-field="line.product_uom"/>
-            </td>
-        </xpath>
-        <xpath expr="//table[hasclass('table')]//tbody//tr//td[6]" position="after">
-            <td name="td_quantity" class="text-right">
-                <span t-field="line.development_expenses"/>
-            </td>
-        </xpath>
-        <xpath expr="//table[hasclass('table')]//tbody//tr//td[6]" position="after">
-            <t t-if="doc.partner_id.partner_type == 'ex'">
-                <td name="td_quantity" class="text-right">
-                    <span t-field="line.product_id.hs_code"/>
-                </td>
-            </t>
-        </xpath>
-
-        <xpath expr="//div[hasclass('page')]//h2[hasclass('mt16')]" position="replace">
-            <h2 class="mt16">
-                <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                    <span t-if="doc.state not in ['draft','sent']">Bon de commande</span>
-                    <span t-if="doc.state in ['draft','sent']">Devis</span>
-                </t>
-                <t t-if="env.context.get('proforma', False) or is_pro_forma">
-                    <span>Facture proforma</span>
-                </t>
-                <!-- <span t-field="doc.name" /> -->
-                <span t-field="doc.sale_order_partner"/>
-            </h2>
-        </xpath>
-        <!-- Temps de livraison -->
-        <xpath expr="//div[@id='informations']//div[3]" position="after">
-            <div class="col-auto col-3 mw-100 mb-2">
-                <strong>Indicatif de livraison:</strong>
-                <p class="m-0" t-field="doc.delivery_time"/>
-                <!-- <p class="m-0" t-field="doc.delivery_time" t-options='{"widget": "date"}' /> -->
-            </div>
-            <div class="col-auto col-3 mw-100 mb-2">
-                <strong>Indicatif de fabrication:</strong>
-                <p class="m-0" t-field="doc.production_duration"/>
-
-            </div>
-        </xpath>
-        <!-- update table -->
-        <xpath expr="//div[hasclass('page')]//table[1]//th[@name='th_description']" position="before">
-            <th name="th_image" class="text-left">Image</th>
-            <th name="th_bc" class="text-left">BC/PO</th>
-            <th name="th_designation" class="text-left">Désignation</th>
-            <th name="th_type" class="text-left">Type</th>
-        </xpath>
-        <xpath expr="//div[hasclass('page')]//table[1]//td[1]" position="before">
-            <td name="td_image">
-                <t t-if="line.product_id.image_1920">
-                    <img t-att-src="image_data_uri(line.product_id.image_1920)"
-                         style="max-height: 3cm; max-width: 4cm;"/>
-                </t>
-                <t t-else=""></t>
-            </td>
-            <td name="sale_order_partner">
-                <t t-if="line.order_id.sale_order_partner">
-                    <span t-esc="line.order_id.sale_order_partner"/>
-                </t>
-                <t t-else="">
-                    <span>-
-                    </span>
-                </t>
-            </td>
-            <td name="designation">
-                <span t-esc="line.product_id.name"/>
-            </td>
-            <td name="product_type">
-                <span t-esc="line.product_id.product_type"/>
-            </td>
-        </xpath>
-        <xpath expr="//span[@t-field='doc.payment_term_id.note']" position="before">
-            <t t-if="env.context.get('proforma', False) or is_pro_forma">
-                <div class="row">
-                    <div class="col-12">
-                        <span t-esc="doc.currency_id.amount_to_text(doc.amount_total)"
-                              style="font-size: 16px;font-weight: bold;"></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <span>Poids approximatif : </span> <span t-esc="doc.poids_en_kg"> </span> <span> Kg</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <span>Nombre de carton : </span> <span t-esc="doc.box_qty"></span>
-                    </div>
-
-                </div>
-            </t>
-        </xpath>
-        
+    
     </template>
+    
+    <template id="report_saleorder_inherit" inherit_id="sale.report_saleorder">
+        
+        <xpath expr="//t[@t-call='web.html_container']" position="replace">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="tnx_sale.report_saleorder_document" t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
     <template id="report_saleorder_pro_forma_tnx" inherit_id="sale.report_saleorder_pro_forma">
         <xpath expr="//t[@t-call='web.html_container']" position="replace">
             <t t-call="web.html_container">
@@ -412,7 +730,7 @@
                                             <t t-esc="line.product_id.name"/>
                                         </td>
                                         <td>
-                                            <t t-esc="doc.get_right_number(line.price_unit_udm)"/>
+                                            <t t-esc="doc.get_right_number(line.price_unit)"/>
                                             <t t-esc="doc.currency_id.symbol"/>
                                         </td>
                                         <td>
@@ -1213,5 +1531,11 @@
     <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
         <field name="paperformat_id" ref="tnx_base.paperformat_tanacrex_report" />
     </record>
+    
+
+    <record id="sale.action_report_saleorder" model="ir.actions.report">
+        <field name="paperformat_id" ref="tnx_base.paperformat_tanacrex_report" />
+    </record>
+
     
 </odoo>

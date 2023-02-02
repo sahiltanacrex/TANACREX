@@ -129,9 +129,9 @@
                                 <span>CIF: </span>
                                 <span t-field="o.partner_id.cif"/> <br/> 
                             </t>
-                            <t t-if="o.partner_id.free_val">
+                            <!-- <t t-if="o.partner_id.free_val">
                                 <span t-field="o.partner_id.free_val"/> <br/> 
-                            </t>
+                            </t> -->
                         </div>
                     </div>
                     <div style="margin-top:15px; margin-bottom:15px">
@@ -181,7 +181,7 @@
                                                 <t t-esc="line.product_id.name" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.product_id.product_type" />
+                                                <span t-field="line.product_id.product_type" />
                                             </td>
                                             <td>
                                                 <t t-if="line.product_id.product_type == 'button'">
