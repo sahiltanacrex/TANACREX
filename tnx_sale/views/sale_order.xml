@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <record id="sale_order_inherit_tnx" model="ir.ui.view">
+            <field name="name">sale.order.form.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']" position='after'>
+                        <field name="sale_order_partner" />
+                        <div class="oe_inline">
+                            <span> Production duration </span>
+                            <field name="production_duration" class="oe_inline" style="width: 20% !important"/> jour(s)
+                        </div>
+                        <div class="oe_inline">
+                            <span> Delivery time duration</span>
+                            <field name="delivery_time" class="oe_inline" style="width: 20% !important"/> jour(s)
+                        </div>
+                    </xpath>
+                    <field name="payment_term_id" position="after">
+                        <field name="payment_method"/>
+                    </field>
+                    <field name="validity_date" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="validity_date" position="after">
+                        <div class="oe_inline">
+                            <label string="Validity" for="validity_day" style="width: 20% !important"/>
+                            <field name="validity_day" class="oe_inline" style="width: 20% !important"/> day(s) 
+                        </div>
+                        <br/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

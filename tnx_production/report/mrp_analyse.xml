@@ -1,0 +1,136 @@
+<odoo>
+    <data>
+        <template id="report_production_nexource">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-set="company" t-value="res_company" />
+                    <div class="page">
+                        <div class="oe_structure" />
+                        <div class="row" style="margin-left: 1px; margin-right: 1px; font-size : 14px; text-align:left; ">
+                            <div class="col-6">
+                                <div>
+                                    <img t-if="company.logo" style="max-height:40px" t-att-src="image_data_uri(company.logo)" />
+                                    <div class="font-weight-bold col-6" style="text-align:center !important;">
+                                        <div>MANUFACTURE DE BOUTONS</div>
+                                        <div>SERVICE ETIQUETAGE</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <div class="text-center ">
+                                <h6 class="font-weight-bold">RAPPORT ORDRE DE FABRICATION : <t t-esc="datetime.date.today().strftime('%d/%m/%Y')"/></h6>
+                            </div>
+                        </div>
+                        <style type="text/css">
+                                td,th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:13px;}
+                                table {width:100%;}
+                                </style>
+                        <table class="text-center">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Date BC</th>
+                                    <th>BC</th>
+                                    <th>BC Client</th>
+                                    <th>Client</th>
+                                    <th>Article</th>
+                                    <th>Type</th>
+                                    <th>Matière</th>
+                                    <th>Taille</th>
+                                    <th>Couleur</th>
+                                    <th>Quantité</th>
+                                    <th>Udm</th>
+                                    <th>Fin Prod</th>
+                                    <th>Commentaire</th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="docs" t-as="line">
+                                <t t-if="not line" t-set="line" t-value="line" />
+                                <tr>
+                                    <td>
+                                        <t t-if="line.product_id.image_256">
+                                            <img t-att-src="image_data_uri(line.product_id.image_256)" style="max-height:30px; padding: 2px 2px;" />
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.sale_order_date" t-options="{'widget': 'date'}"/>
+                                    </td>
+                                    <td>Article
+                                        <span t-field="line.order_id" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.bc_client" />
+                                    </td>
+                                    <td>
+                                        <t t-if="line.partner_id">
+                                            <span t-esc="line.partner_id.name" />
+                                        </t>
+                                        <t t-else=""></t>
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.product_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.product_type" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.material_product" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.line_product" />
+                                    </td>
+                                    <td>
+                                        <p t-attf-style="background-color: {{line.color_product}}; width: 25px; height: 25px; border-radius: 50%; border: 1px solid black; margin: auto;" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_qty" t-options="{'widget': 'float', 'precision': 0}"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_uom_id" />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.end_of_production" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.comment" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+
+
+                    </div>
+                </t>
+            </t>
+        </template>
+        <record id="paperformat_production_report_nexources" model="report.paperformat">
+            <field name="name">paperformat.analyse.production.nexource</field>
+            <field name="default" eval=" False" />
+            <field name="disable_shrinking" eval=" True" />
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">2</field>
+            <field name="margin_right">2</field>
+            <field name="margin_left">2</field>
+            <field name="header_line" eval=" False" />
+            <field name="header_spacing">1</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="action_production_nexource_report" model="ir.actions.report">
+            <field name="name">analyse.production.nexources</field>
+            <field name="model">mrp.production</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">tnx_production.report_production_nexource</field>
+            <field name="report_file">tnx_production.report_production_nexource</field>
+            <field name="print_report_name">'Analyse production'</field>
+            <field name="binding_model_id" ref="tnx_production.model_mrp_production" />
+            <field name="binding_model_id" eval="False" />
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="tnx_production.paperformat_production_report_nexources" />
+        </record>
+    </data>
+</odoo>

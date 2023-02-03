@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tnx_contact_tnx_contact,tnx_contact.tnx_contact,model_tnx_contact_tnx_contact,base.group_user,1,1,1,1

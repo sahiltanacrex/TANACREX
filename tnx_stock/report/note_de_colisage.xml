@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="note_de_colisage_paperformat" model="report.paperformat">
+        <field name="name">[TNX] Note de colisage </field>
+        <field name="default" eval="False" />
+        <field name="disable_shrinking" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_right">1</field>
+        <field name="margin_left">1</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">10</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_tnx_package_report" model="ir.actions.report">
+        <field name="name">Note de colisage</field>
+        <field name="model">note.colisage.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tnx_stock.tnx_package_report</field>
+        <field name="report_file">tnx_stock.tnx_package_report</field>
+        <field name="print_report_name">'Note de colisage - %s' % (object.partner_id.name)</field>
+        <field name="binding_model_id" ref="tnx_stock.model_note_colisage_wizard" />
+        <field name="binding_model_id" eval="False" />
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="tnx_stock.note_de_colisage_paperformat" />
+    </record>
+    <template id="tnx_package_document">
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <t t-if="not o" t-set="o" t-value="o" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+
+        <div class="header" style="font-size : 13px !important;">
+            <!-- TODO here we can create header -->
+            <div class="body_header">
+                <br />
+                <div class="row text-center" style="margin-left: 1px; margin-right: 1px; ">
+                    <div class="col-6">
+                        <div>
+                            <img t-if="company.logo" style="max-height:40px" t-att-src="image_data_uri(company.logo)" />
+                        </div>
+                        <span class="font-weight-bold">
+                                    MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
+                                </span>
+                        <br />
+                        <div>Lot 18 D Imerinafovoany </div>
+                        <div style="font-size:13px;">BP. 11064 - Antananarivo - Madagascar</div>
+                        <div>
+                            <span>Tél :</span>
+                            <span>22 441 35 / 03402 02 441 35</span>
+                        </div>
+                        <div>
+                            <span>E-mail : contact@tanacrex.com</span>
+                        </div>
+                        <div>
+                            <div>
+                                <span>R.C 13 332 - STAT :</span>
+                                <span t-esc="company.stat" />
+                            </div>
+                            <div>
+                                <span>NIF :</span>
+                                <span t-esc="company.nif" />
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <t t-set="product_group_by_packings" t-value="o.get_clean_data()" />
+            <div>
+                <div class="text-center ">
+                    <h5 class="font-weight-bold">
+                        <span t-field="o.name"/>
+                        <br/>
+                        <span t-esc="o.partner_id.name" />
+                    </h5>
+                    <h6>Invoice <span t-field="o.move_id.name"/></h6>
+                </div>
+            </div>
+            
+            <br />
+            <t t-set="gross_weight_total" t-value="sum(product_group_by_packings[k].get('gross_weight', 0.0) for k in product_group_by_packings)" />
+            <t t-set="net_weight_total" t-value="sum(product_group_by_packings[k].get('net_weight', 0.0) for k in product_group_by_packings)" />
+            <div class="row p-4">
+                <div class="col-6 text-left">
+                    Gross weight:
+                    <t t-esc="gross_weight_total" />
+                    Kgs
+                </div>
+                <div class="col-6 text-right">
+                    Net weight:
+                    <t t-esc="net_weight_total" />
+                    Kgs
+                </div>
+            </div>
+            <div style="padding-left: 10%; padding-right: 10%">
+                <table style="width: 100%">
+                    <t t-foreach="product_group_by_packings" t-as="packing">
+                        <tr>
+                            <td colspan="5" class="text-center h6">
+                                Packing N°
+                                <span t-esc="packing" />
+                                :
+                                <t t-esc="product_group_by_packings[packing].get('gross_weight', 0.0)" />
+                                Kgs
+                            </td>
+                        </tr>
+                        <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])" t-as='line'>
+                            <td>
+                                <span t-field="line.product_id" /> <t t-if="line.bc_client">(<t t-esc="line.bc_client" />)</t>
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <t t-esc="round(line.items_count)" />
+                            </td>
+                            <td>x</td>
+                            <td>
+                                <t t-esc="line.bags" />
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </div>
+
+        </div>
+    </template>
+    <!-- Template Note de colisage -->
+    <template id="tnx_package_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.sudo().lang" />
+                <t t-call="tnx_stock.tnx_package_document" t-lang="lang" />
+            </t>
+        </t>
+    </template>
+</odoo>

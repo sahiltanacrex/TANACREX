@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="note_colisage_form_view">
+        <field name="name">Note de colisafe Form view</field>
+        <field name="model">note.colisage.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="My Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" string="Nom" />
+                        </group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one" string="Client" />
+                            <field name="move_id" string="Facture" />
+                        </group>
+                    </group>
+                    <!-- <group>
+                        <group>
+                            <field name="poids_net" string="Poids net" />
+                        </group>
+                        <group>
+                            <field name="poids_brut" string="Poids brut" />
+                            <field name="description" string="Description" />
+                        </group>
+                    </group> -->
+                    <group>
+                        <field name="note_de_colisage_line_ids">
+                            <tree string="Note de colisage ligne" editable="bottom">
+                                <control>
+                                    <create name="add_line_control" string="Add a line" />
+                                </control>
+                                <field name="product_ids" widget="many2many_tags" invisible="1"/>
+                                <field name="product_id" domain="[('id', 'in', product_ids)]" width="25%"/>
+                                <field name="bc_client" width="12.5%"/>
+                                <field name="packing_number" width="25%"/>
+                                <field name="gross_weight" width="12.5%"/>
+                                <field name="net_weight" width="12.5%"/>
+                                <field name="items_count" width="12.5%"/>
+                                <field name="bags" width="12.5%"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="inconterm" />
+                        </group>
+                        <group>
+                            <field name="origin" string="Origine" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="report_colisage" type="object" string="Imprimer" class="btn-primary" data-hotkey="q" />
+                    <button string="Annuler" class="btn-secondary" special="cancel" data-hotkey="z" />
+                </footer>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_open_wizard_colisage" model="ir.actions.act_window">
+        <field name="name">Open Wizard Note De colisage</field>
+        <field name="res_model">note.colisage.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

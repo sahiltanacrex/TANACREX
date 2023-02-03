@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="inherit_mrp_form" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_send_mail_odf" string="Envoyer mail Ordre de fabrication" type="object" class="oe_highlight" attrs="{'invisible': [('check_bc','=',False)]}" />
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="partner_id" string="Client" force_save="1" />
+                    <field name="order_id" string="Devis confirmé" force_save="1" />
+                    <field name="bc_client" string="BC Client" force_save="1" />
+                    <field name="developments" widget="selection" />
+                    <field name="check_bc" invisible="1" />
+                </xpath>
+                <xpath expr="//label[@for='date_planned_start']" position="attributes">
+                    <attribute name="string">Début production</attribute>
+                </xpath>
+                <xpath expr="//label[@for='date_planned_start']" position="before">
+                    <field name="end_of_production" string="Fin production" />
+                </xpath>
+                <xpath expr="//notebook/page[@name='miscellaneous']/group/group[2]/field[@name='origin']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+                <page name="miscellaneous" position="after">
+                    <page name="comment" string="Commentaire">
+                        <field name="comment" placeholder="commentaire..."/>
+                    </page>
+                </page>
+            </field>
+        </record>
+        <!-- inherit view tree -->
+        <record id="inherit_mrp_tree" model="ir.ui.view">
+            <field name="name">mrp.tree</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="check_bc" invisible="1" />
+                    <!-- !TODO : Pour les deux prochains lignes -->
+                    <!-- attrs="{'invisible': [('check_bc','=',False)]}" -->
+                    <button name="action_send_mail_odf" string="Mail Ordre de fabrication" type="object" class="oe_highlight" />
+                    <field name="developments" decoration-danger="developments == '1'" decoration-info="developments == '2'" decoration-muted="developments == '3'" decoration-primary="developments == '4'" decoration-success="developments == '5'" widget="badge" />
+                    <field name="comment" />
+                </field>
+                <field name="name" position="attributes">
+                    <attribute name="string">ref ordre fab</attribute>
+                </field>
+
+                <xpath expr="//field[@name='origin']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <!-- <xpath expr="//field[@name='activity_ids']" position="replace">
+                    <field name="categorie_id" string="Catégorie d'article" />
+                </xpath> -->
+                <xpath expr="//field[@name='date_planned_start']" position="attributes">
+                    <attribute name="string">Début Prod</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="partner_id" string="Client" />
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="before">
+                    <field name="end_of_production" string="Fin Prod" />
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="after">
+
+                    <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" string='Taille'/>
+                    <field name="product_type" optional="show" readonly="1" string="Type"/>
+                    <field name="material_product" optional="show" readonly="1" string="Matière"/>
+                    <field name="color_product" widget="color" readonly="1" />
+                </xpath>
+                <xpath expr="//field[@name='name']" position="before">
+                    <field name="image_1920" widget="image" height="70" />
+                    <field name="sale_order_date" string="Date BC" />
+                    <field name="order_id" string="BC" />
+                    <field name="bc_client" string="BC Client" />
+                </xpath>
+                <xpath expr="//header/button[@name='button_plan']" position="before">
+                    <button name="report_analyse" string="Rapport" class="btn btn-sm btn-primary" type="object" />
+                </xpath>
+            </field>
+        </record>
+        <record id="mrp_production_search_view_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.search.view</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_mrp_production_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='product']" position="after">
+                    <filter string="Catégorie d'article" name="categorie_id" domain="[]" context="{'group_by': 'categorie_id'}" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>

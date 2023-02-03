@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="inherited_res_partner_view_form" model="ir.ui.view">
+            <field name="name">inherited.res_partner.form.inherit.test</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- find field description and add the field
+                     new_field after it -->
+                <xpath expr="//field[@name='vat']" position="replace">
+                    <field name="nif"/>
+                    <field name="stat"/>
+                    <field name="rcs"/>
+                    <field name="cif"/>
+                    <field name="free_val" string=""/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="before">
+                    <field name="fax_number"/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="partner_type" widget="radio" options="{'horizontal': true}"/>
+                    <field name="ref_client"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

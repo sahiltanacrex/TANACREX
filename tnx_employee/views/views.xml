@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="tnx_employee.list">
+      <field name="name">tnx_employee list</field>
+      <field name="model">tnx_employee.tnx_employee</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="tnx_employee.action_window">
+      <field name="name">tnx_employee window</field>
+      <field name="res_model">tnx_employee.tnx_employee</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="tnx_employee.action_server">
+      <field name="name">tnx_employee server</field>
+      <field name="model_id" ref="model_tnx_employee_tnx_employee"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="tnx_employee" id="tnx_employee.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="tnx_employee.menu_1" parent="tnx_employee.menu_root"/>
+    <menuitem name="Menu 2" id="tnx_employee.menu_2" parent="tnx_employee.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="tnx_employee.menu_1_list" parent="tnx_employee.menu_1"
+              action="tnx_employee.action_window"/>
+    <menuitem name="Server to list" id="tnx_employee" parent="tnx_employee.menu_2"
+              action="tnx_employee.action_server"/>
+-->
+  </data>
+</odoo>

@@ -1,0 +1,84 @@
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+    <t t-set="doc_name" t-value="'quotation' if object.state in ('draft', 'sent') else 'order'"/>
+    Dear <t t-esc="object.partner_id.name" contenteditable="false" data-oe-t-inline="true"></t>,
+    <br/>
+    <br/>
+    Your
+    <t t-if="ctx.get('proforma')">
+        Pro forma invoice for
+        <t t-out="doc_name or ''">quotation</t>
+        <strong t-out="object.name or ''">S00052</strong>
+        <t t-if="object.origin">
+            (with reference:
+            <t t-out="object.origin or ''"/>
+            )
+        </t>
+        amounting in <strong t-out="format_amount(object.amount_total, object.pricelist_id.currency_id) or ''">$ 10.00
+    </strong> is available.
+    </t>
+    <t t-else="">
+        <t t-out="doc_name or ''">quotation</t>
+        <strong t-out="object.name or ''"/>
+        <t t-if="object.origin">
+            (with reference: <t t-out="object.origin or ''">S00052</t> )
+        </t>
+        amounting in <strong t-out="format_amount(object.amount_total, object.pricelist_id.currency_id) or ''">$ 10.00
+    </strong> is ready for review.
+    </t>
+    <br/>
+    <br/>
+    Do not hesitate to contact us if you have any questions.
+    <br/>
+    <t t-esc="object.user_id.name" data-oe-t-inline="true"></t>,
+    <br/>
+    <p> Best regard
+
+    </p>
+</div>
+
+
+<div style="margin: 0px; padding: 0px;">
+<p style="box-sizing:border-box;margin: 0px; padding: 0px; font-size: 13px;">
+    <t t-set="doc_name" t-value="'quotation' if object.state in ('draft', 'sent') else 'order'"
+       data-oe-t-inline="true"></t>
+    Bonjour <t t-esc="object.partner_id.name" data-oe-t-inline="true"></t>,
+    <br/>
+    <br/>
+    Votre
+    <t t-if="ctx.get('proforma')" data-oe-t-group-active="true">
+        Facture Pro forma pour
+        <t t-out="doc_name or ''" data-oe-t-inline="true">devis</t>
+        <strong t-out="object.name or ''" style="box-sizing:border-box;font-weight:500;">S00052</strong>
+        <t t-if="object.origin" data-oe-t-group-active="true">
+            (avec la référence : <t t-out="object.origin or ''" data-oe-t-inline="true"></t> )
+        </t>
+        d'un montant de <strong t-out="format_amount(object.amount_total, object.pricelist_id.currency_id) or ''"
+                                style="box-sizing:border-box;font-weight:500;">$ 10.00
+    </strong> est disponible.
+    </t>
+    <t t-else="">
+        <t t-out="doc_name or ''" data-oe-t-inline="true">devis</t>
+        <strong t-out="object.name or ''" style="box-sizing:border-box;font-weight:500;"></strong>
+        <t t-if="object.origin" data-oe-t-group-active="true">
+            (avec la référence : <t t-out="object.origin or ''" data-oe-t-inline="true">S00052</t> )
+        </t>
+        d'un montant de <strong t-out="format_amount(object.amount_total, object.pricelist_id.currency_id) or ''"
+                                style="box-sizing:border-box;font-weight:500;">$ 10.00
+    </strong> est prête pour validation.
+    </t>
+    <br/>
+    <br/>
+    N'hésitez pas à nous contacter si vous avez des questions.
+    <br/>
+    <t t-esc="object.user_id.name" data-oe-t-inline="true"></t>,
+    <br/>
+</p>
+<p style="margin:0px 0 12px 0;box-sizing:border-box;"> Sincères salutations</p>
+<p style="margin:0px 0 12px 0;box-sizing:border-box;"></p>
+</div>
+
+
+
+
+

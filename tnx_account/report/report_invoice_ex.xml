@@ -1,0 +1,452 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <record id="invoice_ex" model="ir.actions.report">
+        <field name="name">Facture (EX)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tnx_account.report_ex</field>
+        <field name="report_file">tnx_account.report_ex</field>
+        <field name="attachment_use" eval="True" />
+        <field name="binding_model_id" ref="model_account_move" />
+        <field name="paperformat_id" ref="tnx_base.paperformat_tanacrex_report" />
+    </record>
+    <template id="report_ex_document">
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div class="header"></div>
+        <t t-if="o.partner_id.partner_type == 'ex'">
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="header_body">
+                    <div class="body_header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                                </div>
+                                <div class="col-xs-6" style="margin-left:250px; text-align:center">
+                                    <div>
+                                        <b>
+                                            <t t-if="company.description">
+                                                <t t-esc="company.description" />
+                                            </t>
+                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
+                                        </b>
+                                        <br />
+                                    </div>
+                                    <div t-if="company.stat">
+                                        <span>STAT:</span>
+                                        <span t-esc="company.stat" />
+                                    </div>
+                                    <div t-if="company.nif">
+                                        <span>NIF:</span>
+                                        <span t-esc="company.nif" />
+                                    </div>
+                                    <div>
+                                        <span>Lot 18 D Imerinafovoany </span>
+                                    </div>
+                                    <div>
+                                        <span>B.p.:11064 - Tél : </span>
+                                        <span t-esc="company.phone or company.mobile" />
+                                    </div>
+                                    <div>
+                                        <span>e-mail:contact@tanacrex.com</span>
+                                    </div>
+                                    <div>
+                                        <span>
+                                            ANTANANARIVO -
+                                            <b>MADAGASCAR</b>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-6">
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Facture:</b>
+                                <span t-esc="o.name_bis" />
+                            </div>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Référence:</b>
+                                <span t-esc="o.seq_bis" />
+                            </div>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Date de facturation:</b>
+                                <span t-esc="o.invoice_date" />
+                            </div>
+                        </div>  
+                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                            <span t-field="o.partner_id"/>
+                           <t t-if="o.partner_id.street">
+                                <span t-field="o.partner_id.street"/> <br/> 
+                            </t>
+                            <t  t-if="o.partner_id.street2">
+                                <span t-field="o.partner_id.street2"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.city">
+                                <span t-field="o.partner_id.city"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.state_id">
+                                <span t-field="o.partner_id.state_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.zip">
+                                <span t-field="o.partner_id.zip"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.country_id">
+                                <span t-field="o.partner_id.country_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.free_val">
+                                <span t-field="o.partner_id.free_val"/> <br/> 
+                            </t>
+                        </div>                      
+                    </div>
+                    
+                    <div style="margin-top:15px; margin-bottom:15px">
+                    
+                        <style type="text/css">
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
+                        <table>
+                            <thead>
+                                <t t-set="currency" t-value="o.currency_id.name"/>
+                                <tr>
+                                    <th style="border: none"></th>
+                                    <!-- <th style="border: none"></th> -->
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th><t t-esc="currency" /></th>
+                                    <th><t t-esc="currency" /></th>
+                                </tr>
+                                <tr style="background-color: rgb(211,209,209);">
+                                    <th>BC/PO</th>
+                                    <!-- <th>BON DE LIVRAISON</th> -->
+                                    <th>Designation</th>
+                                    <th>Type</th>
+                                    <th>Hs code</th>
+                                    <th>Dimension</th>
+                                    <th>Qte</th>
+                                    <th>PU/UDM</th>
+                                    <th>Montant HT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
+                                <t t-foreach="all_type" t-as="type">
+                                    <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                                        <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                                <t t-foreach="bl_id" t-as="id_bl"> -->
+                                        
+                                            <!-- <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
+                                        <t t-if="line.product_id.product_type == type">    
+                                            <tr>
+                                                <td>
+                                                    <t t-if="line.order_customer">
+                                                        <span style="text-align: center" t-esc="line.order_customer" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span style="text-align: center">-</span>
+                                                    </t>
+                                                </td>
+                                                <!-- <td>
+                                                    <span t-esc="line.picking_name" />
+                                                </td> -->
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td>
+                                                    <span t-field="line.product_id.product_type" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.hs_code.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-if="line.product_id.product_type == 'button'">
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
+                                                    </t>
+                                                    <t t-else="">
+                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.height)"/>mm
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="o.get_right_number(line.product_uom_id.name)"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                </td>
+                                            </tr>
+                                            <!-- </t> -->
+                                        </t>
+                                    </t>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="total_price_type" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <t t-set="total_price_type_false" t-value="o.get_total_price_type(o.invoice_line_ids, False)"/>
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                                        <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
+                                        <!-- <t t-foreach="bl_id" t-as="id_bl">
+                                            <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
+                                            <t t-if="line.product_id.product_type == False and line.price_unit != 0">
+                                            <tr>
+                                                <td>
+                                                <t t-if="line.order_customer">
+                                                    <span t-esc="line.order_customer" />
+                                                </t>
+                                                <t t-else="">
+                                                    <span>-</span>
+                                                </t>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="line.picking_name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.product_type" />
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.quantity)" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.product_id.name" />
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/> 
+                                                </td>
+                                                <td>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                                </td>
+                                            </tr>
+                                            </t>
+                                        <!-- </t> -->
+                                    </t>
+                                    <tr t-if="total_price_type_false">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="total_price_type_false" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    <tr t-if="total_price_type_false">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Sub-total</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-esc="o.get_right_number(total_price_type_false)"/>
+                                            <t t-esc="doc.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
+                                    <tr/>
+                                    <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border: 1px solid #000;">Montant Total</td>
+                                        <td style="border: 1px solid #000;"></td>
+                                        <td style="border: 1px solid #000;">
+                                            <t t-esc="o.get_right_number(o.amount_total)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>AIR FREIGHT</td>
+                                        <td></td>
+                                        <td>
+                                            <t t-set="air_freight_price" t-value="o.env.ref('tnx_sale.product_air_freight').list_price"/>
+                                            <t t-esc="air_freight_price" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                                        </td>
+                                    </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <h4>
+                        <div style="text-align:right">
+                        <t t-set="amount_total_with_air_freight" t-value="o.total_amount_ex(air_freight_price, o.amount_total)"/>
+                            <b>
+                                Montant HT:
+                                <span t-esc="int(o.amount_total)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            </b>
+                        </div>
+                    </h4> -->
+                    <div style="text-align:right">
+                        <!-- <span>A approuvé cette facture pour la somme de </span> -->
+                        <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
+                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
+                    </div>
+                    <!-- <t t-if="o.delivery_adress">
+                        <div>
+                            <b>Adresse de livraison</b>
+                            <t t-esc="o.delivery_adress" />
+                        </div>
+                    </t> -->
+                    <div>
+                        <div t-if="o.origin_tnx">
+                            <b> - Origine :</b>
+                            <span t-esc="o.origin_tnx" />
+                        </div>
+                        <div t-if="o.gross_weight">
+                            <b> - Poids brut : </b>
+                            <span t-esc="o.gross_weight" />
+                        </div>
+                        <div t-if="o.net_weight">
+                            <b> - Poids net :</b>
+                            <span t-esc="o.net_weight" />
+                        </div>
+                        <div t-if="o.c_f">
+                            <b>- Incoterm :</b>
+                            <span t-esc="o.c_f" />
+                        </div>
+                        <div t-if="o.seal_serial">
+                            <b>- Nombre de cartons :</b>
+                            <span t-esc="o.seal_serial" />
+                        </div>
+                        <div t-if="o.container_serial">
+                            <b>- Notes :</b>
+                            <span t-esc="o.container_serial" />
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-top:20px">
+                        <span> Origin: </span>
+                        <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "Y"</span>
+                    </div>
+                    <!-- <div style="text-align:center;margin-top:20px">
+                                <span>
+                                    The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, the products are of Madagascar preferential origin
+                                </span>
+                            </div> -->
+                    <br/>
+                    <t t-if="o.bank_company_ids">
+                        <!-- <div style="font-size:13px;margin-top:20px">
+                            <span>Compte N°: </span>
+                            <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
+                            <span t-esc="bank_info" />
+                        </div> -->
+                        <div class="row">
+                            <t t-foreach="o.bank_company_ids" t-as="bank">
+                                <div class="col-6" style="text-align: center;">
+                                    <style type="text/css">
+                                        p {margin-bottom: 0em;}
+                                    </style>
+                                    <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
+                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> --
+                                    <span t-esc="o.invoice_date_due"/>
+                                    <br/>
+                                    <span t-esc="bank.bank_address"/>
+                                    <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+
+
+                                </div>
+                            </t>
+                        </div>
+                        
+                        
+                    </t>
+                </div>
+            </div>
+            <div class="footer" style="border-top: 2px solid black; font-size:16px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <div>
+                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                        </div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <span>Cette facture n'est pas une facture EX</span>
+        </t>
+    </template>
+
+    <template id="report_ex">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.sudo().lang" />
+                <t t-call="tnx_account.report_ex_document" t-lang="lang" />
+            </t>
+        </t>
+    </template>
+
+</odoo>

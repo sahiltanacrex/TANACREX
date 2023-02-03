@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tnx_ex,tnx_account.tnx_ex,model_tnx_ex,base.group_user,1,1,1,1
+access_tnx_ls,tnx_account.tnx_ls,model_tnx_ls,base.group_user,1,1,1,1
+access_tnx_vl,tnx_account.tnx_ex,model_tnx_vl,base.group_user,1,1,1,1
+access_bank_company,tnx_account.bank_company,model_bank_company,base.group_user,1,1,1,1
+access_bank_company_line,tnx_account.bank_company_line,model_bank_company_line,base.group_user,1,1,1,1

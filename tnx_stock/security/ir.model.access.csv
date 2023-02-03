@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_note_colisage_wizard,access_note_colisage_wizard,model_note_colisage_wizard,base.group_user,1,1,1,1
+access_stock_carton,access_stock_carton,model_stock_carton,base.group_user,1,1,1,1
+access_stock_note_de_colisage,access_note_de_colisage,model_note_de_colisage_line,base.group_user,1,1,1,1

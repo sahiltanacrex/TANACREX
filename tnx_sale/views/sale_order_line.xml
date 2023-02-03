@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="view_order_form_with_carrier" model="ir.ui.view">
+            <field name="name">delivery.sale.order.form.view.with_carrier</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+                        <field name="box_qty" />
+                        <field name="development_expenses" />
+                    </xpath>
+                    <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+                        <field name="unit_qty" />
+                    </xpath>
+                    <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+                        <field name="poids_en_kg" />
+                    </xpath>
+                    <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
+                        <attribute name="string">Quantiy</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="attributes">
+                        <attribute name="string">Price</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

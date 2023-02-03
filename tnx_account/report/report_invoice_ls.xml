@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <record id="invoice_ls" model="ir.actions.report">
+        <field name="name">Facture (LS)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tnx_account.report_ls</field>
+        <field name="report_file">tnx_account.report_ls</field>
+        <field name="attachment_use" eval="True" />
+        <field name="binding_model_id" ref="model_account_move" />
+        <field name="paperformat_id" ref="tnx_base.paperformat_tanacrex_report" />
+    </record>
+    <template id="report_invoice_ls">
+        <t t-set="o" t-value="o.with_context(lang=lang)" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <div class="header"></div>
+        <t t-if="o.partner_id.partner_type == 'ls'">
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="header_body">
+                    <div class="body_header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                                </div>
+                                <div class="col-xs-6 " style="margin-left:250px; text-align:center">
+                                    <div>
+                                        <b>
+                                            <t t-if="company.description">
+                                                <t t-esc="company.description" />
+                                            </t>
+                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
+                                        </b>
+                                        <br />
+                                    </div>
+                                    <div>
+                                        <span>STAT:</span>
+                                        <span t-esc="company.stat" />
+                                    </div>
+                                    <div>
+                                        <span>NIF:</span>
+                                        <span t-esc="company.nif" />
+                                    </div>
+                                    <div>
+                                        <span>Lot 18 D Imerinafovoany </span>
+                                    </div>
+                                    <div>
+                                        <span>B.p.:11064 - Tél : </span>
+                                        <span t-esc="company.phone or company.mobile" />
+                                    </div>
+                                    <div>
+                                        <span>e-mail:contact@tanacrex.com</span>
+                                    </div>
+                                    <div>
+                                        <span>
+                                            ANTANANARIVO -
+                                            <b>MADAGASCAR</b>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-6">
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Facture:</b>
+                                <span t-esc="o.name_bis" />
+                            </div>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Référence:</b>
+                                <span t-esc="o.seq_bis" />
+                            </div>
+                            <div style="font-size:18px; margin-top:20px">
+                                <b>Date de facturation:</b>
+                                <span t-esc="o.invoice_date" />
+                            </div>
+                        </div>
+                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                            <span t-field="o.partner_id"/>
+                            <t t-if="o.partner_id.street">
+                                <span t-field="o.partner_id.street"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.street2">
+                                <span t-field="o.partner_id.street2"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.city">
+                                <span t-field="o.partner_id.city"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.state_id">
+                                <span t-field="o.partner_id.state_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.zip">
+                                <span t-field="o.partner_id.zip"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.country_id">
+                                <span t-field="o.partner_id.country_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.nif">
+                                <span>NIF: </span>
+                                <span t-field="o.partner_id.nif"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.stat">
+                                <span>STAT: </span>
+                                <span t-field="o.partner_id.stat"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.rcs">
+                                <span>RCS: </span>
+                                <span t-field="o.partner_id.rcs"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.cif">
+                                <span>CIF: </span>
+                                <span t-field="o.partner_id.cif"/> <br/> 
+                            </t>
+                            <!-- <t t-if="o.partner_id.free_val">
+                                <span t-field="o.partner_id.free_val"/> <br/> 
+                            </t> -->
+                        </div>
+                    </div>
+                    <div style="margin-top:15px; margin-bottom:15px">
+                        <style type="text/css">
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
+                        <table>
+                            <thead>
+                                <t t-set="currency" t-value="o.currency_id.name"/>
+                                <tr>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th style="border: none"></th>
+                                    <th><t t-esc="currency" /></th>
+                                    <th><t t-esc="currency" /></th>
+                                </tr>
+                                <tr style="background-color: rgb(211,209,209);">
+                                    <th>BC/PO</th>
+                                    <th>Bon de livraison</th>
+                                    <th>Désignation</th>
+                                    <th>Type</th>
+                                    <!-- <th>Réference client</th> -->
+                                    <th>Dimension</th>
+                                    <th>Qté</th>
+                                    <th>PU/UDM</th>
+                                    <th>Montant</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                    <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                    <t t-foreach="bl_id" t-as="id_bl">
+                                        <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
+                                        <tr>
+                                            <td>
+                                                <span t-esc="line.order_customer" />
+                                            </td>
+                                            <td>
+                                                <span t-esc="bl_name" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="line.product_id.name" />
+                                            </td>
+                                            <td>
+                                                <span t-field="line.product_id.product_type" />
+                                            </td>
+                                            <td>
+                                                <t t-if="line.product_id.product_type == 'button'">
+                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
+                                                </t>
+                                                <t t-else="">
+                                                <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.height)"/>mm
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-esc="o.get_right_number(line.quantity)" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="o.get_right_number(line.price_unit_udm)"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <tr>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <br/>
+
+                    <h6>
+                        <div style="text-align:right">
+                            <span>Montant HT:</span>
+                            <span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                        </div>
+                    </h6>
+                    <h6>
+                        <div style="text-align:right">
+                            <span>TVA 20%:</span>
+                            <span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                        </div>
+                    </h6>
+                    <h6>
+                        <div style="text-align:right">
+                            <span>Montant TTC:</span>
+                            <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                        </div>
+                    </h6>
+                    <h6>
+                    <div style="text-align:right">
+                        <!-- <span>Approuvé cett    e facture pour la somme de:</span> -->
+                        <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
+                    </div>
+                    </h6>
+                    <!-- <t t-if="o.delivery_adress">
+                        <div>
+                            <b> Adresse de livraison : </b>
+                            <t t-esc="o.delivery_adress" />
+                        </div>
+                    </t> -->
+                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span>   Date d'écheance: </span> <span t-esc="o.invoice_date_due"/>
+                            
+                    <t t-if="o.bank_company_ids">
+                        <div class="row">
+                            <t t-foreach="o.bank_company_ids" t-as="bank">
+                                <div class="col-6" style="text-align: center;">
+                                    <style type="text/css">
+                                        p {margin-bottom: 0em;}
+                                    </style>
+                                    <br/>
+                                    <span t-esc="bank.bank_address"/>
+                                    <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+
+
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            
+            <div class="footer o_standard_footer" style="border-top: 1px solid black; font-size:15px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <div>
+                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux.</span>
+                        </div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <span>Ce n'est pas une facture LS</span>
+        </t>
+    </template>
+
+    <template id="report_ls">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.sudo().lang" />
+                <t t-call="tnx_account.report_invoice_ls" t-lang="lang" />
+            </t>
+        </t>
+    </template>
+</odoo>

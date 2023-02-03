@@ -1,0 +1,144 @@
+<odoo>
+    <data>
+        <template id="report_etiquette_nexource">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="oe_structure" />
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0;}
+                            .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                              overflow:hidden;padding:10px 5px;word-break:normal;}
+                            .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                              font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                            .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                        </style>
+                        <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                        <t t-if="not o" t-set="o" t-value="o" />
+                        <t t-if="not company">
+                            <t t-if="company_id">
+                                <t t-set="company" t-value="company_id" />
+                            </t>
+                            <t t-elif="o and 'company_id' in o">
+                                <t t-set="company" t-value="o.company_id.sudo()" />
+                            </t>
+                            <t t-else="else">
+                                <t t-set="company" t-value="res_company" />
+                            </t>
+                        </t>
+                        <div class="header"></div>
+                        <div class="body" style="display: grid; grid-template-columns:1fr 1fr;">
+                            <t t-foreach="o.move_line_ids_without_package" t-as="line">
+                                <div style="padding-bottom:10px;">
+                                    <table class="tg" style="width: 300px;">
+                                        <colgroup>
+                                            <col style="width: 160px" />
+                                            <col style="width: 160px" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th class="tg-0pky" colspan="2">
+                                                    <div class="row">
+                                                        <div class="col-6" style="text-align: center !important;">
+                                                            <img t-if="company.logo" style="max-height:40px; " t-att-src="image_data_uri(company.logo)" />
+                                                        </div>
+                                                        <div class="col-6 text-center" style="font-size:10px !important;">
+                                                            <b>BOUTONS  ETIQUETTES </b>
+                                                            <div> Tel :(261) 034 02 441 35</div>
+                                                            <div> info@tanacrex.com</div>
+                                                            <div> www.tanacrex.com</div>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="font-size : 11px !important;">
+                                            <tr>
+                                                <td class="tg-0pky" colspan="2">
+                                                    <span t-if="o.sale_id" t-esc="o.sale_id.sale_order_partner" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tg-0pky">
+                                                    <u>
+                                                        <b>ART :</b>
+                                                    </u>
+                                                    <div class="text-right">
+                                                        <t t-if="line.product_id">
+                                                            <span t-esc="line.product_id.name" />
+
+                                                        </t>
+                                                    </div>
+                                                </td>
+                                                <td class="tg-0pky">
+                                                    <u>
+                                                        <b>QTY :</b>
+                                                    </u>
+                                                    <div class="text-right">
+                                                        <span t-if="line.product_id" t-esc=" line.qty_done" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tg-0pky">
+                                                    <u>
+                                                        <b>TAILLE :</b>
+                                                    </u>
+                                                    <div class="text-right">
+                                                        <t t-if="line.product_id">
+                                                            <span t-esc="line.product_id.line" />
+                                                            cm
+                                                        </t>
+                                                    </div>
+                                                </td>
+                                                <td class="tg-0pky">
+                                                    <u>
+                                                        <b>POIDS :</b>
+                                                    </u>
+                                                    <div class="text-right">
+                                                        <t t-if="line.carton_id">
+                                                            <span t-esc="line.carton_id.poids_brut" />
+                                                            kg
+                                                        </t>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+        <record id="paperformat_etiquette_report" model="report.paperformat">
+            <field name="name">paperformat.etiquette.nexource</field>
+            <field name="default" eval=" False" />
+            <field name="disable_shrinking" eval=" True" />
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">2</field>
+            <field name="margin_right">2</field>
+            <field name="margin_left">2</field>
+            <field name="header_line" eval=" False" />
+            <field name="header_spacing">1</field>
+            <field name="dpi">90</field>
+        </record>
+        <record id="action_etiquette_nexource_report" model="ir.actions.report">
+            <field name="name">Etiquette carton nexource</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">tnx_stock.report_etiquette_nexource</field>
+            <field name="report_file">tnx_stock.report_etiquette_nexource</field>
+            <field name="print_report_name">'Etiquettes BL - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="stock.model_stock_picking" />
+            <field name="binding_model_id" eval="False" />
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="tnx_stock.paperformat_etiquette_report" />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <record id="view_hscode_product_view" model="ir.ui.view">
+            <field name="name">hscode_product_form.form</field>
+            <field name="model">hscode.product</field>
+            <field name="arch" type="xml">
+                <form string="HS code">
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="name" />
+                                <field name="hs_code" />
+                            </group>
+                        </group>
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_hscode_product_tree" model="ir.ui.view">
+            <field name="name">hscode_product.tree</field>
+            <field name="model">hscode.product</field>
+            <field name="arch" type="xml">
+                <tree string="HS code">
+                    <field name="name" />
+                    <field name="hs_code" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hscode_product">
+            <field name="name">HS code</field>
+            <field name="res_model">hscode.product</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="context">{"search_default_sector_id":1,"search_default_directory_id":1}</field> -->
+        </record>
+
+        <menuitem id="hscode_product_menu" name="HS code produit" action="action_hscode_product" parent="stock.menu_stock_inventory_control" />
+
+    
+    </data>
+    
+</odoo>
