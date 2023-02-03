@@ -88,7 +88,6 @@
                             </div>
                             <div class="col-5">
                                 <h4>
-
                                     <span class="font-weight-bold">
                                         <span>N°</span>
                                         <span t-esc="o.name" />
@@ -103,15 +102,14 @@
                                 <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')" />
                             </div>
                             <br />
-                            <div>
-                                <u>
-                                    <b>
-                                        <span>CLIENT</span>
-                                    </b>
-
-                                </u>
-                                <span>: </span>
-                                <span t-esc="o.partner_id.name" />
+                            <div style="padding-left: 60%">
+                                <p class="text-center" style="border: 1px solid black; padding: 10px">
+                                    <span t-esc="o.partner_id.name" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street" />
+                                    <br />
+                                    <span t-esc="o.partner_id.city" />
+                                </p>
                             </div>
                             <br />
                             <div>
@@ -140,7 +138,6 @@
                         <td>Type</td>
                         <td>Designation</td>
                         <td>Modèle(Image)</td>
-                        <td>Colisage</td>
                     </tr>
                     <t t-set="lines" t-value="o.move_line_ids_without_package" />
                     <tr t-foreach="lines" t-as="line">
@@ -150,7 +147,7 @@
                                     t-options="{'widget': 'float', 'precision': 0}" />
                             </td>
                             <td>
-                                <span t-field="line.product_id.default_code" />
+                                <span t-field="line.product_id.customer_reference" />
                             </td>
                             <td>
                                 <span
@@ -173,9 +170,6 @@
                                     t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
                                     t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
                                     width="50" height="50" />
-                            </td>
-                            <td>
-                                <span t-field="line.carton_id" t-if="line.carton_id" />
                             </td>
                         </tr>
                     </tr>
