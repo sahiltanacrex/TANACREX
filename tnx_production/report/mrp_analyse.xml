@@ -91,7 +91,7 @@
                                         <span t-field="line.product_uom_id" />
                                     </td>
                                     <td>
-                                        <span t-field="line.date_communication" />
+                                        <span t-field="line.end_of_production" />
                                     </td>
                                     <td>
                                         <span t-esc="line.comment" />

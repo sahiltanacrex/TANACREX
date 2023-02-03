@@ -29,7 +29,7 @@ class MrpProduction(models.Model):
     categorie_id = fields.Many2one(
         "product.category",
         "Catégorie d'article",
-        related="product_id.categ_id",
+        related="product_id.categ_id", store=True
     )
     end_of_production = fields.Date(compute="_compute_end_of_production")
 
