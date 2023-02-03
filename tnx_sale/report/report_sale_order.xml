@@ -14,6 +14,7 @@
                 <t t-set="company" t-value="res_company" />
             </t>
         </t>
+        
         <div class="header"></div>
             <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
                 <div class="header_body">
@@ -148,13 +149,13 @@
                     <div style="margin-top:15px; margin-bottom:15px">
                     
                         <style type="text/css">
-                                    th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
-                                    table {width:100%; font-size:13px; border-collapse: collapse;}
-                                    
-                                    table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
-                                    table td:first-child {text-align: center; border-bottom:hidden}
-                                    table td:last-child {text-align: center;}
-                                    </style>
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
                         <table>
                             <thead>
                                 <t t-set="currency" t-value="o.currency_id.name"/>
@@ -164,7 +165,7 @@
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
-                                    <th style="border: none"></th>
+                                       <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
@@ -496,7 +497,7 @@
     <template id="report_saleorder_pro_forma_tnx" inherit_id="sale.report_saleorder_pro_forma">
         <xpath expr="//t[@t-call='web.html_container']" position="replace">
             <t t-call="web.html_container">
-                <t t-set="is_pro_forma" t-value="True"/>
+                <!-- <t t-set="is_pro_forma" t-value="True"/> -->
                 <t t-set="docs" t-value="docs.with_context(proforma=True)"/>
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="tnx_sale.report_saleorder_document_proforma" t-lang="doc.partner_id.lang"/>
@@ -506,8 +507,7 @@
 
     </template>
     <template id="report_saleorder_document_proforma">
-        <t t-call="web.external_layout">
-            <t t-set="doc" t-value="doc.with_context(lang=lang)"/>
+        <t t-set="doc" t-value="doc.with_context(lang=lang)"/>
         <t t-if="not company">
             <t t-if="company_id">
                 <t t-set="company" t-value="company_id" />
@@ -519,8 +519,11 @@
                 <t t-set="company" t-value="res_company" />
             </t>
         </t>
+        <div class="header"></div>
+            <!-- Client type vl -->
             <t t-if="doc.partner_id.partner_type == 'vl'">
-                <div class="mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="header_body">
                 <div class="body_header">
                     <div class="container">
                         <div class="row">
@@ -612,10 +615,13 @@
                 
                 <div style="margin-top:15px; margin-bottom:15px">
                     <style type="text/css">
-                        th {border-color:black;border-style:solid;border-width:1px;font-family:Arial Black, sans-serif; font-style:italic; font-weight:normal; text-align: left; padding:5px 5px;}
-                            table {width:100%; font-size:15px; }
-                            td {border: none; text-align: center;}
-                    </style>
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
                     <table>
                         <thead>
                             <t t-set="currency" t-value="doc.currency_id.name"/>
@@ -759,10 +765,22 @@
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </td>
                             </tr>
+                            <tr>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-                <h4>
+                <h6>
                     <div style="text-align:right">
                         <!-- <t t-set="amount_total_with_air_freight"
                            t-value="doc.total_amount_ex(air_freight_price, doc.amount_total)"/> -->
@@ -772,9 +790,9 @@
                             <t t-esc="doc.currency_id.symbol"/>
                         </b>
                     </div>
-                </h4>
+                </h6>
                 <div style="text-align:right">
-                    <span>A approuvé cette facture pour la somme de </span>
+                    <!-- <span>A approuvé cette facture pour la somme de </span> -->
                     <span t-esc="doc.currency_id.with_context(lang=doc.partner_id.lang or 'en_US').amount_to_text(doc.amount_total).upper()"/>
                 </div>
 
@@ -795,7 +813,7 @@
                                     p {margin-bottom: 0em;}
                                 </style>
                                 <br/>
-                                <div style="border: 1px solid; text-align: center;">
+                                <div style="text-align: center;">
                                     <span t-esc="bank.bank_address"/>
                                 </div>
                                 <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
@@ -809,10 +827,13 @@
                 </t>
 
                 </div>
+                </div>
+
             </t>
             <!-- Client type ex -->
             <t t-elif="doc.partner_id.partner_type == 'ex'">
-                <div class="mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="header_body">
                 <div class="body_header">
                     <div class="container">
                         <div class="row">
@@ -904,10 +925,13 @@
                 <div style="margin-top:15px; margin-bottom:15px">
 
                     <style type="text/css">
-                        th {border-color:black;border-style:solid;border-width:1px;font-family:Arial Black, sans-serif; font-style:italic; font-weight:normal; text-align: left; padding:5px 5px;}
-                            table {width:100%; font-size:15px; }
-                            td {border: none; text-align: center;}
-                    </style>
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
 
                     <table>
                         <thead>
@@ -1045,6 +1069,20 @@
                                 </t>
                                 <!-- </t> -->
                             </t>
+
+                            <tr>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px solid #000;"></td>
+                            </tr>
+                            
                             <!-- <tr t-if="total_price_type_false">
                                 <td></td>
                                 <td></td>
@@ -1092,7 +1130,7 @@
                         </tbody>
                     </table>
                 </div>
-                <h4>
+                <h6>
                     <div style="text-align:right">
                         <!-- <t t-set="amount_total_with_air_freight"
                            t-value="doc.total_amount_ex(air_freight_price, doc.amount_total)"/> -->
@@ -1102,9 +1140,9 @@
                             <t t-esc="doc.currency_id.symbol"/>
                         </b>
                     </div>
-                </h4>
+                </h6>
                 <div style="text-align:right">
-                    <span>A approuvé cette facture pour la somme de </span>
+                    <!-- <span>A approuvé cette facture pour la somme de </span> -->
                     <span t-esc="doc.currency_id.with_context(lang=doc.partner_id.lang or 'en_US').amount_to_text(doc.amount_total).upper()"/>
                 </div>
                 <!-- <t t-if="doc.delivery_adress">
@@ -1135,7 +1173,7 @@
                                     p {margin-bottom: 0em;}
                                 </style>
                                 <br/>
-                                <div style="border: 1px solid; text-align: center;">
+                                <div style="text-align: center;">
                                     <span t-esc="bank.bank_address"/>
                                 </div>
                                 <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
@@ -1149,11 +1187,13 @@
                 </t>
 
                 </div>
+                </div>
             </t>
 
             <!-- Client type ls -->
             <t t-elif="doc.partner_id.partner_type == 'ls'">
-                <div class="mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+                <div class="header_body">
                 <div class="body_header">
                     <div class="container">
                         <div class="row">
@@ -1245,10 +1285,13 @@
                 <div style="margin-top:15px; margin-bottom:15px">
 
                     <style type="text/css">
-                        th {border-color:black;border-style:solid;border-width:1px;font-family:Arial Black, sans-serif; font-style:italic; font-weight:normal; text-align: left; padding:5px 5px;}
-                            table {width:100%; font-size:15px; }
-                            td {border: none; text-align: center;}
-                    </style>
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
 
                     <table>
                         <thead>
@@ -1430,10 +1473,22 @@
                                        t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
                                 </td>
                             </tr> -->
+                            <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                    </tr>
                         </tbody>
                     </table>
                 </div>
-                <h4>
+                <h6>
                     <div style="text-align:right">
                         <b>
                             Montant HT:
@@ -1441,8 +1496,8 @@
                             <t t-esc="doc.currency_id.symbol"/>
                         </b>
                     </div>
-                </h4>
-                <h4>
+                </h6>
+                <h6>
                     <div style="text-align:right">
                         <b>
                             TVA 20%:
@@ -1450,8 +1505,8 @@
                             <t t-esc="doc.currency_id.symbol"/>
                         </b>
                     </div>
-                </h4>
-                <h4>
+                </h6>
+                <h6>
                     <div style="text-align:right">
                         <b>
                             Montant TTC:
@@ -1459,9 +1514,9 @@
                             <t t-esc="doc.currency_id.symbol"/>
                         </b>
                     </div>
-                </h4>
+                </h6>
                 <div style="text-align:right">
-                    <span>A approuvé cette facture pour la somme de </span>
+                    <!-- <span>A approuvé cette facture pour la somme de </span> -->
                     <span t-esc="doc.currency_id.with_context(lang=doc.partner_id.lang or 'en_US').amount_to_text(doc.amount_total).upper()"/>
                 </div>
                 <!-- <t t-if="doc.delivery_adress">
@@ -1493,7 +1548,7 @@
                                     p {margin-bottom: 0em;}
                                 </style>
                                 <br/>
-                                <div style="border: 1px solid; text-align: center;">
+                                <div style="text-align: center;">
                                     <span t-esc="bank.bank_address"/>
                                 </div>
                                 <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
@@ -1506,6 +1561,7 @@
                         
                 </t>
                 
+                </div>
                 </div>
             </t>
 
@@ -1528,7 +1584,6 @@
                     </div>
                 </div>
             </div>
-        </t>
     </template>
 
     <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">

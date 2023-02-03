@@ -122,10 +122,13 @@
                     <div style="margin-top:15px; margin-bottom:15px">
                     
                         <style type="text/css">
-                                    th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
-                                    table {width:100%; font-size:15px; }
-                                    td {border: none; text-align: center;}
-                                    </style>
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
+                        </style>
                         <table>
                             <thead>
                                 <t t-set="currency" t-value="o.currency_id.name"/>
@@ -286,17 +289,31 @@
                                     </tr>
                                     <tr/>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Montan Total</td>
-                                        <td></td>
-                                        <td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border: 1px solid #000;">Montant Total</td>
+                                        <td style="border: 1px solid #000;"></td>
+                                        <td style="border: 1px solid #000;">
                                             <t t-esc="o.get_right_number(o.amount_total)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                                         </td>
                                     </tr>
+                                    
                                     <!-- <tr>
                                         <td></td>
                                         <td></td>
@@ -324,7 +341,7 @@
                         </div>
                     </h4> -->
                     <div style="text-align:right">
-                        <span>A approuvé cette facture pour la somme de </span>
+                        <!-- <span>A approuvé cette facture pour la somme de </span> -->
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
                     </div>
@@ -362,7 +379,7 @@
                     </div>
                     <div style="text-align:center;margin-top:20px">
                         <span> Origin: </span>
-                        <span>"L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine préférentielle Madagascar"</span>
+                        <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "Y"</span>
                     </div>
                     <!-- <div style="text-align:center;margin-top:20px">
                                 <span>
@@ -383,7 +400,7 @@
                                         p {margin-bottom: 0em;}
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
-                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/>
+                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> --
                                     <span t-esc="o.invoice_date_due"/>
                                     <br/>
                                     <span t-esc="bank.bank_address"/>

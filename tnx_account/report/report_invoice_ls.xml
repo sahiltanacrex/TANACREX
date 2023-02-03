@@ -137,8 +137,11 @@
                     <div style="margin-top:15px; margin-bottom:15px">
                         <style type="text/css">
                             th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
-                            table {width:100%; font-size:15px; }
-                            td {border: none; text-align: center;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
                         </style>
                         <table>
                             <thead>
@@ -203,35 +206,48 @@
                                         </tr>
                                     </t>
                                 </t>
+                                <tr>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <br/>
-                    <br/>
 
-                    <h4>
+                    <h6>
                         <div style="text-align:right">
                             <span>Montant HT:</span>
                             <span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                         </div>
-                    </h4>
-                    <h4>
+                    </h6>
+                    <h6>
                         <div style="text-align:right">
                             <span>TVA 20%:</span>
                             <span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                         </div>
-                    </h4>
-                    <h4>
+                    </h6>
+                    <h6>
                         <div style="text-align:right">
                             <span>Montant TTC:</span>
                             <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
                         </div>
-                    </h4>
+                    </h6>
+                    <h6>
                     <div style="text-align:right">
-                        <span>Approuvé cette facture pour la somme de:</span>
+                        <!-- <span>Approuvé cett    e facture pour la somme de:</span> -->
                         <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                     </div>
+                    </h6>
                     <!-- <t t-if="o.delivery_adress">
                         <div>
                             <b> Adresse de livraison : </b>

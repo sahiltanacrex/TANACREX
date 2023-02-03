@@ -123,8 +123,11 @@
                     <div style="margin-top:15px; margin-bottom:15px">
                         <style type="text/css">
                             th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
-                            table {width:100%; font-size:15px; }
-                            td {border: none; text-align: center;}
+                            table {width:100%; font-size:13px; border-collapse: collapse;}
+                            
+                            table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                            table td:first-child {text-align: center; border-bottom:hidden}
+                            table td:last-child {text-align: center;}
                         </style>
                         <table>
                             <thead>
@@ -147,7 +150,7 @@
                                     <th>Dimension</th>
                                     <th>Qte</th>
                                     <th>PU/UDM</th>
-                                    <th>Montant HT</th>
+                                    <th>Montant</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -259,32 +262,41 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                <t t-if="o.delivery_adress">
-                        <div>
-                            <b> Adresse de livraison : </b>
-                            <t t-esc="o.delivery_adress" />
-                        </div>
-                    </t>         <td></td>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td>
                                             <t t-esc="o.get_right_number(total_price_type_false)"/>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                    </tr>
                                     
                             </tbody>
                         </table>
                     </div>
-                    <h4>
+                    <h5>
                         <div style="text-align:right">
-                            <span>Montant HT:</span>
+                            <span>Montant:</span>
                             <span t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
-                    </h4>
+                    </h5>
+                    <h5>
                     <div style="text-align:right">
-                        <span>Approuvé cette facture pour la somme de</span>
+                        <!-- <span>Approuvé cette facture pour la somme de</span> -->
                         <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                     </div>
+                    </h5>
                     <br/>
                     <br/>
                     <t t-if="o.delivery_adress">
