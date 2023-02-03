@@ -677,8 +677,7 @@
                                             </td>
                                             <td>
                                                 <t t-esc="doc.get_right_number(line.price_unit)"/>
-                                                
-                                                <!-- / <t t-esc="line.product_uom.name"/> -->
+                                                / <t t-esc="line.product_uom.name"/>
                                             </td>
                                             <td>
                                                 <t t-esc="doc.get_right_number(line.price_subtotal)"/>
@@ -977,7 +976,7 @@
                                             </td>
                                             <td>
                                                 <t t-esc="doc.get_right_number(line.price_unit)"/>
-                                                <!-- / <t t-esc="line.product_uom.name"/> -->
+                                                / <t t-esc="line.product_uom.name"/>
                                             </td>
                                             <td>
                                                 <t t-esc="doc.get_right_number(line.price_subtotal)"/>
@@ -1318,7 +1317,7 @@
                                             </td>
                                             <td>
                                                 <t t-esc="doc.get_right_number(line.price_unit)"/>
-                                                <!-- / <t t-esc="line.product_uom.name"/> -->
+                                                / <t t-esc="line.product_uom.name"/>
                                             </td>
                                             <td>
                                                 <t t-esc="doc.get_right_number(doc.amount_ttc_ls(line.price_subtotal))"/>

@@ -190,7 +190,7 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="o.get_right_number(line.product_uom_id.factor_inv)"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="o.get_right_number(line.product_uom_id.name)"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -246,7 +246,7 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> 
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
