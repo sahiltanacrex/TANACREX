@@ -64,48 +64,34 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-4">
-                            <table>
-                                <tr style="font-size:15px; margin-top:20px">
-                                    <td><b>Devis:</b></td>
-                                    <td><span t-esc="o.name"/></td>
+                        <div class="col-8">
+                            <table style="border: none;">
+                                <tr style="font-size:15px; margin-top:20px;">
+                                    <td style="border: none;"><b>Devis:</b></td>
+                                    <td style="border: none;"><span t-esc="o.name"/></td>
+                                    <td style="border: none;"></td>
+                                    <td style="border: none;"></td>
                                 </tr>
-                                <tr style="font-size:14px; margin-top:20px">
-                                    <td><b>BC Client:</b></td>
-                                    <td><span t-esc="o.sale_order_partner" /></td>
+                                <tr t-if="o.sale_order_partner" style="font-size:14px; margin-top:20px;">
+                                    <td style="border: none;"><b>BC Client:</b></td>
+                                    <td style="border: none;"><span t-esc="o.sale_order_partner" /></td>
+                                    <td style="border: none;"></td>
+                                    <td style="border: none;"></td>
                                 </tr>
-                                <tr style="font-size:14px; margin-top:20px">
-                                    <td><b>Validité:</b></td>
-                                    <td><span t-esc="o.get_validity_date()" /></td>
+                                <tr style="font-size:14px; margin-top:20px;">
+                                    <td style="border: none;"><b>Validité:</b></td>
+                                    <td style="border: none;"><span t-esc="o.get_validity_date()" /></td>
+                                    <td style="border: none;"></td>
+                                    <td style="border: none;"></td>
                                 </tr>
-                                <tr style="font-size:14px; margin-top:20px">
-                                    <td><b>Date de fabrication:</b></td>
-                                    <td><span t-esc="o.get_production_date()" /> </td>
+                                <tr style="font-size:14px; margin-top:20px;">
+                                    <td style="border: none;"><b>Date de fabrication:</b></td>
+                                    <td style="border: none;"><span t-esc="o.get_production_date()" /></td>
+                                    <td style="border: none;"><b>Date de livraison:</b></td>
+                                    <td style="border: none;"><span t-esc="o.get_delivery_date()"/></td>
                                 </tr>
                             </table>
                             
-                        </div>  
-                        <div class="col-4">
-                            <table>
-                            <tr>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td></td>
-                            </tr>
-                            <tr>
-                            <td>
-                            
-                            <div style="font-size:14px; margin-top:20px">
-                                    <b>Date de livraison:</b>
-                                    <span t-esc="o.get_delivery_date()"/>
-                            </div>
-                            </td>
-                            </tr>
-                            </table>
                         </div>
                         <div class="col-4" style="border: 1px solid; text-align: center;">
                             <span t-field="o.partner_id"/>
@@ -163,8 +149,11 @@
                     
                         <style type="text/css">
                                     th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
-                                    table {width:100%; font-size:13px; }
-                                    td {border: none; text-align: center;}
+                                    table {width:100%; font-size:13px; border-collapse: collapse;}
+                                    
+                                    table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
+                                    table td:first-child {text-align: center; border-bottom:hidden}
+                                    table td:last-child {text-align: center;}
                                     </style>
                         <table>
                             <thead>
@@ -189,8 +178,8 @@
                                     <th>Ref Interne</th>
                                     <th>Ref Client</th>
                                     <th>Hs code</th>
-                                    <th>Dimension</th>
                                     <th>Type</th>
+                                    <th>Dimension</th>
                                     <th>Qte</th>
                                     <th>PU/UDM</th>
                                     <th>Montant HT</th>
@@ -244,7 +233,7 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/> / <t t-esc="o.get_right_number(line.product_uom.factor_inv)"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit)"/> / <t t-esc="o.get_right_number(line.product_uom.name)"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -333,17 +322,29 @@
                                             <t t-esc="o.get_right_number(total_price_type_false)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                    </tr>
                                     <tr t-if="total_price_type_false">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Sub-total</td>
-                                        <td></td>
-                                        <td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border: 1px solid #000;">Sub-total</td>
+                                        <td style="border: 1px solid #000;"></td>
+                                        <td style="border: 1px solid #000;">
                                             <t t-esc="o.get_right_number(total_price_type_false)"/>
                                             <t t-esc="doc.currency_id.symbol"/>
                                         </td>
@@ -351,47 +352,50 @@
                                     <tr/>
                                     <t t-if="o.partner_id.partner_type == 'ls'">
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Tax 20%</td>
-                                            <td></td>
-                                            <td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border: 1px solid #000;">Tax 20%</td>
+                                            <td style="border: 1px solid #000;"></td>
+                                            <td style="border: 1px solid #000;">
                                                 <t t-esc="o.get_right_number(o.amount_tax)"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Montant TTC</td>
-                                            <td></td>
-                                            <td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border: 1px solid #000;">Montant TTC</td>
+                                            <td style="border: 1px solid #000;"></td>
+                                            <td style="border: 1px solid #000;">
                                                 <t t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                     </t>
                                     <t t-else="">
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>Montant Total</td>
-                                            <td></td>
-                                            <td>
-                                                <t t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border:none"></td>
+                                            <td style="border: 1px solid #000;">Montant Total</td>
+                                            <td style="border: 1px solid #000;"></td>
+                                            <td style="border: 1px solid #000;">
+                                            <b>
+                                            <t t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                                            </b>
+                                                
                                             </td>
                                         </tr>
                                     </t>
@@ -423,7 +427,7 @@
                         </div>
                     </h4> -->
                     <div style="text-align:right">
-                        <span>A approuvé cette facture pour la somme de </span>
+                        <!-- <span>A approuvé cette facture pour la somme de </span> -->
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
                     </div>
@@ -441,7 +445,7 @@
                                                 p {margin-bottom: 0em;}
                                             </style>
                                             <br/>
-                                            <div style="border: 1px solid; text-align: center;">
+                                            <div style="text-align: center;">
                                                 <span t-esc="bank.bank_address"/>
                                             </div>
                                             <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>

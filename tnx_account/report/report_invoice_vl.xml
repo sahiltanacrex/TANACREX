@@ -317,6 +317,22 @@
                                 <span>Tel: </span>
                                 <span t-field="o.partner_id.phone"/> <br/> 
                             </t>
+                            <t t-if="o.partner_id.nif">
+                                <span>NIF: </span>
+                                <span t-field="o.partner_id.nif"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.stat">
+                                <span>STAT: </span>
+                                <span t-field="o.partner_id.stat"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.rcs">
+                                <span>RCS: </span>
+                                <span t-field="o.partner_id.rcs"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.cif">
+                                <span>CIF: </span>
+                                <span t-field="o.partner_id.cif"/> <br/> 
+                            </t>
                             <t t-if="o.partner_id.free_val">
                                 <span t-field="o.partner_id.free_val"/> <br/> 
                             </t>
