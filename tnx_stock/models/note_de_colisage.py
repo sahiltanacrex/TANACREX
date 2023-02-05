@@ -47,8 +47,8 @@ class NoteDeColisage(models.TransientModel):
             'product_id.product_type'))
         out = list()
         for product_type in product_types:
-            items_count = int(sum(self.note_de_colisage_line_ids.filtered(
-                lambda line_id: line_id.product_id.product_type == product_type).mapped('items_count')))
+            items_count = int(sum(line.bags * line.items_count for line in self.note_de_colisage_line_ids.filtered(
+                lambda line_id: line_id.product_id.product_type == product_type)))
 
             out.append((items_count, product_type))
         return out
