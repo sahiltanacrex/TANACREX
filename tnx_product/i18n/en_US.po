@@ -1,0 +1,479 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tnx_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-05 13:14+0000\n"
+"PO-Revision-Date: 2023-02-05 13:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__ref_donneur_ordre
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__ref_donneur_ordre
+msgid " Réf. donneur d'ordre"
+msgstr ""
+
+#. module: tnx_product
+#: model:uom.uom,name:tnx_product.product_uom_hundred
+msgid "100 pièces new"
+msgstr ""
+
+#. module: tnx_product
+#: model:mail.template,body_html:tnx_product.send_mail_bat
+msgid ""
+"<h1>\n"
+"                    Cher\n"
+"                    <strong t-out=\"object.partner_id.name or ''\"/>\n"
+"                </h1>\n"
+"                <span>Voici les informations sur votre BAT de votre commande de l'article:</span>\n"
+"                <span t-out=\"object.name or ''\"/>\n"
+"                <ul>\n"
+"                    <li>\n"
+"                        <span t-out=\"object.employee_validator_id.name or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span t-out=\"object.bat_date or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span t-out=\"object.validation_tools or ''\"/>\n"
+"                    </li>\n"
+"                </ul>\n"
+"\n"
+"            "
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,help:tnx_product.field_product_product__detailed_type
+#: model:ir.model.fields,help:tnx_product.field_product_template__detailed_type
+msgid ""
+"A storable product is a product for which you manage stock. The Inventory app has to be installed.\n"
+"A consumable product is a product for which stock is not managed.\n"
+"A service is a non-material product you provide."
+msgstr ""
+
+#. module: tnx_product
+#: model:mail.template,name:tnx_product.send_mail_bat
+msgid "Any String"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__sticker
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__sticker
+msgid "Autocollant"
+msgstr "Sticker"
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__other
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__other
+msgid "Autres"
+msgstr "Others"
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
+msgid "Autres informations"
+msgstr "Other informations"
+
+#. module: tnx_product
+#: model:mail.template,subject:tnx_product.send_mail_bat
+#: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
+msgid "BAT"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__client_order
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__client_order
+msgid "Bon de commande client"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__button
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__button
+msgid "Bouton"
+msgstr "Button"
+
+#. module: tnx_product
+#: model:ir.model.fields,help:tnx_product.field_product_product__color
+#: model:ir.model.fields,help:tnx_product.field_product_template__color
+msgid "Choose your color"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__partner_id
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__partner_id
+msgid "Client"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__color
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__color
+msgid "Couleur"
+msgstr "Color"
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__create_uid
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__create_uid
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__create_date
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__create_date
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__bat_date
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__bat_date
+msgid "Date"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,help:tnx_product.field_product_product__uom_id
+#: model:ir.model.fields,help:tnx_product.field_product_template__uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,help:tnx_product.field_product_product__uom_po_id
+#: model:ir.model.fields,help:tnx_product.field_product_template__uom_po_id
+msgid ""
+"Default unit of measure used for purchase orders. It must be in the same "
+"category as the default unit of measure."
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__devise
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__devise
+msgid "Devise"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__diameter
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__diameter
+msgid "Diamètre (mm)"
+msgstr "Diameter (mm)"
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__display_name
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__display_name
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__miscellaneous
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__miscellaneous
+msgid "Divers"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__donneur_ordre
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__donneur_ordre
+msgid "Donneur d'ordre"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__name
+msgid "Désignation"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
+msgid "Envoyer BAT par e-mail"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__thickness
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__thickness
+msgid "Epaisseur (mm)"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__label
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__label
+msgid "Etiquette"
+msgstr "Label"
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__attachment_ids
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__attachment_ids
+msgid "Fichier BAT"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.actions.act_window,name:tnx_product.action_product_format
+#: model_terms:ir.ui.view,arch_db:tnx_product.view_product_format_tree
+msgid "Format product"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__supplier
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__supplier
+msgid "Fournisseur"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.product_template_search_view
+msgid "Group By"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.actions.act_window,name:tnx_product.action_hscode_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.view_hscode_product_tree
+#: model_terms:ir.ui.view,arch_db:tnx_product.view_hscode_product_view
+msgid "HS code"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.ui.menu,name:tnx_product.hscode_product_menu
+msgid "HS code produit"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__height
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__height
+msgid "Hauteur"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__hs_code
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__hs_code
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__hs_code
+msgid "Hs Code"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__id
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__id
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__id
+msgid "ID"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__info_frs
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__info_frs
+msgid "Info frs"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product____last_update
+#: model:ir.model.fields,field_description:tnx_product.field_product_format____last_update
+#: model:ir.model.fields,field_description:tnx_product.field_product_material____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__write_uid
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__write_uid
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_hscode_product__write_date
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__write_date
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__line
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__line
+msgid "Ligne"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__length
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__length
+msgid "Longueur"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__material
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__material_id
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__material
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__material_id
+msgid "Matière"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.product_material_tree_view
+msgid "ModelTitle"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__validation_tools
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__validation_tools
+msgid "Moyen de validation"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_format__name
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__name
+msgid "Name"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__latin_name
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__latin_name
+msgid "Nom latin"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__number_holes
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__number_holes
+msgid "Nombre de trous"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__origin
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__origin
+msgid "Origine"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.actions.act_window,name:tnx_product.action_product_material
+#: model:ir.ui.menu,name:tnx_product.product_material_menu
+msgid "PRODUCT MATERIAL"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.view_product_format_view
+msgid "Price rental"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__minimum_price
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__minimum_price
+msgid "Prix au forfait"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,help:tnx_product.field_product_product__minimum_price
+#: model:ir.model.fields,help:tnx_product.field_product_template__minimum_price
+msgid "Prix de vente minimum pour l'articles"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model,name:tnx_product.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__detailed_type
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__detailed_type
+msgid "Product Type"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.ui.menu,name:tnx_product.product_format_menu
+msgid "Product format"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.product_template_search_view
+msgid "Product material search"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model,name:tnx_product.model_product_material
+msgid "Product.material"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__uom_po_id
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__uom_po_id
+msgid "Purchase UoM"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__qty_min
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__qty_min
+msgid "Quantité minimum"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__customer_reference
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__customer_reference
+msgid "Référence Client"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__collection_site
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__collection_site
+msgid "Site de collecte"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__surface
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__surface
+msgid "Surface"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__tax_string_min
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__tax_string_min
+msgid "Tax String Min"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.product_material_form_view
+msgid "Title"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.product_template_search_view
+msgid "Type"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_material__product_type
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__product_type
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__product_type
+msgid "Type du produit"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__uom_id
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__uom_id
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__employee_validator_id
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__employee_validator_id
+msgid "Validateur"
+msgstr ""
+
+#. module: tnx_product
+#: code:addons/tnx_product/models/product_template.py:0
+#, python-format
+msgid ""
+"Veuillez vérifier que les champs nom et client et date BAT sont bien "
+"remplis."
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model,name:tnx_product.model_hscode_product
+msgid "hscode.product"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model,name:tnx_product.model_product_format
+msgid "product.format"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.product_material_form_view
+msgid "product_template"
+msgstr ""
