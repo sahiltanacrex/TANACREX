@@ -50,11 +50,12 @@
                 <div class="row text-center" style="margin-left: 1px; margin-right: 1px; ">
                     <div class="col-6">
                         <div>
-                            <img t-if="company.logo" style="max-height:40px" t-att-src="image_data_uri(company.logo)" />
+                            <img t-if="company.logo" style="max-height:40px"
+                                t-att-src="image_data_uri(company.logo)" />
                         </div>
                         <span class="font-weight-bold">
-                                    MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
-                                </span>
+                            MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
+                        </span>
                         <br />
                         <div>Lot 18 D Imerinafovoany </div>
                         <div style="font-size:13px;">BP. 11064 - Antananarivo - Madagascar</div>
@@ -83,42 +84,74 @@
             <div>
                 <div class="text-center ">
                     <h5 class="font-weight-bold">
-                        <span t-field="o.name"/>
-                        <br/>
+                        <span t-field="o.name" />
+                        <br />
                         <span t-esc="o.partner_id.name" />
                     </h5>
-                    <h6>Invoice <span t-field="o.move_id.name"/></h6>
+                    <h6>Invoice <span t-field="o.move_id.name" /></h6>
+                    <t t-set="about_total" t-value="o.get_article_total_by_category()" />
+                    <p style="max-width: 250px; margin:auto">There are <t t-set="i" t-value="0" />
+                        <t
+                            t-foreach="about_total"
+                            style="margin: 0" t-as="about">
+                            <t t-set="i" t-value="i+1" />
+                            <t
+                                t-esc="about[0]" />
+                            <t
+                                t-esc="about[1]" />s <t
+                                t-if="i &lt; len(about_total)">, </t>
+                        </t> in
+                        total </p>
                 </div>
             </div>
-            
+
             <br />
-            <t t-set="gross_weight_total" t-value="sum(product_group_by_packings[k].get('gross_weight', 0.0) for k in product_group_by_packings)" />
-            <t t-set="net_weight_total" t-value="sum(product_group_by_packings[k].get('net_weight', 0.0) for k in product_group_by_packings)" />
+            <t t-set="gross_weight_total"
+                t-value="sum(product_group_by_packings[k].get('gross_weight', 0.0) for k in product_group_by_packings)" />
+            <t t-set="net_weight_total"
+                t-value="sum(product_group_by_packings[k].get('net_weight', 0.0) for k in product_group_by_packings)" />
             <div class="row p-4">
-                <div class="col-6 text-left">
-                    Gross weight:
-                    <t t-esc="gross_weight_total" />
-                    Kgs
-                </div>
-                <div class="col-6 text-right">
-                    Net weight:
-                    <t t-esc="net_weight_total" />
-                    Kgs
-                </div>
+                <div class="col-6 text-left"> Gross weight: <t t-esc="gross_weight_total" /> Kgs </div>
+                <div class="col-6 text-right"> Net weight: <t t-esc="net_weight_total" /> Kgs </div>
             </div>
             <div style="padding-left: 10%; padding-right: 10%">
-                <table style="width: 100%">
+                <table class="table table-bordered" style="width: 100%">
                     <t t-foreach="product_group_by_packings" t-as="packing">
                         <tr>
-                            <td colspan="5" class="text-center h6">
-                                Packing N°
-                                <span t-esc="packing" />
-                                :
-                                <t t-esc="product_group_by_packings[packing].get('gross_weight', 0.0)" />
-                                Kgs
+                            <td colspan="5" class="text-center h6"> Packing N° <span t-esc="packing" />
+                                : <t
+                                    t-esc="product_group_by_packings[packing].get('gross_weight', 0.0)" />
+                                Kgs </td>
+                        </tr>
+                        <tr>
+                            <th>Article</th>
+                            <th>Gross weight</th>
+                            <th>Net weight</th>
+                            <th>Count</th>
+                            <th>Bags</th>
+                        </tr>
+                        <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])"
+                            t-as='line'>
+                            <td>
+                                <span t-field="line.product_id" />
+                                <t t-if="line.bc_client">(<t t-esc="line.bc_client" />)</t>
+                            </td>
+                            <td>
+                                <span t-field="line.gross_weight" />
+                            </td>
+                            <td>
+                                <span t-field="line.net_weight" />
+                            </td>
+                            <td>
+                                <span t-field="line.items_count" />
+                            </td>
+                            <td>
+                                <span t-field="line.bags" />
                             </td>
                         </tr>
-                        <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])" t-as='line'>
+                        <!-- <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])"
+                        t-as='line'>
+                            <td><t t-esc="line.product_id.name"/></td>
                             <td>
                                 <span t-field="line.product_id" /> <t t-if="line.bc_client">(<t t-esc="line.bc_client" />)</t>
                             </td>
@@ -130,7 +163,7 @@
                             <td>
                                 <t t-esc="line.bags" />
                             </td>
-                        </tr>
+                        </tr> -->
                     </t>
                 </table>
             </div>
