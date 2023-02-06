@@ -26,15 +26,15 @@
         </t>
         <div class="header"></div>
         <t t-if="o.partner_id.partner_type == 'ex'">
-            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <div class="header_body">
                     <div class="body_header">
                         <div class="container">
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-6" style="width: 50%;">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6" style="margin-left:250px; text-align:center">
+                                <div class="col-xs-6" style="text-align:center; width: 50%;">
                                     <div>
                                         <b>
                                             <t t-if="company.description">
@@ -448,5 +448,7 @@
             </t>
         </t>
     </template>
+
+    
 
 </odoo>
