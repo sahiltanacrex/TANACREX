@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-31 06:47+0000\n"
-"PO-Revision-Date: 2023-01-31 06:47+0000\n"
+"POT-Creation-Date: 2023-02-06 11:05+0000\n"
+"PO-Revision-Date: 2023-02-06 11:05+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,11 +40,6 @@ msgstr "<b> - Gross weight : </b>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "<b> - Poids net :</b>"
 msgstr "<b> - Net weight :</b>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<b> Adresse de livraison : </b>"
-msgstr "<b>Delivery address: </b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -110,18 +105,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>   Date d'écheance: </span>"
-msgstr "<span>   Date d'écheance: </span>"
+msgstr "<span>   Scale date: </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid ""
 "<span> Origin: </span>\n"
-"                        <span>\"L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine préférentielle Madagascar\"</span>"
+"                        <span>\"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is \"Y\"</span>"
 msgstr ""
-"<span> Origin: </span>\n"
-"<span>\"The exporter of the products covered by this document(customs "
-"authorization MGREX1000002056) declares that, unless clearly statedon the "
-"contrary, the products are of preferential originMadagascar\"</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -138,21 +129,6 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-msgid "<span>A approuvé cette facture pour la somme de </span>"
-msgstr "<span>Approved this invoice for the sum of </span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-msgid "<span>Approuvé cette facture pour la somme de:</span>"
-msgstr "<span>Approved this invoice for the sum of </span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<span>Approuvé cette facture pour la somme de</span>"
-msgstr "<span>Approved this invoice for the sum of </span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>B.p.:11064 - Tél : </span>"
@@ -160,6 +136,7 @@ msgstr "<span>B.p.:11064 - Tel : </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>CIF: </span>"
 msgstr ""
 
@@ -194,7 +171,6 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>Montant HT:</span>"
 msgstr "<span>Amount:</span>"
 
@@ -202,6 +178,11 @@ msgstr "<span>Amount:</span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "<span>Montant TTC:</span>"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Montant:</span>"
+msgstr "<span>Amount:</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
@@ -218,6 +199,7 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>RCS: </span>"
 msgstr ""
 
@@ -280,7 +262,6 @@ msgstr ""
 "corresponding postage.</span>"
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>V.A.T: </span>"
 msgstr ""
@@ -682,19 +663,15 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-msgid "Montan Total"
-msgstr ""
-
-#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Montant"
 msgstr "Amount"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Montant HT"
-msgstr "Amount:"
+msgid "Montant Total"
+msgstr ""
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank
