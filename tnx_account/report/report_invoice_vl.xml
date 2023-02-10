@@ -26,7 +26,7 @@
         </t>
         <div class="header"></div>
         <t t-if="o.partner_id.partner_type == 'vl'">
-            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <div class="header_body">
                     <div class="body_header">
                         <div class="container">
@@ -87,7 +87,7 @@
                             </div>
                             <div style="font-size:18px; margin-top:20px">
                                 <b>Date de facturation:</b>
-                                <span t-esc="o.invoice_date" />
+                                <span t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
                             </div>
                         </div>
                         <div class="col-6" style="border: 1px solid; text-align: center;">
@@ -129,6 +129,7 @@
                             table td:first-child {text-align: center; border-bottom:hidden}
                             table td:last-child {text-align: center;}
                         </style>
+                        <br/>
                         <table>
                             <thead>
                             <t t-set="currency" t-value="o.currency_id.name"/>
@@ -143,13 +144,13 @@
                                     <th><t t-esc="currency" /></th>
                                 </tr>
                                 <tr style="background-color: rgb(211,209,209);">
-                                    <th>BC/PO</th>
+                                    <th>BC</th>
                                     <th>Bon de livraison</th>
                                     <th>Designation</th>
                                     <th>type</th>
                                     <th>Dimension</th>
                                     <th>Qte</th>
-                                    <th>PU/UDM</th>
+                                    <th>PU</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -193,7 +194,7 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="o.get_right_number(line.product_uom_id.name)"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="line.product_uom_id.name"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -203,7 +204,7 @@
                                         </t>
                                         <!-- </t> -->
                                     </t>
-                                    <tr>
+                                    <tr t-if="len(all_type) > 1">
                                         <td>
                                         </td>
                                         <td>
@@ -211,7 +212,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
+                                        <td>Sous-total</td>
                                         <td></td>
                                         <td>
                                             <t t-esc="o.get_right_number(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
@@ -359,7 +360,10 @@
                             <span t-esc="bank_info" />
                         </div> -->
                         <div class="row">
-                            <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <br/>
+                            <div>
+                                <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <br/>
+                            </div>
+                            
                             <t t-foreach="o.bank_company_ids" t-as="bank">
                                 <div class="col-6" style="text-align: center;">
                                     <style type="text/css">
@@ -367,7 +371,9 @@
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
                                     <!-- <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -->
-                                    <span>   Date d'écheance: </span> <span t-esc="o.invoice_date_due"/>
+                                    <t t-if="o.invoice_date_due">
+                                    <span>   Date d'écheance: </span> <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    </t>
                                     <br/>
                                     <span t-esc="bank.bank_address"/>
                                     <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
@@ -380,13 +386,16 @@
                         
                     </t>
                 </div>
+                <br/>
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux</span>
+                    </div>
+                </div>
             </div>
             <div class="footer o_standard_footer" style="border-top: 1px solid black; font-size:15px">
                 <div class="row text-center">
                     <div class="col col-12 text-center">
-                        <div>
-                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux</span>
-                        </div>
                         <ul class="list-inline">
                             <li class="list-inline-item">Page:</li>
                             <li class="list-inline-item">

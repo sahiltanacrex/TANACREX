@@ -252,8 +252,8 @@ class AccountMoveInherit(models.Model):
         val_string = str(val)
         val_split = val_string.split('.')
         if len(val_split) == 1:
-            return val
+            return '{:,}'.format(int(val)).replace(',', ' ')
         if int(val_split[1]) > 0:
-            return val
+            return '{:,}'.format(val).replace(',', ' ')
         else:
-            return int(val)
+            return '{:,}'.format(int(val)).replace(',', ' ')
