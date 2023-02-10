@@ -270,7 +270,7 @@
                                                 <td>
                                                 <t t-if="line.product_id.image_1920">
                                                     <img t-att-src="image_data_uri(line.product_id.image_1920)"
-                                                        style="max-height: 3cm; max-width: 4cm; padding: 1px;"/>
+                                                        style="max-height: 3cm; max-width: 3cm; padding: 1px; margin: 1em;"/>
                                                 </t>
                                                 <t t-else=""></t>
                                                 </td>
@@ -815,7 +815,7 @@
                 <br/>
                 <div>
                     <span>Paiement:</span> <span t-field="doc.payment_method"/>
-                    <t t-set="validity_date" t-value="doc.get_validity_date().strftime('%d/%m/%Y')"/>
+                    <t t-set="validity_date" t-value="doc.get_validity_date()"/>
                     <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span> <span t-esc="validity_date.strftime('%d/%m/%Y')"/>
                 </div>
                 <t t-set="bank_company_ids" t-value="doc.get_bank_ids()"/>
