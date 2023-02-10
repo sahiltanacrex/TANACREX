@@ -194,7 +194,7 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> / <t t-esc="line.product_uom_id.name"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/>  <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>

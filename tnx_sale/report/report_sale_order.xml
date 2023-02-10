@@ -235,7 +235,7 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/> / <t t-esc="line.product_uom.name"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom.name"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -697,7 +697,7 @@
                                                 <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                             </td>
                                             <td>
-                                                <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                <t t-esc="doc.get_right_number(line.price_unit)"/> <t t-esc="doc.currency_id.symbol"/>
                                                 / <t t-esc="line.product_uom.name"/>
                                             </td>
                                             <td>
@@ -787,7 +787,7 @@
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
-                                <td style="border-bottom: 1px solid #000;"></td>
+                                <td style="border-bottom: 1px slido #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
@@ -1020,7 +1020,7 @@
                                                 <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                             </td>
                                             <td>
-                                                <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                <t t-esc="doc.get_right_number(line.price_unit)"/> <t t-esc="doc.currency_id.symbol"/>
                                                 / <t t-esc="line.product_uom.name"/>
                                             </td>
                                             <td>
@@ -1384,7 +1384,7 @@
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                        <t t-esc="doc.get_right_number(line.price_unit)"/> <t t-esc="doc.currency_id.symbol"/>
                                                         / <t t-esc="line.product_uom.name"/>
                                                     </td>
                                                     <td>
