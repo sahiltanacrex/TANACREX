@@ -3,7 +3,7 @@
     <data>
         <record id="product_uom_hundred" model="uom.uom">
             <field name="category_id" ref="uom.product_uom_categ_unit"/>
-            <field name="name">100 pièces new</field>
+            <field name="name">100 pièces</field>
             <field name="factor_inv" eval="100"/>
             <field name="uom_type">bigger</field>
         </record>

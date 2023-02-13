@@ -23,7 +23,7 @@ msgstr ""
 
 #. module: tnx_product
 #: model:uom.uom,name:tnx_product.product_uom_hundred
-msgid "100 pièces new"
+msgid "100 pièces"
 msgstr ""
 
 #. module: tnx_product
