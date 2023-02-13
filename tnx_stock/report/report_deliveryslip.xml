@@ -132,16 +132,24 @@
                 </style>
                 <table class="table" clearname="stock_move_table" style="font-size:16px !important;">
                     <tr>
+                        <td>Modèle(Image)</td>
                         <td>Quantité</td>
                         <td>Reférence</td>
                         <td>Dimension</td>
                         <td>Type</td>
                         <td>Designation</td>
-                        <td>Modèle(Image)</td>
+                        <td>Colisage</td>
+
                     </tr>
                     <t t-set="lines" t-value="o.move_line_ids_without_package" />
                     <tr t-foreach="lines" t-as="line">
                         <tr>
+                            <td>
+                                <img
+                                    t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
+                                    t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
+                                    width="50" height="50" />
+                            </td>
                             <td>
                                 <span t-field="line.unit_done"
                                     t-options="{'widget': 'float', 'precision': 0}" />
@@ -166,11 +174,9 @@
                                 <span t-field="line.product_id.name" />
                             </td>
                             <td>
-                                <img
-                                    t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
-                                    t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
-                                    width="50" height="50" />
+                                <span t-field="line.colisage" />
                             </td>
+
                         </tr>
                     </tr>
                 </table>
