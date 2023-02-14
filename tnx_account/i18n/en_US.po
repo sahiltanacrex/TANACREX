@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-10 13:08+0000\n"
-"PO-Revision-Date: 2023-02-10 13:08+0000\n"
+"POT-Creation-Date: 2023-02-14 12:03+0000\n"
+"PO-Revision-Date: 2023-02-14 12:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -752,13 +752,6 @@ msgstr "Origin"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "PU"
-msgstr "UP"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Page:"
 msgstr ""
 
@@ -790,6 +783,13 @@ msgstr "Net weight"
 #: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_vl_view
 msgid "Price rental"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Prix Unitaire"
+msgstr "Unit Price"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_move_line__price_unit_udm

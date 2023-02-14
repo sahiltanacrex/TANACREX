@@ -90,7 +90,7 @@
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
                             </div>
                         </div>
-                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                        <div class="col-5" style="border: 1px solid; text-align: center;">
                             <span t-field="o.partner_id"/>
                             <t t-if="o.partner_id.street">
                                 <span t-field="o.partner_id.street"/> <br/> 
@@ -122,7 +122,7 @@
                     </div> <span>-</span>
                     <div style="margin-top:15px; margin-bottom:15px">
                         <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -150,7 +150,7 @@
                                     <th>type</th>
                                     <th>Dimension</th>
                                     <th>Qte</th>
-                                    <th>PU</th>
+                                    <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -205,14 +205,12 @@
                                         <!-- </t> -->
                                     </t>
                                     <tr t-if="len(all_type) > 1">
-                                        <td>
-                                        </td>
-                                        <td>
-                                        </td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Sous-total</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td></td>
                                         <td>
                                             <t t-esc="o.get_right_number(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
@@ -220,6 +218,7 @@
                                     </tr>
                                 </t>
                                 <t t-set="total_price_type_false" t-value="o.get_total_price_type(o.invoice_line_ids, False)"/>
+                                <t t-set="type_false_number" t-value="o.get_type_false_number()"/>
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
                                         <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
                                         <!-- <t t-foreach="bl_id" t-as="id_bl">
@@ -259,12 +258,13 @@
                                             </t>
                                         <!-- </t> -->
                                     </t>
-                                    <tr t-if="total_price_type_false">
+                                    <tr t-if="total_price_type_false and type_false_number > 1">
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td>Sous-total</td>
                                         <td></td>
                                         <td>
                                             <t t-esc="o.get_right_number(total_price_type_false)"/>
@@ -279,25 +279,23 @@
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
-                                        <td style="border-bottom: 1px solid #000;"></td>
-                                        <td style="border-bottom: 1px solid #000;"></td>
                                     </tr>
                                     
                             </tbody>
                         </table>
                     </div>
-                    <h5>
+                    <h6>
                         <div style="text-align:right">
                             <span>Montant:</span>
                             <span t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
-                    </h5>
-                    <h5>
+                    </h6>
+                    <h6>
                     <div style="text-align:right">
                         <!-- <span>Approuvé cette facture pour la somme de</span> -->
                         <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                     </div>
-                    </h5>
+                    </h6>
                     <br/>
                     <br/>
                     <t t-if="o.delivery_adress">

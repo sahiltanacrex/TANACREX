@@ -136,7 +136,7 @@
                     </div>
                     <div style="margin-top:15px; margin-bottom:15px">
                         <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -165,7 +165,7 @@
                                     <!-- <th>Réference client</th> -->
                                     <th>Dimension</th>
                                     <th>Qté</th>
-                                    <th>PU</th>
+                                    <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -208,8 +208,6 @@
                                     </t>
                                 </t>
                                 <tr>
-                                    <td style="border-bottom: 1px solid #000;"></td>
-                                    <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>

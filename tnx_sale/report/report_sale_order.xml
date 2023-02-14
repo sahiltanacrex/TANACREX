@@ -65,29 +65,29 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-7">
                             <table style="border: none;">
-                                <tr style="font-size:15px; margin-top:20px;">
-                                    <td style="border: none;"><b>Devis:</b></td>
-                                    <td style="border: none;"><span t-esc="o.name"/></td>
+                                <tr style="font-size:15px; margin-top:20px; ">
+                                    <td style="border: none; text-align: left;"><b>Devis:</b></td>
+                                    <td style="border: none; text-align: left;"><span t-esc="o.name"/></td>
                                     <td style="border: none;"></td>
                                     <td style="border: none;"></td>
                                 </tr>
                                 <tr t-if="o.sale_order_partner" style="font-size:14px; margin-top:20px;">
-                                    <td style="border: none;"><b>BC Client:</b></td>
-                                    <td style="border: none;"><span t-esc="o.sale_order_partner" /></td>
+                                    <td style="border: none; text-align: left;"><b>BC Client:</b></td>
+                                    <td style="border: none; text-align: left;"><span t-esc="o.sale_order_partner" /></td>
                                     <td style="border: none;"></td>
                                     <td style="border: none;"></td>
                                 </tr>
                                 <tr style="font-size:14px; margin-top:20px;">
-                                    <td style="border: none;"><b>Validité:</b></td>
-                                    <td style="border: none;"><span t-esc="o.get_validity_date().strftime('%d/%m/%Y')" /></td>
+                                    <td style="border: none; text-align: left;"><b>Validité:</b></td>
+                                    <td style="border: none; text-align: left;"><span t-esc="o.get_validity_date().strftime('%d/%m/%Y')" /></td>
                                     <td style="border: none;"></td>
                                     <td style="border: none;"></td>
                                 </tr>
                                 <tr style="font-size:14px; margin-top:20px;">
-                                    <td style="border: none;"><b>Date de fabrication:</b></td>
-                                    <td style="border: none;"><span t-esc="o.get_production_date().strftime('%d/%m/%Y')" /></td>
+                                    <td style="border: none; text-align: left;"><b>Date de fabrication:</b></td>
+                                    <td style="border: none; text-align: left;"><span t-esc="o.get_production_date().strftime('%d/%m/%Y')" /></td>
                                     <td style="border: none;"><b>Date de livraison:</b></td>
                                     <td style="border: none;"><span t-esc="o.get_delivery_date().strftime('%d/%m/%Y')"/></td>
                                 </tr>
@@ -149,7 +149,7 @@
                     <div style="margin-top:15px; margin-bottom:15px">
                     
                         <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -183,7 +183,7 @@
                                     <th>Type</th>
                                     <th>Dimension</th>
                                     <th>Qte</th>
-                                    <th>PU</th>
+                                    <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -596,7 +596,7 @@
                                 <span t-esc="doc.name" />
                             </div>
                         </div>  
-                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                        <div class="col-5" style="border: 1px solid; text-align: center;">
                             <span t-field="doc.partner_id"/>
                            <t t-if="doc.partner_id.street">
                                 <span t-field="doc.partner_id.street"/> <br/> 
@@ -630,7 +630,7 @@
                 
                 <div style="margin-top:15px; margin-bottom:15px">
                     <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -655,7 +655,7 @@
                                 <th>Type</th>
                                 <th>Dimension</th>
                                 <th>Qté</th>
-                                <th>PU</th>
+                                <th>Prix Unitaire</th>
                                 <th>Montant</th>
                             </tr>
                         </thead>
@@ -709,7 +709,7 @@
                                     </t>
                                     <!-- </t> -->
                                 </t>
-                                <tr>
+                                <tr t-if="len(all_type) > 1">
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -787,9 +787,6 @@
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
-                                <td style="border-bottom: 1px slido #000;"></td>
-                                <td style="border-bottom: 1px solid #000;"></td>
-                                <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                             </tr>
                         </tbody>
@@ -848,7 +845,22 @@
                 </div>
                 </div>
                 </div>
-
+                <div class="footer" style="border-top: 2px solid black; font-size:16px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             </t>
             <!-- Client type ex -->
             <t t-elif="doc.partner_id.partner_type == 'ex'">
@@ -912,7 +924,7 @@
                                 <span t-esc="doc.name" />
                             </div>
                         </div>
-                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                        <div class="col-5" style="border: 1px solid; text-align: center;">
                             <span t-field="doc.partner_id"/>
                            <t t-if="doc.partner_id.street">
                                 <span t-field="doc.partner_id.street"/> <br/> 
@@ -946,7 +958,7 @@
                 <div style="margin-top:15px; margin-bottom:15px">
 
                     <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -974,7 +986,7 @@
                                 <th>HS Code</th>
                                 <th>Dimension</th>
                                 <th>Qté</th>
-                                <th>PU</th>
+                                <th>Prix Unitaire</th>
                                 <th>Montant</th>
                             </tr>
                         </thead>
@@ -1031,13 +1043,13 @@
                                         <!-- </t> -->
                                     </t>
                                 </t>
-                                <tr>
+                                <tr t-if="len(all_type) > 1">
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <td>Sous-total</td>
                                     <td></td>
                                     <td>
                                         <t t-esc="doc.get_right_number(total_price_type)"/>
@@ -1090,8 +1102,6 @@
                             </t>
 
                             <tr>
-                                <td style="border-bottom: 1px solid #000;"></td>
-                                <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
@@ -1212,6 +1222,22 @@
                 </div>
                 </div>
                 </div>
+                <div class="footer" style="border-top: 2px solid black; font-size:16px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             </t>
 
             <!-- Client type ls -->
@@ -1276,7 +1302,7 @@
                                         <span t-esc="doc.name" />
                                     </div>
                                 </div>  
-                                <div class="col-6" style="border: 1px solid; text-align: center;">
+                                <div class="col-5" style="border: 1px solid; text-align: center;">
                                     <span t-field="doc.partner_id"/>
                                 <t t-if="doc.partner_id.street">
                                         <span t-field="doc.partner_id.street"/> <br/> 
@@ -1310,7 +1336,7 @@
                         <div style="margin-top:15px; margin-bottom:15px">
 
                             <style type="text/css">
-                                    th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                                    th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                                     table {width:100%; font-size:13px; border-collapse: collapse;}
                                     
                                     table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -1338,7 +1364,7 @@
                                         <th>HS Code</th>
                                         <th>Dimension</th>
                                         <th>Qté</th>
-                                        <th>PU</th>
+                                        <th>Prix Unitaire</th>
                                         <th>Montant TTC</th>
                                     </tr>
                                 </thead>
@@ -1369,7 +1395,7 @@
                                                         <t t-esc="line.product_id.product_type"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.product_id.hs_code.name"/>
+                                                        <t t-esc="line.product_id.hs_code.hs_code"/>
                                                     </td>
                                                     <td>
                                                         <t t-if="line.product_id.product_type == 'button'">
@@ -1395,7 +1421,7 @@
                                                 <!-- </t> -->
                                             </t>
                                         </t>
-                                        <tr>
+                                        <tr t-if="len(all_type) > 1">
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -1497,17 +1523,15 @@
                                         </td>
                                     </tr> -->
                                     <tr>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                                <td style="border-bottom: 1px solid #000;"></td>
-                                            </tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -1592,27 +1616,24 @@
                         
                     </div>
                 </div>
-            </t>
-        
-        <div class="footer" style="border-top: 2px solid black; font-size:16px;">
-            <div class="row text-center">
-                <div class="col col-12 text-center">
-                    <div>
-                    <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                <div class="footer" style="border-top: 2px solid black; font-size:16px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="list-inline">
-                        <li class="list-inline-item">Page:</li>
-                        <li class="list-inline-item">
-                            <span class="page" />
-                        </li>
-                        <li class="list-inline-item">/</li>
-                        <li class="list-inline-item">
-                            <span class="topage" />
-                        </li>
-                    </ul>
                 </div>
             </div>
-        </div>
+            </t>
+        
     </template>
 
     <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">

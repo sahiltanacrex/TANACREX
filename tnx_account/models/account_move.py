@@ -257,3 +257,7 @@ class AccountMoveInherit(models.Model):
             return '{:,}'.format(val).replace(',', ' ')
         else:
             return '{:,}'.format(int(val)).replace(',', ' ')
+
+    def get_type_false_number(self):
+        product_type_false =self.invoice_line_ids.mapped('product_id').filtered(lambda p: p.product_type == False)
+        return len(product_type_false)

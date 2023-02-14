@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-10 13:02+0000\n"
-"PO-Revision-Date: 2023-02-10 13:02+0000\n"
+"POT-Creation-Date: 2023-02-14 12:56+0000\n"
+"PO-Revision-Date: 2023-02-14 12:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,22 +18,22 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 msgid "<b>BC Client:</b>"
-msgstr ""
+msgstr "<b>Customer PO:</b>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 msgid "<b>Date de fabrication:</b>"
-msgstr ""
+msgstr "<b>Date of production</b>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 msgid "<b>Date de livraison:</b>"
-msgstr ""
+msgstr "<b>Delivery date:</b>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 msgid "<b>Devis:</b>"
-msgstr ""
+msgstr "<b>Quotation:</b>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
@@ -41,6 +41,8 @@ msgid ""
 "<b>Facture: </b>\n"
 "                                        <span>PROFORMA /</span>"
 msgstr ""
+"<b>Invoice: </b>\n"
+"                                        <span>PROFORMA /</span>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
@@ -59,7 +61,7 @@ msgstr "<b>Reference:</b>"
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 msgid "<b>Validité:</b>"
-msgstr ""
+msgstr "<b>Validity:</b>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
@@ -96,7 +98,7 @@ msgstr ""
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 msgid "<span> Paiement: </span>"
-msgstr ""
+msgstr "<span> Payment: </span>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
@@ -179,9 +181,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
 msgid ""
 "<span>Tous les frais bancaires de la banque étrangère doivent être payés par"
-" l'acheteur, y compris remboursement des frais bancaires, des commissions, "
+" the buyer, including reimbursement of bank charges, commissions, "
 "des fax et des frais postaux correspondants.</span>"
 msgstr ""
+"<span>All bank charges from the foreign bank must be paid by"
+" l'acheteur, y compris remboursement des frais bancaires, des commissions, "
+"faxes and related postage.</span>"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
@@ -331,12 +336,6 @@ msgstr "Number of boxes"
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
-msgid "PU"
-msgstr "UP"
-
-#. module: tnx_sale
-#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
-#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
 msgid "Page:"
 msgstr ""
 
@@ -355,6 +354,12 @@ msgstr "Weight In Kg"
 #: model_terms:ir.ui.view,arch_db:tnx_sale.view_order_form_with_carrier
 msgid "Price"
 msgstr ""
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
+msgid "Prix Unitaire"
+msgstr "Unite Price"
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_account_move_line__development_expenses

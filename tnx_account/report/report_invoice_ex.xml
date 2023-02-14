@@ -89,7 +89,7 @@
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')"/>
                             </div>
                         </div>  
-                        <div class="col-6" style="border: 1px solid; text-align: center;">
+                        <div class="col-5" style="border: 1px solid; text-align: center;">
                             <span t-field="o.partner_id"/>
                            <t t-if="o.partner_id.street">
                                 <span t-field="o.partner_id.street"/> <br/> 
@@ -122,7 +122,7 @@
                     <div style="margin-top:15px; margin-bottom:15px">
                     
                         <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
@@ -152,7 +152,7 @@
                                     <th>Hs code</th>
                                     <th>Dimension</th>
                                     <th>Qte</th>
-                                    <th>PU</th>
+                                    <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -290,8 +290,6 @@
                                     </tr>
                                     <tr/>
                                     <tr>
-                                        <td style="border-bottom: 1px solid #000;"></td>
-                                        <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
