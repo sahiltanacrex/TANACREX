@@ -285,7 +285,7 @@
                                         <td></td>
                                         <td>
                                             <t t-esc="o.get_right_number(total_price_type_false)"/>
-                                            <t t-esc="doc.currency_id.symbol"/>
+                                            <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                     <tr/>
