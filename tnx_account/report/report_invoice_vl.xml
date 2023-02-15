@@ -353,7 +353,7 @@
                     <br/>
                     <t t-if="o.bank_company_ids">
                         <!-- <div style="font-size:13px;margin-top:20px">
-                            <span>Compte N°: </span>
+                            <span>exit(mpte N°: </span>
                             <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
                             <span t-esc="bank_info" />
                         </div> -->

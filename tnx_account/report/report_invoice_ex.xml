@@ -223,6 +223,8 @@
                                 </t>
 
                                 <t t-set="total_price_type_false" t-value="o.get_total_price_type(o.invoice_line_ids, False)"/>
+                                <t t-set="type_false_number" t-value="o.get_type_false_number()"/>
+                                    
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
                                         <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
                                         <!-- <t t-foreach="bl_id" t-as="id_bl">
@@ -238,12 +240,16 @@
                                                 </t>
                                                 </td>
                                                 <td>
-                                                    <span t-esc="line.picking_name" />
+                                                    <span t-esc="line.product_id.name" />
                                                 </td>
                                                 <td>
                                                     <t t-esc="line.product_id.product_type" />
                                                 </td>
-                                                <td></td>
+                                                <td>
+                                                   <t t-if="line.product_id.hs_code">
+                                                   <span t-esc="line.product_id.hs_code.hs_code" /> 
+                                                   </t> 
+                                                </td>
                                                 <td>
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
@@ -251,22 +257,22 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.product_id.name" />
+                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit_udm)"/> <t t-esc="o.currency_id.symbol"/>
+                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             </t>
                                         <!-- </t> -->
                                     </t>
-                                    <tr t-if="total_price_type_false">
+                                    <tr t-if="total_price_type_false and type_false_number > 1 and len(all_type) > 1">
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Sub-total</td>
+                                        <td>Sous-total</td>
                                         <td></td>
                                         <td>
                                             <t t-esc="o.get_right_number(total_price_type_false)"/>
