@@ -256,25 +256,10 @@
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_unit_udm)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
-                                                <td>
-                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
-                                                </td>
                                             </tr>
                                             </t>
                                         <!-- </t> -->
                                     </t>
-                                    <tr t-if="total_price_type_false">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <t t-esc="o.get_right_number(total_price_type_false)"/> <t t-esc="o.currency_id.symbol"/>
-                                        </td>
-                                    </tr>
                                     <tr t-if="total_price_type_false">
                                         <td></td>
                                         <td></td>
