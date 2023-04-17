@@ -198,10 +198,10 @@
                                             <!-- <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
                                         <t t-if="line.product_id.product_type == type">    
                                             <tr>
-                                                <td>
+                                                <td style="overflow: hidden;">
                                                     <t t-if="line.product_id.image_1920">
                                                     <img t-att-src="image_data_uri(line.product_id.image_1920)"
-                                                        style="max-height: 3cm; max-width: 4cm;"/>
+                                                        style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
                                                 </t>
                                                 <t t-else=""></t>
                                                 </td>
@@ -267,10 +267,10 @@
                                             <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
                                             <t t-if="line.product_id.product_type == False and line.price_unit != 0">
                                             <tr>
-                                                <td>
+                                                <td style="overflow: hidden;">
                                                 <t t-if="line.product_id.image_1920">
                                                     <img t-att-src="image_data_uri(line.product_id.image_1920)"
-                                                        style="max-height: 3cm; max-width: 3cm; padding: 1px; margin: 1em;"/>
+                                                        style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
                                                 </t>
                                                 <t t-else=""></t>
                                                 </td>
