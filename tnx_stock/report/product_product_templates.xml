@@ -51,7 +51,8 @@
                                         </td>
                                         <td style="border:1px solid">
                                             <b>QTY:</b>
-                                            <span t-field="product.qty_available" t-options="{'widget': 'float', 'precision': 0}"/>
+<!--                                            <span t-field="product.qty_available" t-options="{'widget': 'float', 'precision': 0}"/>-->
+                                            <t t-esc="qty" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -62,7 +63,7 @@
                                         </td>
                                         <td style="border:1px solid">
                                             <b>WEIGHT:</b>
-                                            <span t-field="product.weight"/>
+                                            <t t-esc="weight" />
                                             kg
                                         </td>
                                     </tr>

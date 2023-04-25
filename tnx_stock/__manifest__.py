@@ -31,6 +31,7 @@
         "views/wizard_colisage.xml",
         "views/stock_carton.xml",
         "views/stock_picking.xml",
+        "wizard/product_label_layout_views.xml",
         "report/report_label.xml",
         "report/hide_report_picking.xml",
         "report/report_deliveryslip.xml",
