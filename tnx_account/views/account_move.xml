@@ -50,6 +50,9 @@
                 <xpath expr="//field[@name='invoice_line_ids']//field[@name='price_unit']" position="attributes">
                     <attribute name="string">Prix/UDM</attribute>
                 </xpath>
+<!--                <xpath expr="//field[@name='invoice_line_ids']//field[@name='price_unit']" position="replace">-->
+<!--                    <field name="price_unit_udm" />-->
+<!--                </xpath>-->
             </field>
         </record>
 

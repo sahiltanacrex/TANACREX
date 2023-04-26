@@ -24,13 +24,11 @@ class AccountMoveInherit(models.Model):
     def create(self, vals):
         res = super(AccountMoveInherit, self).create(vals)
         sale_line_ids = res.invoice_line_ids.mapped("sale_line_ids")
-        var1 =1
         if sale_line_ids:
             for line in sale_line_ids:
                 if line.order_id:
                     res.origin_sale_id = line.order_id
                     break
-        var2 = 2
         return res
 
     origin_sale_id = fields.Many2one(
