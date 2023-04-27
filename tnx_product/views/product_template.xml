@@ -14,15 +14,20 @@
                         <group>
                             <field name="hs_code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
                             <field name="product_type" />
+                            <field name="form" attrs="{'invisible': [('product_type', 'not in', ['label', 'sticker'])]}"/>
+                            <!-- if square -->
+                            <field name="side" attrs="{'invisible': ['|', ('product_type', 'not in', ['label', 'sticker']), ('form', '!=', 'square')]}"/>
                             <!-- if button -->
                             <field name="line" attrs="{'invisible': [('product_type',  '!=', 'button')]}" widget="integer"/>
                             <field name="diameter" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />
-                            <!-- else -->
-                            <field name="length" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
-                            <field name="height" attrs="{'invisible': [('product_type',  'not in', ['label','sticker'])]}" />
+                            <!-- if rectangle -->
+                            <field name="length" attrs="{'invisible': ['|', ('product_type',  'not in', ['label','sticker']), ('form', '!=', 'rectangle')]}" />
+                            <field name="wide" attrs="{'invisible': ['|', ('product_type',  'not in', ['label','sticker']), ('form', '!=', 'rectangle')]}" />
+                            <!-- if circle -->
+                            <field name="radius" attrs="{'invisible': ['|', ('product_type',  'not in', ['label','sticker']), ('form', '!=', 'circle')]}"/>
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
-                            <field name="surface" attrs="{'invisible': [('product_type',  '==', 'button')]}"/>
+                            <field name="surface" attrs="{'invisible': [('product_type',  '==', 'button')], 'readonly':[('form', '!=', 'other')]}"/>
                         </group>
                         <group>
                             <field name="material_id" />
