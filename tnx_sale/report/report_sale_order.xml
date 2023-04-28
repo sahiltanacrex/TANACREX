@@ -146,33 +146,29 @@
                             <br/>
                         </t>
 
-                        <t t-if="o.partner_id.partner_type == 'ls'">
-                            <t t-if="o.partner_id.nif">
-                                <span>NIF: </span>
-                                <span t-field="o.partner_id.nif"/>
-                                <br/>
-                            </t>
-                            <t t-if="o.partner_id.stat">
-                                <span>STAT: </span>
-                                <span t-field="o.partner_id.stat"/>
-                                <br/>
-                            </t>
-                            <t t-if="o.partner_id.rcs">
-                                <span>RCS: </span>
-                                <span t-field="o.partner_id.rcs"/>
-                                <br/>
-                            </t>
-                            <t t-if="o.partner_id.cif">
-                                <span>CIF: </span>
-                                <span t-field="o.partner_id.cif"/>
-                                <br/>
-                            </t>
+                        <t t-if="o.partner_id.nif">
+                            <span>NIF: </span>
+                            <span t-field="o.partner_id.nif"/>
+                            <br/>
                         </t>
-                        <t t-else="">
-                            <t t-if="o.partner_id.free_val">
-                                <span t-field="o.partner_id.free_val"/>
-                                <br/>
-                            </t>
+                        <t t-if="o.partner_id.stat">
+                            <span>STAT: </span>
+                            <span t-field="o.partner_id.stat"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.rcs">
+                            <span>RCS: </span>
+                            <span t-field="o.partner_id.rcs"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.cif">
+                            <span>CIF: </span>
+                            <span t-field="o.partner_id.cif"/>
+                            <br/>
+                        </t>
+                        <t t-if="o.partner_id.free_val">
+                            <span t-field="o.partner_id.free_val"/>
+                            <br/>
                         </t>
 
                     </div>
@@ -287,11 +283,11 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                     <t t-esc="o.currency_id.symbol"/>/                                                   <t t-esc="line.product_uom.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
                                                     <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -309,7 +305,7 @@
                                         <td>Sous-total</td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="o.get_right_number(total_price_type)"/>
+                                            <t t-esc="o.format_number_for_amount(total_price_type)"/>
                                             <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -355,11 +351,11 @@
                                             </td>
 
                                             <td>
-                                                <t t-esc="o.get_right_number(line.price_unit)"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                 <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.price_subtotal)"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
                                                 <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
@@ -377,7 +373,7 @@
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <t t-esc="o.get_right_number(total_price_type_false)"/>
+                                        <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
                                         <t t-esc="o.currency_id.symbol"/>
                                     </td>
                                 </tr>
@@ -404,7 +400,7 @@
                                     <td style="border: 1px solid #000;">Sub-total</td>
                                     <td style="border: 1px solid #000;"></td>
                                     <td style="border: 1px solid #000;">
-                                        <t t-esc="o.get_right_number(total_price_type_false)"/>
+                                        <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
                                         <t t-esc="doc.currency_id.symbol"/>
                                     </td>
                                 </tr>
@@ -421,7 +417,7 @@
                                         <td style="border: 1px solid #000;">Tax 20%</td>
                                         <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;">
-                                            <t t-esc="o.get_right_number(o.amount_tax)"/>
+                                            <t t-esc="o.format_number_for_amount(o.amount_tax)"/>
                                             <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -436,7 +432,7 @@
                                         <td style="border: 1px solid #000;">Montant TTC</td>
                                         <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;">
-                                            <t t-esc="o.get_right_number(o.amount_total)"/>
+                                            <t t-esc="o.format_number_for_amount(o.amount_total)"/>
                                             <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -454,7 +450,7 @@
                                         <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;">
                                             <b>
-                                                <t t-esc="o.get_right_number(o.amount_total)"/>
+                                                <t t-esc="o.format_number_for_amount(o.amount_total)"/>
                                                 <t t-esc="o.currency_id.symbol"/>
                                             </b>
 
@@ -689,9 +685,28 @@
                                     <span t-field="doc.partner_id.phone"/>
                                     <br/>
                                 </t>
-                                <t t-if="doc.partner_id.vat">
-                                    <span>V.A.T: </span>
-                                    <span t-field="doc.partner_id.vat"/>
+                                <t t-if="doc.partner_id.nif">
+                                    <span>NIF: </span>
+                                    <span t-field="doc.partner_id.nif"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.stat">
+                                    <span>STAT: </span>
+                                    <span t-field="doc.partner_id.stat"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.rcs">
+                                    <span>RCS: </span>
+                                    <span t-field="doc.partner_id.rcs"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.cif">
+                                    <span>CIF: </span>
+                                    <span t-field="doc.partner_id.cif"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.free_val">
+                                    <span t-field="doc.partner_id.free_val"/>
                                     <br/>
                                 </t>
                             </div>
@@ -787,12 +802,12 @@
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
                                                         <t t-esc="doc.currency_id.symbol"/>
                                                 /                                                        <t t-esc="line.product_uom.name"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(line.price_subtotal)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
                                                         <t t-esc="doc.currency_id.symbol"/>
                                                     </td>
                                                 </tr>
@@ -808,7 +823,7 @@
                                             <td>Sous-total</td>
                                             <td></td>
                                             <td>
-                                                <t t-esc="doc.get_right_number(total_price_type)"/>
+                                                <t t-esc="doc.format_number_for_amount(total_price_type)"/>
                                                 <t t-esc="doc.currency_id.symbol"/>
                                             </td>
                                         </tr>
@@ -844,11 +859,11 @@
                                                     <t t-esc="line.product_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
                                                     <t t-esc="doc.currency_id.symbol"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.get_right_number(line.price_subtotal)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
                                                     <t t-esc="doc.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -866,7 +881,7 @@
                                         <td>Sous-total</td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="doc.get_right_number(total_price_type_false)"/>
+                                            <t t-esc="doc.format_number_for_amount(total_price_type_false)"/>
                                             <t t-esc="doc.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -887,7 +902,7 @@
                                 <!-- <t t-set="amount_total_with_air_freight" t-value="doc.total_amount_ex(air_freight_price, doc.amount_total)"/> -->
                                 <b>
                             Montant:
-                                    <span t-esc="doc.get_right_number(doc.amount_total)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_total)"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>
@@ -1047,9 +1062,28 @@
                                     <span t-field="doc.partner_id.phone"/>
                                     <br/>
                                 </t>
-                                <t t-if="doc.partner_id.vat">
-                                    <span>V.A.T: </span>
-                                    <span t-field="doc.partner_id.vat"/>
+                                <t t-if="doc.partner_id.nif">
+                                    <span>NIF: </span>
+                                    <span t-field="doc.partner_id.nif"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.stat">
+                                    <span>STAT: </span>
+                                    <span t-field="doc.partner_id.stat"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.rcs">
+                                    <span>RCS: </span>
+                                    <span t-field="doc.partner_id.rcs"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.cif">
+                                    <span>CIF: </span>
+                                    <span t-field="doc.partner_id.cif"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.free_val">
+                                    <span t-field="doc.partner_id.free_val"/>
                                     <br/>
                                 </t>
                             </div>
@@ -1152,12 +1186,12 @@
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
                                                         <t t-esc="doc.currency_id.symbol"/>
                                                 /                                                        <t t-esc="line.product_uom.name"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(line.price_subtotal)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
                                                         <t t-esc="doc.currency_id.symbol"/>
                                                     </td>
                                                 </tr>
@@ -1173,7 +1207,7 @@
                                             <td>Sous-total</td>
                                             <td></td>
                                             <td>
-                                                <t t-esc="doc.get_right_number(total_price_type)"/>
+                                                <t t-esc="doc.format_number_for_amount(total_price_type)"/>
                                                 <t t-esc="doc.currency_id.symbol"/>
                                             </td>
                                         </tr>
@@ -1211,11 +1245,11 @@
                                                     <t t-esc="line.product_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
                                                     <t t-esc="doc.currency_id.symbol"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.get_right_number(line.price_subtotal)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
                                                     <t t-esc="doc.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -1282,7 +1316,7 @@
                                 <!-- <t t-set="amount_total_with_air_freight" t-value="doc.total_amount_ex(air_freight_price, doc.amount_total)"/> -->
                                 <b>
                             Montant:
-                                    <span t-esc="doc.get_right_number(doc.amount_total)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_total)"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>
@@ -1453,9 +1487,28 @@
                                     <span t-field="doc.partner_id.phone"/>
                                     <br/>
                                 </t>
-                                <t t-if="doc.partner_id.vat">
-                                    <span>V.A.T: </span>
-                                    <span t-field="doc.partner_id.vat"/>
+                                <t t-if="doc.partner_id.nif">
+                                    <span>NIF: </span>
+                                    <span t-field="doc.partner_id.nif"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.stat">
+                                    <span>STAT: </span>
+                                    <span t-field="doc.partner_id.stat"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.rcs">
+                                    <span>RCS: </span>
+                                    <span t-field="doc.partner_id.rcs"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.cif">
+                                    <span>CIF: </span>
+                                    <span t-field="doc.partner_id.cif"/>
+                                    <br/>
+                                </t>
+                                <t t-if="doc.partner_id.free_val">
+                                    <span t-field="doc.partner_id.free_val"/>
                                     <br/>
                                 </t>
                             </div>
@@ -1558,12 +1611,12 @@
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(line.price_unit)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
                                                         <t t-esc="doc.currency_id.symbol"/>
                                                         /                                                        <t t-esc="line.product_uom.name"/>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.get_right_number(doc.amount_ttc_ls(line.price_subtotal))"/>
+                                                        <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(line.price_subtotal))"/>
                                                         <t t-esc="doc.currency_id.symbol"/>
                                                     </td>
                                                 </tr>
@@ -1579,7 +1632,7 @@
                                             <td>Sous-total</td>
                                             <td></td>
                                             <td>
-                                                <t t-esc="doc.get_right_number(doc.amount_ttc_ls(total_price_type))"/>
+                                                <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(total_price_type))"/>
                                                 <t t-esc="doc.currency_id.symbol"/>
                                             </td>
                                         </tr>
@@ -1617,11 +1670,11 @@
                                                     <t t-esc="line.product_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                     <t t-esc="doc.currency_id.symbol"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
                                                     <t t-esc="doc.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -1685,7 +1738,7 @@
                             <div style="text-align:right">
                                 <b>
                                     Montant HT:
-                                    <span t-esc="doc.get_right_number(doc.amount_untaxed)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_untaxed)"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>
@@ -1694,7 +1747,7 @@
                             <div style="text-align:right">
                                 <b>
                                     TVA 20%:
-                                    <span t-esc="doc.get_right_number(doc.amount_tax)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_tax)"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>
@@ -1703,7 +1756,7 @@
                             <div style="text-align:right">
                                 <b>
                                     Montant TTC:
-                                    <span t-esc="doc.get_right_number(doc.amount_total)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_total)"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>

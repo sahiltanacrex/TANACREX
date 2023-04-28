@@ -214,10 +214,10 @@
                                                 <t t-esc="o.get_right_number(line.quantity)" />
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                     </t>
@@ -241,19 +241,19 @@
                     <h6>
                         <div style="text-align:right">
                             <span>Montant HT:</span>
-                            <span t-esc="o.get_right_number(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/>
+                            <span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h6>
                     <h6>
                         <div style="text-align:right">
                             <span>TVA 20%:</span>
-                            <span t-esc="o.get_right_number(o.amount_tax)"/> <t t-esc="o.currency_id.symbol"/>
+                            <span t-esc="o.format_number_for_amount(o.amount_tax)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h6>
                     <h6>
                         <div style="text-align:right">
                             <span>Montant TTC:</span>
-                            <span t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                            <span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h6>
                     <h6>

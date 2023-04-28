@@ -79,6 +79,10 @@ class Sale_order(models.Model):
         else:
             return '{:,}'.format(int(val)).replace(',', ' ')
     
+    def format_number_for_amount(self, num):
+        formatted = "{:,.2f}".format(num).replace(",", " ")
+        return formatted
+    
     def amount_ttc_ls(self, val):
         return val * 1.2
 

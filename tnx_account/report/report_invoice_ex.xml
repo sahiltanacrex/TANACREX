@@ -230,10 +230,10 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             <!-- </t> -->
@@ -248,7 +248,7 @@
                                         <td>Sous-total</td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="o.get_right_number(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
+                                            <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -288,12 +288,12 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                     <t t-esc="o.currency_id.symbol"/>/ 
                                                     <t t-esc="line.product_uom_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             </t>
@@ -308,7 +308,7 @@
                                         <td>Sous-total</td>
                                         <td></td>
                                         <td>
-                                            <t t-esc="o.get_right_number(total_price_type_false)"/>
+                                            <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
                                             <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -333,7 +333,7 @@
                                         <td style="border: 1px solid #000;">Montant Total</td>
                                         <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;">
-                                            <t t-esc="o.get_right_number(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                                            <t t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                     
@@ -457,7 +457,7 @@
                     </t>
                     <div style="text-align:center;margin-top:20px">
                         <span> Origin: </span>
-                        <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "Y"</span>
+                        <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "W9606"</span>
                     </div>
                     <!-- <div style="text-align:center;margin-top:20px">
                                 <span>
