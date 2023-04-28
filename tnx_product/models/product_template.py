@@ -94,7 +94,7 @@ class Product_template(models.Model):
         string="Type du produit",
     )
 
-    material = fields.Char("Matière")
+    material = fields.Char("Matière", related='material_id.name')
     material_id = fields.Many2one(
         comodel_name='product.material',
         string='Matière',
@@ -110,6 +110,7 @@ class Product_template(models.Model):
     surface = fields.Float(
         "Surface (mm²)",
     )
+    dimension = fields.Char(sting="Dimension", compute="_compute_dimension")
     form = fields.Selection(
         [
             ("rectangle", "Rectangle"),
@@ -119,7 +120,35 @@ class Product_template(models.Model):
         ], default="rectangle"
             )
     
-    
+    def get_right_number(self, val):
+        val_string = str(val)
+        val_split = val_string.split('.')
+        if len(val_split) == 1:
+            return '{:,}'.format(int(val)).replace(',', ' ')
+        if int(val_split[1]) > 0:
+            return '{:,}'.format(val).replace(',', ' ')
+        else:
+            return '{:,}'.format(int(val)).replace(',', ' ')
+
+    @api.depends("line", "form", "length", "wide", "side", "surface")
+    def _compute_dimension(self):
+        for record in self:
+            record.dimension = False
+            if record.product_type == 'button':
+                # record.dimension = '' + record.line + ' L'
+                record.dimension = '%sL' % record.get_right_number(record.line)
+            elif record.product_type == 'other':
+                # record.dimension = '' + record.surface + ' mm²'
+                record.dimension = '%smm²' % record.get_right_number(record.surface)
+            else:
+                if record.form == 'rectangle':
+                    # record.dimension = '' + record.lenght + 'mm' 
+                    record.dimension = '%smm x %smm' % (record.get_right_number(record.length), record.get_right_number(record.wide))
+                elif record.form == 'square':
+                    record.dimension = '%smm x %smm' % (record.get_right_number(record.side), record.get_right_number(record.side))
+                else:
+                    record.dimension = '%smm²' % record.get_right_number(record.surface)
+
     @api.onchange("form")
     def _onchage_form(self):
         for record in self:

@@ -52,18 +52,40 @@
                                         <td style="border:1px solid">
                                             <b>QTY:</b>
 <!--                                            <span t-field="product.qty_available" t-options="{'widget': 'float', 'precision': 0}"/>-->
-                                            <t t-esc="qty" />
+                                            <t t-esc="product.get_right_number(qty)" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="border:1px solid">
                                             <b>SIZE:</b>
-                                            <t t-esc="product.line"/>
-                                            <span>L</span>
+                                            <t t-if="product.product_type=='button'">
+                                                <t t-esc="product.get_right_number(product.line)"/>
+                                                <span>L</span>
+                                            </t>
+                                            <t t-elif="product.product_type=='other'">
+                                                <t t-esc="product.get_right_number(product.surface)"/>
+                                                <span>mm²</span>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-if="product.form=='rectangle'">
+                                                    <span t-esc="product.get_right_number(product.lenght)"/> mm
+                                                    x
+                                                    <span t-esc="product.get_right_number(product.wide)"/> mm
+                                                </t>
+                                                <t t-elif="product.form=='square'">
+                                                    <span t-esc="product.get_right_number(product.side)"/> mm
+                                                    x
+                                                    <span t-esc="product.get_right_number(product.side)"/> mm
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-esc="product.get_right_number(product.surface)"/>
+                                                    <span>mm²</span>
+                                                </t>
+                                            </t>
                                         </td>
                                         <td style="border:1px solid">
                                             <b>WEIGHT:</b>
-                                            <t t-esc="weight" />
+                                            <t t-esc="product.format_number_for_weight(weight)" />
                                             kg
                                         </td>
                                     </tr>

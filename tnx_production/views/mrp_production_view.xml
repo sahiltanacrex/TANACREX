@@ -92,6 +92,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//filter[@name='product']" position="after">
                     <filter string="Catégorie d'article" name="categorie_id" domain="[]" context="{'group_by': 'categorie_id'}" />
+                    <filter string="Type" name="Type" domain="[]" context="{'group_by': 'product_type'}" />
+                    <filter string="Matière" name="Material" domain="[]" context="{'group_by': 'material_product'}" />
                 </xpath>
             </field>
         </record>

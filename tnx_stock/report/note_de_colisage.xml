@@ -90,13 +90,15 @@
                     </h5>
                     <h6>Invoice <span t-field="o.move_id.name" /></h6>
                     <t t-set="about_total" t-value="o.get_article_total_by_category()" />
-                    <p style="max-width: 250px; margin:auto">There are <t t-set="i" t-value="0" />
+                    <p style="max-width: 250px; margin:auto">
+                        In <span t-esc="o.get_number_carton()"/> 
+                        box(es) there are <t t-set="i" t-value="0" />
                         <t
                             t-foreach="about_total"
                             style="margin: 0" t-as="about">
                             <t t-set="i" t-value="i+1" />
                             <t
-                                t-esc="about[0]" />
+                                t-esc="o.get_right_number(about[0])" />
                             <t
                                 t-esc="about[1]" />s <t
                                 t-if="i &lt; len(about_total)">, </t>
@@ -111,20 +113,20 @@
             <t t-set="net_weight_total"
                 t-value="sum(product_group_by_packings[k].get('net_weight', 0.0) for k in product_group_by_packings)" />
             <div class="row p-4">
-                <div class="col-6 text-left"> Gross weight: <t t-esc="gross_weight_total" /> Kgs </div>
-                <div class="col-6 text-right"> Net weight: <t t-esc="net_weight_total" /> Kgs </div>
+                <div class="col-6 text-left"> Gross weight: <t t-esc="o.format_number_for_weight(gross_weight_total)" /> Kgs </div>
+                <div class="col-6 text-right"> Net weight: <t t-esc="o.format_number_for_weight(net_weight_total)" /> Kgs </div>
             </div>
-            <div style="padding-left: 10%; padding-right: 10%">
+            <div style="padding-left: 5%; padding-right: 5%">
                 <table class="table table-bordered" style="width: 100%">
                     <t t-foreach="product_group_by_packings" t-as="packing">
                         <tr>
                             <td colspan="5" class="text-center h6"> Packing N° <span t-esc="packing" />
                                 : <t
-                                    t-esc="product_group_by_packings[packing].get('gross_weight', 0.0)" />
+                                    t-esc="o.format_number_for_weight(product_group_by_packings[packing].get('gross_weight', 0.00))" />
                                 Kgs </td>
                         </tr>
                         <tr>
-                            <th>Article</th>
+                            <th style="width: 50%;">Article</th>
                             <th>Gross weight</th>
                             <th>Net weight</th>
                             <th>Count</th>
@@ -132,18 +134,18 @@
                         </tr>
                         <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])"
                             t-as='line'>
-                            <td>
+                            <td style="width: 50%;">
                                 <span t-field="line.product_id" />
                                 <t t-if="line.bc_client">(<t t-esc="line.bc_client" />)</t>
                             </td>
                             <td>
-                                <span t-field="line.gross_weight" />
+                                <span t-esc="o.format_number_for_weight(line.gross_weight)" />
                             </td>
                             <td>
-                                <span t-field="line.net_weight" />
+                                <span t-esc="o.format_number_for_weight(line.net_weight)" />
                             </td>
                             <td>
-                                <span t-field="line.items_count" />
+                                <span t-esc="o.get_right_number(line.items_count)" />
                             </td>
                             <td>
                                 <span t-field="line.bags" />

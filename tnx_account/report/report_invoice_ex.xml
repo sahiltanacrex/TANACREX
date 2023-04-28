@@ -113,8 +113,28 @@
                                 <span>Tel: </span>
                                 <span t-field="o.partner_id.phone"/> <br/> 
                             </t>
+                            <t t-if="o.partner_id.nif">
+                                <span>NIF: </span>
+                                <span t-field="o.partner_id.nif"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.stat">
+                                <span>STAT: </span>
+                                <span t-field="o.partner_id.stat"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.rcs">
+                                <span>RCS: </span>
+                                <span t-field="o.partner_id.rcs"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.cif">
+                                <span>CIF: </span>
+                                <span t-field="o.partner_id.cif"/> <br/> 
+                            </t>
                             <t t-if="o.partner_id.free_val">
                                 <span t-field="o.partner_id.free_val"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.fax_number">
+                                <span>FAX: </span>
+                                <span t-field="o.partner_id.fax_number"/> <br/> 
                             </t>
                         </div>                      
                     </div>
@@ -268,7 +288,9 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
+                                                    <t t-esc="o.get_right_number(line.price_unit)"/>
+                                                    <t t-esc="o.currency_id.symbol"/>/ 
+                                                    <t t-esc="line.product_uom_id.name"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -346,12 +368,66 @@
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
                     </div>
-                    <!-- <t t-if="o.delivery_adress">
-                        <div>
-                            <b>Adresse de livraison</b>
-                            <t t-esc="o.delivery_adress" />
+
+                    <br/>
+                    <br/>
+                    <t t-if="o.delivery_adress">
+                        <div class="row">
+                            <div class="col-2">
+                            <b>
+                                <span>Adresse de livraison : </span>
+                            </b>
+                            </div>
+                            <div class="col-4" style="text-align: center;">
+                            <t t-if="o.delivery_adress.street">
+                                <span t-field="o.delivery_adress.street"/> <br/> 
+                            </t>
+                            <t t-if="o.delivery_adress.street2">
+                                <span t-field="o.delivery_adress.street2"/> <br/> 
+                            </t>
+                            <t t-if="o.delivery_adress.city">
+                                <span t-field="o.delivery_adress.city"/> <br/> 
+                            </t>
+                            <t t-if="o.delivery_adress.state_id">
+                                <span t-field="o.delivery_adress.state_id"/> <br/> 
+                            </t>
+                            <t t-if="o.delivery_adress.zip">
+                                <span t-field="o.delivery_adress.zip"/> <br/> 
+                            </t>
+                            <t t-if="o.delivery_adress.country_id">
+                                <span t-field="o.delivery_adress.country_id"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.nif">
+                                <span>NIF: </span>
+                                <span t-field="o.partner_id.nif"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.stat">
+                                <span>STAT: </span>
+                                <span t-field="o.partner_id.stat"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.rcs">
+                                <span>RCS: </span>
+                                <span t-field="o.partner_id.rcs"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.cif">
+                                <span>CIF: </span>
+                                <span t-field="o.partner_id.cif"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.free_val">
+                                <span t-field="o.partner_id.free_val"/> <br/> 
+                            </t>
+                            <t t-if="o.partner_id.free_val">
+                                <span>FAX: </span>
+                                <span t-field="o.partner_id.fax_number"/> <br/> 
+                            </t>
+                            </div>
                         </div>
-                    </t> -->
+                    
+
                     <div>
                         <div t-if="o.origin_tnx">
                             <b> - Origine :</b>
@@ -378,6 +454,7 @@
                             <span t-esc="o.container_serial" />
                         </div>
                     </div>
+                    </t>
                     <div style="text-align:center;margin-top:20px">
                         <span> Origin: </span>
                         <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "Y"</span>
@@ -411,8 +488,6 @@
                                 </div>
                             </t>
                         </div>
-                        
-                        
                     </t>
                 </div>
                 <br/>

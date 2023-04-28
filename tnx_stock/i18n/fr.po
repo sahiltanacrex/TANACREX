@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 10:08+0000\n"
-"PO-Revision-Date: 2023-02-05 10:08+0000\n"
+"POT-Creation-Date: 2023-04-28 10:58+0000\n"
+"PO-Revision-Date: 2023-04-28 10:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr ""
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_product_inherit
 msgid "<b>QTY:</b>"
-msgstr "<b>QTY:</b>"
+msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_product_inherit
@@ -250,6 +250,11 @@ msgid "Carton"
 msgstr ""
 
 #. module: tnx_stock
+#: model:ir.model,name:tnx_stock.model_product_label_layout
+msgid "Choose the sheet layout to print the labels"
+msgstr "Choisissez le modèle pour imprimer les étiquettes"
+
+#. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__partner_id
 #: model_terms:ir.ui.view,arch_db:tnx_stock.note_colisage_form_view
 #: model_terms:ir.ui.view,arch_db:tnx_stock.stock_picking_tree_inherit
@@ -257,6 +262,8 @@ msgid "Client"
 msgstr ""
 
 #. module: tnx_stock
+#: model:ir.model.fields,field_description:tnx_stock.field_stock_move_line__colisage
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 #: model_terms:ir.ui.view,arch_db:tnx_stock.stock_picking_tree_inherit
 msgid "Colisage"
 msgstr ""
@@ -362,6 +369,11 @@ msgid "Impréssion note de colisage"
 msgstr ""
 
 #. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
+msgid "In"
+msgstr "Dans"
+
+#. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__inconterm
 msgid "Inconterm"
 msgstr ""
@@ -449,6 +461,14 @@ msgid "Net weight:"
 msgstr "Poids net:"
 
 #. module: tnx_stock
+#: code:addons/tnx_stock/wizard/product_label_layout.py:0
+#, python-format
+msgid ""
+"No product to print, if the product is archived please unarchive it before "
+"printing its label."
+msgstr ""
+
+#. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.note_colisage_form_view
 msgid "Nom"
 msgstr ""
@@ -524,6 +544,11 @@ msgid "Po #"
 msgstr ""
 
 #. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.product_label_layout_form_picking
+msgid "Poids"
+msgstr ""
+
+#. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__poids_brut
 #: model:ir.model.fields,field_description:tnx_stock.field_stock_carton__poids_brut
 msgid "Poids Brut"
@@ -558,6 +583,12 @@ msgid "Product Moves (Stock Move Line)"
 msgstr "Mouvements d'article (Ligne de mouvement de stock)"
 
 #. module: tnx_stock
+#: model:ir.model.fields,field_description:tnx_stock.field_product_label_layout__qty
+msgid "Qty"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.product_label_layout_form_picking
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "Quantité"
 msgstr ""
@@ -603,11 +634,6 @@ msgid "Tel:(261)34 02 441 35"
 msgstr ""
 
 #. module: tnx_stock
-#: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
-msgid "There are"
-msgstr "Il y a"
-
-#. module: tnx_stock
 #: model:ir.model,name:tnx_stock.model_stock_picking
 msgid "Transfer"
 msgstr "Transfert"
@@ -616,6 +642,22 @@ msgstr "Transfert"
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "Type"
 msgstr ""
+
+#. module: tnx_stock
+#: model:ir.model.fields,field_description:tnx_stock.field_product_label_layout__weight
+msgid "Weight"
+msgstr ""
+
+#. module: tnx_stock
+#: code:addons/tnx_stock/wizard/product_label_layout.py:0
+#, python-format
+msgid "You need to set a positive quantity."
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
+msgid "box(es) there are"
+msgstr "carton(s) il y a"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_etiquette_nexource
@@ -645,6 +687,21 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_etiquette_nexource
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_product_inherit
 msgid "kg"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
+msgid "mm"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
+msgid "mm x"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
+msgid "mm²"
 msgstr ""
 
 #. module: tnx_stock

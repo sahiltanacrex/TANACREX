@@ -25,7 +25,7 @@ class MrpProduction(models.Model):
     line_product = fields.Float("Ligne", related="product_id.line")
     material_product = fields.Char(related="product_id.material")
     product_type = fields.Selection(
-        "Type de produit", related="product_id.product_type"
+        "Type de produit", related="product_id.product_type", store=True
     )
     color_product = fields.Char(
         "Couleur", related="product_id.product_tmpl_id.color")
@@ -36,6 +36,17 @@ class MrpProduction(models.Model):
     )
     end_of_production = fields.Date(compute="_compute_end_of_production")
 
+    @api.depends('product_id')
+    def _get_material(self):
+        for rec in self:
+            if rec.product_id:
+                if rec.product_id.material_id:
+                    rec.material_product = rec.product_id.material_id.name
+                else:
+                    rec.material_product = False
+            else:
+                rec.material_product = False
+            
     @api.depends('origin')
     def _set_fields_depends_on_origin(self):
         for production_id in self:

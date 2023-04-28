@@ -6,3 +6,4 @@ from . import note_de_colisage
 from . import stock_carton
 from . import sale_order
 from . import stock_move
+from . import product_template
