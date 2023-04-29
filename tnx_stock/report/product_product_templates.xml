@@ -68,7 +68,7 @@
                                             </t>
                                             <t t-else="">
                                                 <t t-if="product.form=='rectangle'">
-                                                    <span t-esc="product.get_right_number(product.lenght)"/> mm
+                                                    <span t-esc="product.get_right_number(product.length)"/> mm
                                                     x
                                                     <span t-esc="product.get_right_number(product.wide)"/> mm
                                                 </t>

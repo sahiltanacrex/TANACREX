@@ -171,6 +171,22 @@
             </div>
 
         </div>
+        <div class="footer" style="border-top: 2px solid black; font-size:16px;">
+                <div class="row text-center">
+                    <div class="col col-12 text-center">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page" />
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
     </template>
     <!-- Template Note de colisage -->
     <template id="tnx_package_report">
