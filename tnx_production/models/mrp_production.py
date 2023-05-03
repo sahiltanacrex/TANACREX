@@ -23,7 +23,7 @@ class MrpProduction(models.Model):
     bc_client = fields.Char(
         "Bc Client", compute='_set_fields_depends_on_origin')
     line_product = fields.Float("Ligne", related="product_id.line")
-    material_product = fields.Char(related="product_id.material")
+    material_product = fields.Char(store=True, compute="_compute_material_product", default=lambda self: self.product_id.material_id.name if self.product_id else False)
     product_type = fields.Selection(
         "Type de produit", related="product_id.product_type", store=True
     )
@@ -36,8 +36,9 @@ class MrpProduction(models.Model):
     )
     end_of_production = fields.Date(compute="_compute_end_of_production")
 
-    @api.depends('product_id')
-    def _get_material(self):
+    
+    @api.depends('product_id', 'product_id.material_id')
+    def _compute_material_product(self):
         for rec in self:
             if rec.product_id:
                 if rec.product_id.material_id:
