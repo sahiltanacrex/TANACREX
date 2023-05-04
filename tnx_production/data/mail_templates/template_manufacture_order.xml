@@ -16,7 +16,7 @@
                 </p>
                 <p>
                     Par la présente, nous souhaitons vous notifier que la production de votre commande n°
-                    <span t-out="ctx['order_origin']+'('+ctx['bc_client']+')' or ''" />
+                    <span t-out="ctx['order_origin']+'('+ctx['bc_client'] or ''+')' or ''" />
                     est de
                     <span t-out="ctx['developments_states'] or ''" />.
                 </p>
