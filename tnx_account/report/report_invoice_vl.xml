@@ -152,6 +152,7 @@
                         <table>
                             <thead>
                             <t t-set="currency" t-value="o.currency_id.name"/>
+                            <t t-set="has_develop_fees" t-value="o.have_develop_fees"/>
                                 <tr>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
@@ -160,6 +161,7 @@
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th><t t-esc="currency" /></th>
+                                    <th t-if="has_develop_fees"><t t-esc="currency" /></th>
                                     <th><t t-esc="currency" /></th>
                                 </tr>
                                 <tr style="background-color: rgb(211,209,209);">
@@ -170,6 +172,7 @@
                                     <th>Dimension</th>
                                     <th>Qte</th>
                                     <th>Prix Unitaire</th>
+                                    <th t-if="has_develop_fees">Prix de développement</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -226,6 +229,9 @@
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_unit)"/>  <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
                                                 </td>
+                                                <td t-if="has_develop_fees">
+                                                    <t t-esc="o.format_number_for_amount(line.development_expenses)"/> <t t-esc="o.currency_id.symbol"/>
+                                                </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
@@ -242,6 +248,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td t-if="has_develop_fees"></td>
                                         <td>
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
@@ -281,6 +288,9 @@
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                 </td>
+                                                <td t-if="has_develop_fees">
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
@@ -296,6 +306,7 @@
                                         <td></td>
                                         <td>Sous-total</td>
                                         <td></td>
+                                        <td t-if="has_develop_fees"></td>
                                         <td>
                                             <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
                                         </td>
@@ -308,6 +319,7 @@
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
+                                        <td t-if="has_develop_fees" style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                     </tr>
                                     

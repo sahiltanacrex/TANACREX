@@ -14,6 +14,12 @@ class Sale_order(models.Model):
     )
     payment_method = fields.Selection([('bank_transfer', 'Bank Transfer'), ('check', 'Check'), ('cash', 'Cash')])
     validity_day = fields.Integer()
+    have_develop_fees = fields.Boolean(compute="_compute_have_develop_fees")
+
+    @api.depends('order_line', 'order_line.development_expenses')
+    def _compute_have_develop_fees(self):
+        list_price = self.order_line.mapped('development_expenses')
+        self.have_develop_fees = any(isinstance(element, (float, int)) and element > 0 for element in list_price)
 
     @api.constrains('validity_day')
     def _validity_day_constrains(self):

@@ -18,7 +18,12 @@ class AccountMoveInherit(models.Model):
     container_serial = fields.Char("Conteneur")
 
     seq_bis = fields.Char("Réference Facture", store=True, index=True)
-    
+    have_develop_fees = fields.Boolean(compute="_compute_have_develop_fees")
+
+    @api.depends('invoice_line_ids', 'invoice_line_ids.development_expenses')
+    def _compute_have_develop_fees(self):
+        list_price = self.invoice_line_ids.mapped('development_expenses')
+        self.have_develop_fees = any(isinstance(element, (float, int)) and element > 0 for element in list_price)
 
     @api.model
     def create(self, vals):
