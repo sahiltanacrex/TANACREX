@@ -112,11 +112,11 @@
                                 </p>
                             </div>
                             <br />
-                            <div>
+                            <div t-if="o.sale_id">
                                 <span>Bon de commande N° : </span>
-                                <span t-esc="o.bc_client" />
+                                <span t-esc="o.sale_id.name" />
                             </div>
-                            <div>
+                            <div t-if="o.partner_id.ref_client">
                                 <span>Ref client : </span>
                                 <span t-esc="o.partner_id.ref_client" />
                             </div>
@@ -131,17 +131,28 @@
                     }
                 </style>
                 <table class="table" clearname="stock_move_table" style="font-size:16px !important;">
+                    <thead>
                     <tr>
-                        <td>Quantité</td>
-                        <td>Reférence</td>
-                        <td>Dimension</td>
-                        <td>Type</td>
-                        <td>Designation</td>
-                        <td>Modèle(Image)</td>
+                        <th>Modèle(Image)</th>
+                        <th>Quantité</th>
+                        <th>Reférence</th>
+                        <th>Dimension</th>
+                        <th>Type</th>
+                        <th>Designation</th>
+                        <th style="width: 250px">Colisage</th>
+
                     </tr>
+                    </thead>
+                    <tbody>
                     <t t-set="lines" t-value="o.move_line_ids_without_package" />
                     <tr t-foreach="lines" t-as="line">
                         <tr>
+                            <td>
+                                <img
+                                    t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
+                                    t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
+                                    width="50" height="50" />
+                            </td>
                             <td>
                                 <span t-field="line.unit_done"
                                     t-options="{'widget': 'float', 'precision': 0}" />
@@ -150,14 +161,23 @@
                                 <span t-field="line.product_id.customer_reference" />
                             </td>
                             <td>
-                                <span
-                                    t-if="line.product_id.product_tmpl_id.product_type == 'button'"
-                                    t-field="line.product_id.product_tmpl_id.line"> L</span>
-                                <span
-                                    t-elif="line.product_id.product_tmpl_id.product_type in ('label', 'sticker')"><t
-                                        t-esc="line.product_id.product_tmpl_id.length" /> x <t
-                                        t-esc="line.product_id.product_tmpl_id.height" /></span>
-                                <span t-else="" t-field="line.product_id.product_tmpl_id.surface" />
+                                <t t-if="line.product_id.product_tmpl_id.product_type == 'button'">
+                                    <span t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/> L
+                                </t>
+                                <t t-elif="line.product_id.product_tmpl_id.product_type == 'other'">
+                                    <span t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
+                                </t>
+                                <t t-else="">
+                                    <t t-if="line.product_id.product_tmpl_id.form == 'rectangle'">
+                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.wide)"/>mm
+                                    </t>
+                                    <t t-elif="line.product_id.product_tmpl_id.form == 'square'">
+                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
+                                    </t>
+                                </t>
                             </td>
                             <td>
                                 <span t-field="line.product_id.product_tmpl_id.product_type" />
@@ -166,13 +186,12 @@
                                 <span t-field="line.product_id.name" />
                             </td>
                             <td>
-                                <img
-                                    t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
-                                    t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
-                                    width="50" height="50" />
+                                <span t-field="line.colisage" />
                             </td>
+
                         </tr>
                     </tr>
+                    </tbody>
                 </table>
                 <div>
                     <span style="font-size:14x;">

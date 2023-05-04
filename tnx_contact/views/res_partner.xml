@@ -21,7 +21,16 @@
                     <field name="partner_type" widget="radio" options="{'horizontal': true}"/>
                     <field name="ref_client"/>
                 </xpath>
-
+                <xpath expr="//field[@name='child_ids']//form//group[1]//group[1]" position="inside">
+                    <field name="nif"/>
+                    <field name="stat"/>
+                    <field name="rcs"/>
+                    <field name="cif"/>
+                    <field name="free_val" string=""/>
+                </xpath>
+                <xpath expr="//field[@name='child_ids']//form//field[@name='mobile']" position="after">
+                    <field name="fax_number"/>
+                </xpath>
             </field>
         </record>
     </data>

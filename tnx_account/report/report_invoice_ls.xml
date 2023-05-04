@@ -26,15 +26,15 @@
         </t>
         <div class="header"></div>
         <t t-if="o.partner_id.partner_type == 'ls'">
-            <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
+            <div class="article mt0 o_report_layout_standard" style="font-size:14px;" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <div class="header_body">
                     <div class="body_header">
                         <div class="container">
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-6" style="width: 50%;">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6 " style="margin-left:250px; text-align:center">
+                                <div class="col-xs-6 " style="text-align:center; width: 50%;">
                                     <div>
                                         <b>
                                             <t t-if="company.description">
@@ -86,7 +86,7 @@
                             </div>
                             <div style="font-size:18px; margin-top:20px">
                                 <b>Date de facturation:</b>
-                                <span t-esc="o.invoice_date" />
+                                <span t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
                             </div>
                         </div>
                         <div class="col-6" style="border: 1px solid; text-align: center;">
@@ -129,20 +129,25 @@
                                 <span>CIF: </span>
                                 <span t-field="o.partner_id.cif"/> <br/> 
                             </t>
-                            <!-- <t t-if="o.partner_id.free_val">
+                            <t t-if="o.partner_id.free_val">
                                 <span t-field="o.partner_id.free_val"/> <br/> 
-                            </t> -->
+                            </t>
+                            <t t-if="o.partner_id.free_val">
+                                <span>FAX: </span>
+                                <span t-field="o.partner_id.fax_number"/> <br/> 
+                            </t>
                         </div>
                     </div>
                     <div style="margin-top:15px; margin-bottom:15px">
                         <style type="text/css">
-                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px;}
+                            th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
                             
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
                             table td:first-child {text-align: center; border-bottom:hidden}
                             table td:last-child {text-align: center;}
                         </style>
+                        <br/>
                         <table>
                             <thead>
                                 <t t-set="currency" t-value="o.currency_id.name"/>
@@ -157,14 +162,14 @@
                                     <th><t t-esc="currency" /></th>
                                 </tr>
                                 <tr style="background-color: rgb(211,209,209);">
-                                    <th>BC/PO</th>
+                                    <th>BC</th>
                                     <th>Bon de livraison</th>
                                     <th>Désignation</th>
                                     <th>Type</th>
                                     <!-- <th>Réference client</th> -->
                                     <th>Dimension</th>
                                     <th>Qté</th>
-                                    <th>PU/UDM</th>
+                                    <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
                             </thead>
@@ -190,25 +195,34 @@
                                                 <t t-if="line.product_id.product_type == 'button'">
                                                     <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                 </t>
+                                                <t t-elif="line.product_id.product_type == 'other'">
+                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
+                                                </t>
                                                 <t t-else="">
-                                                <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.height)"/>mm
+                                                    <t t-if="line.product_id.product_tmpl_id.form == 'rectangle'">
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.wide)"/>mm
+                                                    </t>
+                                                    <t t-elif="line.product_id.product_tmpl_id.form == 'square'">
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
+                                                    </t>
                                                 </t>
                                             </td>
                                             <td>
                                                 <t t-esc="o.get_right_number(line.quantity)" />
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.price_unit_udm)"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                     </t>
                                 </t>
                                 <tr>
-                                    <td style="border-bottom: 1px solid #000;"></td>
-                                    <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
@@ -227,19 +241,19 @@
                     <h6>
                         <div style="text-align:right">
                             <span>Montant HT:</span>
-                            <span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            <span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h6>
                     <h6>
                         <div style="text-align:right">
                             <span>TVA 20%:</span>
-                            <span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            <span t-esc="o.format_number_for_amount(o.amount_tax)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h6>
                     <h6>
                         <div style="text-align:right">
                             <span>Montant TTC:</span>
-                            <span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                            <span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
                     </h6>
                     <h6>
@@ -248,13 +262,68 @@
                         <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
                     </div>
                     </h6>
-                    <!-- <t t-if="o.delivery_adress">
-                        <div>
-                            <b> Adresse de livraison : </b>
-                            <t t-esc="o.delivery_adress" />
+                    <br/>
+                    <br/>
+                    <t t-if="o.delivery_adress">
+                        <div class="row">
+                            <div class="col-3">
+                            <b>
+                                <span>Adresse de livraison : </span>
+                            </b>
+                            </div>
+                            <div class="col-7" style="text-align: center;">
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
+                                <span t-field="o.delivery_adress.name"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street">
+                                <span t-field="o.delivery_adress.street"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street2">
+                                <span t-field="o.delivery_adress.street2"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.city">
+                                <span t-field="o.delivery_adress.city"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.state_id">
+                                <span t-field="o.delivery_adress.state_id"/> &#x9; 
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.zip">
+                                <span t-field="o.delivery_adress.zip"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.country_id">
+                                <span t-field="o.delivery_adress.country_id"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.phone">
+                                <span>Tel: </span>
+                                <span t-field="o.delivery_adress.phone"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.nif">
+                                <span>NIF: </span>
+                                <span t-field="o.partner_id.nif"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.stat">
+                                <span>STAT: </span>
+                                <span t-field="o.delivery_adress.stat"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.rcs">
+                                <span>RCS: </span>
+                                <span t-field="o.delivery_adress.rcs"/> &#x9;
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.cif">
+                                <span>CIF: </span>
+                                <span t-field="o.delivery_adress.cif"/> &#x9; 
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.free_val">
+                                <span t-field="o.delivery_adress.free_val"/> &#x9; 
+                            </div>
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.fax_number">
+                                <span>FAX: </span>
+                                <span t-field="o.delivery_adress.fax_number"/> &#x9; 
+                            </div>
+                            </div>
                         </div>
-                    </t> -->
-                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span>   Date d'écheance: </span> <span t-esc="o.invoice_date_due"/>
+                    </t>
+                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due">   Date d'écheance: </span> <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
                             
                     <t t-if="o.bank_company_ids">
                         <div class="row">
@@ -273,14 +342,17 @@
                         </div>
                     </t>
                 </div>
+                    <br/>
+                    <div class="row text-center">
+                        <div class="col col-12 text-center">
+                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux.</span>
+                        </div>
+                    </div>
             </div>
             
             <div class="footer o_standard_footer" style="border-top: 1px solid black; font-size:15px;">
                 <div class="row text-center">
                     <div class="col col-12 text-center">
-                        <div>
-                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux.</span>
-                        </div>
                         <ul class="list-inline">
                             <li class="list-inline-item">Page:</li>
                             <li class="list-inline-item">

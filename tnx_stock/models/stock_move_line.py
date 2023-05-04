@@ -5,6 +5,9 @@ from math import ceil
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
+    colisage = fields.Text(
+        string="Colisage",
+        required=False)
 
     carton_id = fields.Many2one(
         string="Carton",

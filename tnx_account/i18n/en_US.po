@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-31 06:47+0000\n"
-"PO-Revision-Date: 2023-01-31 06:47+0000\n"
+"POT-Creation-Date: 2023-02-14 12:03+0000\n"
+"PO-Revision-Date: 2023-02-14 12:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,11 +40,6 @@ msgstr "<b> - Gross weight : </b>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "<b> - Poids net :</b>"
 msgstr "<b> - Net weight :</b>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<b> Adresse de livraison : </b>"
-msgstr "<b>Delivery address: </b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -107,26 +102,19 @@ msgid ""
 msgstr ""
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>   Date d'écheance: </span>"
-msgstr "<span>   Date d'écheance: </span>"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid ""
 "<span> Origin: </span>\n"
-"                        <span>\"L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, les produits sont d'origine préférentielle Madagascar\"</span>"
+"                        <span>\"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is \"W9606\"</span>"
 msgstr ""
-"<span> Origin: </span>\n"
-"<span>\"The exporter of the products covered by this document(customs "
-"authorization MGREX1000002056) declares that, unless clearly statedon the "
-"contrary, the products are of preferential originMadagascar\"</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span> Paiement: </span>"
 msgstr "<span> Payment: </span>"
 
@@ -138,21 +126,6 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-msgid "<span>A approuvé cette facture pour la somme de </span>"
-msgstr "<span>Approved this invoice for the sum of </span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-msgid "<span>Approuvé cette facture pour la somme de:</span>"
-msgstr "<span>Approved this invoice for the sum of </span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<span>Approuvé cette facture pour la somme de</span>"
-msgstr "<span>Approved this invoice for the sum of </span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>B.p.:11064 - Tél : </span>"
@@ -160,6 +133,7 @@ msgstr "<span>B.p.:11064 - Tel : </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>CIF: </span>"
 msgstr ""
 
@@ -194,14 +168,18 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>Montant HT:</span>"
-msgstr "<span>Amount:</span>"
+msgstr "<span>Amount excluding VAT:</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "<span>Montant TTC:</span>"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Montant:</span>"
+msgstr "<span>Amount excluding VAT:</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
@@ -218,6 +196,7 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>RCS: </span>"
 msgstr ""
 
@@ -280,7 +259,6 @@ msgstr ""
 "corresponding postage.</span>"
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>V.A.T: </span>"
 msgstr ""
@@ -349,16 +327,16 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: tnx_account
-#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__order_customer
-msgid "BC Client"
-msgstr "Customer order"
-
-#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "BC/PO"
-msgstr ""
+msgid "BC"
+msgstr "PO"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__order_customer
+msgid "BC Client"
+msgstr "Customer order"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
@@ -451,6 +429,11 @@ msgstr ""
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__res_currency_id
 msgid "Customer quotation"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "Date d'écheance:"
 msgstr ""
 
 #. module: tnx_account
@@ -682,19 +665,15 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-msgid "Montan Total"
-msgstr ""
-
-#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Montant"
 msgstr "Amount"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Montant HT"
-msgstr "Amount:"
+msgid "Montant Total"
+msgstr ""
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__bank
@@ -773,15 +752,14 @@ msgstr "Origin"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "PU/UDM"
+msgid "Page:"
 msgstr ""
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Page:"
-msgstr ""
+msgid "Paiement:"
+msgstr "Payment"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__gross_weight
@@ -807,9 +785,16 @@ msgid "Price rental"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Prix Unitaire"
+msgstr "Unit Price"
+
+#. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_move_line__price_unit_udm
 msgid "Prix/UDM"
-msgstr ""
+msgstr "Price/UOM"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -940,6 +925,12 @@ msgstr ""
 #: model:ir.ui.menu,name:tnx_account.sequences_vl
 msgid "Sequences vl configurations"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Sous-total"
+msgstr "Subtotal"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document

@@ -10,8 +10,9 @@ class MrpProduction(models.Model):
     _inherit = "mrp.production"
 
     partner_id = fields.Many2one("res.partner", string="client")
-    order_id = fields.Many2one("sale.order", string="BC")
-    sale_order_date = fields.Datetime(related='order_id.date_order')
+    order_id = fields.Many2one(
+        "sale.order", string="BC", compute='_compute_end_of_production')
+    sale_order_date = fields.Datetime(compute='_set_fields_depends_on_origin')
     developments = fields.Selection(
         [("1", "0%"), ("2", "25%"), ("3", "50%"), ("4", "75%"), ("5", "100%")],
         default="1",
@@ -19,13 +20,15 @@ class MrpProduction(models.Model):
     )
     check_bc = fields.Boolean("Check Bc")
     image_1920 = fields.Image("Image", related="product_id.image_1920")
-    bc_client = fields.Char("Bc Client")
+    bc_client = fields.Char(
+        "Bc Client", compute='_set_fields_depends_on_origin')
     line_product = fields.Float("Ligne", related="product_id.line")
-    material_product = fields.Char(related="product_id.material")
+    material_product = fields.Char(store=True, compute="_compute_material_product", default=lambda self: self.product_id.material_id.name if self.product_id else False)
     product_type = fields.Selection(
-        "Type de produit", related="product_id.product_type"
+        "Type de produit", related="product_id.product_type", store=True
     )
-    color_product = fields.Char("Couleur", related="product_id.product_tmpl_id.color")
+    color_product = fields.Char(
+        "Couleur", related="product_id.product_tmpl_id.color")
     categorie_id = fields.Many2one(
         "product.category",
         "Catégorie d'article",
@@ -33,11 +36,42 @@ class MrpProduction(models.Model):
     )
     end_of_production = fields.Date(compute="_compute_end_of_production")
 
+    
+    @api.depends('product_id', 'product_id.material_id')
+    def _compute_material_product(self):
+        for rec in self:
+            if rec.product_id:
+                if rec.product_id.material_id:
+                    rec.material_product = rec.product_id.material_id.name
+                else:
+                    rec.material_product = False
+            else:
+                rec.material_product = False
+            
+    @api.depends('origin')
+    def _set_fields_depends_on_origin(self):
+        for production_id in self:
+            production_id.bc_client = False
+            production_id.sale_order_date = False
+            production_id.order_id = False
+            if production_id.origin:
+                try:
+                    origin_name = production_id.origin.split(' - ')[1]
+                except IndexError:
+                    origin_name = False
+                if origin_name:
+                    order_id = self.env['sale.order'].sudo().search(
+                        [('name', '=', origin_name)])
+                    production_id.bc_client = order_id.sale_order_partner
+                    production_id.sale_order_date = order_id.date_order
+                    production_id.order_id = order_id.id
+
     @api.depends('date_planned_start', 'order_id.production_duration')
     def _compute_end_of_production(self):
         for record in self:
 
-            record.end_of_production = record.date_planned_start + datetime.timedelta(days=record.order_id.production_duration)
+            record.end_of_production = record.date_planned_start + \
+                datetime.timedelta(days=record.order_id.production_duration)
 
     comment = fields.Text()
 
@@ -50,8 +84,10 @@ class MrpProduction(models.Model):
         )
 
         if self.partner_id:
-            template_id = self.env.ref("tnx_production.send_mail_order_manufacture").id
-            compose_form_id = self.env.ref("mail.email_compose_message_wizard_form").id
+            template_id = self.env.ref(
+                "tnx_production.send_mail_order_manufacture").id
+            compose_form_id = self.env.ref(
+                "mail.email_compose_message_wizard_form").id
             ctx = {
                 "default_model": "mrp.production",
                 "default_res_id": self.id,
@@ -98,23 +134,25 @@ class MrpProduction(models.Model):
     #                     except Exception as e:
     #                         raise UserError(e)
 
-    @api.depends("origin")
-    def _compute_source_id(self):
-        for production in self:
-            if production.origin:
-                devis_name = production.origin.split(" - ")
-                if len(devis_name) > 1:
-                    source = self.env["sale.order"].search(
-                        [("name", "=", devis_name[1])]
-                    )
-                    if source:
-                        try:
-                            production.partner_id = source.partner_id
-                            production.check_bc = True
+    # @api.depends("origin")
+    # def _compute_source_id(self):
+    #     for production in self:
+    #         if production.origin:
+    #             devis_name = production.origin.split(" - ")
+    #             if len(devis_name) > 1:
+    #                 source = self.env["sale.order"].search(
+    #                     [("name", "=", devis_name[1])]
+    #                 )
+    #                 if source:
+    #                     try:
+    #                         production.obc_clientrder_id = source
+    #                         production.partner_id = source.partner_id
+    #                         production.check_bc = True
+    #                         production.bc_client = source.sale_order_partner
 
-                        except Exception as e:
-                            print(e)
-                            pass
+    #                     except Exception as e:
+    #                         print(e)
+    #                         pass
 
     def report_analyse(self):
         ids = self.env.context.get("active_ids", [])

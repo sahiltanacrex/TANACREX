@@ -69,19 +69,19 @@ class Sale_order(models.Model):
             return bank_company_line_ids.mapped('bank_id')
         return False
 
-    def get_validity_date(self):
-        validity_date = self.date_order.date() + timedelta(days=self.validity_day) 
-        return validity_date
-
     def get_right_number(self, val):
         val_string = str(val)
         val_split = val_string.split('.')
         if len(val_split) == 1:
-            return val
+            return '{:,}'.format(int(val)).replace(',', ' ')
         if int(val_split[1]) > 0:
-            return val
+            return '{:,}'.format(val).replace(',', ' ')
         else:
-            return int(val)
+            return '{:,}'.format(int(val)).replace(',', ' ')
+    
+    def format_number_for_amount(self, num):
+        formatted = "{:,.2f}".format(num).replace(",", " ")
+        return formatted
     
     def amount_ttc_ls(self, val):
         return val * 1.2

@@ -61,9 +61,14 @@ class Product_template(models.Model):
     @api.onchange("product_type")
     def _onchange_surface(self):
         for record in self:
-            if record.product_type == "button":
+            if record.product_type in ["button", "other"]:
+                record.surface = 0
                 record.length = 0
-                record.height = 0
+                record.wide = 0
+                record.side = 0
+                record.radius = 0
+                if record.product_type == "other":
+                    record.form = "other"
             elif record.product_type in ["label", "sticker"]:
                 record.line = 0
                 record.diameter = 0
@@ -89,7 +94,7 @@ class Product_template(models.Model):
         string="Type du produit",
     )
 
-    material = fields.Char("Matière")
+    material = fields.Char("Matière", related='material_id.name')
     material_id = fields.Many2one(
         comodel_name='product.material',
         string='Matière',
@@ -103,16 +108,67 @@ class Product_template(models.Model):
     line = fields.Float("Ligne")
     diameter = fields.Float(string="Diamètre (mm)", required=False)
     surface = fields.Float(
-        "Surface",
+        "Surface (mm²)",
     )
+    dimension = fields.Char(sting="Dimension", compute="_compute_dimension")
+    form = fields.Selection(
+        [
+            ("rectangle", "Rectangle"),
+            ("square", "Carré"),
+            ("circle", "Cercle"),
+            ("other", "Other")
+        ], default="rectangle"
+            )
+    
+    def get_right_number(self, val):
+        val_string = str(val)
+        val_split = val_string.split('.')
+        if len(val_split) == 1:
+            return '{:,}'.format(int(val)).replace(',', ' ')
+        if int(val_split[1]) > 0:
+            return '{:,}'.format(val).replace(',', ' ')
+        else:
+            return '{:,}'.format(int(val)).replace(',', ' ')
 
-    @api.onchange("line", "diameter", "length", "height")
-    def _onchange_(self):
+    @api.depends("line", "form", "length", "wide", "side", "surface")
+    def _compute_dimension(self):
+        for record in self:
+            record.dimension = False
+            if record.product_type == 'button':
+                # record.dimension = '' + record.line + ' L'
+                record.dimension = '%sL' % record.get_right_number(record.line)
+            elif record.product_type == 'other':
+                # record.dimension = '' + record.surface + ' mm²'
+                record.dimension = '%smm²' % record.get_right_number(record.surface)
+            else:
+                if record.form == 'rectangle':
+                    # record.dimension = '' + record.lenght + 'mm' 
+                    record.dimension = '%smm x %smm' % (record.get_right_number(record.length), record.get_right_number(record.wide))
+                elif record.form == 'square':
+                    record.dimension = '%smm x %smm' % (record.get_right_number(record.side), record.get_right_number(record.side))
+                else:
+                    record.dimension = '%smm²' % record.get_right_number(record.surface)
+
+    @api.onchange("form")
+    def _onchage_form(self):
+        for record in self:
+            record.surface = 0
+            record.length = 0
+            record.wide = 0
+            record.side = 0
+            record.radius = 0
+    
+    @api.onchange("line", "diameter", "length","wide", "side", "radius")
+    def _onchange_dimension(self):
         for record in self:
             if record.product_type == "button":
-                record.surface = math.pi * record.diameter
-            elif record.product_type in ["label", "sticker"]:
-                record.surface = record.length * record.height
+                record.surface = math.pi * ((record.diameter /2) ** 2)
+            if record.form == 'rectangle':
+                record.surface = record.length * record.wide
+            if record.form == 'square':
+                record.surface = record.side ** 2
+            if record.form == 'circle':
+                record.surface = math.pi * (record.radius ** 2)
 
     @api.onchange('line')
     def _onchange_line(self):
@@ -125,14 +181,20 @@ class Product_template(models.Model):
 
     # ? if sticker or a label
     # ! search surface  by this fields
-    length = fields.Float(string="Longueur", required=False)
-    height = fields.Float(string="Hauteur", required=False)
+    length = fields.Float(string="Longueur (mm)", required=False)
+    # height = fields.Float(string="Hauteur", required=False)
+    side = fields.Float(string="Côté (mm)", required=False)
+    wide = fields.Float(string="Largeur (mm)", required=False)
+    radius = fields.Float(string="Rayon (mm)", required=False)
+
+
     # TODO BAT here
 
     employee_validator_id = fields.Many2one("hr.employee", string="Validateur")
     bat_date = fields.Date("Date")
     validation_tools = fields.Char("Moyen de validation")
     attachment_ids = fields.Binary("Fichier BAT", attachment=True)
+
 
     def action_send_mail_bat(self):
         # import pudb; pudb.set_trace()

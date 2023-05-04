@@ -31,3 +31,7 @@ class StockMove(models.Model):
                         _("Vous ne pouvez pas modifier un mouvement de stock facturé")
                     )
         return super().write(vals)
+
+    def get_type_false_number(self):
+        type_false_lines =self.invoice_line_ids.filtered(lambda l: l.product_id.product_type == False)
+        return len(type_false_lines)

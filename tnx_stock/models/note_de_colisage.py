@@ -2,6 +2,7 @@ from odoo import _, fields, models, api
 
 from collections import defaultdict
 
+
 class NoteDeColisage(models.TransientModel):
     _name = "note.colisage.wizard"
     name = fields.Char()
@@ -16,8 +17,9 @@ class NoteDeColisage(models.TransientModel):
     product_ids = fields.Many2many(comodel_name='product.product')
     inconterm = fields.Text()
     origin = fields.Text()
-    note_de_colisage_line_ids = fields.One2many(comodel_name='note.de.colisage.line', inverse_name='note_colisage_id')
-    
+    note_de_colisage_line_ids = fields.One2many(
+        comodel_name='note.de.colisage.line', inverse_name='note_colisage_id')
+
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         self.name = 'Packing list' if self.partner_id.lang != 'fr_FR' else 'Note de colisage'
@@ -30,22 +32,56 @@ class NoteDeColisage(models.TransientModel):
         product_group_by_packings = defaultdict(dict)
         for packing in packings:
             packing = int(packing)
-            line_ids = self.note_de_colisage_line_ids.filtered(lambda l: int(l.packing_number) == packing)
+            line_ids = self.note_de_colisage_line_ids.filtered(
+                lambda l: int(l.packing_number) == packing)
             product_group_by_packings[str(packing)].update({
                 'line_ids': line_ids,
                 'gross_weight': sum(line.gross_weight for line in line_ids),
                 'net_weight': sum(line.net_weight for line in line_ids),
                 'items_count': sum(line.items_count for line in line_ids)
-                })
+            })
         return product_group_by_packings
+    
+    def get_number_carton(self):
+        packing_number = list(set(self.note_de_colisage_line_ids.mapped('packing_number')))
+        return len(packing_number)
+    
+    def get_right_number(self, val):
+        val_string = str(val)
+        val_split = val_string.split('.')
+        if len(val_split) == 1:
+            return '{:,}'.format(int(val)).replace(',', ' ')
+        if int(val_split[1]) > 0:
+            return '{:,}'.format(val).replace(',', ' ')
+        else:
+            return '{:,}'.format(int(val)).replace(',', ' ')
+        
+    def format_number_for_weight(self, num):
+        formatted = "{:,.2f}".format(num).replace(",", " ")
+        return formatted
+
+    def get_article_total_by_category(self):
+        product_types = set(self.note_de_colisage_line_ids.mapped(
+            'product_id.product_type'))
+        out = list()
+        type = dict(self.env['product.template']._fields["product_type"].selection)
+
+        for product_type in product_types:
+            items_count = int(sum(line.bags * line.items_count for line in self.note_de_colisage_line_ids.filtered(
+                lambda line_id: line_id.product_id.product_type == product_type)))
+            product_type = type[product_type].lower()
+
+            out.append((items_count, product_type))
+        return out
 
     def get_formatted_qty(self, qty):
         result = f'{qty:,.2f}'.split('.')[0]
         return result.replace(',', ' ')
-    
+
     def get_formatted_weight(self, weight):
         result = f'{weight:,.1f}'
         return result.replace(',', ' ').replace('.', ',')
+
 
 class NoteDeColisageLine(models.TransientModel):
     _name = 'note.de.colisage.line'
@@ -53,8 +89,9 @@ class NoteDeColisageLine(models.TransientModel):
     product_id = fields.Many2one(comodel_name='product.product')
     bags = fields.Integer()
     packing_number = fields.Integer()
-    note_colisage_id  = fields.Many2one(comodel_name='note.colisage.wizard')
-    product_ids = fields.Many2many(comodel_name='product.product', related='note_colisage_id.product_ids')
+    note_colisage_id = fields.Many2one(comodel_name='note.colisage.wizard')
+    product_ids = fields.Many2many(
+        comodel_name='product.product', related='note_colisage_id.product_ids')
     gross_weight = fields.Float()
     net_weight = fields.Float()
     items_count = fields.Float()

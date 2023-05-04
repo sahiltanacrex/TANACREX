@@ -125,7 +125,7 @@ class Sale_order_line(models.Model):
 class Account_move_line(models.Model):
     _inherit = "account.move.line"
     development_expenses = fields.Monetary("Prix de developpement")
-    unit_qty = fields.Float("Quantité unitaire")
+    unit_qty = fields.Float("Quantité unitaire", compute='_compute_qty_unit', store=True) #inverse='_inverse_compute_qty_unit'
 
     # price_subtotal = fields.Monetary(compute='_compute_price_subtotal')
     # @api.depends('development_expenses')
@@ -134,6 +134,16 @@ class Account_move_line(models.Model):
     #         if val.development_expenses > 0:
     #             val.update(val._get_price_total_and_subtotal())
     #             val.price_subtotal += val.development_expenses
+
+    @api.depends('product_id','quantity')
+    def _compute_qty_unit(self):
+        for rec in self:
+            rec.unit_qty = rec.quantity * rec.product_uom_id.factor_inv
+
+    # def _inverse_compute_qty_unit(self):
+    #     for rec in self:
+    #         if rec.product_uom_id.factor_inv == 100:
+    #             rec.quantity = rec.unit_qty / 100
 
     @api.model
     def _get_price_total_and_subtotal_model(

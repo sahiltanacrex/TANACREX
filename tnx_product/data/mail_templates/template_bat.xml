@@ -36,19 +36,46 @@
                         <span>
                             <u>Client :</u>
                         </span>
-                        <span t-out="object.partner_id or ''"/>
+                        <span t-out="object.partner_id.name or ''"/>
                     </li>
                     <li>
                         <span>
                             <u>Donneur d'ordre :</u>
                         </span>
-                        <span t-out="object.donneur_ordre or ''"/>
+                        <span t-out="object.donneur_ordre.name or ''"/>
                     </li>
                     <li>
                         <span>
                             <u>Réf client :</u>
                         </span>
                         <span t-out="object.customer_reference or ''"/>
+                    </li>
+                    <li>
+                        <span>
+                            <u>Dimension :</u>
+                        </span>
+                        <!-- <t t-if="object.product_type=='button'">
+                            <span t-out="object.get_right_number(object.line)"/>L
+                        </t>
+                        <t t-elif="object.product_type='other'">
+                            <span t-out="object.get_right_number(object.surface)"/>mm²
+                        </t>
+                        <t t-else="">
+                            <t t-if="object.form=='rectangle'">
+                                <span t-out="object.get_right_number(object.lenght)"/>mm x 
+                                <span t-out="object.get_right_number(object.wide)"/>mm
+                            </t>
+                            <t t-elif="object.form=='square'">
+                                <span t-out="object.get_right_number(object.side)"/>mm x 
+                                <span t-out="object.get_right_number(object.side)"/>mm
+                            </t>
+                            <t t-else="">
+                                <span t-out="object.get_right_number(object.surface)"/>mm²
+                            </t>
+
+                        </t> -->
+                        <span t-out="object.dimension or ''"/>
+                        
                     </li>
                     <li>
                         <span>

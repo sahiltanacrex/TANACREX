@@ -37,6 +37,7 @@
             </xpath>
             <xpath expr="//field[@name='product_uom_id']" position="after">
                 <field name="carton_id" string="Numéro de carton" options="{'no_create_edit': True}"/>
+                <field name="colisage"/>
             </xpath>
         </field>
     </record>
