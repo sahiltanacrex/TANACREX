@@ -248,6 +248,7 @@ class AccountMoveInherit(models.Model):
         return res
     
     def get_right_number(self, val):
+        val = round(val, 2)
         val_string = str(val)
         val_split = val_string.split('.')
         if len(val_split) == 1:
