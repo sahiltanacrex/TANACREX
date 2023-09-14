@@ -478,3 +478,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
 msgid "mm x"
 msgstr ""
+
+#. module: tnx_sale
+#: model:ir.model.fields,field_description:tnx_sale.field_sale_order__payment_method
+msgid "Payment Method"
+msgstr "Méthode de paiement"
+
+#. module: tnx_sale
+#: model_terms:ir.ui.view,arch_db:tnx_sale.sale_order_inherit_tnx
+msgid "Payment method"
+msgstr "Méthode de paiement"
