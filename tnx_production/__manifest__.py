@@ -20,7 +20,7 @@
     "data": [
         # 'security/ir.model.access.csv',
         "report/mrp_analyse.xml",
-        "views/views.xml",
+        "views/menu.xml",
         "views/templates.xml",
         "views/mrp_production_view.xml",
         "data/mail_templates/template_manufacture_order.xml",
