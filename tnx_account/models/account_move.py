@@ -62,9 +62,8 @@ class AccountMoveInherit(models.Model):
         Returns:
             _sequences_: test type of customer and set if EX, LS , VL
         """
+        check_partner_type = self.partner_id.partner_type
         if self.move_type == "out_invoice":
-            check_partner_type = self.partner_id.partner_type
-
             if check_partner_type and not self.seq_bis:
                 get_ex = self.env["tnx.ex"]
                 get_ls = self.env["tnx.ls"]
@@ -81,7 +80,7 @@ class AccountMoveInherit(models.Model):
 
         values = super(AccountMoveInherit, self).action_post()
         # TODO arakaraka eto no name mipoitra satria ilay name natao invisible de name bis no afficher am form fa name tsotra ny any am tree
-        if self.move_type == "out_invoice":
+        if self.move_type == "out_invoice" and check_partner_type:
             self.update({"name_bis": self.name + "-" + check_partner_type.upper()})
         else:
             self.update({"name_bis": self.name})
