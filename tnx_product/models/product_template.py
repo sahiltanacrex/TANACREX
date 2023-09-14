@@ -86,6 +86,7 @@ class Product_template(models.Model):
     # ! add fields
     product_type = fields.Selection(
         [
+            ("ruban", "Ruban"),
             ("button", "Bouton"),
             ("label", "Etiquette"),
             ("sticker", "Autocollant"),
