@@ -117,6 +117,7 @@
                     </div>
                     <div class="col-4" style="border: 1px solid; text-align: center;">
                         <span t-field="o.partner_id"/>
+                        <br/>
                         <t t-if="o.partner_id.street">
                             <span t-field="o.partner_id.street"/>
                             <br/>
@@ -658,6 +659,7 @@
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;">
                                 <span t-field="doc.partner_id"/>
+                                <br/>
                                 <t t-if="doc.partner_id.street">
                                     <span t-field="doc.partner_id.street"/>
                                     <br/>
