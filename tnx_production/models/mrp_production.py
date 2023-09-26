@@ -11,7 +11,7 @@ class MrpProduction(models.Model):
 
     partner_id = fields.Many2one("res.partner", string="client")
     order_id = fields.Many2one(
-        "sale.order", string="BC", compute='_compute_end_of_production')
+        "sale.order", string="BC")
     sale_order_date = fields.Datetime(compute='_set_fields_depends_on_origin')
     developments = fields.Selection(
         [("1", "0%"), ("2", "25%"), ("3", "50%"), ("4", "75%"), ("5", "100%")],
