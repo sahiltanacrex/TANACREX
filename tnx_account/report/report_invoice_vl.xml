@@ -40,7 +40,8 @@
                                             <t t-if="company.description">
                                                 <t t-esc="company.description" />
                                             </t>
-                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983</t>
+                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983 <br/> SARL
+                                                    au capital de 30 000 000 AR</t>
                                         </b>
                                         <br />
                                     </div>
