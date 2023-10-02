@@ -14,17 +14,17 @@
                         <group>
                             <field name="hs_code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
                             <field name="product_type" />
-                            <field name="form" attrs="{'invisible': [('product_type', 'not in', ['label', 'sticker'])]}"/>
+                            <field name="form" attrs="{'invisible': [('product_type', 'in', ['rubban','button', 'other'])]}"/>
                             <!-- if square -->
-                            <field name="side" attrs="{'invisible': ['|', ('product_type', 'not in', ['label', 'sticker']), ('form', '!=', 'square')]}"/>
+                            <field name="side" attrs="{'invisible': ['|', ('product_type', 'in', ['rubban','button', 'other']), ('form', '!=', 'square')]}"/>
                             <!-- if button -->
                             <field name="line" attrs="{'invisible': [('product_type',  '!=', 'button')]}" widget="integer"/>
                             <field name="diameter" attrs="{'invisible': [('product_type',  '!=', 'button')]}" />
                             <!-- if rectangle -->
-                            <field name="length" attrs="{'invisible': ['|', ('product_type',  'not in', ['label','sticker']), ('form', '!=', 'rectangle')]}" />
-                            <field name="wide" attrs="{'invisible': ['|', ('product_type',  'not in', ['label','sticker']), ('form', '!=', 'rectangle')]}" />
+                            <field name="length" attrs="{'invisible': ['|', ('product_type',  'in', ['rubban','button', 'other']), ('form', '!=', 'rectangle')]}" />
+                            <field name="wide" attrs="{'invisible': ['|', ('product_type',  'in', ['rubban','button', 'other']), ('form', '!=', 'rectangle')]}" />
                             <!-- if circle -->
-                            <field name="radius" attrs="{'invisible': ['|', ('product_type',  'not in', ['label','sticker']), ('form', '!=', 'circle')]}"/>
+                            <field name="radius" attrs="{'invisible': ['|', ('product_type',  'in', ['rubban','button', 'other']), ('form', '!=', 'circle')]}"/>
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
                             <field name="surface" attrs="{'invisible': [('product_type',  '==', 'button')], 'readonly':[('form', '!=', 'other')]}"/>
