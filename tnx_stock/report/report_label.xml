@@ -75,7 +75,7 @@
                                                         <b>QTY :</b>
                                                     </u>
                                                     <div class="text-right">
-                                                        <span t-if="line.product_id" t-esc=" line.qty_done" />
+                                                        <span t-if="line.product_id" t-esc="o.get_right_number(line.unit_done)" />
                                                     </div>
                                                 </td>
                                             </tr>

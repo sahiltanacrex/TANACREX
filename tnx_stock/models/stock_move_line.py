@@ -25,7 +25,7 @@ class StockMoveLine(models.Model):
             rec.unit_reserv = rec.product_uom_qty * rec.product_uom_id.ratio
 
     unit_done = fields.Float(
-        "Fait unitaire", default=0.0, digits='Product Unit of Measure', index=1
+        "Fait unitaire", default=0.0, digits=(14, 0), index=1
     )
 
     # qty_done = fields.Float('Done', default=0.0, digits='Product Unit of Measure',
