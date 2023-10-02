@@ -7,9 +7,9 @@ class Sale_order_line(models.Model):
     _inherit = "sale.order.line"
     development_expenses = fields.Monetary("Development costs")
     unit_qty = fields.Integer("Unitary quantity")
-    product_uom_qty = fields.Float("Cond Quantity", digits=(14, 0))
-    qty_delivered = fields.Float(digits=(14, 0))
-    qty_invoiced = fields.Float(digits=(14, 0))
+    product_uom_qty = fields.Float("Cond Quantity", digits=(14, 2))
+    qty_delivered = fields.Float(digits=(14, 2))
+    qty_invoiced = fields.Float(digits=(14, 2))
     box_qty = fields.Float("Nombre de carton", compute="_compute_box_qty")
     poids_en_kg = fields.Float(
         compute="_compute_poids_total", store=True, required=False
