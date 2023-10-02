@@ -40,6 +40,7 @@ class Product_template(models.Model):
     detailed_type = fields.Selection(default="product")
     donneur_ordre = fields.Many2one("res.partner", string="Donneur d'ordre")
     ref_donneur_ordre = fields.Char(string=" Réf. donneur d'ordre")
+    is_fees = fields.Boolean(string="Est un frais?")
 
     # matiere_id = domain("[('type_id', '=', type_id)]")
 

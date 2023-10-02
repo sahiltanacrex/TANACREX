@@ -89,63 +89,63 @@
                                 <b>Date de facturation:</b>
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')"/>
                             </div>
-                        </div>  
+                        </div>
                         <div class="col-5" style="border: 1px solid; text-align: center;">
                             <span t-field="o.partner_id"/><br/>
                            <t t-if="o.partner_id.street">
-                                <span t-field="o.partner_id.street"/> <br/> 
+                                <span t-field="o.partner_id.street"/> <br/>
                             </t>
                             <t  t-if="o.partner_id.street2">
-                                <span t-field="o.partner_id.street2"/> <br/> 
+                                <span t-field="o.partner_id.street2"/> <br/>
                             </t>
                             <t t-if="o.partner_id.city">
-                                <span t-field="o.partner_id.city"/> <br/> 
+                                <span t-field="o.partner_id.city"/> <br/>
                             </t>
                             <t t-if="o.partner_id.state_id">
-                                <span t-field="o.partner_id.state_id"/> <br/> 
+                                <span t-field="o.partner_id.state_id"/> <br/>
                             </t>
                             <t t-if="o.partner_id.zip">
-                                <span t-field="o.partner_id.zip"/> <br/> 
+                                <span t-field="o.partner_id.zip"/> <br/>
                             </t>
                             <t t-if="o.partner_id.country_id">
-                                <span t-field="o.partner_id.country_id"/> <br/> 
+                                <span t-field="o.partner_id.country_id"/> <br/>
                             </t>
                             <t t-if="o.partner_id.phone">
                                 <span>Tel: </span>
-                                <span t-field="o.partner_id.phone"/> <br/> 
+                                <span t-field="o.partner_id.phone"/> <br/>
                             </t>
                             <t t-if="o.partner_id.nif">
                                 <span>NIF: </span>
-                                <span t-field="o.partner_id.nif"/> <br/> 
+                                <span t-field="o.partner_id.nif"/> <br/>
                             </t>
                             <t t-if="o.partner_id.stat">
                                 <span>STAT: </span>
-                                <span t-field="o.partner_id.stat"/> <br/> 
+                                <span t-field="o.partner_id.stat"/> <br/>
                             </t>
                             <t t-if="o.partner_id.rcs">
                                 <span>RCS: </span>
-                                <span t-field="o.partner_id.rcs"/> <br/> 
+                                <span t-field="o.partner_id.rcs"/> <br/>
                             </t>
                             <t t-if="o.partner_id.cif">
                                 <span>CIF: </span>
-                                <span t-field="o.partner_id.cif"/> <br/> 
+                                <span t-field="o.partner_id.cif"/> <br/>
                             </t>
                             <t t-if="o.partner_id.free_val">
-                                <span t-field="o.partner_id.free_val"/> <br/> 
+                                <span t-field="o.partner_id.free_val"/> <br/>
                             </t>
                             <t t-if="o.partner_id.fax_number">
                                 <span>FAX: </span>
-                                <span t-field="o.partner_id.fax_number"/> <br/> 
+                                <span t-field="o.partner_id.fax_number"/> <br/>
                             </t>
-                        </div>                      
+                        </div>
                     </div>
-                    
+
                     <div style="margin-top:15px; margin-bottom:15px">
-                    
+
                         <style type="text/css">
                             th {border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif; text-align: left; padding:5px 5px; text-align: center;}
                             table {width:100%; font-size:13px; border-collapse: collapse;}
-                            
+
                             table td {border: 1px solid #000; border-width:1px; text-align: center; border-top:hidden; border-bottom:hidden}
                             table td:first-child {text-align: center; border-bottom:hidden}
                             table td:last-child {text-align: center;}
@@ -184,9 +184,9 @@
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
                                         <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                                 <t t-foreach="bl_id" t-as="id_bl"> -->
-                                        
+
                                             <!-- <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
-                                        <t t-if="line.product_id.product_type == type">    
+                                        <t t-if="line.product_id.product_type == type">
                                             <tr>
                                                 <td>
                                                     <t t-if="line.order_customer">
@@ -231,7 +231,15 @@
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
+                                                    <t t-if="line.product_id.is_fees == True">
+                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                            t-esc="o.currency_id.symbol"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                            t-esc="o.currency_id.symbol"/>
+                                                        / <t t-esc="line.product_uom_id.name"/>
+                                                    </t>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -256,7 +264,7 @@
 
                                 <t t-set="total_price_type_false" t-value="o.get_total_price_type(o.invoice_line_ids, False)"/>
                                 <t t-set="type_false_number" t-value="o.get_type_false_number()"/>
-                                    
+
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
                                         <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
                                         <!-- <t t-foreach="bl_id" t-as="id_bl">
@@ -279,8 +287,8 @@
                                                 </td>
                                                 <td>
                                                    <t t-if="line.product_id.hs_code">
-                                                   <span t-esc="line.product_id.hs_code.hs_code" /> 
-                                                   </t> 
+                                                   <span t-esc="line.product_id.hs_code.hs_code" />
+                                                   </t>
                                                 </td>
                                                 <td>
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
@@ -289,9 +297,15 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/>
-                                                    <t t-esc="o.currency_id.symbol"/>/ 
-                                                    <t t-esc="line.product_uom_id.name"/>
+                                                    <t t-if="line.product_id.is_fees == True">
+                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                            t-esc="o.currency_id.symbol"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                            t-esc="o.currency_id.symbol"/>
+                                                        / <t t-esc="line.product_uom_id.name"/>
+                                                    </t>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
@@ -337,7 +351,7 @@
                                             <t t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
-                                    
+
                                     <!-- <tr>
                                         <td></td>
                                         <td></td>
@@ -393,7 +407,7 @@
                                 <span t-field="o.delivery_adress.city"/> &#x9;
                             </div>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.state_id">
-                                <span t-field="o.delivery_adress.state_id"/> &#x9; 
+                                <span t-field="o.delivery_adress.state_id"/> &#x9;
                             </div>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.zip">
                                 <span t-field="o.delivery_adress.zip"/> &#x9;
@@ -419,18 +433,18 @@
                             </div>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.cif">
                                 <span>CIF: </span>
-                                <span t-field="o.delivery_adress.cif"/> &#x9; 
+                                <span t-field="o.delivery_adress.cif"/> &#x9;
                             </div>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.free_val">
-                                <span t-field="o.delivery_adress.free_val"/> &#x9; 
+                                <span t-field="o.delivery_adress.free_val"/> &#x9;
                             </div>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.fax_number">
                                 <span>FAX: </span>
-                                <span t-field="o.delivery_adress.fax_number"/> &#x9; 
+                                <span t-field="o.delivery_adress.fax_number"/> &#x9;
                             </div>
                             </div>
                         </div>
-                    
+
 
                     <div>
                         <div t-if="o.origin_tnx">
@@ -532,6 +546,6 @@
         </t>
     </template>
 
-    
+
 
 </odoo>

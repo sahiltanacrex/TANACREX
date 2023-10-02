@@ -46,6 +46,7 @@
                         <div>
                             <group>
                                 <group>
+                                    <field name="is_fees" />
                                     <field name="origin" />
                                     <field name="supplier" />
                                     <field name="latin_name" />

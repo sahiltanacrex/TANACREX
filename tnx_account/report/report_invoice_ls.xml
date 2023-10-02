@@ -215,7 +215,15 @@
                                                 <t t-esc="o.get_right_number(line.quantity)" />
                                             </td>
                                             <td>
-                                                <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t t-esc="o.currency_id.symbol"/>/ <t t-esc="line.product_uom_id.name"/>
+                                                <t t-if="line.product_id.is_fees == True">
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                        t-esc="o.currency_id.symbol"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                        t-esc="o.currency_id.symbol"/>
+                                                    / <t t-esc="line.product_uom_id.name"/>
+                                                </t>
                                             </td>
                                             <td>
                                                 <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
