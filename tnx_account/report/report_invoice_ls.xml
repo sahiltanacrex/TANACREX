@@ -179,6 +179,8 @@
                                     <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                     <t t-foreach="bl_id" t-as="id_bl">
                                         <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
+                                        <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(id_bl, line.product_id.id)" />
+                                        <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                         <tr>
                                             <td>
                                                 <span t-esc="line.order_customer" />
@@ -212,7 +214,7 @@
                                                 </t>
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.quantity)" />
+                                                <t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />
                                             </td>
                                             <td>
                                                 <t t-if="line.product_id.is_fees == True">
@@ -226,7 +228,7 @@
                                                 </t>
                                             </td>
                                             <td>
-                                                <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                     </t>

@@ -1,4 +1,3 @@
-
 import datetime
 
 # -*- coding: utf-8 -*-
@@ -18,7 +17,6 @@ class AccountMoveInherit(models.Model):
     container_serial = fields.Char("Conteneur")
 
     seq_bis = fields.Char("Réference Facture", store=True, index=True)
-    
 
     @api.model
     def create(self, vals):
@@ -41,7 +39,7 @@ class AccountMoveInherit(models.Model):
         store=True,
         compute="_compute_picking_ids",
         help="Related pickings "
-        "(Seulement quand la facture a été generer depuis un bot de commande).",
+             "(Seulement quand la facture a été generer depuis un bot de commande).",
     )
 
     bank_company_ids = fields.Many2many(
@@ -116,7 +114,7 @@ class AccountMoveInherit(models.Model):
 
             get_year = str(get_year)
             l = len(get_year)
-            get_year = get_year[l - 2 :]
+            get_year = get_year[l - 2:]
 
             type.create(
                 {
@@ -189,7 +187,7 @@ class AccountMoveInherit(models.Model):
 
     def total_amount_ex(self, freight, amount_total):
         return freight + amount_total
-        
+
     def get_delivery_order_id(self, id):
         """
         get BL id
@@ -211,6 +209,20 @@ class AccountMoveInherit(models.Model):
         """
         bl_name = self.env["stock.picking"].search([("id", "=", id)])
         return bl_name.name
+
+    def get_bl_qty_done(self, id_bl, id_product):
+        """
+        get product quantity done on stock.move
+        """
+        bl_id = self.env["stock.picking"].search([("id", "=", id_bl)])
+        move_line_id = bl_id.move_ids_without_package.filtered(lambda x: x.product_id.id == id_product)[0]
+        return move_line_id.quantity_done
+
+    def get_bl_subtotal(self, qty, price):
+        """
+        get subtotal
+        """
+        return qty * price
 
     def get_bank(self, bank_id, currency_id):
         list_info = []
@@ -246,7 +258,7 @@ class AccountMoveInherit(models.Model):
             partner_type.get(self.partner_id.partner_type, "tnx_account.invoice_ex")
         )
         return res
-    
+
     def get_right_number(self, val):
         val = round(val, 2)
         val_string = str(val)
@@ -257,11 +269,11 @@ class AccountMoveInherit(models.Model):
             return '{:,}'.format(val).replace(',', ' ')
         else:
             return '{:,}'.format(int(val)).replace(',', ' ')
-    
+
     def format_number_for_amount(self, num):
         formatted = "{:,.2f}".format(num).replace(",", " ")
         return formatted
 
     def get_type_false_number(self):
-        product_type_false =self.invoice_line_ids.mapped('product_id').filtered(lambda p: p.product_type == False)
+        product_type_false = self.invoice_line_ids.mapped('product_id').filtered(lambda p: p.product_type == False)
         return len(product_type_false)
