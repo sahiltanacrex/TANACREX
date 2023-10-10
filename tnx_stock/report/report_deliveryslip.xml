@@ -114,7 +114,7 @@
                             <br />
                             <div t-if="o.sale_id">
                                 <span>Bon de commande N° : </span>
-                                <span t-esc="o.sale_id.name" />
+                                <span t-esc="o.sale_id.sale_order_partner" />
                             </div>
                             <div t-if="o.partner_id.ref_client">
                                 <span>Ref client : </span>
