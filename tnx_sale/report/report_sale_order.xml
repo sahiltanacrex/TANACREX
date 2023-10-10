@@ -106,7 +106,7 @@
                                     <span t-esc="o.get_production_date().strftime('%d/%m/%Y')" />
                                 </td>
                                 <td style="border: none;">
-                                    <b>Date de livraison:</b>
+                                    <b>Date de livraison :</b>
                                 </td>
                                 <td style="border: none;">
                                     <span t-esc="o.get_delivery_date().strftime('%d/%m/%Y')"/>
@@ -233,8 +233,8 @@
                                     <t t-if="line.product_id.product_type == type">
                                         <tr>
                                             <td style="overflow: hidden;">
-                                                <t t-if="line.product_id.image_1920">
-                                                    <img t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
+                                                <t t-if="line.product_id.image_128">
+                                                    <img t-att-src="image_data_uri(line.product_id.image_128)" style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
                                                 </t>
                                                 <t t-else=""></t>
                                             </td>
@@ -321,8 +321,8 @@
                                     <t t-if="line.product_id.product_type == False and line.price_unit != 0">
                                         <tr>
                                             <td style="overflow: hidden;">
-                                                <t t-if="line.product_id.image_1920">
-                                                    <img t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
+                                                <t t-if="line.product_id.image_128">
+                                                    <img t-att-src="image_data_uri(line.product_id.image_128)" style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
                                                 </t>
                                                 <t t-else=""></t>
                                             </td>
