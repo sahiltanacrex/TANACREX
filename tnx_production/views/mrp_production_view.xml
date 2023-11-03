@@ -12,8 +12,9 @@
                 <xpath expr="//field[@name='product_id']" position="after">
                     <field name="partner_id" string="Client" force_save="1" />
                     <field name="origin" />
-                    <field name="order_id" string="Devis confirmé" />
-                    <field name="bc_client" string="BC Client" />
+                    <field name="sale_order_date" string="Date BC"/>
+                    <field name="order_id" string="BC"/>
+                    <field name="bc_client" string="BC Client"/>
                     <field name="developments" widget="selection" />
                     <field name="check_bc" invisible="1" />
                 </xpath>

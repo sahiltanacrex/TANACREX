@@ -11,8 +11,8 @@ class MrpProduction(models.Model):
 
     partner_id = fields.Many2one("res.partner", string="client")
     order_id = fields.Many2one(
-        "sale.order", string="BC")
-    sale_order_date = fields.Datetime(compute='_set_fields_depends_on_origin')
+        "sale.order", string="BC",compute='_set_fields_depends_on_origin', inverse="inverse_production_bc_fields",store=True)
+    sale_order_date = fields.Datetime(compute='_set_fields_depends_on_origin',inverse="inverse_sale_order_date_bc_fields",store=True)
     developments = fields.Selection(
         [("1", "0%"), ("2", "25%"), ("3", "50%"), ("4", "75%"), ("5", "100%")],
         default="1",
@@ -21,7 +21,7 @@ class MrpProduction(models.Model):
     check_bc = fields.Boolean("Check Bc")
     image_1920 = fields.Image("Image", related="product_id.image_1920")
     bc_client = fields.Char(
-        "Bc Client", compute='_set_fields_depends_on_origin')
+        "Bc Client", compute='_set_fields_depends_on_origin',inverse="inverse_bc_client_fields",store=True)
     line_product = fields.Float("Ligne", related="product_id.line")
     material_product = fields.Char(store=True, compute="_compute_material_product", default=lambda self: self.product_id.material_id.name if self.product_id else False)
     product_type = fields.Selection(
@@ -65,6 +65,16 @@ class MrpProduction(models.Model):
                     production_id.bc_client = order_id.sale_order_partner
                     production_id.sale_order_date = order_id.date_order
                     production_id.order_id = order_id.id
+
+    def inverse_production_bc_fields(self):
+        for production_id in self:
+            production_id.origin = production_id.order_id.name
+
+    def inverse_sale_order_date_bc_fields(self):
+        pass
+
+    def inverse_bc_client_fields(self):
+        pass
 
     @api.depends('date_planned_start', 'order_id.production_duration')
     def _compute_end_of_production(self):

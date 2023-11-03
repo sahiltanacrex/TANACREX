@@ -29,20 +29,20 @@
                         <div class="header"></div>
                         <div class="body" style="display: grid; grid-template-columns:1fr 1fr;">
                             <t t-foreach="o.move_line_ids_without_package" t-as="line">
-                                <div style="padding-bottom:10px;">
-                                    <table class="tg" style="width: 300px;">
+                                <div style="padding-bottom:10px;width: 190px;height: 110px;overflow:hidden;">
+                                    <table class="tg" style="width:100%;">
                                         <colgroup>
                                             <col style="width: 160px" />
                                             <col style="width: 160px" />
                                         </colgroup>
                                         <thead>
                                             <tr>
-                                                <th class="tg-0pky" colspan="2">
+                                                <th class="tg-0pky" colspan="2" style="padding: 3px !important">
                                                     <div class="row">
-                                                        <div class="col-6" style="text-align: center !important;">
-                                                            <img t-if="company.logo" style="max-height:40px; " t-att-src="image_data_uri(company.logo)" />
+                                                        <div class="col-6" style="text-align: center; !important;">
+                                                            <img t-if="company.logo" style="max-height:10px; " t-att-src="image_data_uri(company.logo)" />
                                                         </div>
-                                                        <div class="col-6 text-center" style="font-size:10px !important;">
+                                                        <div class="col-6 text-center" style="font-size:3px;!important;">
                                                             <b>BOUTONS  ETIQUETTES </b>
                                                             <div> Tel :(261) 034 02 441 35</div>
                                                             <div> info@tanacrex.com</div>
@@ -59,7 +59,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="tg-0pky">
+                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
                                                     <u>
                                                         <b>ART :</b>
                                                     </u>
@@ -70,7 +70,7 @@
                                                         </t>
                                                     </div>
                                                 </td>
-                                                <td class="tg-0pky">
+                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
                                                     <u>
                                                         <b>QTY :</b>
                                                     </u>
@@ -80,7 +80,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="tg-0pky">
+                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
                                                     <u>
                                                         <b>TAILLE :</b>
                                                     </u>
@@ -91,7 +91,7 @@
                                                         </t>
                                                     </div>
                                                 </td>
-                                                <td class="tg-0pky">
+                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
                                                     <u>
                                                         <b>POIDS :</b>
                                                     </u>
