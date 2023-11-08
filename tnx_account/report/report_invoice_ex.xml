@@ -473,7 +473,7 @@
                     </t>
                     <div t-if="o.partner_id.without_origin_report_ex == false" style="text-align:center;margin-top:20px;font-style: italic;">
                         <span> Origin: </span>
-                        <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "W9606"</span>
+                        <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is W9606</span>
                     </div>
                     <!-- <div style="text-align:center;margin-top:20px">
                                 <span>
