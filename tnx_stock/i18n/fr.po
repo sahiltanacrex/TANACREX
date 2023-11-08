@@ -359,7 +359,7 @@ msgstr "Poids brut"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
-msgid "Gross weight :"
+msgid "Gross weight:"
 msgstr "Poids brut:"
 
 #. module: tnx_stock
