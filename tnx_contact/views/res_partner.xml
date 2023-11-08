@@ -19,6 +19,7 @@
                 </xpath>
                 <xpath expr="//field[@name='category_id']" position="after">
                     <field name="partner_type" widget="radio" options="{'horizontal': true}"/>
+                    <field name="without_origin_report_ex" string="Sans origine dans le rapport" attrs="{'invisible': [('partner_type', '!=', 'ex')]}"/>
                     <field name="ref_client"/>
                 </xpath>
                 <xpath expr="//field[@name='child_ids']//form//group[1]//group[1]" position="inside">

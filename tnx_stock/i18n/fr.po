@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 10:58+0000\n"
-"PO-Revision-Date: 2023-04-28 10:58+0000\n"
+"POT-Creation-Date: 2023-10-31 13:39+0000\n"
+"PO-Revision-Date: 2023-10-31 13:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -29,24 +29,24 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid ""
 "<b>\n"
-"                            <span>CONTRÔLE</span>\n"
-"                        </b>"
+"                  <span>CONTRÔLE</span>\n"
+"                </b>"
 msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid ""
 "<b>\n"
-"                            <span>DESTINATAIRE</span>\n"
-"                        </b>"
+"                  <span>DESTINATAIRE</span>\n"
+"                </b>"
 msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid ""
 "<b>\n"
-"                            <span>LIVREUR</span>\n"
-"                        </b>"
+"                  <span>LIVREUR</span>\n"
+"                </b>"
 msgstr ""
 
 #. module: tnx_stock
@@ -81,22 +81,30 @@ msgstr "<b>POIDS:</b>"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
+msgid ""
+"<span class=\"font-weight-bold\">\n"
+"                  MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE\n"
+"                </span>\n"
+"                <br/>"
+msgstr ""
+
+#. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid ""
 "<span class=\"font-weight-bold\">\n"
-"                            MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE\n"
-"                        </span>\n"
-"                        <br/>"
+"                MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE\n"
+"              </span>\n"
+"              <br/>"
 msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid ""
 "<span style=\"font-size:14x;\">\n"
-"                        Aucune réclamation ne sera admise aprés la validation. La marchandise livrée\n"
-"                        reste la\n"
-"                        propriété du vendeur jusqu'au pauement intégral de la facture\n"
-"                    </span>"
+"                Aucune réclamation ne sera admise aprés la validation. La marchandise livrée\n"
+"                reste la\n"
+"                propriété du vendeur jusqu'au pauement intégral de la facture\n"
+"              </span>"
 msgstr ""
 
 #. module: tnx_stock
@@ -133,8 +141,12 @@ msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
-#: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid "<span>R.C 13 332 - STAT :</span>"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
+msgid "<span>RCS 2003B00674 - STAT :</span>"
 msgstr ""
 
 #. module: tnx_stock
@@ -146,14 +158,19 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid ""
 "<span>Tél :</span>\n"
-"                            <span>+261 20 22 441 35 / +261 34 02 441 35</span>"
+"                  <span>+261 20 22 441 35 / +261 34 02 441 35</span>"
 msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid ""
 "<span>Tél :</span>\n"
-"                            <span>22 441 35 / 03402 02 441 35</span>"
+"                <span>03402 02 441 35</span>"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_product_inherit
+msgid "<span>mm²</span>"
 msgstr ""
 
 #. module: tnx_stock
@@ -343,13 +360,18 @@ msgstr "Poids brut"
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid "Gross weight:"
-msgstr "Poids net:"
+msgstr "Poids brut:"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__id
 #: model:ir.model.fields,field_description:tnx_stock.field_note_de_colisage_line__id
 #: model:ir.model.fields,field_description:tnx_stock.field_stock_carton__id
 msgid "ID"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.note_colisage_form_view
+msgid "INCONTERM"
 msgstr ""
 
 #. module: tnx_stock
@@ -534,6 +556,7 @@ msgid "Packing N°"
 msgstr "Carton N°"
 
 #. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.external_layout
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
 msgstr ""
@@ -581,6 +604,11 @@ msgstr "Article"
 #: model:ir.model,name:tnx_stock.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "Mouvements d'article (Ligne de mouvement de stock)"
+
+#. module: tnx_stock
+#: model:ir.model,name:tnx_stock.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_product_label_layout__qty
@@ -673,10 +701,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid ""
 "in\n"
-"                        total"
-msgstr ""
-"au\n"
-"                        total"
+"              total"
+msgstr "au totale"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_etiquette_nexource
@@ -690,8 +716,16 @@ msgid "kg"
 msgstr ""
 
 #. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_product_inherit
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "mm"
+msgstr ""
+
+#. module: tnx_stock
+#: model_terms:ir.ui.view,arch_db:tnx_stock.report_product_inherit
+msgid ""
+"mm\n"
+"                                                    x"
 msgstr ""
 
 #. module: tnx_stock

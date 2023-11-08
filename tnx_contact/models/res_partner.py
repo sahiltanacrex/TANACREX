@@ -29,6 +29,8 @@ class ResPartner(models.Model):
         required=False)
 
     ref_client = fields.Char(string='ref')
+
+    without_origin_report_ex = fields.Boolean()
     # partner_type = fields.Selection(selection_add=[
     #     ('ex','EX'),('vl','VL'),('ls','LS')
     # ])

@@ -40,13 +40,13 @@
                                             <t t-if="company.description">
                                                 <t t-esc="company.description" />
                                             </t>
-                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983 <br/> SARL
+                                            <t t-else=""> <br/> SARL
                                                     au capital de 30 000 000 AR</t>
                                         </b>
                                         <br />
                                     </div>
                                     <div t-if="company.stat">
-                                        <span>STAT:</span>
+                                        <span>RCS 2003B00674 - STAT:</span>
                                         <span t-esc="company.stat" />
                                     </div>
                                     <div t-if="company.nif">
@@ -57,7 +57,7 @@
                                         <span>Lot 18 D Imerinafovoany </span>
                                     </div>
                                     <div>
-                                        <span>B.p.:11064 - Tél : </span>
+                                        <span>B.P.:11064 - Tél : </span>
                                         <span t-esc="company.phone or company.mobile" />
                                     </div>
                                     <div>
@@ -227,10 +227,10 @@
                                                         </t>
                                                     </t>
                                                 </td>
-                                                <td>
+                                                <td style="text-align: right">
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
-                                                <td>
+                                                <td style="text-align: right">
                                                     <t t-if="line.product_id.is_fees == True">
                                                         <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
                                                             t-esc="o.currency_id.symbol"/>
@@ -241,7 +241,7 @@
                                                         / <t t-esc="line.product_uom_id.name"/>
                                                     </t>
                                                 </td>
-                                                <td>
+                                                <td style="text-align: right">
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -293,10 +293,10 @@
                                                 <td>
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <t t-if="line.product_id.is_fees == True">
                                                         <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
                                                             t-esc="o.currency_id.symbol"/>
@@ -304,10 +304,10 @@
                                                     <t t-else="">
                                                         <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
                                                             t-esc="o.currency_id.symbol"/>
-                                                        / <t t-esc="line.product_uom_id.name"/>
+                                                        <!--/\ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -347,7 +347,7 @@
                                         <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Montant Total</td>
                                         <td style="border: 1px solid #000;"></td>
-                                        <td style="border: 1px solid #000;">
+                                        <td style="border: 1px solid #000;text-align:right;" >
                                             <t t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -383,9 +383,7 @@
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
                     </div>
-
-                    <br/>
-                    <br/>
+                    
                     <t t-if="o.delivery_adress">
                         <div class="row">
                             <div class="col-3">
@@ -473,7 +471,7 @@
                         </div>
                     </div>
                     </t>
-                    <div style="text-align:center;margin-top:20px">
+                    <div t-if="o.partner_id.without_origin_report_ex == false" style="text-align:center;margin-top:20px;font-style: italic;">
                         <span> Origin: </span>
                         <span>"The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "W9606"</span>
                     </div>
@@ -500,7 +498,7 @@
                                     <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
                                     <br/>
                                     <span t-esc="bank.bank_address"/>
-                                    <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    <span></span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
                                 </div>
