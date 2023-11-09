@@ -63,7 +63,7 @@
               <div style="font-size:13px;">BP. 11064 - Antananarivo - Madagascar</div>
               <div>
                 <span>Tél :</span>
-                <span>03402 02 441 35</span>
+                <span>034 02 441 35</span>
               </div>
               <div>
                 <span>E-mail : contact@tanacrex.com</span>
@@ -116,7 +116,7 @@
         <t t-set="net_weight_total"
            t-value="sum(product_group_by_packings[k].get('net_weight', 0.0) for k in product_group_by_packings)"/>
         <div class="row p-4">
-          <div class="col-6 text-left">Gross weight:<t t-esc="o.format_number_for_weight(gross_weight_total)"/>
+          <div class="col-6 text-left"> Gross weight: <t t-esc="o.format_number_for_weight(gross_weight_total)"/>
             Kgs </div>
           <div class="col-6 text-right"> Net weight: <t t-esc="o.format_number_for_weight(net_weight_total)"/>
             Kgs </div>
