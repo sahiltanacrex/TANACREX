@@ -57,7 +57,7 @@
                                         <span>Lot 18 D Imerinafovoany </span>
                                     </div>
                                     <div>
-                                        <span>B.p.:11064 - Tél : </span>
+                                        <span>B.P.:11064 - Tél : </span>
                                         <span t-esc="company.phone or company.mobile" />
                                     </div>
                                     <div>
