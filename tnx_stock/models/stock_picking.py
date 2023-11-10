@@ -15,7 +15,7 @@ class StockPickingInherit(models.Model):
                 (6, 0, self.move_line_ids_without_package.mapped('product_id').ids)]}
         )
         return {
-            "name": _("Impréssion note de colisage"),
+            "name": _("Invoice printing"),
             "type": "ir.actions.act_window",
             "view_type": "form",
             "view_mode": "form",

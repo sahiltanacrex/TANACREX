@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-08 13:30+0000\n"
-"PO-Revision-Date: 2023-11-08 13:30+0000\n"
+"POT-Creation-Date: 2023-11-10 06:41+0000\n"
+"PO-Revision-Date: 2023-11-10 06:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -165,7 +165,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid ""
 "<span>Tél :</span>\n"
-"                <span>03402 02 441 35</span>"
+"                <span>034 02 441 35</span>"
 msgstr ""
 
 #. module: tnx_stock
@@ -371,7 +371,7 @@ msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.note_colisage_form_view
-msgid "INCONTERM"
+msgid "INCOTERM"
 msgstr ""
 
 #. module: tnx_stock
@@ -382,12 +382,6 @@ msgstr ""
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.view_picking_form_inherit_nexource
 msgid "Imprimer les étiquettes"
-msgstr ""
-
-#. module: tnx_stock
-#: code:addons/tnx_stock/models/stock_picking.py:0
-#, python-format
-msgid "Impréssion note de colisage"
 msgstr ""
 
 #. module: tnx_stock
@@ -404,6 +398,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_stock.tnx_package_document
 msgid "Invoice"
 msgstr "Facture"
+
+#. module: tnx_stock
+#: code:addons/tnx_stock/models/stock_picking.py:0
+#, python-format
+msgid "Invoice printing"
+msgstr "Impression note de colisage"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_de_colisage_line__items_count

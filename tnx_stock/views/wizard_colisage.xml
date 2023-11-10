@@ -44,7 +44,7 @@
                     </group>
                     <group>
                         <group>
-                            <field name="inconterm" string="INCONTERM"/>
+                            <field name="inconterm" string="INCOTERM"/>
                         </group>
                         <group>
                             <field name="origin" string="Origine" />
