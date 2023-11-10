@@ -40,7 +40,7 @@
                                             <t t-if="company.description">
                                                 <t t-esc="company.description" />
                                             </t>
-                                            <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983 <br/> SARL
+                                            <t t-else="">SARL
                                                     au capital de 30 000 000 AR</t>
                                         </b>
                                         <br />
@@ -179,7 +179,7 @@
                                     <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                     <t t-foreach="bl_id" t-as="id_bl">
                                         <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
-                                        <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(id_bl, line.product_id.id)" />
+                                        <t t-set="bl_qty_done" t-value="1" />
                                         <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                         <tr>
                                             <td>
@@ -243,13 +243,45 @@
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                 </tr>
+                                <tr>
+                                    <td style="border-color: white;border-top: black;"></td>
+                                    <td style="border-color: white;border-top: black;"></td>
+                                    <td style="border-color: white;border-top: black;"></td>
+                                    <td style="border-color: white;border-top: black;"></td>
+                                    <td style="border-color: white;border-top: black;"></td>
+                                    <td style="border-color: white;border-top: black;border-right: black;"></td>
+                                    <td style="border-top: 1px black;border-left: 1px solid black;">Montant HT</td>
+                                    <td style="border-top: 1px black;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;border-right: black;"></td>
+                                    <td style="border-left: 1px solid black;">TVA 20%</td>
+                                    <td><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
+                                    <td style="border-color: white;border-right: black;"></td>
+                                    <td style="border-bottom: 1px solid black;border-left: 1px solid black;">Montant TTC</td>
+                                    <td style="border-bottom: 1px solid black;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <br/>
+                    <table>
 
-                    <h6>
+                    </table>
+
+                    <!--<h6>
                         <div style="text-align:right">
                             <span>Montant HT:</span>
                             <span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/>
@@ -266,22 +298,19 @@
                             <span>Montant TTC:</span>
                             <span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
                         </div>
-                    </h6>
+                    </h6>-->
                     <h6>
                     <div style="text-align:right">
-                        <!-- <span>Approuvé cett    e facture pour la somme de:</span> -->
-                        <t t-esc="o.currency_id.amount_to_text(o.amount_total)" />
+                        <t t-esc="o.currency_id.amount_to_text(o.amount_total).upper()" />
                     </div>
                     </h6>
                     <br/>
                     <br/>
                     <t t-if="o.delivery_adress">
                         <div class="row">
-                            <div class="col-3">
-                            <b>
-                                <span>Adresse de livraison : </span>
-                            </b>
-                            </div>
+
+                                <span style="font-weight: bold;font-size:14px;">Adresse de livraison : </span>
+
                             <div class="col-7" style="text-align: center;">
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
                                 <span t-field="o.delivery_adress.name"/> &#x9;
@@ -332,9 +361,9 @@
                                 <span t-field="o.delivery_adress.fax_number"/> &#x9; 
                             </div>
                             </div>
-                        </div>
+                        </div><br></br>
                     </t>
-                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due">   Date d'écheance: </span> <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                    <!--<span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due">   Date d'écheance: </span> <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
                             
                     <t t-if="o.bank_company_ids">
                         <div class="row">
@@ -343,9 +372,10 @@
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
+                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due"> -- </span> <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
                                     <br/>
-                                    <span t-esc="bank.bank_address"/>
-                                    <span>IBAN </span><span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                    <span></span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
                                 </div>
@@ -356,7 +386,7 @@
                     <br/>
                     <div class="row text-center">
                         <div class="col col-12 text-center">
-                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux.</span>
+                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux correspondants.</span>
                         </div>
                     </div>
             </div>
