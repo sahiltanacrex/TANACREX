@@ -57,7 +57,7 @@
                                     <td>
                                         <span t-field="line.sale_order_date" t-options="{'widget': 'date'}"/>
                                     </td>
-                                    <td>Article
+                                    <td>
                                         <span t-field="line.order_id" />
                                     </td>
                                     <td>
