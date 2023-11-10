@@ -384,7 +384,7 @@ msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.note_colisage_form_view
-msgid "INCONTERM"
+msgid "ICONTERM"
 msgstr ""
 
 #. module: tnx_stock

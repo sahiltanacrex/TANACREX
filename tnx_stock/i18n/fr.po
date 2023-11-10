@@ -371,7 +371,7 @@ msgstr ""
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.note_colisage_form_view
-msgid "INCOTERM"
+msgid "ICOTERM"
 msgstr ""
 
 #. module: tnx_stock
@@ -391,7 +391,7 @@ msgstr "Dans"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__inconterm
-msgid "Inconterm"
+msgid "Incoterm"
 msgstr ""
 
 #. module: tnx_stock
