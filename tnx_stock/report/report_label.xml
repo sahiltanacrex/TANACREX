@@ -42,7 +42,7 @@
                                                         <div class="col-6" style="text-align: center; !important;">
                                                             <img t-if="company.logo" style="max-height:10px; " t-att-src="image_data_uri(company.logo)" />
                                                         </div>
-                                                        <div class="col-6 text-center" style="font-size:3px;!important;">
+                                                        <div class="col-6 text-center" style="font-size:5px;!important;">
                                                             <b>BOUTONS  ETIQUETTES </b>
                                                             <div> Tel :(261) 034 02 441 35</div>
                                                             <div> info@tanacrex.com</div>
@@ -52,14 +52,14 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody style="font-size : 11px !important;">
+                                        <tbody style="font-size : 3px !important;">
                                             <tr>
-                                                <td class="tg-0pky" colspan="2">
-                                                    <span t-if="o.sale_id" t-esc="o.sale_id.sale_order_partner" />
+                                                <td class="tg-0pky" colspan="2" style="font-size : 7px;padding: 3px; margin: 0 !important;">
+                                                    <span t-if="o.sale_id" t-esc="o.sale_id.sale_order_partner"/>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
+                                                <td class="tg-0pky" style="font-size:7px;margin: 0px; padding: 3px; !important;">
                                                     <u>
                                                         <b>ART :</b>
                                                     </u>
@@ -70,7 +70,7 @@
                                                         </t>
                                                     </div>
                                                 </td>
-                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
+                                                <td class="tg-0pky" style="font-size:7px;margin: 0px; padding: 3px; !important;">
                                                     <u>
                                                         <b>QTY :</b>
                                                     </u>
@@ -80,7 +80,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
+                                                <td class="tg-0pky" style="font-size:7px;margin: 0px; padding: 3px !important;">
                                                     <u>
                                                         <b>TAILLE :</b>
                                                     </u>
@@ -91,7 +91,7 @@
                                                         </t>
                                                     </div>
                                                 </td>
-                                                <td class="tg-0pky" style="font-size:3px !important;margin: 0px; padding: 1">
+                                                <td class="tg-0pky" style="font-size:7px;margin: 0px; padding: 3px; !important;">
                                                     <u>
                                                         <b>POIDS :</b>
                                                     </u>
