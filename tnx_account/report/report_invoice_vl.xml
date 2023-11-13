@@ -244,13 +244,13 @@
                                         <!-- </t> -->
                                     </t>
                                     <tr t-if="len(all_type) > 1">
+                                        <td></td> <!--style="border-right: hidden;border-top: 1px solid black;border-bottom: 1px solid black;"-->
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>Sous-total</td>
                                         <td>
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
