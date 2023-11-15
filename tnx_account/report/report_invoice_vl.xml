@@ -288,7 +288,8 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td style="text-align:right">
-                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
+                                                        t-esc="o.currency_id.symbol"/>
                                                 </td>
                                                 <td style="text-align:right">
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
