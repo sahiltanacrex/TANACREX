@@ -224,7 +224,7 @@
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right;">
                                                     <t t-if="line.product_id.is_fees == True">
                                                         <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
                                                             t-esc="o.currency_id.symbol"/>
@@ -235,7 +235,7 @@
                                                         / <t t-esc="line.product_uom_id.name"/>
                                                     </t>
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right;">
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -243,7 +243,7 @@
                                         </t>
                                         <!-- </t> -->
                                     </t>
-                                    <tr t-if="len(all_type) > 1">
+                                    <tr t-if="len(all_type) >= 1">
                                         <td></td> <!--style="border-right: hidden;border-top: 1px solid black;border-bottom: 1px solid black;"-->
                                         <td></td>
                                         <td></td>
@@ -251,7 +251,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Sous-total</td>
-                                        <td>
+                                        <td style="text-align:right">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -287,10 +287,10 @@
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                 </td>
-                                                <td>
+                                                <td style="text-align:right">
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
@@ -305,7 +305,7 @@
                                         <td></td>
                                         <td>Sous-total</td>
                                         <td></td>
-                                        <td>
+                                        <td style="text-align:right">
                                             <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
                                         </td>
                                     </tr>
@@ -327,7 +327,7 @@
                                         <td style="border-color: white;border-top: black;"></td>
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
                                         <td style="border-top: 1px black;border-left: 1px solid black;border-bottom: 1px solid;">Montant</td>
-                                        <td style="border-top: 1px black;border-bottom: 1px solid;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                        <td style="border-top: 1px black;border-bottom: 1px solid;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/></td>
                                     </tr>
                             </tbody>
                         </table>

@@ -175,7 +175,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
+                                <t t-foreach="all_type" t-as="type">
+                                    <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
+                                    <t t-foreach="o.invoice_line_ids" t-as="line">
                                     <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
                                     <t t-foreach="bl_id" t-as="id_bl">
                                         <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
@@ -216,7 +219,7 @@
                                             <td>
                                                 <t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />
                                             </td>
-                                            <td>
+                                            <td style="text-align:right">
                                                 <t t-if="line.product_id.is_fees == True">
                                                     <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
                                                         t-esc="o.currency_id.symbol"/>
@@ -227,11 +230,24 @@
                                                     / <t t-esc="line.product_uom_id.name"/>
                                                 </t>
                                             </td>
-                                            <td>
+                                            <td style="text-align:right">
                                                 <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/> <t t-esc="o.currency_id.symbol"/>
                                             </td>
                                         </tr>
                                     </t>
+                                </t>
+                                    <tr t-if="len(all_type) >= 1">
+                                        <td></td> <!--style="border-right: hidden;border-top: 1px solid black;border-bottom: 1px solid black;"-->
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Sous-total</td>
+                                        <td style="text-align:right">
+                                            <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
+                                        </td>
+                                    </tr>
                                 </t>
                                 <tr>
                                     <td style="border-bottom: 1px solid #000;"></td>
@@ -251,7 +267,7 @@
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;border-right: black;"></td>
                                     <td style="border-top: 1px black;border-left: 1px solid black;">Montant HT</td>
-                                    <td style="border-top: 1px black;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                    <td style="border-top: 1px black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
@@ -261,7 +277,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-left: 1px solid black;">TVA 20%</td>
-                                    <td><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                    <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
@@ -271,7 +287,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-bottom: 1px solid black;border-left: 1px solid black;">Montant TTC</td>
-                                    <td style="border-bottom: 1px solid black;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                    <td style="border-bottom: 1px solid black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -248,7 +248,7 @@
                                             <!-- </t> -->
                                         </t>
                                     </t>
-                                    <tr t-if="len(all_type) > 1">
+                                    <tr t-if="len(all_type) >= 1">
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -256,7 +256,7 @@
                                         <td></td>
                                         <td>Sous-total</td>
                                         <td></td>
-                                        <td>
+                                        <td style="text-align:right">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
@@ -322,7 +322,7 @@
                                         <td></td>
                                         <td>Sous-total</td>
                                         <td></td>
-                                        <td>
+                                        <td style="text-align:right;">
                                             <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
                                             <t t-esc="o.currency_id.symbol"/>
                                         </td>
