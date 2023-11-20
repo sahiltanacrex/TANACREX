@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>
                                         <t t-if="line.product_id.image_256">
-                                            <img t-att-src="image_data_uri(line.product_id.image_256)" style="max-height:30px; padding: 2px 2px;" />
+                                            <img t-att-src="image_data_uri(line.product_id.image_256)" style="max-with:50px;max-height:50px; padding: 2px 2px;" />
                                         </t>
                                     </td>
                                     <td>
