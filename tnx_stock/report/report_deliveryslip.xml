@@ -156,14 +156,14 @@
                               t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
                               width="70" height="70"/>
                     </td>
-                    <td>
+                    <td style="text-align: right">
                       <span t-field="line.unit_done"
                             t-options="{'widget': 'float', 'precision': 0}"/>
                     </td>
                     <td>
                       <span t-field="line.product_id.customer_reference"/>
                     </td>
-                    <td>
+                    <td style="text-align: right">
                       <t t-if="line.product_id.product_tmpl_id.product_type == 'button'">
                         <span t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/> L
                       </t>

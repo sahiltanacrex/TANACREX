@@ -185,7 +185,7 @@
                                             <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
                                         <t t-if="line.product_id.product_type == type">
                                             <tr>
-                                                <td>
+                                                <td style="text-align: left">
                                                 <t t-if="line.order_customer">
                                                     <span t-esc="line.order_customer" />
                                                 </t>
@@ -193,16 +193,16 @@
                                                     <span>-</span>
                                                 </t>
                                                 </td>
-                                                <td>
+                                                <td style="text-align: left">
                                                     <span t-esc="line.picking_name" />
                                                 </td>
-                                                <td>
+                                                <td style="text-align: left">
                                                     <t t-esc="line.product_id.name" />
                                                 </td>
                                                 <td>
                                                     <span t-field="line.product_id.product_type" />
                                                 </td>
-                                                <td>
+                                                <td style="text-align: right">
                                                     <t t-if="line.product_id.product_type == 'button'">
                                                         <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
@@ -221,7 +221,7 @@
                                                         </t>
                                                     </t>
                                                 </td>
-                                                <td>
+                                                <td style="text-align: right">
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td style="text-align:right;">
@@ -250,7 +250,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Sous-total</td>
+                                        <td style="text-align: right">Sous-total</td>
                                         <td style="text-align:right">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
@@ -304,7 +304,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Sous-total</td>
+                                        <td style="text-align: right">Sous-total</td>
                                         <td></td>
                                         <td style="text-align:right">
                                             <t t-esc="o.format_number_for_amount(total_price_type_false)"/>

@@ -185,19 +185,19 @@
                                         <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(id_bl, line.product_id.id)" />
                                         <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                         <tr>
-                                            <td>
+                                            <td style="text-align: left">
                                                 <span t-esc="line.order_customer" />
                                             </td>
-                                            <td>
+                                            <td style="text-align: left">
                                                 <span t-esc="bl_name" />
                                             </td>
-                                            <td>
+                                            <td style="text-align: left">
                                                 <t t-esc="line.product_id.name" />
                                             </td>
                                             <td>
                                                 <span t-field="line.product_id.product_type" />
                                             </td>
-                                            <td>
+                                            <td style="text-align: right">
                                                 <t t-if="line.product_id.product_type == 'button'">
                                                     <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                 </t>
@@ -216,7 +216,7 @@
                                                     </t>
                                                 </t>
                                             </td>
-                                            <td>
+                                            <td style="text-align: right">
                                                 <t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />
                                             </td>
                                             <td style="text-align:right">
@@ -243,7 +243,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Sous-total</td>
+                                        <td style="text-align: right">Sous-total</td>
                                         <td style="text-align:right">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
                                         </td>
