@@ -166,7 +166,7 @@
                                     <th>BC</th>
                                     <th>Bon de livraison</th>
                                     <th>Désignation</th>
-                                    <th>Type</th>
+                                    <th>Réference</th>
                                     <!-- <th>Réference client</th> -->
                                     <th>Dimension</th>
                                     <th>Qté</th>
@@ -192,10 +192,10 @@
                                                 <span t-esc="bl_name" />
                                             </td>
                                             <td style="text-align: left">
-                                                <t t-esc="line.product_id.name" />
+                                                <t t-esc="line.product_id.product_type" />
                                             </td>
-                                            <td>
-                                                <span t-field="line.product_id.product_type" />
+                                            <td style="text-align: left">
+                                                <span t-field="line.product_id.name" />
                                             </td>
                                             <td style="text-align: right">
                                                 <t t-if="line.product_id.product_type == 'button'">

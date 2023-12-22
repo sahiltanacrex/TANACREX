@@ -140,8 +140,8 @@
                   <th>Quantité</th>
                   <th>Reférence</th>
                   <th>Dimension</th>
-                  <th>Type</th>
-                  <th>Designation</th>
+                  <!--<th>Type</th>-->
+                  <th>Désignation</th>
                   <th style="width: 250px">Colisage</th>
 
                 </tr>
@@ -161,7 +161,8 @@
                             t-options="{'widget': 'float', 'precision': 0}"/>
                     </td>
                     <td>
-                      <span t-field="line.product_id.customer_reference"/>
+                      <span t-field="line.product_id.name"/>
+<!--                      <span t-field="line.product_id.customer_reference"/>-->
                     </td>
                     <td style="text-align: right">
                       <t t-if="line.product_id.product_tmpl_id.product_type == 'button'">
@@ -184,11 +185,11 @@
                         </t>
                       </t>
                     </td>
-                    <td>
+                    <!--<td>
                       <span t-field="line.product_id.product_tmpl_id.product_type"/>
-                    </td>
+                    </td>-->
                     <td>
-                      <span t-field="line.product_id.name"/>
+                      <span t-field="line.product_id.product_type"/>
                     </td>
                     <td>
                       <span t-field="line.colisage"/>

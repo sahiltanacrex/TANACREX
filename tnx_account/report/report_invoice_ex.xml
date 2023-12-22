@@ -168,8 +168,8 @@
                                 <tr style="background-color: rgb(211,209,209);">
                                     <th>BC</th>
                                     <!-- <th>BON DE LIVRAISON</th> -->
-                                    <th>Designation</th>
-                                    <th>Type</th>
+                                    <th>Désignation</th>
+                                    <th>Référence</th>
                                     <th>Hs code</th>
                                     <th>Dimension</th>
                                     <th>Qte</th>
@@ -200,10 +200,10 @@
                                                     <span t-esc="line.picking_name" />
                                                 </td> -->
                                                 <td style="text-align: left">
-                                                    <t t-esc="line.product_id.name" />
+                                                    <t t-esc="line.product_id.product_type" />
                                                 </td>
-                                                <td>
-                                                    <span t-field="line.product_id.product_type" />
+                                                <td style="text-align: left">
+                                                    <span t-field="line.product_id.name" />
                                                 </td>
                                                 <td style="text-align: right">
                                                     <t t-esc="line.product_id.hs_code.hs_code" />
