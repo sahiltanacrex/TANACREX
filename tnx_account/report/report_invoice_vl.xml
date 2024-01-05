@@ -226,10 +226,10 @@
                                                 </td>
                                                 <td style="text-align:right;">
                                                     <t t-if="line.product_id.is_fees == True">
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="o.format_number_for_amount(line.price_unit)"/>
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
                                                     </t>
                                                     <t t-else="">
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="o.format_number_for_amount(line.price_unit)"/>
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right;">
