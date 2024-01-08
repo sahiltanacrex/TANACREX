@@ -19,24 +19,24 @@
         <div class="article mt0 o_report_layout_standard" style="font-size:14px;">
             <div class="header_body">
                 <div class="body_header">
-                    <div class="container">
+                    <div> <!--class="container"-->
                         <div class="row">
-                            <div class="col-xs-6" style="width: 50%;">
+                            <div class="col-md-6" style="width: 50%;">
                                 <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                             </div>
-                           <div class="col-xs-6" style="text-align:center; width: 50%;">
+                            <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;">
                                 <div>
-                                    <b>
+                                    <span>
                                         <t t-if="company.description">
                                             <t t-esc="company.description" />
                                         </t>
-                                        <t t-else="">Fabricant de boutons et d'étiquettes depuis 1983 <br/> SARL au
-                                            capital de 30 000 000 AR</t>
-                                    </b>
+                                        <t t-else=""> <br/> SARL
+                                            au capital de 30 000 000 AR</t>
+                                    </span>
                                     <br />
                                 </div>
                                 <div t-if="company.stat">
-                                    <span>STAT:</span>
+                                    <span>RCS 2003B00674 - STAT:</span>
                                     <span t-esc="company.stat" />
                                 </div>
                                 <div t-if="company.nif">
@@ -47,16 +47,15 @@
                                     <span>Lot 18 D Imerinafovoany </span>
                                 </div>
                                 <div>
-                                    <span>B.P.:11064 - Tél : </span>
+                                    <span>B.P: 11064 - Tél : </span>
                                     <span t-esc="company.phone or company.mobile" />
                                 </div>
                                 <div>
-                                    <span>e-mail:contact@tanacrex.com</span>
+                                    <span>Email: contact@tanacrex.com</span>
                                 </div>
                                 <div>
                                     <span>
-                                            ANTANANARIVO -
-                                        <b>MADAGASCAR</b>
+                                        ANTANANARIVO - MADAGASCAR
                                     </span>
 
                                 </div>
@@ -115,8 +114,8 @@
                         </table>
 
                     </div>
-                    <div class="col-4" style="border: 1px solid; text-align: center;">
-                        <span t-field="o.partner_id"/>
+                    <div class="col-4" style="border: 1px solid; text-align: center;margin-left: 65px;">
+                        <b style="font-size: 17px;" t-field="o.partner_id"/>
                         <br/>
                         <t t-if="o.partner_id.street">
                             <span t-field="o.partner_id.street"/>
@@ -213,7 +212,7 @@
                                 <th>Designation</th>
                                 <th>Ref Interne</th>
                                 <th>Ref Client</th>
-                                <th>Hs code</th>
+                                <th>HS Code</th>
                                 <th>Type</th>
                                 <th>Dimension</th>
                                 <th>Qte</th>
@@ -234,7 +233,7 @@
                                         <tr>
                                             <td style="overflow: hidden;">
                                                 <t t-if="line.product_id.image_128">
-                                                    <img t-att-src="image_data_uri(line.product_id.image_128)" style="max-height: 80%; max-width: 80%; margin-bottom:1px"/>
+                                                    <img t-att-src="image_data_uri(line.product_id.image_128)" style="max-height: 88%; max-width: 99%; margin-bottom:1px"/>
                                                 </t>
                                                 <t t-else=""></t>
                                             </td>
@@ -281,16 +280,14 @@
                                                     </t>
                                                 </t>
                                             </td>
-                                                <td>
+                                            <td>
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_unit)"/>
-                                                    <t t-esc="o.currency_id.symbol"/>/                                                   <t t-esc="line.product_uom.name"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
-                                                    <t t-esc="o.currency_id.symbol"/>
                                                 </td>
                                             </tr>
                                             <!-- </t> -->
@@ -308,7 +305,6 @@
                                         <td></td>
                                         <td>
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/>
-                                            <t t-esc="o.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -354,11 +350,11 @@
 
                                             <td>
                                                 <t t-esc="o.format_number_for_amount(line.price_unit)"/>
-                                                <t t-esc="o.currency_id.symbol"/>
+
                                             </td>
                                             <td>
                                                 <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
-                                                <t t-esc="o.currency_id.symbol"/>
+
                                             </td>
                                         </tr>
                                     </t>
@@ -376,7 +372,7 @@
                                     <td></td>
                                     <td>
                                         <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
-                                        <t t-esc="o.currency_id.symbol"/>
+
                                     </td>
                                 </tr>
                                 <tr>
@@ -403,7 +399,7 @@
                                     <td style="border: 1px solid #000;"></td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
-                                        <t t-esc="doc.currency_id.symbol"/>
+
                                     </td>
                                 </tr>
                                 <tr/>
@@ -416,11 +412,11 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
-                                        <td style="border: 1px solid #000;">Tax 20%</td>
+                                        <td style="border: 1px solid #000;">Taxes 20%</td>
                                         <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;">
                                             <t t-esc="o.format_number_for_amount(o.amount_tax)"/>
-                                            <t t-esc="o.currency_id.symbol"/>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -435,7 +431,7 @@
                                         <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;">
                                             <t t-esc="o.format_number_for_amount(o.amount_total)"/>
-                                            <t t-esc="o.currency_id.symbol"/>
+
                                         </td>
                                     </tr>
                                 </t>
@@ -509,7 +505,7 @@
                                     <div style="text-align: center;">
                                         <span t-esc="bank.bank_address"/>
                                     </div>
-                                    <span>IBAN </span>
+<!--                                    <span>IBAN </span>-->
                                     <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
@@ -526,7 +522,7 @@
                 <br/>
                 <div class="row text-center">
                     <div class="col col-12 text-center">
-                        <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                        <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des taxes et des frais postaux correspondants.</span>
                     </div>
                 </div>
             </div>
@@ -938,7 +934,7 @@
                                         <div style="text-align: center;">
                                             <span t-esc="bank.bank_address"/>
                                         </div>
-                                        <span>IBAN </span>
+                                        <!--<span>IBAN </span>-->
                                         <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
@@ -951,7 +947,7 @@
                         <br/>
                         <div class="row text-center">
                             <div class="col col-12 text-center">
-                                <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                                <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des taxes et des frais postaux correspondants.</span>
                             </div>
                         </div>
                     </div>
@@ -1362,7 +1358,7 @@
                                         <div style="text-align: center;">
                                             <span t-esc="bank.bank_address"/>
                                         </div>
-                                        <span>IBAN </span>
+                                        <!--<span>IBAN </span>-->
                                         <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
@@ -1375,7 +1371,7 @@
                         <br/>
                         <div class="row text-center">
                             <div class="col col-12 text-center">
-                                <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                                <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des taxes et des frais postaux correspondants.</span>
                             </div>
                         </div>
                     </div>
@@ -1803,7 +1799,7 @@
                                         <div style="text-align: center;">
                                             <span t-esc="bank.bank_address"/>
                                         </div>
-                                        <span>IBAN </span>
+                                        <!--<span>IBAN </span>-->
                                         <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
@@ -1816,7 +1812,7 @@
                         <br/>
                         <div class="row text-center">
                             <div class="col col-12 text-center">
-                                <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                                <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des taxes et des frais postaux correspondants.</span>
                             </div>
                         </div>
 

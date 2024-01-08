@@ -29,12 +29,12 @@
             <div class="article mt0 o_report_layout_standard" style="font-size:14px;" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <div class="header_body">
                     <div class="body_header">
-                        <div class="container">
+                        <div> <!--class="container"-->
                             <div class="row">
-                                <div class="col-xs-6" style="width: 50%;">
+                                <div class="col-md-6" style="width: 50%;">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6" style="text-align:center; width: 50%;">
+                                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;">
                                     <div>
                                         <span>
                                             <t t-if="company.description">
@@ -89,52 +89,52 @@
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')"/>
                             </div>
                         </div>
-                        <div class="col-5" style="border: 1px solid; text-align: center;">
-                            <b t-field="o.partner_id"/><br/>
+                        <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
+                            <b style="font-size: 20px;" t-field="o.partner_id"/><br/>
                            <t t-if="o.partner_id.street">
-                                <b t-field="o.partner_id.street"/> <br/>
+                                <span t-field="o.partner_id.street"/> <br/>
                             </t>
                             <t  t-if="o.partner_id.street2">
-                                <b t-field="o.partner_id.street2"/> <br/>
+                                <span t-field="o.partner_id.street2"/> <br/>
                             </t>
                             <t t-if="o.partner_id.city">
-                                <b t-field="o.partner_id.city"/> <br/>
+                                <span t-field="o.partner_id.city"/> <br/>
                             </t>
                             <t t-if="o.partner_id.state_id">
-                                <b t-field="o.partner_id.state_id"/> <br/>
+                                <span t-field="o.partner_id.state_id"/> <br/>
                             </t>
                             <t t-if="o.partner_id.zip">
-                                <b t-field="o.partner_id.zip"/> <br/>
+                                <span t-field="o.partner_id.zip"/> <br/>
                             </t>
                             <t t-if="o.partner_id.country_id">
-                                <b t-field="o.partner_id.country_id"/> <br/>
+                                <span t-field="o.partner_id.country_id"/> <br/>
                             </t>
                             <t t-if="o.partner_id.phone">
-                                <b>Tel: </b>
-                                <b t-field="o.partner_id.phone"/> <br/>
+                                <span>Tel: </span>
+                                <span t-field="o.partner_id.phone"/> <br/>
                             </t>
                             <t t-if="o.partner_id.nif">
-                                <b>NIF: </b>
+                                <span>NIF: </span>
                                 <b t-field="o.partner_id.nif"/> <br/>
                             </t>
                             <t t-if="o.partner_id.stat">
-                                <b>STAT: </b>
-                                <b t-field="o.partner_id.stat"/> <br/>
+                                <span>STAT: </span>
+                                <span t-field="o.partner_id.stat"/> <br/>
                             </t>
                             <t t-if="o.partner_id.rcs">
-                                <b>RCS: </b>
-                                <b t-field="o.partner_id.rcs"/> <br/>
+                                <span>RCS: </span>
+                                <span t-field="o.partner_id.rcs"/> <br/>
                             </t>
                             <t t-if="o.partner_id.cif">
-                                <b>CIF: </b>
-                                <b t-field="o.partner_id.cif"/> <br/>
+                                <span>CIF: </span>
+                                <span t-field="o.partner_id.cif"/> <br/>
                             </t>
                             <t t-if="o.partner_id.free_val">
-                                <b t-field="o.partner_id.free_val"/> <br/>
+                                <span t-field="o.partner_id.free_val"/> <br/>
                             </t>
                             <t t-if="o.partner_id.fax_number">
-                                <b>FAX: </b>
-                                <b t-field="o.partner_id.fax_number"/> <br/>
+                                <span>FAX: </span>
+                                <span t-field="o.partner_id.fax_number"/> <br/>
                             </t>
                         </div>
                     </div>

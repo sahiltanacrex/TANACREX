@@ -29,27 +29,27 @@
             <div class="article mt0 o_report_layout_standard" style="font-size:14px;" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                 <div class="header_body">
                     <div class="body_header">
-                        <div class="container">
+                        <div> <!--class="container"-->
                             <div class="row">
-                                <div class="col-xs-6" style="width: 50%;">
+                                <div class="col-md-6" style="width: 50%;">
                                     <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                                 </div>
-                                <div class="col-xs-6 " style="text-align:center; width: 50%;">
+                                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;">
                                     <div>
-                                        <b>
+                                        <span>
                                             <t t-if="company.description">
                                                 <t t-esc="company.description" />
                                             </t>
-                                            <t t-else="">SARL
-                                                    au capital de 30 000 000 AR</t>
-                                        </b>
+                                            <t t-else=""> <br/> SARL
+                                                au capital de 30 000 000 AR</t>
+                                        </span>
                                         <br />
                                     </div>
-                                    <div>
-                                        <span>STAT:</span>
+                                    <div t-if="company.stat">
+                                        <span>RCS 2003B00674 - STAT:</span>
                                         <span t-esc="company.stat" />
                                     </div>
-                                    <div>
+                                    <div t-if="company.nif">
                                         <span>NIF:</span>
                                         <span t-esc="company.nif" />
                                     </div>
@@ -57,16 +57,15 @@
                                         <span>Lot 18 D Imerinafovoany </span>
                                     </div>
                                     <div>
-                                        <span>B.P.:11064 - Tél : </span>
+                                        <span>B.P: 11064 - Tél : </span>
                                         <span t-esc="company.phone or company.mobile" />
                                     </div>
                                     <div>
-                                        <span>e-mail:contact@tanacrex.com</span>
+                                        <span>Email: contact@tanacrex.com</span>
                                     </div>
                                     <div>
                                         <span>
-                                            ANTANANARIVO -
-                                            <b>MADAGASCAR</b>
+                                            ANTANANARIVO - MADAGASCAR
                                         </span>
 
                                     </div>
@@ -81,17 +80,17 @@
                                 <b>Facture:</b>
                                 <span t-esc="o.name_bis" />
                             </div>
-                            <div style="font-size:18px; margin-top:20px">
+                            <div style="font-size:18px;">
                                 <b>Référence:</b>
                                 <span t-esc="o.seq_bis" />
                             </div>
-                            <div style="font-size:18px; margin-top:20px">
+                            <div style="font-size:18px;">
                                 <b>Date de facturation:</b>
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
                             </div>
                         </div>
-                        <div class="col-6" style="border: 1px solid; text-align: center;">
-                            <span t-field="o.partner_id"/><br/>
+                        <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
+                            <b t-field="o.partner_id"/><br/>
                             <t t-if="o.partner_id.street">
                                 <span t-field="o.partner_id.street"/> <br/> 
                             </t>
@@ -240,9 +239,9 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right">Sous-total</td>
-                                        <td style="text-align:right">
-                                            <t t-esc="o.format_number_for_amount(total_price_type)"/> <t t-esc="o.currency_id.symbol"/>
+                                        <td style="text-align: right;font-weight: bold;">Sous-total</td>
+                                        <td style="text-align:right;font-weight: bold;">
+                                            <t t-esc="o.format_number_for_amount(total_price_type)"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -264,7 +263,7 @@
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;border-right: black;"></td>
                                     <td style="border-top: 1px black;border-left: 1px solid black;">Montant HT</td>
-                                    <td style="border-top: 1px black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                    <td style="border-top: 1px black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> </td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
@@ -274,7 +273,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-left: 1px solid black;">TVA 20%</td>
-                                    <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                    <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> </td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
@@ -284,7 +283,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-bottom: 1px solid black;border-left: 1px solid black;">Montant TTC</td>
-                                    <td style="border-bottom: 1px solid black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/></td>
+                                    <td style="border-bottom: 1px solid black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> </td>
                                 </tr>
                             </tbody>
                         </table>
