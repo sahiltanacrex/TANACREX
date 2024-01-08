@@ -36,13 +36,13 @@
                                 </div>
                                 <div class="col-xs-6" style="text-align:center; width: 50%;">
                                     <div>
-                                        <b>
+                                        <span>
                                             <t t-if="company.description">
                                                 <t t-esc="company.description" />
                                             </t>
                                             <t t-else=""> <br/> SARL
                                                     au capital de 30 000 000 AR</t>
-                                        </b>
+                                        </span>
                                         <br />
                                     </div>
                                     <div t-if="company.stat">
@@ -57,16 +57,15 @@
                                         <span>Lot 18 D Imerinafovoany </span>
                                     </div>
                                     <div>
-                                        <span>B.P.:11064 - Tél : </span>
+                                        <span>B.P: 11064 - Tél : </span>
                                         <span t-esc="company.phone or company.mobile" />
                                     </div>
                                     <div>
-                                        <span>e-mail:contact@tanacrex.com</span>
+                                        <span>Email: contact@tanacrex.com</span>
                                     </div>
                                     <div>
                                         <span>
-                                            ANTANANARIVO -
-                                            <b>MADAGASCAR</b>
+                                            ANTANANARIVO - MADAGASCAR
                                         </span>
 
                                     </div>
@@ -79,63 +78,63 @@
                         <div class="col-6">
                             <div style="font-size:18px; margin-top:20px">
                                 <b>Facture:</b>
-                                <span t-esc="o.name_bis" />
+                                <b t-esc="o.name_bis" />
                             </div>
-                            <div style="font-size:18px; margin-top:20px">
+                            <div style="font-size:18px;">
                                 <b>Référence:</b>
                                 <span t-esc="o.seq_bis" />
                             </div>
-                            <div style="font-size:18px; margin-top:20px">
+                            <div style="font-size:18px">
                                 <b>Date de facturation:</b>
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')"/>
                             </div>
                         </div>
                         <div class="col-5" style="border: 1px solid; text-align: center;">
-                            <span t-field="o.partner_id"/><br/>
+                            <b t-field="o.partner_id"/><br/>
                            <t t-if="o.partner_id.street">
-                                <span t-field="o.partner_id.street"/> <br/>
+                                <b t-field="o.partner_id.street"/> <br/>
                             </t>
                             <t  t-if="o.partner_id.street2">
-                                <span t-field="o.partner_id.street2"/> <br/>
+                                <b t-field="o.partner_id.street2"/> <br/>
                             </t>
                             <t t-if="o.partner_id.city">
-                                <span t-field="o.partner_id.city"/> <br/>
+                                <b t-field="o.partner_id.city"/> <br/>
                             </t>
                             <t t-if="o.partner_id.state_id">
-                                <span t-field="o.partner_id.state_id"/> <br/>
+                                <b t-field="o.partner_id.state_id"/> <br/>
                             </t>
                             <t t-if="o.partner_id.zip">
-                                <span t-field="o.partner_id.zip"/> <br/>
+                                <b t-field="o.partner_id.zip"/> <br/>
                             </t>
                             <t t-if="o.partner_id.country_id">
-                                <span t-field="o.partner_id.country_id"/> <br/>
+                                <b t-field="o.partner_id.country_id"/> <br/>
                             </t>
                             <t t-if="o.partner_id.phone">
-                                <span>Tel: </span>
-                                <span t-field="o.partner_id.phone"/> <br/>
+                                <b>Tel: </b>
+                                <b t-field="o.partner_id.phone"/> <br/>
                             </t>
                             <t t-if="o.partner_id.nif">
-                                <span>NIF: </span>
-                                <span t-field="o.partner_id.nif"/> <br/>
+                                <b>NIF: </b>
+                                <b t-field="o.partner_id.nif"/> <br/>
                             </t>
                             <t t-if="o.partner_id.stat">
-                                <span>STAT: </span>
-                                <span t-field="o.partner_id.stat"/> <br/>
+                                <b>STAT: </b>
+                                <b t-field="o.partner_id.stat"/> <br/>
                             </t>
                             <t t-if="o.partner_id.rcs">
-                                <span>RCS: </span>
-                                <span t-field="o.partner_id.rcs"/> <br/>
+                                <b>RCS: </b>
+                                <b t-field="o.partner_id.rcs"/> <br/>
                             </t>
                             <t t-if="o.partner_id.cif">
-                                <span>CIF: </span>
-                                <span t-field="o.partner_id.cif"/> <br/>
+                                <b>CIF: </b>
+                                <b t-field="o.partner_id.cif"/> <br/>
                             </t>
                             <t t-if="o.partner_id.free_val">
-                                <span t-field="o.partner_id.free_val"/> <br/>
+                                <b t-field="o.partner_id.free_val"/> <br/>
                             </t>
                             <t t-if="o.partner_id.fax_number">
-                                <span>FAX: </span>
-                                <span t-field="o.partner_id.fax_number"/> <br/>
+                                <b>FAX: </b>
+                                <b t-field="o.partner_id.fax_number"/> <br/>
                             </t>
                         </div>
                     </div>
@@ -168,10 +167,10 @@
                                 <tr style="background-color: rgb(211,209,209);">
                                     <th>BC</th>
                                     <!-- <th>BON DE LIVRAISON</th> -->
-                                    <th>Désignation</th>
-                                    <th>Référence</th>
+                                    <th>Designation</th>
+                                    <th>Reference</th>
                                     <th>Hs code</th>
-                                    <th>Dimension</th>
+                                    <th>Dimensions</th>
                                     <th>Qte</th>
                                     <th>Prix Unitaire</th>
                                     <th>Montant</th>
@@ -254,9 +253,9 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right">Sous-total</td>
+                                        <td style="text-align: right;font-weight: bold;">Sous-total</td>
                                         <td></td>
-                                        <td style="text-align:right">
+                                        <td style="text-align:right;font-weight: bold;">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/>
                                         </td>
                                     </tr>
@@ -298,17 +297,15 @@
                                                 </td>
                                                 <td style="text-align:right">
                                                     <t t-if="line.product_id.is_fees == True">
-                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
-                                                            t-esc="o.currency_id.symbol"/>
+                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                     </t>
                                                     <t t-else="">
-                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t
-                                                            t-esc="o.currency_id.symbol"/>
+                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>
                                                         <!--/\ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
-                                                <td style="text-align:right">
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                <td style="text-align:right;">
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <!--<t t-esc="o.currency_id.symbol"/> CPT -->
                                                 </td>
                                             </tr>
                                             </t>
@@ -345,10 +342,10 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
-                                        <td style="border: 1px solid #000;">Montant Total</td>
+                                        <td style="border: 1px solid #000;font-weight: bold;">Total amount</td>
                                         <td style="border: 1px solid #000;"></td>
-                                        <td style="border: 1px solid #000;text-align:right;" >
-                                            <t t-esc="o.format_number_for_amount(o.amount_total)"/> <t t-esc="o.currency_id.symbol"/>
+                                        <td style="border: 1px solid #000;text-align:right;font-weight: bold;" >
+                                            <t t-esc="o.format_number_for_amount(o.amount_total)"/> <!--<t t-esc="o.currency_id.symbol"/>-->
                                         </td>
                                     </tr>
 
@@ -381,7 +378,7 @@
                     <div style="text-align:right">
                         <!-- <span>A approuvé cette facture pour la somme de </span> -->
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
-                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper()" />
+                        <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper().replace(',','')" />
                     </div>
                     
                     <t t-if="o.delivery_adress">
@@ -473,7 +470,7 @@
                     </t>
                     <div t-if="o.partner_id.without_origin_report_ex == false" style="text-align:center;margin-top:20px;font-style: italic;font-size: 15px;">
                         <span> Origin: </span>
-                        <span>The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of oriin of the Generalized System of Preferences of the European Union and the origin criterion met is "W9606" .</span>
+                        <span>The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indixated, these products are of Madagascar preferential origin according to rules of origin of the Generalized System of Preferences of the European Union and the origin criterion met is "W9606" .</span>
                     </div>
                     <!-- <div style="text-align:center;margin-top:20px">
                                 <span>
@@ -487,7 +484,7 @@
                             <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
                             <span t-esc="bank_info" />
                         </div> -->
-                        <div class="row">
+                        <div class="row" style="page-break-before: always;">
                             <t t-foreach="o.bank_company_ids" t-as="bank">
                                 <div class="col-7" style="text-align: center;">
                                     <style type="text/css">
