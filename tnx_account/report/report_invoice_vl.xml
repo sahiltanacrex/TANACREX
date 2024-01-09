@@ -437,6 +437,9 @@
                         <span>All bank charges of the foreign bank must be paid by the buyer, including the correspondent reimbursing the corresponding bank charges, commissions, taxes and postage.</span>
                     </div>
                 </div>
+                <div class="container" style="text-align: right;">
+                    <img t-attf-src="/tnx_account/static/src/img/tanacrex_signature.png" alt="Logo" style="max-height:170px; max-width: 100%; width:auto" />
+                </div>
             </div>
             <div class="footer o_standard_footer" style="border-top: 1px solid black; font-size:15px">
                 <div class="row text-center">
