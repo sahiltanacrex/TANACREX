@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
-                            <b style="font-size: 20px;" t-field="o.partner_id"/><br/>
+                            <b style="font-size: 18px;" t-field="o.partner_id"/><br/>
                            <t t-if="o.partner_id.street">
                                 <span t-field="o.partner_id.street"/> <br/>
                             </t>
@@ -165,15 +165,15 @@
                                     <th><t t-esc="currency" /></th>
                                 </tr>
                                 <tr style="background-color: rgb(211,209,209);">
-                                    <th>BC</th>
+                                    <th>PO</th>
                                     <!-- <th>BON DE LIVRAISON</th> -->
                                     <th>Designation</th>
                                     <th>Reference</th>
-                                    <th>Hs code</th>
+                                    <th>HS Code</th>
                                     <th>Dimensions</th>
-                                    <th>Qte</th>
-                                    <th>Prix Unitaire</th>
-                                    <th>Montant</th>
+                                    <th>Qty</th>
+                                    <th>Unit price</th>
+                                    <th>Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -253,7 +253,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right;font-weight: bold;">Sous-total</td>
+                                        <td style="text-align: right;font-weight: bold;">Subtotal</td>
                                         <td></td>
                                         <td style="text-align:right;font-weight: bold;">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/>
@@ -317,7 +317,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right">Sous-total</td>
+                                        <td style="text-align: right">Subtotal</td>
                                         <td></td>
                                         <td style="text-align:right;">
                                             <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
@@ -375,7 +375,7 @@
                             </b>
                         </div>
                     </h4> -->
-                    <div style="text-align:right">
+                    <div style="text-align:right;font-weight: bold;">
                         <!-- <span>A approuvé cette facture pour la somme de </span> -->
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper().replace(',','')" />
@@ -385,7 +385,7 @@
                         <div class="row">
                             <div class="col-3">
                             <b>
-                                <span>Adresse de livraison : </span>
+                                <span>Delivery address : </span>
                             </b>
                             </div>
                             <div class="col-7" style="text-align: center;">
@@ -486,13 +486,13 @@
                         </div> -->
                         <div class="row" style="page-break-before: always;">
                             <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-7" style="text-align: center;">
+                                <div class="col-7">
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
-                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> --
-                                    <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- <span>Early payment</span>
+                                    <!--<span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     <span></span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
@@ -517,7 +517,7 @@
                 <br/>
                 <div class="row text-center">
                     <div class="col col-12 text-center">
-                        <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris remboursement des frais bancaires, des commissions, des fax et des frais postaux correspondants.</span>
+                        <span>All bank charges of the foreign bank must be paid by the buyer, including the correspondent reimbursing the corresponding bank charges, commissions, taxes and postage.</span>
                     </div>
                 </div>
             </div>

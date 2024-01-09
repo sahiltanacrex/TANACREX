@@ -164,11 +164,11 @@
                                 <tr style="background-color: rgb(211,209,209);">
                                     <th>BC</th>
                                     <th>Bon de livraison</th>
-                                    <th>Désignation</th>
-                                    <th>Réference</th>
+                                    <th>Designation</th>
+                                    <th>Reference</th>
                                     <!-- <th>Réference client</th> -->
                                     <th>Dimension</th>
-                                    <th>Qté</th>
+                                    <th>Qty</th>
                                     <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
@@ -216,7 +216,8 @@
                                                 </t>
                                             </td>
                                             <td style="text-align: right">
-                                                <t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />
+                                                <!--<t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />-->
+                                                <t t-esc="int(bl_qty_done)" />
                                             </td>
                                             <td style="text-align:right">
                                                 <t t-if="line.product_id.is_fees == True">
@@ -282,8 +283,8 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
-                                    <td style="border-bottom: 1px solid black;border-left: 1px solid black;">Montant TTC</td>
-                                    <td style="border-bottom: 1px solid black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> </td>
+                                    <td style="border-bottom: 1px solid black;border-left: 1px solid black;font-weight: bold;">Montant TTC</td>
+                                    <td style="border-bottom: 1px solid black;text-align:right;font-weight: bold;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -312,7 +313,7 @@
                         </div>
                     </h6>-->
                     <h6>
-                    <div style="text-align:right">
+                    <div style="text-align:right;font-weight: bold;">
                         <t t-esc="o.currency_id.amount_to_text(o.amount_total).upper()" />
                     </div>
                     </h6>
@@ -320,58 +321,56 @@
                     <br/>
                     <t t-if="o.delivery_adress">
                         <div class="row">
-
-                                <span style="font-weight: bold;font-size:14px;">Adresse de livraison : </span>
-
-                            <div class="col-7" style="text-align: center;">
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
-                                <span t-field="o.delivery_adress.name"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street">
-                                <span t-field="o.delivery_adress.street"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street2">
-                                <span t-field="o.delivery_adress.street2"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.city">
-                                <span t-field="o.delivery_adress.city"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.state_id">
-                                <span t-field="o.delivery_adress.state_id"/> &#x9; 
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.zip">
-                                <span t-field="o.delivery_adress.zip"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.country_id">
-                                <span t-field="o.delivery_adress.country_id"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.phone">
-                                <span>Tel: </span>
-                                <span t-field="o.delivery_adress.phone"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.nif">
-                                <span>NIF: </span>
-                                <span t-field="o.partner_id.nif"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.stat">
-                                <span>STAT: </span>
-                                <span t-field="o.delivery_adress.stat"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.rcs">
-                                <span>RCS: </span>
-                                <span t-field="o.delivery_adress.rcs"/> &#x9;
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.cif">
-                                <span>CIF: </span>
-                                <span t-field="o.delivery_adress.cif"/> &#x9; 
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.free_val">
-                                <span t-field="o.delivery_adress.free_val"/> &#x9; 
-                            </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.fax_number">
-                                <span>FAX: </span>
-                                <span t-field="o.delivery_adress.fax_number"/> &#x9; 
-                            </div>
+                            <div class="col-12">
+                                <b>Adresse de livraison : </b>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
+                                    <span t-field="o.delivery_adress.name"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street">
+                                    <span t-field="o.delivery_adress.street"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street2">
+                                    <span t-field="o.delivery_adress.street2"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.city">
+                                    <span t-field="o.delivery_adress.city"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.state_id">
+                                    <span t-field="o.delivery_adress.state_id"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.zip">
+                                    <span t-field="o.delivery_adress.zip"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.country_id">
+                                    <span t-field="o.delivery_adress.country_id"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.phone">
+                                    <span>Tel: </span>
+                                    <span t-field="o.delivery_adress.phone"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.nif">
+                                    <span>NIF: </span>
+                                    <span t-field="o.partner_id.nif"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.stat">
+                                    <span>STAT: </span>
+                                    <span t-field="o.delivery_adress.stat"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.rcs">
+                                    <span>RCS: </span>
+                                    <span t-field="o.delivery_adress.rcs"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.cif">
+                                    <span>CIF: </span>
+                                    <span t-field="o.delivery_adress.cif"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.free_val">
+                                    <span t-field="o.delivery_adress.free_val"/> &#x9;
+                                </div>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.fax_number">
+                                    <span>FAX: </span>
+                                    <span t-field="o.delivery_adress.fax_number"/> &#x9;
+                                </div>
                             </div>
                         </div><br></br>
                     </t>
@@ -380,11 +379,11 @@
                     <t t-if="o.bank_company_ids">
                         <div class="row">
                             <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-6" style="text-align: center;">
+                                <div class="col-6">
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
-                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span t-if="o.origin_sale_id.payment_method" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span>Early payment</span><!--<span t-if="o.origin_sale_id.payment_method" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
 <!--                                    <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
@@ -398,7 +397,7 @@
                     <br/>
                     <div class="row text-center">
                         <div class="col col-12 text-center">
-                            <span>Tous les frais bancaires de la banque étrangère doivent être payés par l'acheteur, y compris le correspondant remboursant les frais bancaires, les commissions, les fax et les frais postaux correspondants.</span>
+                            <span>All bank charges of the foreign bank must be paid by the buyer, including the correspondent reimbursing the corresponding bank charges, commissions, taxes and postage.</span>
                         </div>
                     </div>
             </div>
