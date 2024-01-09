@@ -191,7 +191,7 @@
                                                 <span t-esc="bl_name" />
                                             </td>
                                             <td style="text-align: left">
-                                                <t t-esc="line.product_id.product_type" />
+                                                <span t-field="line.product_id.product_type" />
                                             </td>
                                             <td style="text-align: left">
                                                 <span t-field="line.product_id.name" />
@@ -274,7 +274,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-left: 1px solid black;">TVA 20%</td>
-                                    <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> </td>
+                                    <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_tax)"/> </td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
