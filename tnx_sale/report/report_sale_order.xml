@@ -215,7 +215,7 @@
                                 <th>HS Code</th>
                                 <th>Type</th>
                                 <th>Dimension</th>
-                                <th>Qte</th>
+                                <th>Qty</th>
                                 <th>Prix Unitaire</th>
                                 <th>Montant</th>
                             </tr>
@@ -241,7 +241,7 @@
                                                     <span t-esc="line.picking_name" />
                                                 </td> -->
                                             <td>
-                                                <t t-esc="line.product_id.name" />
+                                                <t t-esc="line.product_id.product_tmpl_id.product_type" />
                                             </td>
                                             <td>
                                                 <t t-esc="line.product_id.default_code" />
@@ -482,31 +482,32 @@
                             </b>
                         </div>
                     </h4> -->
-                    <div style="text-align:right">
+                    <div style="text-align:right;font-weight: bold;">
                         <!-- <span>A approuvé cette facture pour la somme de </span> -->
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper().replace(',','')" />
                     </div>
                     <br/>
-                    <div t-if="o.payment_method">
+                    <!--<div t-if="o.payment_method">
                         <span> Paiement: </span>
                         <span t-field="o.payment_method"/>
-                    </div>
+                    </div>-->
                     <t t-set="bank_company_ids" t-value="o.get_bank_ids()"/>
                     <t t-if="bank_company_ids">
 
                         <div class="row">
                             <t t-foreach="bank_company_ids" t-as="bank">
-                                <div class="col-6" style="text-align: center;">
+                                <div class="col-6">
                                     <style type="text/css">
                                                 p {margin-bottom: 0em;}
                                     </style>
-                                    <br/>
-                                    <div style="text-align: center;">
-                                        <span t-esc="bank.bank_address"/>
+                                    <span t-if="o.payment_method"> Payment: </span>
+                                    <span t-field="o.payment_method"/>
+                                    <div>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     </div>
 <!--                                    <span>IBAN </span>-->
-                                    <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
                                 </div>
@@ -918,7 +919,7 @@
                         <br/>
                         <br/>
                         <div>
-                            <span>Paiement:</span>
+                            <span>Payment:</span>
                             <span t-field="doc.payment_method"/>
                             <t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>
@@ -929,16 +930,16 @@
 
                             <div class="row">
                                 <t t-foreach="bank_company_ids" t-as="bank">
-                                    <div class="col-6" style="text-align: center;">
+                                    <div class="col-6">
                                         <style type="text/css">
                                     p {margin-bottom: 0em;}
                                         </style>
-                                        <br/>
-                                        <div style="text-align: center;">
-                                            <span t-esc="bank.bank_address"/>
+
+                                        <div>
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                         </div>
                                         <!--<span>IBAN </span>-->
-                                        <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
                                     </div>
@@ -1039,7 +1040,7 @@
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
-                                <span style="font-size: 18px;" t-field="doc.partner_id"/>
+                                <b style="font-size: 18px;" t-field="doc.partner_id"/><br/>
                                 <t t-if="doc.partner_id.street">
                                     <b t-field="doc.partner_id.street"/>
                                     <br/>
@@ -1346,7 +1347,7 @@
                         <br/>
                         <br/>
                         <div>
-                            <span>Paiement:</span>
+                            <span>Payment:</span>
                             <span t-field="doc.payment_method"/>
                             <t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>
@@ -1357,16 +1358,16 @@
 
                             <div class="row">
                                 <t t-foreach="bank_company_ids" t-as="bank">
-                                    <div class="col-6" style="text-align: center;">
+                                    <div class="col-6">
                                         <style type="text/css">
                                     p {margin-bottom: 0em;}
                                         </style>
-                                        <br/>
-                                        <div style="text-align: center;">
-                                            <span t-esc="bank.bank_address"/>
+
+                                        <div>
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                         </div>
                                         <!--<span>IBAN </span>-->
-                                        <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
                                     </div>
@@ -1468,7 +1469,7 @@
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
-                                <b style="font-size: 18px;" t-field="doc.partner_id"/>
+                                <b style="font-size: 18px;" t-field="doc.partner_id"/><br/>
                                 <t t-if="doc.partner_id.street">
                                     <span t-field="doc.partner_id.street"/>
                                     <br/>
@@ -1790,7 +1791,7 @@
                         <br/>
                         <br/>
                         <div t-if="doc.payment_method">
-                            <span>Paiement:</span>
+                            <span>Payment:</span>
                             <span t-field="doc.payment_method"/>
                             <t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>
@@ -1801,16 +1802,16 @@
 
                             <div class="row">
                                 <t t-foreach="bank_company_ids" t-as="bank">
-                                    <div class="col-6" style="text-align: center;">
+                                    <div class="col-6">
                                         <style type="text/css">
                                             p {margin-bottom: 0em;}
                                         </style>
-                                        <br/>
-                                        <div style="text-align: center;">
-                                            <span t-esc="bank.bank_address"/>
+
+                                        <div>
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                         </div>
                                         <!--<span>IBAN </span>-->
-                                        <span t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
 
                                     </div>
