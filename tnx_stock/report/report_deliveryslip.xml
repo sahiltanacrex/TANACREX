@@ -7,13 +7,13 @@
     <field name="format">A4</field>
     <field name="page_width">0</field>
     <field name="page_width">0</field>
-    <field name="orientation">Landscape</field>
+    <field name="orientation">Portrait</field>
     <field name="margin_top">5</field>
-    <field name="margin_bottom">5</field>
-    <field name="margin_right">4</field>
-    <field name="margin_left">4</field>
-    <field name="header_line" eval="False"/>
-    <field name="header_spacing">40</field>
+    <field name="margin_bottom">28</field>
+    <field name="margin_right">2</field>
+    <field name="margin_left">2</field>
+    <field name="header_line" eval="False" />
+    <field name="header_spacing">5</field>
     <field name="dpi">90</field>
   </record>
 
@@ -58,7 +58,7 @@
                 <div class="col-md-6" style="width: 50%;">
                   <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                 </div>
-                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 85px;padding-left: 143px;">
+                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;">
                   <div>
                     <span>
                       <t t-if="company.description">
@@ -115,7 +115,7 @@
                 <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/>
               </div>
             </div>
-            <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 95px;">
+            <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
               <b style="font-size: 18px;" t-field="o.partner_id"/>
               <br/>
               <t t-if="o.partner_id.street">
