@@ -51,83 +51,130 @@
         </t>
         <div>
           <!-- TODO here we can create header -->
-          <div>
-            <br/>
-            <div class="row text-center" style="margin-left: 05px; margin-right: 05px;">
-              <div class="col-4">
-                <div>
-                  <img t-if="company.logo" style="max-height:50px"
-                       t-att-src="image_data_uri(company.logo)"/>
+
+          <div class="body_header">
+            <div> <!--class="container"-->
+              <div class="row">
+                <div class="col-md-6" style="width: 50%;">
+                  <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                 </div>
-                <span class="font-weight-bold">
-                  MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
-                </span>
-                <br/>
-                <div>Lot 18 D Imerinafovoany </div>
-                <div style="font-size:14px;">BP.11064-Antananarivo-Madagascar</div>
-                <div>
-                  <span>Tél :</span>
-                  <span>+261 20 22 441 35 / +261 34 02 441 35</span>
-                </div>
-                <div>
-                  <span>E-mail : contact@tanacrex.com</span>
-                </div>
-                <div>
+                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 85px;padding-left: 143px;">
                   <div>
-                    <span>R.C 13 332 - STAT :</span>
-                    <span t-esc="company.stat"/>
+                    <span>
+                      <t t-if="company.description">
+                        <t t-esc="company.description" />
+                      </t>
+                      <t t-else=""> <br/> SARL
+                        au capital de 30 000 000 AR</t>
+                    </span>
+                    <br />
+                  </div>
+                  <div t-if="company.stat">
+                    <span>RCS 2003B00674 - STAT:</span>
+                    <span t-esc="company.stat" />
+                  </div>
+                  <div t-if="company.nif">
+                    <span>NIF:</span>
+                    <span t-esc="company.nif" />
                   </div>
                   <div>
-                    <span>NIF :</span>
-                    <span t-esc="company.nif"/>
+                    <span>Lot 18 D Imerinafovoany </span>
                   </div>
-                  <br/>
-                </div>
-              </div>
-              <div class="col-8">
-                <div class="row">
-                  <div class="col-7">
-                    <h3 class="text-center font-weight-bold">BON DE LIVRAISON</h3>
-                  </div>
-                  <div class="col-5">
-                    <h4>
-                      <span class="font-weight-bold">
-                        <span>N°</span>
-                        <span t-esc="o.name"/>
-                      </span>
-                    </h4>
-                  </div>
-                </div>
-                <br/>
-                <div class="text-right" style="font-size: 18px;">
                   <div>
-                    <span>Date :</span>
-                    <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/>
+                    <span>B.P: 11064 - Tél : </span>
+                    <span t-esc="company.phone or company.mobile" />
                   </div>
-                  <br/>
-                  <div style="padding-left: 60%">
-                    <p class="text-center" style="border: 1px solid black; padding: 10px">
-                      <span t-esc="o.partner_id.name"/>
-                      <br/>
-                      <span t-esc="o.partner_id.street"/>
-                      <br/>
-                      <span t-esc="o.partner_id.city"/>
-                    </p>
+                  <div>
+                    <span>Email: contact@tanacrex.com</span>
                   </div>
-                  <br/>
-                  <div t-if="o.sale_id">
-                    <span>Bon de commande N° : </span>
-                    <span t-esc="o.sale_id.sale_order_partner"/>
-                  </div>
-                  <div t-if="o.partner_id.ref_client">
-                    <span>Ref client : </span>
-                    <span t-esc="o.partner_id.ref_client"/>
+                  <div>
+                    <span>
+                      ANTANANARIVO - MADAGASCAR
+                    </span>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="text-center">
+          <!--  END HEADER  -->
+          <br/>
+          <div class="row">
+            <div class="col-6">
+              <div style="font-size:18px; margin-top:20px">
+                <b>Delivery note: </b>
+
+                <span t-esc="o.name" />
+              </div>
+              <div style="font-size:18px;">
+                <b>Purchase order N°:</b>
+                <span t-esc="o.sale_id.sale_order_partner"/>
+              </div>
+              <div style="font-size:18px;">
+                <b>Delivery date: </b>
+                <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/>
+              </div>
+            </div>
+            <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 95px;">
+              <b style="font-size: 18px;" t-field="o.partner_id"/>
+              <br/>
+              <t t-if="o.partner_id.street">
+                <span t-field="o.partner_id.street"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.street2">
+                <span t-field="o.partner_id.street2"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.city">
+                <span t-field="o.partner_id.city"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.state_id">
+                <span t-field="o.partner_id.state_id"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.zip">
+                <span t-field="o.partner_id.zip"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.country_id">
+                <span t-field="o.partner_id.country_id"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.phone">
+                <span>Tel: </span>
+                <span t-field="o.partner_id.phone"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.nif">
+                <span>NIF: </span>
+                <span t-field="o.partner_id.nif"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.stat">
+                <span>STAT: </span>
+                <span t-field="o.partner_id.stat"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.rcs">
+                <span>RCS: </span>
+                <span t-field="o.partner_id.rcs"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.cif">
+                <span>CIF: </span>
+                <span t-field="o.partner_id.cif"/>
+                <br/>
+              </t>
+              <t t-if="o.partner_id.free_val">
+                <span t-field="o.partner_id.free_val"/>
+                <br/>
+              </t>
+            </div>
+          </div>
+          <!--END AFTER HEADER-->
+          <div style="margin-top:50px;" class="text-center">
             <style type="text/css">
               table, th, tr, td {
               border: 1px solid black !important;
@@ -141,7 +188,7 @@
                   <th>Reférence</th>
                   <th>Dimension</th>
                   <!--<th>Type</th>-->
-                  <th>Désignation</th>
+                  <th>Designation</th>
                   <th style="width: 250px">Colisage</th>
 
                 </tr>
@@ -154,7 +201,7 @@
                       <img
                               t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
                               t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
-                              width="70" height="70"/>
+                              width="95" height="95"/>
                     </td>
                     <td style="text-align: right">
                       <span t-field="line.unit_done"
@@ -164,7 +211,7 @@
                       <span t-field="line.product_id.name"/>
 <!--                      <span t-field="line.product_id.customer_reference"/>-->
                     </td>
-                    <td style="text-align: right">
+                    <td style="text-align: center">
                       <t t-if="line.product_id.product_tmpl_id.product_type == 'button'">
                         <span t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/> L
                       </t>
@@ -201,26 +248,24 @@
             </table>
             <div>
               <span style="font-size:14x;">
-                Aucune réclamation ne sera admise aprés la validation. La marchandise livrée
-                reste la
-                propriété du vendeur jusqu'au pauement intégral de la facture
+                No complaints will be accepted after validation. The goods delivered stay here property of the seller until full payment of the invoice.
               </span>
             </div>
             <br/>
             <div class=" row text-center">
               <div class=" col-4">
                 <b>
-                  <span>CONTRÔLE</span>
+                  <span>CONTROL</span>
                 </b>
               </div>
               <div class=" col-4">
                 <b>
-                  <span>LIVREUR</span>
+                  <span>DELIVERY PERSON</span>
                 </b>
               </div>
               <div class=" col-4">
                 <b>
-                  <span>DESTINATAIRE</span>
+                  <span>RECIPIENT</span>
                 </b>
               </div>
             </div>
