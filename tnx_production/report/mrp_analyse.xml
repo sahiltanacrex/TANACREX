@@ -39,8 +39,8 @@
                                     <th>Type</th>
                                     <th>Matière</th>
                                     <th>Taille</th>
-                                    <th>Couleur</th>
-                                    <th>Quantité</th>
+                                    <!--<th>Couleur</th>-->
+                                    <th>Qté</th>
                                     <th>Udm</th>
                                     <th>Fin Prod</th>
                                     <th>Commentaire</th>
@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>
                                         <t t-if="line.product_id.image_256">
-                                            <img t-att-src="image_data_uri(line.product_id.image_256)" style="max-with:50px;max-height:50px; padding: 2px 2px;" />
+                                            <img t-att-src="image_data_uri(line.product_id.image_256)" style="max-with:70px;max-height:70px; padding: 2px 2px;" />
                                         </t>
                                     </td>
                                     <td>
@@ -81,9 +81,9 @@
                                     <td>
                                         <span t-esc="line.line_product" />
                                     </td>
-                                    <td>
+                                    <!--<td>
                                         <p t-attf-style="background-color: {{line.color_product}}; width: 25px; height: 25px; border-radius: 50%; border: 1px solid black; margin: auto;" />
-                                    </td>
+                                    </td>-->
                                     <td>
                                         <span t-field="line.product_qty" t-options="{'widget': 'float', 'precision': 0}"/>
                                     </td>

@@ -116,7 +116,7 @@ class Product_template(models.Model):
     line = fields.Float("Ligne")
     diameter = fields.Float(string="Diamètre (mm)", required=False)
     surface = fields.Float(
-        "Surface (mm²)",
+        "Surface (m²)",
     )
     dimension = fields.Char(sting="Dimension", compute="_compute_dimension")
     form = fields.Selection(
@@ -124,7 +124,7 @@ class Product_template(models.Model):
             ("rectangle", "Rectangle"),
             ("square", "Carré"),
             ("circle", "Cercle"),
-            ("other", "Other")
+            ("other", "Autre")
         ], default="rectangle"
             )
     

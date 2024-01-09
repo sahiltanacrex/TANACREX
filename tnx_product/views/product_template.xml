@@ -12,9 +12,9 @@
                 <xpath expr="//notebook" position="before">
                     <group>
                         <group>
-                            <field name="hs_code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
+                            <field name="hs_code" string="HS Code" options="{'no_quick_create':True,'no_create_edit':True, 'no_create': True, 'no_open':True}" />
                             <field name="product_type" />
-                            <field name="form" attrs="{'invisible': [('product_type', 'in', ['rubban','button', 'other'])]}"/>
+                            <field name="form" string="Forme" attrs="{'invisible': [('product_type', 'in', ['rubban','button', 'other'])]}"/>
                             <!-- if square -->
                             <field name="side" attrs="{'invisible': ['|', ('product_type', 'in', ['rubban','button', 'other']), ('form', '!=', 'square')]}"/>
                             <!-- if button -->
