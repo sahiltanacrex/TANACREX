@@ -417,7 +417,7 @@
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
                                     <!-- <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -->
-                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span>Early payment</span><!--<span t-if="o.origin_sale_id.payment_method" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
+                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span t-if="o.origin_sale_id" t-field="o.origin_sale_id.payment_term_id" /><span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     <span></span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
