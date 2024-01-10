@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 11:28+0000\n"
-"PO-Revision-Date: 2024-01-09 11:28+0000\n"
+"POT-Creation-Date: 2024-01-10 10:40+0000\n"
+"PO-Revision-Date: 2024-01-10 10:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,9 @@ msgid ""
 "<span style=\"font-size:14x;\">\n"
 "                No complaints will be accepted after validation. The goods delivered stay here property of the seller until full payment of the invoice.\n"
 "              </span>"
-msgstr "Aucune réclamation ne sera admise aprés la validation. La marchandise livrée reste la propriété du vendeur jusqu'au paiement intégral de la facture."
+msgstr ""
+"Aucune réclamation ne sera admise aprés la validation. La marchandise livrée"
+" reste la propriété du vendeur jusqu'au paiement intégral de la facture."
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
@@ -338,7 +340,7 @@ msgstr ""
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "Designation"
-msgstr "Déignation"
+msgstr "Désignation"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
@@ -648,7 +650,7 @@ msgstr ""
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "Reférence"
-msgstr ""
+msgstr "Référence"
 
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.stock_move_line_inherit_tree_view
