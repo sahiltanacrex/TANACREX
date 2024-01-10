@@ -78,7 +78,7 @@
                         <div class="col-6">
                             <div style="font-size:18px; margin-top:20px">
                                 <b>Facture:</b>
-                                <span t-esc="o.name_bis" />
+                                <b t-esc="o.name_bis" />
                             </div>
                             <div style="font-size:18px;">
                                 <b>Référence:</b>
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
-                            <b t-field="o.partner_id"/><br/>
+                            <b style="font-size: 19px;" t-field="o.partner_id"/><br/>
                             <t t-if="o.partner_id.street">
                                 <span t-field="o.partner_id.street"/> <br/> 
                             </t>
@@ -387,7 +387,7 @@
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
 <!--                                    <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
-                                    <span></span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
                                 </div>
                             </t>

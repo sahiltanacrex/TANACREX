@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
-                            <b style="font-size: 18px;" t-field="o.partner_id"/><br/>
+                            <b style="font-size: 19px;" t-field="o.partner_id"/><br/>
                            <t t-if="o.partner_id.street">
                                 <span t-field="o.partner_id.street"/> <br/>
                             </t>
@@ -177,6 +177,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
                                 <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
                                 <t t-foreach="all_type" t-as="type">
                                     <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
@@ -495,7 +496,7 @@
                                     <!--<span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                    <span></span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 <!--                                    <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
 
 
