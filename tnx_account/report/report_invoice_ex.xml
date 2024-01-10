@@ -491,7 +491,7 @@
                                         p {margin-bottom: 0em;}
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
-                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- </span> <span t-if="o.origin_sale_id" t-field="o.origin_sale_id.payment_term_id" /><span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- <span t-if="o.origin_sale_id" t-field="o.origin_sale_id.payment_term_id" /><span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
                                     <!--<span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
