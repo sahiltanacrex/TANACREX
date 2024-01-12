@@ -345,7 +345,7 @@ msgstr "Désignation"
 #. module: tnx_stock
 #: model_terms:ir.ui.view,arch_db:tnx_stock.report_tnx_picking_document
 msgid "Dimension"
-msgstr ""
+msgstr "Dimensions"
 
 #. module: tnx_stock
 #: model:ir.model.fields,field_description:tnx_stock.field_note_colisage_wizard__display_name
