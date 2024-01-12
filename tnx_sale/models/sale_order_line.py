@@ -15,6 +15,13 @@ class Sale_order_line(models.Model):
     poids_en_kg = fields.Float(
         compute="_compute_poids_total", store=True, required=False
     )
+    punit = fields.Float(compute='_compute_new_pu', digits=(10, 4))
+
+    def _compute_new_pu(self):
+        for line in self:
+            line.punit = line.price_unit / line.product_uom.ratio
+
+
 
     @api.depends("product_id", "product_id.weight", "qty_delivered")
     def _compute_poids_total(self):

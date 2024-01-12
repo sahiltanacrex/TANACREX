@@ -14,6 +14,9 @@
                     <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
                         <field name="unit_qty" force_save="1"/>
                     </xpath>
+                    <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                        <field name="punit" string="Prix unitaire"/>
+                    </xpath>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
                         <field name="poids_en_kg" />
                     </xpath>

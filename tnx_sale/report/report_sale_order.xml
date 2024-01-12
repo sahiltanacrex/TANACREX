@@ -285,7 +285,7 @@
                                                 </td>
                                                 <td>
                                                     <!--<t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
@@ -459,8 +459,9 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
+                                        <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Total Amount</td>
-                                        <td style="border: 1px solid #000;"></td>
+
                                         <td style="border: 1px solid #000;">
                                             <b>
                                                 <t t-esc="o.format_number_for_amount(o.amount_total)"/>
