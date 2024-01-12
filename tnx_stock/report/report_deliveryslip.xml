@@ -116,7 +116,8 @@
               </div>
             </div>
             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
-              <b style="font-size: 18px;" t-field="o.partner_id"/>
+              <span style="font-size: 18px;font-weight:bold" t-field="o.partner_id.parent_id.name"/><br/>
+              <b t-if="o.partner_id.name">Delivery address: </b><span t-field="o.partner_id.name"/>
               <br/>
               <t t-if="o.partner_id.street">
                 <span t-field="o.partner_id.street"/>
