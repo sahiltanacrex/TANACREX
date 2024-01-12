@@ -668,7 +668,7 @@
                                     <span t-esc="doc.name" />
                                 </div>
                                 <div style="font-size:18px;">
-                                    <b>Invoice date: </b>
+                                    <b>Date: </b>
                                     <span t-if="doc.invoice_ids" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
                                 </div>
                             </div>
