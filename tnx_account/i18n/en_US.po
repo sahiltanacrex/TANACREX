@@ -6,25 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 06:15+0000\n"
-"PO-Revision-Date: 2024-01-09 06:15+0000\n"
+"POT-Creation-Date: 2024-01-12 14:54+0000\n"
+"PO-Revision-Date: 2024-01-12 14:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid ""
-"<b>\n"
-"                                <span>Adresse de livraison : </span>\n"
-"                            </b>"
-msgstr ""
-"<b>\n"
-"                                        <span>Shipping address : </span>\n"
-"                                    </b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -65,26 +54,32 @@ msgid "<b>- Notes :</b>"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<b>Date de facturation: </b>"
-msgstr "<b> Billing date :</b>"
+msgid "<b>Adresse de livraison : </b>"
+msgstr "<b>Delivery address: </b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "<b>Date de facturation:</b>"
-msgstr "<b> Billing date :</b>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<b>Facture :</b>"
-msgstr ""
+msgstr "<b> Invoice date :</b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "<b>Facture:</b>"
 msgstr "<b>Invoice :</b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Invoice :</b>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Invoice date: </b>"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
@@ -113,10 +108,10 @@ msgid ""
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-msgid ""
-"<span style=\"font-weight: bold;font-size:14px;\">Adresse de livraison : "
-"</span>"
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span style=\"font-weight: bold;\">IBAN : </span>"
 msgstr ""
 
 #. module: tnx_account
@@ -190,11 +185,6 @@ msgstr "<span>This is not VL invoice</span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "<span>Cette facture n'est pas une facture EX</span>"
 msgstr "<span>This is not EX invoice</span>"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-msgid "<span>Early payment</span>"
-msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -368,7 +358,7 @@ msgstr "Company Bank"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Bon de livraison"
-msgstr "Delivery form"
+msgstr "Delivery Note"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__picking_ids
@@ -447,14 +437,10 @@ msgid "Diameter"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Dimension"
-msgstr ""
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-msgid "Dimensions"
 msgstr ""
 
 #. module: tnx_account
@@ -634,6 +620,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_account_move__seal_serial
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__seal_serial
 msgid "Leads"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Logo"
 msgstr ""
 
 #. module: tnx_account
@@ -817,19 +810,16 @@ msgid "Prix/UDM"
 msgstr "Price/UOM"
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Qte"
-msgstr "Qty"
-
-#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Qty"
 msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Reference"
 msgstr ""
 
@@ -883,11 +873,6 @@ msgstr "Invoice reference"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 msgid "Réference facture"
-msgstr ""
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Référence"
 msgstr ""
 
 #. module: tnx_account

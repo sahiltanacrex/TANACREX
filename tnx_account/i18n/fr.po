@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-09 07:22+0000\n"
-"PO-Revision-Date: 2024-01-09 07:22+0000\n"
+"POT-Creation-Date: 2024-01-12 14:57+0000\n"
+"PO-Revision-Date: 2024-01-12 14:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -60,11 +60,6 @@ msgid "<b>Adresse de livraison : </b>"
 msgstr ""
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "<b>Billing date: </b>"
-msgstr "<b>Date de facturation: </b>"
-
-#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "<b>Date de facturation:</b>"
@@ -80,6 +75,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<b>Invoice :</b>"
 msgstr "<b>Facture:</b> "
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<b>Invoice date: </b>"
+msgstr "<b>Date de facturation: </b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
@@ -105,6 +105,13 @@ msgstr ""
 msgid ""
 "<br/> SARL\n"
 "                                                au capital de 30 000 000 AR"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span style=\"font-weight: bold;\">IBAN : </span>"
 msgstr ""
 
 #. module: tnx_account
@@ -183,11 +190,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "<span>Cette facture n'est pas une facture EX</span>"
 msgstr ""
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
-msgid "<span>Early payment</span>"
-msgstr "Paiement en Avance"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -440,13 +442,9 @@ msgid "Diameter"
 msgstr "Diamètre"
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Dimension"
-msgstr "Dimensions"
-
-#. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "Dimension"
 msgstr "Dimensions"
 
@@ -627,6 +625,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_account_move__seal_serial
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__seal_serial
 msgid "Leads"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Logo"
 msgstr ""
 
 #. module: tnx_account

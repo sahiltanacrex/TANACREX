@@ -86,7 +86,7 @@
                                 <span t-esc="o.seq_bis" />
                             </div>
                             <div style="font-size:18px;">
-                                <b>Billing date: </b>
+                                <b>Invoice date: </b>
                                 <span t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
                             </div>
                         </div>
