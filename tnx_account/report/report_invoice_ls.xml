@@ -177,63 +177,76 @@
                                 <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
                                 <t t-foreach="all_type" t-as="type">
                                     <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
+                                    <t t-set="has_different_values" t-value="False"/>
+                                    <t t-set="has_duplicates" t-value="False"/>
+                                    <t t-set="seen_values" t-value="set()"/>
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
-                                    <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
-                                    <t t-foreach="bl_id" t-as="id_bl">
-                                        <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
-                                        <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(id_bl, line.product_id.id)" />
-                                        <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
-                                        <tr>
-                                            <td style="text-align: left">
-                                                <span t-esc="line.order_customer" />
-                                            </td>
-                                            <td style="text-align: left">
-                                                <span t-esc="bl_name" />
-                                            </td>
-                                            <td style="text-align: left">
-                                                <span t-field="line.product_id.product_type" />
-                                            </td>
-                                            <td style="text-align: left">
-                                                <span t-field="line.product_id.name" />
-                                            </td>
-                                            <td style="text-align: right">
-                                                <t t-if="line.product_id.product_type == 'button'">
-                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
-                                                </t>
-                                                <t t-elif="line.product_id.product_type == 'other'">
-                                                    <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
-                                                </t>
-                                                <t t-else="">
-                                                    <t t-if="line.product_id.product_tmpl_id.form == 'rectangle'">
-                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.wide)"/>mm
+                                        <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
+                                        <t t-foreach="bl_id" t-as="id_bl">
+                                            <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
+                                            <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(id_bl, line.product_id.id)" />
+                                            <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
+                                            <tr>
+                                                <td style="text-align: left">
+                                                    <span t-esc="line.order_customer" />
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <span t-esc="bl_name" />
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <span t-field="line.product_id.product_type" />
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <span t-field="line.product_id.name" />
+                                                </td>
+                                                <td style="text-align: right">
+                                                    <t t-if="line.product_id.product_type == 'button'">
+                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
-                                                    <t t-elif="line.product_id.product_tmpl_id.form == 'square'">
-                                                        <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm
-                                                    </t>
-                                                    <t t-else="">
+                                                    <t t-elif="line.product_id.product_type == 'other'">
                                                         <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
                                                     </t>
-                                                </t>
-                                            </td>
-                                            <td style="text-align: right">
-                                                <!--<t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />-->
-                                                <t t-esc="int(bl_qty_done)" />
-                                            </td>
-                                            <td style="text-align:right">
-                                                <t t-if="line.product_id.is_fees == True">
-                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
-                                                </t>
-                                                <t t-else="">
-                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
-                                                </t>
-                                            </td>
-                                            <td style="text-align:right">
-                                                <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/>
-                                            </td>
-                                        </tr>
+                                                    <t t-else="">
+                                                        <t t-if="line.product_id.product_tmpl_id.form == 'rectangle'">
+                                                            <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.length)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.wide)"/>mm
+                                                        </t>
+                                                        <t t-elif="line.product_id.product_tmpl_id.form == 'square'">
+                                                            <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>mm
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
+                                                        </t>
+                                                    </t>
+                                                </td>
+                                                <td style="text-align: right">
+                                                    <!--<t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />-->
+                                                    <t t-esc="int(bl_qty_done)" />
+                                                </td>
+                                                <td style="text-align:right">
+                                                    <t t-if="line.product_id.is_fees == True">
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                    </t>
+                                                </td>
+                                                <td style="text-align:right">
+                                                    <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <!-- show subtotal -->
+                                        <t t-set="current_value" t-value="line.product_id.product_type"/>
+                                        <t t-if="not has_different_values and line.product_id.product_type and current_value != o.invoice_line_ids[0].product_id.product_type">
+                                            <t t-set="has_different_values" t-value="True"/>
+                                        </t>
+                                        <t t-set="current_value" t-value="line.product_id.product_type"/>
+                                        <t t-if="current_value in seen_values">
+                                            <t t-set="has_duplicates" t-value="True"/>
+                                        </t>
+                                        <t t-set="seen_values" t-value="seen_values.union([current_value])"/>
                                     </t>
-                                </t>
-                                    <tr t-if="len(all_type) >= 1">
+                                    <tr t-if="len(all_type) > 1 and has_different_values and has_duplicates">
                                         <td></td> <!--style="border-right: hidden;border-top: 1px solid black;border-bottom: 1px solid black;"-->
                                         <td></td>
                                         <td></td>

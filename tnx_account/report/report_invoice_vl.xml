@@ -178,6 +178,9 @@
                                 <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
                                 <t t-foreach="all_type" t-as="type">
                                     <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
+                                    <t t-set="has_different_values" t-value="False"/>
+                                    <t t-set="has_duplicates" t-value="False"/>
+                                    <t t-set="seen_values" t-value="set()"/>
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
                                         <!-- <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" /> -->
                                         <!-- <t t-foreach="bl_id" t-as="id_bl">
@@ -238,8 +241,17 @@
 
                                         </t>
                                         <!-- </t> -->
+                                        <t t-set="current_value" t-value="line.product_id.product_type"/>
+                                        <t t-if="not has_different_values and line.product_id.product_type and current_value != o.invoice_line_ids[0].product_id.product_type">
+                                            <t t-set="has_different_values" t-value="True"/>
+                                        </t>
+                                        <t t-set="current_value" t-value="line.product_id.product_type"/>
+                                        <t t-if="current_value in seen_values">
+                                            <t t-set="has_duplicates" t-value="True"/>
+                                        </t>
+                                        <t t-set="seen_values" t-value="seen_values.union([current_value])"/>
                                     </t>
-                                    <tr t-if="len(all_type) >= 1">
+                                    <tr t-if="len(all_type) > 1 and has_different_values and has_duplicates">
                                         <td></td> <!--style="border-right: hidden;border-top: 1px solid black;border-bottom: 1px solid black;"-->
                                         <td></td>
                                         <td></td>
