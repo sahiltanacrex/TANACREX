@@ -117,7 +117,7 @@ class Sale_order_line(models.Model):
 
     @api.onchange("product_uom_qty")
     def _onchangeqty_min_product_uom_qty(self):
-        self.unit_qty = math.ceil(self.product_uom_qty * self.product_uom.ratio)
+        self.unit_qty = round(self.product_uom_qty * self.product_uom.ratio)
         if (
                 self.product_id.qty_min
                 and self.product_id
