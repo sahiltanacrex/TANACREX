@@ -424,7 +424,7 @@ msgstr ""
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
-msgid "Total amount"
+msgid "Total Amount"
 msgstr "Montant total"
 
 #. module: tnx_sale
