@@ -161,6 +161,7 @@
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
+                                    <th style="border: none"></th>
                                     <th><t t-esc="currency" /></th>
                                     <th><t t-esc="currency" /></th>
                                 </tr>
@@ -172,6 +173,7 @@
                                     <th>HS Code</th>
                                     <th>Dimension</th>
                                     <th>Qty</th>
+                                    <th>UoM</th>
                                     <th>Unit price</th>
                                     <th>Amount</th>
                                 </tr>
@@ -233,14 +235,26 @@
                                                 <td style="text-align: right">
                                                     <t t-esc="o.get_right_number(line.unit_qty)" />
                                                 </td>
-                                                <td style="text-align: right">
-                                                    <t t-if="line.product_id.is_fees == True">
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t
-                                                            />
+                                                <!--UoM-->
+                                                <td>
+                                                    <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                        <span>Pieces</span>
+                                                    </t>
+                                                    <t t-elif="line.product_id.product_type == 'ruban'">
+                                                        <span>Rolls</span>
                                                     </t>
                                                     <t t-else="">
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t
-                                                            />
+                                                    </t>
+                                                </td>
+                                                <td style="text-align: right">
+                                                    <t t-if="line.product_id.is_fees == True">
+                                                        <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t
+                                                            />-->
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>
+                                                    </t>
+                                                    <t t-else="">
+<!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t/>-->
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>
                                                         <!--/ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
@@ -310,10 +324,12 @@
                                                 </td>
                                                 <td style="text-align:right">
                                                     <t t-if="line.product_id.is_fees == True">
-                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>
+<!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
+                                                        <t t-esc="o.format_number_for_amount(line.punit)"/>
                                                     </t>
                                                     <t t-else="">
-                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>
+<!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
+                                                        <t t-esc="o.format_number_for_amount(line.punit)"/>
                                                         <!--/\ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
@@ -355,8 +371,9 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
+                                        <td style="border:none"></td>
+                                        <td style="border:none"></td>
                                         <td style="border: 1px solid #000;font-weight: bold;">Total amount</td>
-                                        <td style="border: 1px solid #000;"></td>
                                         <td style="border: 1px solid #000;text-align:right;font-weight: bold;" >
                                             <t t-esc="o.format_number_for_amount(o.amount_total)"/> <!--<t t-esc="o.currency_id.symbol"/>-->
                                         </td>

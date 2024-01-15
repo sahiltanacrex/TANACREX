@@ -202,7 +202,7 @@
                       <img
                               t-if="line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920"
                               t-att-src="image_data_uri(line.product_id.image_1920 or line.product_id.product_tmpl_id.image_1920)"
-                              width="95" height="95"/>
+                              style="width:2cm; height:2.7cm;"/>
                     </td>
                     <td style="text-align: right">
                       <span t-field="line.unit_done"

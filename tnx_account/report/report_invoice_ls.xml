@@ -158,6 +158,7 @@
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
+                                    <th style="border: none"></th>
                                     <th><t t-esc="currency" /></th>
                                     <th><t t-esc="currency" /></th>
                                 </tr>
@@ -169,6 +170,7 @@
                                     <!-- <th>Réference client</th> -->
                                     <th>Dimension</th>
                                     <th>Qty</th>
+                                    <th>UoM</th>
                                     <th>Prix Unitaire</th>
                                     <th>Montant</th>
                                 </tr>
@@ -222,12 +224,25 @@
                                                     <!--<t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />-->
                                                     <t t-esc="int(bl_qty_done)" />
                                                 </td>
-                                                <td style="text-align:right">
-                                                    <t t-if="line.product_id.is_fees == True">
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                <!--UoM-->
+                                                <td>
+                                                    <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                        <span>Pieces</span>
+                                                    </t>
+                                                    <t t-elif="line.product_id.product_type == 'ruban'">
+                                                        <span>Rolls</span>
                                                     </t>
                                                     <t t-else="">
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                    </t>
+                                                </td>
+                                                <td style="text-align:right">
+                                                    <t t-if="line.product_id.is_fees == True">
+<!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                    </t>
+                                                    <t t-else="">
+<!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
+                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right">
@@ -275,11 +290,13 @@
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;"></td>
+                                    <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;border-right: black;"></td>
                                     <td style="border-top: 1px black;border-left: 1px solid black;">Montant HT</td>
-                                    <td style="border-top: 1px black;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> </td>
+                                    <td style="border-top: 1px black;text-align:right;border-top: 1px solid black;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> </td>
                                 </tr>
                                 <tr>
+                                    <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
@@ -290,6 +307,7 @@
                                     <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_tax)"/> </td>
                                 </tr>
                                 <tr>
+                                    <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>

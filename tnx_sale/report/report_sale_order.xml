@@ -199,6 +199,7 @@
                                 <th style="border: none"></th>
                                 <th style="border: none"></th>
                                 <th style="border: none"></th>
+                                <th style="border: none"></th>
                                 <th>
                                     <t t-esc="currency" />
                                 </th>
@@ -216,6 +217,7 @@
                                 <th>Type</th>
                                 <th>Dimension</th>
                                 <th>Qty</th>
+                                <th>UoM</th>
                                 <th>Prix Unitaire</th>
                                 <th>Montant</th>
                             </tr>
@@ -281,16 +283,27 @@
                                                 </t>
                                             </td>
                                             <td>
-                                                    <t t-esc="o.get_right_number(line.unit_qty)" />
-                                                </td>
-                                                <td>
-                                                    <!--<t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
-                                                </td>
-                                                <td>
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
-                                                </td>
-                                            </tr>
+                                                <t t-esc="o.get_right_number(line.unit_qty)" />
+                                            </td>
+                                            <!--UoM-->
+                                            <td>
+                                                <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                    <span>Pieces</span>
+                                                </t>
+                                                <t t-elif="line.product_id.product_type == 'ruban'">
+                                                    <span>Rolls</span>
+                                                </t>
+                                                <t t-else="">
+                                                </t>
+                                            </td>
+                                            <td>
+                                               <!--<t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
+                                               <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                            </td>
+                                            <td>
+                                               <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
+                                            </td>
+                                        </tr>
                                             <!-- </t> -->
                                         </t>
                                     </t>
@@ -415,12 +428,14 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
+                                        <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Amount untaxed</td>
                                         <td style="border: 1px solid #000;">
                                             <t t-esc="o.format_number_for_amount(o.amount_untaxed)"/>
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
@@ -444,6 +459,7 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
+                                        <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Montant TTC</td>
                                         <td style="border: 1px solid #000;">
                                             <t t-esc="o.format_number_for_amount(o.amount_total)"/>
@@ -453,6 +469,7 @@
                                 </t>
                                 <t t-else="">
                                     <tr>
+                                        <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
@@ -764,7 +781,8 @@
                                         <th>Désignation</th>
                                         <th>Type</th>
                                         <th>Dimension</th>
-                                        <th>Qté</th>
+                                        <th>Qté1</th>
+                                        <th>UoM</th>
                                         <th>Prix Unitaire</th>
                                         <th>Montant</th>
                                     </tr>
@@ -821,6 +839,10 @@
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
+                                                    </td>
+                                                    <!-- UoM -->
+                                                    <td>
+                                                        <t t-esc="doc.line.product_uom"/>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
@@ -947,7 +969,7 @@
                         <t t-if="bank_company_ids">
 
                             <div class="row">
-                                <t t-foreach="bank_company_ids" t-as="bank">
+                                <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
                                     <div class="col-6">
                                         <style type="text/css">
                                     p {margin-bottom: 0em;}
@@ -1054,7 +1076,7 @@
                                 </div>
                                 <div style="font-size:18px;">
                                     <b>Invoice date:</b>
-                                    <span t-esc="doc.invoices_ids[0].invoice_date.strftime('%d/%m/%Y')" />
+                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
@@ -1136,6 +1158,7 @@
                                         <th style="border: none"></th>
                                         <th style="border: none"></th>
                                         <th style="border: none"></th>
+                                        <th style="border: none"></th>
                                         <th>
                                             <t t-esc="currency"/>
                                         </th>
@@ -1149,7 +1172,8 @@
                                         <th>Reference</th>
                                         <th>HS Code</th>
                                         <th>Dimension</th>
-                                        <th>Qté</th>
+                                        <th>Qté3</th>
+                                        <th>UoM</th>
                                         <th>Prix Unitaire</th>
                                         <th>Montant</th>
                                     </tr>
@@ -1210,6 +1234,17 @@
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
+                                                    </td>
+                                                    <!--UoM-->
+                                                    <td>
+                                                        <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                            <span>Pieces</span>
+                                                        </t>
+                                                        <t t-elif="line.product_id.product_type == 'ruban'">
+                                                            <span>Rolls</span>
+                                                        </t>
+                                                        <t t-else="">
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
@@ -1376,7 +1411,7 @@
                         <t t-if="bank_company_ids">
 
                             <div class="row">
-                                <t t-foreach="bank_company_ids" t-as="bank">
+                                <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
                                     <div class="col-6">
                                         <style type="text/css">
                                     p {margin-bottom: 0em;}
@@ -1579,7 +1614,8 @@
                                         <th>Reference</th>
                                         <th>HS Code</th>
                                         <th>Dimension</th>
-                                        <th>Qté</th>
+                                        <th>Qté2</th>
+                                        <th>UoM</th>
                                         <th>Prix Unitaire</th>
                                         <th>Montant TTC</th>
                                     </tr>
@@ -1640,6 +1676,17 @@
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
+                                                    </td>
+                                                    <!-- UoM -->
+                                                    <td>
+                                                        <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                            <span>Pieces</span>
+                                                        </t>
+                                                        <t t-elif="line.product_id.product_type == 'ruban'">
+                                                            <span>Rolls</span>
+                                                        </t>
+                                                        <t t-else="">
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
@@ -1822,7 +1869,7 @@
                         <t t-if="bank_company_ids">
 
                             <div class="row">
-                                <t t-foreach="bank_company_ids" t-as="bank">
+                                <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
                                     <div class="col-6">
                                         <style type="text/css">
                                             p {margin-bottom: 0em;}

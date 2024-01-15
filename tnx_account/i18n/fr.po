@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-15 10:35+0000\n"
-"PO-Revision-Date: 2024-01-15 10:35+0000\n"
+"POT-Creation-Date: 2024-01-15 15:52+0000\n"
+"PO-Revision-Date: 2024-01-15 15:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -230,6 +230,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Pieces</span>"
+msgstr "<span>Pièces</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>RCS 2003B00674 - STAT:</span>"
 msgstr ""
 
@@ -239,6 +246,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>RCS: </span>"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Rolls</span>"
+msgstr "<span>Rouleaux</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -815,6 +829,7 @@ msgid "Price rental"
 msgstr "Prix de location"
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Prix Unitaire"
@@ -824,6 +839,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_account_move_line__price_unit_udm
 #: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 msgid "Prix/UDM"
+msgstr ""
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__punit
+msgid "Punit"
 msgstr ""
 
 #. module: tnx_account
@@ -1016,6 +1036,13 @@ msgstr "Messages non lus"
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Compteur de messages non lus"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "UoM"
+msgstr "UdM"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__volume

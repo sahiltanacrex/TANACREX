@@ -23,6 +23,12 @@ class Account_move_line(models.Model):
         "(only when the invoice has been generated from a sale order).",
     )
     price_unit_udm = fields.Float("Prix/UDM")
+    punit = fields.Float(compute='_compute_new_pu', digits=(10, 4))
+
+    def _compute_new_pu(self):
+        for line in self:
+            line.punit = line.price_unit / line.product_uom_id.ratio
+
 
     @api.onchange("product_id","quantity")
     def compute_qty_unit(self):
