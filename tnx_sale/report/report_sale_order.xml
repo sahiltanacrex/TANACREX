@@ -346,7 +346,8 @@
                                                 <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                             </td>
                                             <td>
-                                                <t t-esc="o.get_right_number(line.quantity)" />
+                                                <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                <!-- <t t-if="line.quantity" t-esc="o.get_right_number(line.quantity)" />-->
                                             </td>
 
                                             <td>
@@ -512,13 +513,13 @@
                     <t t-if="bank_company_ids">
 
                         <div class="row">
-                            <t t-foreach="bank_company_ids" t-as="bank">
+                            <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
                                 <div class="col-6">
                                     <style type="text/css">
                                                 p {margin-bottom: 0em;}
                                     </style>
                                     <span t-if="o.payment_method"> Payment: </span>
-                                    <span t-field="o.payment_method"/> -- <span t-if="o.payment_term_id.with_context(lang=o.partner_id.lang)" t-field="o.payment_term_id" />
+                                    <span t-field="o.payment_method"/> -- <span>Payment term: </span> <span t-if="o.payment_term_id.with_context(lang=o.partner_id.lang)" t-field="o.payment_term_id" />
                                     <div>
                                         <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     </div>
@@ -937,7 +938,7 @@
                         <div>
                             <span>Payment:</span>
                             <span t-field="doc.payment_method"/>
-                            -- <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
+                            -- <span>Payment term: </span> <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
                             <!--<t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>-->
                             <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
@@ -1366,7 +1367,7 @@
                         <div>
                             <span>Payment:</span>
                             <span t-field="doc.payment_method"/>
-                            -- <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
+                            -- <span>Payment term: </span> <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
                             <!--<t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>-->
                             <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
@@ -1693,7 +1694,8 @@
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.quantity)"/>
+                                                    <t t-esc="o.get_right_number(line.unit_qty)"/>
+                                                    <!--<t t-if="line.quantity" t-esc="o.get_right_number(line.quantity)"/>-->
                                                 </td>
                                                 <td>
                                                     <t t-esc="line.product_id.name"/>
@@ -1811,7 +1813,7 @@
                         <div t-if="doc.payment_method">
                             <span>Payment:</span>
                             <span t-field="doc.payment_method"/>
-                            -- <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
+                            -- <span>Payment term: </span> <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
                             <!--<t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>-->
                             <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>

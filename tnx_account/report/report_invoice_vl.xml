@@ -423,19 +423,22 @@
                             </div>-->
 
                             <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
                                     <!-- <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -->
-                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span t-if="o.origin_sale_id" t-field="o.origin_sale_id.payment_term_id" /><span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 <!--                                    <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
 
 
+                                </div>
+                                <div class="col-3" t-if="o.have_signature">
+                                    <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
                                 </div>
                             </t>
                         </div>
@@ -448,9 +451,6 @@
                     <div class="col col-12 text-center">
                         <span>All bank charges of the foreign bank must be paid by the buyer, including the correspondent reimbursing the corresponding bank charges, commissions, taxes and postage.</span>
                     </div>
-                </div>
-                <div class="container" style="text-align: right;">
-                    <img t-attf-src="/tnx_account/static/src/img/tanacrex_signature.png" alt="Logo" style="max-height:170px; max-width: 100%; width:auto" />
                 </div>
             </div>
             <div class="footer o_standard_footer" style="border-top: 1px solid black; font-size:15px">

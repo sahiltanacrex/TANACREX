@@ -20,6 +20,9 @@
                     <field name="bank_company_ids" widget="many2many_tags" />
                     <field name="delivery_adress" domain="['|', ('id', '=', partner_id), ('parent_id', '=', partner_id)]"/>
                 </xpath>
+                <xpath expr="//div[@name='journal_div']" position="after">
+                    <field name="have_signature" string="Avoir la signature" />
+                </xpath>
 
                 <xpath expr="//notebook" position="inside">
                     <page name="info_transfert" string="Infos transfert" groups="tnx_base.group_direction_tnx">

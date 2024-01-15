@@ -499,12 +499,12 @@
                         </div> -->
                         <div class="row" style="page-break-before: always;">
                             <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-7">
+                                <div class="col-5">
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
                                     <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
-                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- <span t-if="o.origin_sale_id" t-field="o.origin_sale_id.payment_term_id" /><span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- <span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
                                     <!--<span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
 
                                     <span style="font-weight: bold;" t-esc="bank.bank_address"/>
@@ -514,7 +514,7 @@
 
                                 </div>
                             </t>
-                            <div class="col-5">
+                            <div class="col-4">
 <!--                                <span t-if="o.origin_sale_id" style="font-weight: bold;">BO Origin : </span><span t-if="o.origin_sale_id" t-field="o.origin_sale_id"/><br t-if="o.origin_sale_id"></br>-->
                                 <span t-if="o.origin_tnx" style="font-weight: bold;">Origin : </span><span t-if="o.origin_tnx" t-field="o.origin_tnx"/><br t-if="o.origin_tnx"></br>
                                 <span t-if="o.c_f" style="font-weight: bold;">Incoterm : </span><span t-if="o.c_f" t-field="o.c_f"/><br t-if="o.c_f"></br>
@@ -524,6 +524,9 @@
                                 <span t-if="o.seal_serial" style="font-weight: bold;">Packing : </span><span t-if="o.seal_serial" t-field="o.seal_serial"/><br t-if="o.seal_serial"></br>
                                 <span t-if="o.container_serial" style="font-weight: bold;">Notes : </span><span t-if="o.container_serial" t-field="o.container_serial"/>
                             </div>
+                            <div class="col-3" t-if="o.have_signature">
+                                <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
+                            </div>
                         </div>
                     </t>
                 </div>
@@ -532,9 +535,6 @@
                     <div class="col col-12 text-center">
                         <span>All bank charges of the foreign bank must be paid by the buyer, including the correspondent reimbursing the corresponding bank charges, commissions, taxes and postage.</span>
                     </div>
-                </div>
-                <div class="container" style="text-align: right;">
-                    <img t-attf-src="/tnx_account/static/src/img/tanacrex_signature.png" alt="Logo" style="max-height:170px; max-width: 100%; width:auto" />
                 </div>
             </div>
             <div class="footer" style="border-top: 2px solid black; font-size:16px;">

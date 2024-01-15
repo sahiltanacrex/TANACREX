@@ -15,6 +15,7 @@ class AccountMoveInherit(models.Model):
     volume = fields.Integer("Volume")
     seal_serial = fields.Char("Leads")
     container_serial = fields.Char("Conteneur")
+    have_signature = fields.Boolean()
 
     seq_bis = fields.Char("Réference Facture", store=True, index=True)
 
