@@ -514,7 +514,7 @@
                             <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
                             <span t-esc="bank_info" />
                         </div> -->
-                        <div class="row" style="page-break-before: always;">
+                        <div class="row" ><!--style="page-break-before: always;"-->
                             <t t-foreach="o.bank_company_ids" t-as="bank">
                                 <div class="col-5">
                                     <style type="text/css">
