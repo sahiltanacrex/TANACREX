@@ -184,9 +184,12 @@
                                     <t t-set="seen_values" t-value="set()"/>
                                     <t t-foreach="o.invoice_line_ids" t-as="line">
                                         <t t-set="bl_id" t-value="o.get_delivery_order_id(line.order_origin)" />
-                                        <t t-foreach="bl_id" t-as="id_bl">
+
+                                        <t t-foreach="o.get_delivery_order_id(line.order_origin)" t-as="id_bl">
                                             <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" />
-                                            <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(id_bl, line.product_id.id)" />
+
+                                            <t t-set="bl_qty_done" t-value="o.get_bl_qty_done(o.get_delivery_order_id(line.order_origin), line.product_id.id)" />
+
                                             <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                             <tr>
                                                 <td style="text-align: left">
