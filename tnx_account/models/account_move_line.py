@@ -27,7 +27,10 @@ class Account_move_line(models.Model):
 
     def _compute_new_pu(self):
         for line in self:
-            line.punit = line.price_unit / line.product_uom_id.ratio
+            if line.product_uom_id.ratio != 0:
+                line.punit = line.price_unit / line.product_uom_id.ratio
+            else:
+                line.punit = 0
 
 
     @api.onchange("product_id","quantity")

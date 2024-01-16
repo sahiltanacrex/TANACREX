@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-15 15:52+0000\n"
-"PO-Revision-Date: 2024-01-15 15:52+0000\n"
+"POT-Creation-Date: 2024-01-16 15:37+0000\n"
+"PO-Revision-Date: 2024-01-16 15:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+msgid "-- <span>Due date: </span>"
+msgstr "-- <span>Echéance: </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -190,6 +195,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "<span>Cette facture n'est pas une facture EX</span>"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Due date: </span>"
+msgstr "<span>Echéance: </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -1001,12 +1012,8 @@ msgid "TVA 20%"
 msgstr ""
 
 #. module: tnx_account
-#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
-msgid "Total Amount"
-msgstr "Montant total"
-
-#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Total Amount"
 msgstr "Montant total"
 
