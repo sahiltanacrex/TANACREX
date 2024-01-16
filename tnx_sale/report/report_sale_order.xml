@@ -688,7 +688,7 @@
                                 </div>
                                 <div style="font-size:18px;">
                                     <b>Date: </b>
-                                    <span t-if="doc.invoice_ids" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
+                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
@@ -769,6 +769,7 @@
                                         <th style="border: none"></th>
                                         <th style="border: none"></th>
                                         <th style="border: none"></th>
+                                        <th style="border: none"></th>
                                         <th>
                                             <t t-esc="currency"/>
                                         </th>
@@ -781,7 +782,7 @@
                                         <th>Désignation</th>
                                         <th>Type</th>
                                         <th>Dimension</th>
-                                        <th>Qté1</th>
+                                        <th>Qté</th>
                                         <th>UoM</th>
                                         <th>Prix Unitaire</th>
                                         <th>Montant</th>
@@ -842,7 +843,14 @@
                                                     </td>
                                                     <!-- UoM -->
                                                     <td>
-                                                        <t t-esc="doc.line.product_uom"/>
+                                                        <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                            <span>Pieces</span>
+                                                        </t>
+                                                        <t t-elif="line.product_id.product_type == 'ruban'">
+                                                            <span>Rolls</span>
+                                                        </t>
+                                                        <t t-else="">
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
@@ -929,6 +937,7 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
@@ -1172,7 +1181,7 @@
                                         <th>Reference</th>
                                         <th>HS Code</th>
                                         <th>Dimension</th>
-                                        <th>Qté3</th>
+                                        <th>Qté</th>
                                         <th>UoM</th>
                                         <th>Prix Unitaire</th>
                                         <th>Montant</th>
@@ -1319,6 +1328,7 @@
                                     </t>
 
                                     <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
@@ -1519,7 +1529,7 @@
                                 </div>
                                 <div style="font-size:18px;">
                                     <b>Invoice date:</b>
-                                    <span t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
+                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
@@ -1601,6 +1611,7 @@
                                         <th style="border: none"></th>
                                         <th style="border: none"></th>
                                         <th style="border: none"></th>
+                                        <th style="border: none"></th>
                                         <th>
                                             <t t-esc="currency"/>
                                         </th>
@@ -1614,7 +1625,7 @@
                                         <th>Reference</th>
                                         <th>HS Code</th>
                                         <th>Dimension</th>
-                                        <th>Qté2</th>
+                                        <th>Qté</th>
                                         <th>UoM</th>
                                         <th>Prix Unitaire</th>
                                         <th>Montant TTC</th>
@@ -1731,6 +1742,7 @@
                                                     </t>
                                                 </td>
                                                 <td>
+                                                    <!--erreur-->
                                                     <span t-esc="line.picking_name"/>
                                                 </td>
                                                 <td>
@@ -1741,7 +1753,7 @@
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.unit_qty)"/>
+                                                    <t t-esc="doc.get_right_number(line.unit_qty)"/>
                                                     <!--<t t-if="line.quantity" t-esc="o.get_right_number(line.quantity)"/>-->
                                                 </td>
                                                 <td>
@@ -1752,7 +1764,8 @@
                                                     <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
+
+                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
 
                                                 </td>
                                             </tr>
@@ -1800,6 +1813,7 @@
                                         </td>
                                     </tr> -->
                                     <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>

@@ -373,7 +373,7 @@
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
                                         <td style="border:none"></td>
-                                        <td style="border: 1px solid #000;font-weight: bold;">Total amount</td>
+                                        <td style="border: 1px solid #000;font-weight: bold;">Total Amount</td>
                                         <td style="border: 1px solid #000;text-align:right;font-weight: bold;" >
                                             <t t-esc="o.format_number_for_amount(o.amount_total)"/> <!--<t t-esc="o.currency_id.symbol"/>-->
                                         </td>
