@@ -558,7 +558,7 @@ msgstr "Diamètre"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Dimension"
-msgstr "Dimensions"
+msgstr "Dimension"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__display_name

@@ -345,7 +345,7 @@ msgstr "Frais de développement"
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
 msgid "Dimension"
-msgstr "Dimensions"
+msgstr "Dimension"
 
 #. module: tnx_sale
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
