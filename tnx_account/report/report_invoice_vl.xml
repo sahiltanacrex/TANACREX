@@ -402,23 +402,23 @@
                                 <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.phone">
                                     <span>Tel: </span>
                                     <span t-field="o.delivery_adress.phone"/> &#x9;
-                                </div>
-                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.nif">
+                                </div><br></br>
+                                <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.delivery_adress.nif">
                                     <span>NIF: </span>
                                     <span t-field="o.partner_id.nif"/> &#x9;
-                                </div>
-                                <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.stat">
+                                </div><br></br>
+                                <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.partner_id.stat">
                                     <span>STAT: </span>
                                     <span t-field="o.delivery_adress.stat"/> &#x9;
-                                </div>
-                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.rcs">
+                                </div><br></br>
+                                <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.delivery_adress.rcs">
                                     <span>RCS: </span>
                                     <span t-field="o.delivery_adress.rcs"/> &#x9;
-                                </div>
-                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.cif">
+                                </div><br></br>
+                                <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.delivery_adress.cif">
                                     <span>CIF: </span>
                                     <span t-field="o.delivery_adress.cif"/> &#x9;
-                                </div>
+                                </div><br></br>
                                 <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.free_val">
                                     <span t-field="o.delivery_adress.free_val"/> &#x9;
                                 </div>
