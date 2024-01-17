@@ -40,6 +40,8 @@
         "views/config_seq_ls.xml",
         "views/config_seq_vl.xml",
         "security/ir.model.access.csv",
+        #data
+        "data/mail_template_data.xml",
         # reporting
         "report/report_invoice_ex.xml",
         "report/report_invoice_vl.xml",

@@ -19,6 +19,11 @@ class AccountMoveInherit(models.Model):
 
     seq_bis = fields.Char("Réference Facture", store=True, index=True)
 
+    def _get_mail_template(self):
+        return (
+            'tnx_account.email_template_edi_invoice_inherit')
+
+
     @api.model
     def create(self, vals):
         res = super(AccountMoveInherit, self).create(vals)
