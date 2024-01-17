@@ -353,7 +353,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document
 #: model_terms:ir.ui.view,arch_db:tnx_sale.report_saleorder_document_proforma
 msgid "Prix Unitaire"
-msgstr "Unite Price"
+msgstr "Unit Price"
 
 #. module: tnx_sale
 #: model:ir.model.fields,field_description:tnx_sale.field_account_move_line__development_expenses

@@ -27,7 +27,9 @@
         # report
         "report/report_sale_order.xml",
         #data
-        "data/product_data.xml"
+        "data/product_data.xml",
+        "data/mail_template_data.xml",
+
     ],
     # only loaded in demonstration mode
     "demo": [
