@@ -271,6 +271,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
                                         <td style="text-align: right;font-weight: bold;">Sous-total</td>
                                         <td style="text-align:right;font-weight: bold;">
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/>

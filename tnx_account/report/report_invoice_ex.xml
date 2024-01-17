@@ -280,6 +280,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
                                         <td style="text-align: right;font-weight: bold;">Subtotal</td>
                                         <td></td>
                                         <td style="text-align:right;font-weight: bold;">
@@ -323,6 +324,9 @@
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <td style="text-align:right">
+                                                    <!-- add td -->
+                                                </td>
+                                                <td style="text-align:right">
                                                     <t t-if="line.product_id.is_fees == True">
 <!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
                                                         <t t-esc="o.format_number_for_amount(line.punit)"/>
@@ -341,6 +345,7 @@
                                         <!-- </t> -->
                                     </t>
                                     <tr t-if="total_price_type_false and type_false_number > 1 and len(all_type) > 1">
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
