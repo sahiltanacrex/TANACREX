@@ -29,7 +29,7 @@
                         <div class="header"></div>
                         <div class="body" style="display: grid; grid-template-columns:1fr 1fr;">
                             <t t-foreach="o.move_line_ids_without_package" t-as="line">
-                                <div style="padding-bottom:10px;width: 190px;height: 110px;overflow:hidden;">
+                                <div style="padding-bottom:10px;width: 7.1cm;height: 3.8cm;overflow:hidden;">
                                     <table class="tg" style="width:100%;">
                                         <colgroup>
                                             <col style="width: 160px" />
@@ -40,12 +40,12 @@
                                                 <th class="tg-0pky" colspan="2" style="padding: 3px !important">
                                                     <div class="row">
                                                         <div class="col-6" style="text-align: center; !important;">
-                                                            <img t-if="company.logo" style="max-height:10px; " t-att-src="image_data_uri(company.logo)" />
+                                                            <img t-if="company.logo" style="height: 30px;" t-att-src="image_data_uri(company.logo)" />
                                                         </div>
                                                         <div class="col-6 text-center" style="font-size:5px;!important;">
-                                                            <b>BOUTONS  ETIQUETTES </b>
+                                                            <b>SARL au capital de 30 000 000 AR </b>
                                                             <div> Tel :(261) 034 02 441 35</div>
-                                                            <div> info@tanacrex.com</div>
+                                                            <div> contact@tanacrex.com</div>
                                                             <div> www.tanacrex.com</div>
                                                         </div>
                                                     </div>
@@ -86,8 +86,7 @@
                                                     </u>
                                                     <div class="text-right">
                                                         <t t-if="line.product_id">
-                                                            <span t-esc="line.product_id.line" />
-                                                            cm
+                                                            <span t-esc="line.product_id.dimension" />
                                                         </t>
                                                     </div>
                                                 </td>
