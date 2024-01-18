@@ -298,7 +298,12 @@
                                             </td>
                                             <td>
                                                <!--<t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                               <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                <t t-if="line.is_flat_rate">
+                                                    <span style="font-size: 30px;">-></span>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                </t>
                                             </td>
                                             <td>
                                                <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
@@ -853,9 +858,15 @@
                                                         </t>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
+<!--                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>-->
                                                         <!--<t t-esc="doc.currency_id.symbol"/>
                                                 /                                                        <t t-esc="line.product_uom.name"/>-->
+                                                        <t t-if="line.is_flat_rate">
+                                                            <span style="font-size: 30px;">-></span>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
@@ -1256,9 +1267,15 @@
                                                         </t>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
+<!--                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>-->
                                                         <!--<t t-esc="doc.currency_id.symbol"/>
                                                 /                                                        <t t-esc="line.product_uom.name"/>-->
+                                                        <t t-if="line.is_flat_rate">
+                                                            <span style="font-size: 30px;">-></span>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
@@ -1700,8 +1717,13 @@
                                                         </t>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
-
+<!--                                                        <t t-esc="doc.format_number_for_amount(line.price_unit)"/>-->
+                                                        <t t-if="line.is_flat_rate">
+                                                            <span style="font-size: 30px;">-></span>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(line.price_subtotal))"/>

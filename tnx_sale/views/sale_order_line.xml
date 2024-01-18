@@ -19,6 +19,7 @@
                     </xpath>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
                         <field name="poids_en_kg" />
+                        <field name="is_flat_rate" string="Forfaitaire"/>
                     </xpath>
                     <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="attributes">
                         <attribute name="string">Quantiy</attribute>

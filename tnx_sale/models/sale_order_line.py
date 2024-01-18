@@ -16,6 +16,7 @@ class Sale_order_line(models.Model):
         compute="_compute_poids_total", store=True, required=False
     )
     punit = fields.Float(compute='_compute_new_pu', digits=(10, 4))
+    is_flat_rate = fields.Boolean()
 
     def _compute_new_pu(self):
         for line in self:
