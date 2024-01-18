@@ -15,6 +15,20 @@ class Sale_order(models.Model):
     payment_method = fields.Selection([('bank_transfer', 'Bank Transfer'), ('check', 'Check'), ('cash', 'Cash')])
     validity_day = fields.Integer()
 
+    def _find_mail_template(self, force_confirmation_template=False):
+        self.ensure_one()
+        template_id = False
+
+        if force_confirmation_template or (self.state == 'sale' and not self.env.context.get('proforma', False)):
+            template_id = int(self.env['ir.config_parameter'].sudo().get_param('sale.default_confirmation_template'))
+            template_id = self.env['mail.template'].search([('id', '=', template_id)]).id
+            if not template_id:
+                template_id = self.env['ir.model.data']._xmlid_to_res_id('sale.mail_template_sale_confirmation', raise_if_not_found=False)
+        if not template_id:
+            template_id = self.env['ir.model.data']._xmlid_to_res_id('tnx_sale.email_template_edi_sale_inherit', raise_if_not_found=False)
+
+        return template_id
+
     @api.constrains('validity_day')
     def _validity_day_constrains(self):
         for rec in self:
