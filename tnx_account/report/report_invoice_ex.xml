@@ -250,16 +250,19 @@
                                                     <t t-if="line.product_id.is_fees == True">
                                                         <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t
                                                             />-->
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>
+<!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>-->
+                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                     </t>
                                                     <t t-else="">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t/>-->
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>
+<!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>-->
+                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                         <!--/ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
                                                 <td style="text-align: right">
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
+
                                                 </td>
                                             </tr>
                                             <!-- </t> -->
@@ -284,7 +287,7 @@
                                         <td style="text-align: right;font-weight: bold;">Subtotal</td>
                                         <td></td>
                                         <td style="text-align:right;font-weight: bold;">
-                                            <t t-esc="o.format_number_for_amount(total_price_type)"/>
+                                            <t t-esc="o.format_number_for_amount(total_price_type).replace('.',',')"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -329,16 +332,17 @@
                                                 <td style="text-align:right">
                                                     <t t-if="line.product_id.is_fees == True">
 <!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                        <t t-esc="o.format_number_for_amount(line.punit)"/>
+                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                     </t>
                                                     <t t-else="">
 <!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                        <t t-esc="o.format_number_for_amount(line.punit)"/>
+                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                         <!--/\ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right;">
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <!--<t t-esc="o.currency_id.symbol"/> CPT -->
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/> <!--<t t-esc="o.currency_id.symbol"/>--> <!--CPT-->
+
                                                 </td>
                                             </tr>
                                             </t>
@@ -354,7 +358,7 @@
                                         <td style="text-align: right">Subtotal</td>
                                         <td></td>
                                         <td style="text-align:right;">
-                                            <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
+                                            <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
 
                                         </td>
                                     </tr>
@@ -380,7 +384,7 @@
                                         <td style="border:none"></td>
                                         <td style="border: 1px solid #000;font-weight: bold;">Total Amount</td>
                                         <td style="border: 1px solid #000;text-align:right;font-weight: bold;" >
-                                            <t t-esc="o.format_number_for_amount(o.amount_total)"/> <!--<t t-esc="o.currency_id.symbol"/>-->
+                                            <t t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/> <!--<t t-esc="o.currency_id.symbol"/>-->
                                         </td>
                                     </tr>
 

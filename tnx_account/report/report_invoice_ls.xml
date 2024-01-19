@@ -249,7 +249,8 @@
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right">
-                                                    <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/>
+<!--                                                    <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/>-->
+                                                    <t t-options='{"widget": "float", "precision": 2}' t-esc="bl_sub_total"/>
                                                 </td>
                                             </tr>
                                         </t>
@@ -274,7 +275,8 @@
                                         <td></td>
                                         <td style="text-align: right;font-weight: bold;">Sous-total</td>
                                         <td style="text-align:right;font-weight: bold;">
-                                            <t t-esc="o.format_number_for_amount(total_price_type)"/>
+<!--                                            <t t-esc="o.format_number_for_amount(total_price_type)"/>-->
+                                            <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -297,7 +299,7 @@
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;border-right: black;"></td>
                                     <td style="border-top: 1px black;border-left: 1px solid black;">Montant HT</td>
-                                    <td style="border-top: 1px black;text-align:right;border-top: 1px solid black;"><span t-esc="o.format_number_for_amount(o.amount_untaxed)"/> </td>
+                                    <td style="border-top: 1px black;text-align:right;border-top: 1px solid black;"> <t t-options='{"widget": "float", "precision": 2}' t-esc="o.amount_untaxed"/><!--<span t-esc="o.format_number_for_amount(o.amount_untaxed)"/>--> </td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
@@ -308,7 +310,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-left: 1px solid black;">TVA 20%</td>
-                                    <td style="text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_tax)"/> </td>
+                                    <td style="text-align:right;"> <t t-options='{"widget": "float", "precision": 2}' t-esc="o.amount_tax"/><!--<span t-esc="o.format_number_for_amount(o.amount_tax)"/>--> </td>
                                 </tr>
                                 <tr>
                                     <td style="border-color: white;"></td>
@@ -319,7 +321,7 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-bottom: 1px solid black;border-left: 1px solid black;font-weight: bold;">Montant TTC</td>
-                                    <td style="border-bottom: 1px solid black;text-align:right;font-weight: bold;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> </td>
+                                    <td style="border-bottom: 1px solid black;text-align:right;font-weight: bold;"> <t t-options='{"widget": "float", "precision": 2}' t-esc="o.amount_total"/><!--<span t-esc="o.format_number_for_amount(o.amount_total)"/>--> </td>
                                 </tr>
                             </tbody>
                         </table>

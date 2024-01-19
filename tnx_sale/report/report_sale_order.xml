@@ -302,11 +302,11 @@
                                                     <span style="font-size: 30px;">-></span>
                                                 </t>
                                                 <t t-else="">
-                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                    <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                 </t>
                                             </td>
                                             <td>
-                                               <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
+                                               <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
                                             </td>
                                         </tr>
                                             <!-- </t> -->
@@ -467,7 +467,7 @@
                                         <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Montant TTC</td>
                                         <td style="border: 1px solid #000;">
-                                            <t t-esc="o.format_number_for_amount(o.amount_total)"/>
+                                            <t t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/>
 
                                         </td>
                                     </tr>
@@ -487,8 +487,8 @@
 
                                         <td style="border: 1px solid #000;">
                                             <b>
-                                                <t t-esc="o.format_number_for_amount(o.amount_total)"/>
-                                                <t t-esc="o.currency_id.symbol"/>
+                                                <t t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/>
+                                                <!--<t t-esc="o.currency_id.symbol"/>-->
                                             </b>
 
                                         </td>
@@ -865,11 +865,11 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                            <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
 
                                                     </td>
                                                 </tr>
@@ -1274,11 +1274,11 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                            <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
+                                                        <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
 
                                                     </td>
                                                 </tr>
@@ -1722,11 +1722,11 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                            <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
-                                                        <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(line.price_subtotal))"/>
+                                                        <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(line.price_subtotal)).replace('.',',')"/>
 
                                                     </td>
                                                 </tr>
@@ -1852,7 +1852,7 @@
                             <div style="text-align:right">
                                 <b>
                                     Montant HT:
-                                    <span t-esc="doc.format_number_for_amount(doc.amount_untaxed)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_untaxed).replace('.',',')"/>
 
                                 </b>
                             </div>
@@ -1870,7 +1870,7 @@
                             <div style="text-align:right">
                                 <b>
                                     Montant TTC:
-                                    <span t-esc="doc.format_number_for_amount(doc.amount_total)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_total).replace('.',',')"/>
 
                                 </b>
                             </div>

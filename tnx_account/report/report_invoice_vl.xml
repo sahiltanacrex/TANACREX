@@ -250,7 +250,8 @@
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right;">
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
+                                                    <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>-->
+                                                    <t t-options='{"widget": "float", "precision": 2}' t-esc="line.price_subtotal"/>
                                                 </td>
                                             </tr>
 
@@ -276,7 +277,8 @@
                                         <td></td>
                                         <td style="text-align: right;font-weight: bold;">Sous-total</td>
                                         <td style="text-align:right;font-weight: bold;">
-                                            <t t-esc="o.format_number_for_amount(total_price_type)"/> <!--<t t-esc="o.currency_id.symbol"/>-->
+                                            <!--<t t-esc="o.format_number_for_amount(total_price_type)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
+                                            <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type"/>
                                         </td>
                                     </tr>
                                 </t>
@@ -317,7 +319,8 @@
                                                     <t t-esc="o.format_number_for_amount(line.punit)"/>
                                                 </td>
                                                 <td style="text-align:right">
-                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal)"/> <t t-esc="o.currency_id.symbol"/>
+                                                    <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
+                                                    <t t-options='{"widget": "float", "precision": 2}' t-esc="line.price_subtotal"/>
                                                 </td>
                                             </tr>
                                             </t>
@@ -333,7 +336,8 @@
                                         <td style="text-align: right">Sous-total</td>
                                         <td></td>
                                         <td style="text-align:right">
-                                            <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
+                                            <!--<t t-esc="o.format_number_for_amount(total_price_type_false)"/>-->
+                                            <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type_false"/>
                                         </td>
                                     </tr>
                                     <tr>
