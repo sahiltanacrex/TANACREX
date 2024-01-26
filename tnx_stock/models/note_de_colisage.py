@@ -19,6 +19,7 @@ class NoteDeColisage(models.TransientModel):
     origin = fields.Text()
     note_de_colisage_line_ids = fields.One2many(
         comodel_name='note.de.colisage.line', inverse_name='note_colisage_id')
+    seq_bis = fields.Char(related='move_id.seq_bis', store=True)
 
     @api.onchange('partner_id')
     def onchange_partner_id(self):

@@ -47,41 +47,57 @@
             <t t-set="company" t-value="res_company"/>
           </t>
         </t>
-        <div>
-          <br/>
-          <div class="row text-center" style="margin-left: 1px; margin-right: 1px; ">
-            <div class="col-6">
-              <div>
-                <img t-if="company.logo" style="max-height:40px"
-                     t-att-src="image_data_uri(company.logo)"/>
-              </div>
-              <span class="font-weight-bold">
-                MANUFACTURE DE BOUTONS SERVICE ETIQUETAGE
-              </span>
-              <br/>
-              <div>Lot 18 D Imerinafovoany </div>
-              <div style="font-size:13px;">BP. 11064 - Antananarivo - Madagascar</div>
-              <div>
-                <span>Tél :</span>
-                <span>034 02 441 35</span>
-              </div>
-              <div>
-                <span>E-mail : contact@tanacrex.com</span>
-              </div>
-              <div>
-                <div>
-                  <span>RCS 2003B00674 - STAT :</span>
-                  <span t-esc="company.stat"/>
+
+          <!-- TODO here we can create header -->
+
+          <div class="body_header">
+            <div> <!--class="container"-->
+              <div class="row">
+                <div class="col-md-6" style="width: 50%;">
+                  <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                 </div>
-                <div>
-                  <span>NIF :</span>
-                  <span t-esc="company.nif"/>
+                <div class="col-md-4" style="text-align:center; width: 50%;"><!--margin-left: 39px;padding-left: 67px;-->
+                  <div>
+                    <span>
+                      <t t-if="company.description">
+                        <t t-esc="company.description" />
+                      </t>
+                      <t t-else=""> <br/> SARL
+                        au capital de 30 000 000 AR</t>
+                    </span>
+                    <br />
+                  </div>
+                  <div t-if="company.stat">
+                    <span>RCS 2003B00674 - STAT:</span>
+                    <span t-esc="company.stat" />
+                  </div>
+                  <div t-if="company.nif">
+                    <span>NIF:</span>
+                    <span t-esc="company.nif" />
+                  </div>
+                  <div>
+                    <span>Lot 18 D Imerinafovoany </span>
+                  </div>
+                  <div>
+                    <span>B.P: 11064 - Tél : </span>
+                    <span t-esc="company.phone or company.mobile" />
+                  </div>
+                  <div>
+                    <span>Email: contact@tanacrex.com</span>
+                  </div>
+                  <div>
+                    <span>
+                      ANTANANARIVO - MADAGASCAR
+                    </span>
+
+                  </div>
                 </div>
-                <br/>
               </div>
             </div>
           </div>
-        </div>
+          <!--  END HEADER  -->
+        <br/>
+
         <t t-set="product_group_by_packings" t-value="o.get_clean_data()"/>
 
         <div>
@@ -92,6 +108,7 @@
               <span t-esc="o.partner_id.name"/>
             </h5>
             <h6>Invoice <span t-field="o.move_id.name"/></h6>
+            <h6>Reference <span t-field="o.move_id.seq_bis"/></h6>
             <t t-set="about_total" t-value="o.get_article_total_by_category()"/>
             <p style="max-width: 250px; margin:auto">
               In <span t-esc="o.get_number_carton()"/>
@@ -121,7 +138,7 @@
           <div class="col-6 text-right"> Net weight: <t t-esc="o.format_number_for_weight(net_weight_total)"/>
             Kgs </div>
         </div>
-        <div style="padding-left: 5%; padding-right: 5%">
+        <div style="padding-left: 2%; padding-right: 2%">
 
           <table class="table table-bordered" style="width: 100%">
             <t t-foreach="product_group_by_packings" t-as="packing">
@@ -140,20 +157,20 @@
               </tr>
               <tr t-foreach="product_group_by_packings[packing].get('line_ids', [])"
                   t-as='line'>
-                <td style="width: 50%;">
+                <td style="width:50%;padding: 3px 10px !important;font-size:10px">
                   <span t-field="line.product_id"/>
                   <t t-if="line.bc_client">(<t t-esc="line.bc_client"/>)</t>
                 </td>
-                <td>
+                <td style="padding: 3px 10px !important;font-size:10px">
                   <span t-esc="o.format_number_for_weight(line.gross_weight)"/>
                 </td>
-                <td>
+                <td style="padding: 3px 10px !important;font-size:10px">
                   <span t-esc="o.format_number_for_weight(line.net_weight)"/>
                 </td>
-                <td>
+                <td style="padding: 3px 10px !important;font-size:10px">
                   <span t-esc="o.get_right_number(line.items_count)"/>
                 </td>
-                <td>
+                <td style="padding: 3px 10px !important;font-size:10px">
                   <span t-field="line.bags"/>
                 </td>
               </tr>
