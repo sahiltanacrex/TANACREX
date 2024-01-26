@@ -228,7 +228,8 @@ class Product_template(models.Model):
 
         try:
             template_id = ir_model_data._xmlid_to_res_id(
-                "tnx_product.send_mail_bat", raise_if_not_found=False
+                # "tnx_product.send_mail_bat", raise_if_not_found=False
+                "tnx_product.new_send_email_bat", raise_if_not_found=False
             )
 
         except ValueError:
