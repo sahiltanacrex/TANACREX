@@ -31,8 +31,8 @@
                         <t t-else="">
                             invoice
                         </t>
-                        <t t-if="object.invoice_origin">
-                            (with reference: <t t-out="object.invoice_origin or ''">SUB003</t>)
+                        <t t-if="object.origin_sale_id.sale_order_partner">
+                            (with reference: <t t-out="object.origin_sale_id.sale_order_partner or ''">SUB003</t>)
                         </t>
                         amounting to a total of <strong t-out="format_amount(object.amount_total, object.currency_id) or ''">$ 143,750.00</strong>
 
