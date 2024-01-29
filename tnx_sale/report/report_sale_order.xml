@@ -865,7 +865,7 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                            <t t-esc="doc.format_number_for_amount(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
