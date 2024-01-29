@@ -41,7 +41,7 @@ class Sale_order_line(models.Model):
             else:
                 rec.box_qty = 0
 
-    @api.depends("discount", "price_unit", "tax_id", "development_expenses", "unit_qty")
+    @api.depends("discount", "price_unit", "tax_id", "development_expenses", "unit_qty", "is_flat_rate")
     def _compute_amount(self):
         for rec in self:
             for line in rec:
@@ -84,6 +84,8 @@ class Sale_order_line(models.Model):
                         rec.price_subtotal = (
                                 rec.product_id.minimum_price + rec.development_expenses
                         )
+            if rec.is_flat_rate:
+                rec.price_subtotal = rec.price_unit
 
     def _prepare_invoice_line(self, **optional_values):
         """
