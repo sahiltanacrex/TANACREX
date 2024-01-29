@@ -906,7 +906,7 @@
                                                     </t>
                                                 </td>
                                                 <td>
-                                                    <span t-esc="line.picking_name"/>
+                                                    <!--<span t-esc="line.picking_name"/>-->
                                                 </td>
                                                 <td>
                                                     <span t-field="line.product_id.product_type" />
@@ -1316,7 +1316,7 @@
                                                     </t>
                                                 </td>
                                                 <td>
-                                                    <span t-esc="line.picking_name"/>
+                                                    <!--<span t-esc="line.picking_name"/>-->
                                                 </td>
                                                 <td>
                                                     <span t-field="line.product_id.product_type" />
@@ -1326,7 +1326,8 @@
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.get_right_number(line.quantity)"/>
+                                                    <!--<t t-esc="doc.get_right_number(line.quantity)"/>-->
+                                                    <t t-esc="doc.get_right_number(line.product_uom_qty)"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="line.product_id.name"/>
@@ -1765,7 +1766,7 @@
                                                 </td>
                                                 <td>
                                                     <!--erreur-->
-                                                    <span t-esc="line.picking_name"/>
+                                                    <!--<span t-esc="line.picking_name"/>-->
                                                 </td>
                                                 <td>
                                                     <span t-field="line.product_id.product_type" />
