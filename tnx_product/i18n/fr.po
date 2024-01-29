@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-05 13:14+0000\n"
-"PO-Revision-Date: 2023-02-05 13:14+0000\n"
+"POT-Creation-Date: 2024-01-29 07:33+0000\n"
+"PO-Revision-Date: 2024-01-29 07:33+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,25 +27,229 @@ msgid "100 pièces"
 msgstr ""
 
 #. module: tnx_product
+#: model:mail.template,body_html:tnx_product.new_send_email_bat
+msgid ""
+"<h1>\n"
+"                    <span>ATTN </span>:\n"
+"                    <strong t-out=\"object.partner_id.name or ''\"/>\n"
+"                </h1>\n"
+"                <span>Dear Sir/Madam,</span><br/>\n"
+"                <span>Please find attached the artwork for approval :</span>\n"
+"                <ul>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Article :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.name or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Customer :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.partner_id.name or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Purchaser :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.donneur_ordre.name or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>PO Number :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.customer_reference or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Dimension :</u>\n"
+"                        </span>\n"
+"\n"
+"                        <span t-out=\"object.dimension or ''\"/>\n"
+"\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Action required :</u>\n"
+"                        </span>\n"
+"                        <span>\n"
+"                            Signature of attached document\n"
+"                        </span>\n"
+"                    </li>\n"
+"\n"
+"                </ul>\n"
+"                <p>\n"
+"                    Please validate and return the document signed and dated.\n"
+"                    <br/>\n"
+"                    Best Regards,\n"
+"                    <br/>\n"
+"                    <t t-esc=\"object.env.user.name\"/>,\n"
+"\n"
+"                </p>\n"
+"\n"
+"            "
+msgstr ""
+        "<h1>\n"
+        "                    <span>ATTN </span>:\n"
+        "                    <strong t-out=\"object.partner_id.name or ''\"/>\n"
+        "                </h1>\n"
+        "                <span>Bonjour,</span><br/>\n"
+        "                <span>Nous vous prions de trouver ci-joint le BAT pour validation :</span>\n"
+        "                <ul>\n"
+        "                    <li>\n"
+        "                        <span>\n"
+        "                            <u>Article :</u>\n"
+        "                        </span>\n"
+        "                        <span t-out=\"object.name or ''\"/>\n"
+        "                    </li>\n"
+        "                    <li>\n"
+        "                        <span>\n"
+        "                            <u>Client :</u>\n"
+        "                        </span>\n"
+        "                        <span t-out=\"object.partner_id.name or ''\"/>\n"
+        "                    </li>\n"
+        "                    <li>\n"
+        "                        <span>\n"
+        "                            <u>Donneur d’ordre :</u>\n"
+        "                        </span>\n"
+        "                        <span t-out=\"object.donneur_ordre.name or ''\"/>\n"
+        "                    </li>\n"
+        "                    <li>\n"
+        "                        <span>\n"
+        "                            <u>Réf client :</u>\n"
+        "                        </span>\n"
+        "                        <span t-out=\"object.customer_reference or ''\"/>\n"
+        "                    </li>\n"
+        "                    <li>\n"
+        "                        <span>\n"
+        "                            <u>Dimension :</u>\n"
+        "                        </span>\n"
+        "\n"
+        "                        <span t-out=\"object.dimension or ''\"/>\n"
+        "\n"
+        "                    </li>\n"
+        "                    <li>\n"
+        "                        <span>\n"
+        "                            <u>Action requise :</u>\n"
+        "                        </span>\n"
+        "                        <span>\n"
+        "                            Signature du document joint\n"
+        "                        </span>\n"
+        "                    </li>\n"
+        "\n"
+        "                </ul>\n"
+        "                <p>\n"
+        "                    Merci de valider et de retourner obligatoirement le document daté et signé.\n"
+        "                    <br/>\n"
+        "                    Bien Cordialement,\n"
+        "                    <br/>\n"
+        "                    <t t-esc=\"object.env.user.name\"/>,\n"
+        "\n"
+        "                </p>\n"
+        "\n"
+        "            "
+
+#. module: tnx_product
 #: model:mail.template,body_html:tnx_product.send_mail_bat
 msgid ""
 "<h1>\n"
 "                    Cher\n"
 "                    <strong t-out=\"object.partner_id.name or ''\"/>\n"
 "                </h1>\n"
-"                <span>Voici les informations sur votre BAT de votre commande de l'article:</span>\n"
-"                <span t-out=\"object.name or ''\"/>\n"
+"                <span>Nous vous prions de trouvez en pièce jointe le BAT pour validation :</span>\n"
 "                <ul>\n"
 "                    <li>\n"
-"                        <span t-out=\"object.employee_validator_id.name or ''\"/>\n"
+"                        <span>\n"
+"                            <u>Article :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.name or ''\"/>\n"
 "                    </li>\n"
 "                    <li>\n"
-"                        <span t-out=\"object.bat_date or ''\"/>\n"
+"                        <span>\n"
+"                            <u>Client :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.partner_id.name or ''\"/>\n"
 "                    </li>\n"
 "                    <li>\n"
-"                        <span t-out=\"object.validation_tools or ''\"/>\n"
+"                        <span>\n"
+"                            <u>Donneur d'ordre :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.donneur_ordre.name or ''\"/>\n"
 "                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Réf client :</u>\n"
+"                        </span>\n"
+"                        <span t-out=\"object.customer_reference or ''\"/>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u>Dimension :</u>\n"
+"                        </span>\n"
+"                        <!-- <t t-if=\"object.product_type=='button'\">\n"
+"                            <span t-out=\"object.get_right_number(object.line)\"/>L\n"
+"                        </t>\n"
+"                        <t t-elif=\"object.product_type='other'\">\n"
+"                            <span t-out=\"object.get_right_number(object.surface)\"/>mm²\n"
+"                        </t>\n"
+"                        <t t-else=\"\">\n"
+"                            <t t-if=\"object.form=='rectangle'\">\n"
+"                                <span t-out=\"object.get_right_number(object.lenght)\"/>mm x \n"
+"                                <span t-out=\"object.get_right_number(object.wide)\"/>mm\n"
+"                            </t>\n"
+"                            <t t-elif=\"object.form=='square'\">\n"
+"                                <span t-out=\"object.get_right_number(object.side)\"/>mm x \n"
+"                                <span t-out=\"object.get_right_number(object.side)\"/>mm\n"
+"                            </t>\n"
+"                            <t t-else=\"\">\n"
+"                                <span t-out=\"object.get_right_number(object.surface)\"/>mm²\n"
+"                            </t>\n"
+"\n"
+"                        </t> -->\n"
+"                        <span t-out=\"object.dimension or ''\"/>\n"
+"                        \n"
+"                    </li>\n"
+"                    <li>\n"
+"                        <span>\n"
+"                            <u> Action requise :</u>\n"
+"                        </span>\n"
+"                        <span>\n"
+"                            Signature du document joint\n"
+"                        </span>\n"
+"                    </li>\n"
+"\n"
 "                </ul>\n"
+"                <p>\n"
+"                    Merci de valider et de retrouver obligatoirement le document daté et signé\n"
+"                    <br/>\n"
+"                    Bien cordialement,\n"
+"                    <br/>\n"
+"                    <t t-esc=\"object.env.user.name\"/>,\n"
+"\n"
+"                </p>\n"
+"<!--                <div class=\"row\" style=\"color: #999999\">-->\n"
+"<!--                    <div class=\"text-left pr-2\" style=\"border-right: 1px solid #999999\">-->\n"
+"<!--                        <t t-esc=\"company.phone\"/>-->\n"
+"<!--                        <br/>-->\n"
+"<!--                        <t t-if=\"company.email\">-->\n"
+"<!--                            <a t-att-href=\"'mailto:%s' % company.email\" style=\"text-decoration:none; color: #999999;\">-->\n"
+"<!--                                <t t-esc=\"company.email\"/>-->\n"
+"<!--                            </a>-->\n"
+"<!--                        </t>-->\n"
+"<!--                        <br/>-->\n"
+"<!--                        <t t-if=\"company.website\">-->\n"
+"<!--                            <a t-att-href=\"'%s' % company.website\" style=\"text-decoration:none; color: #999999;\">-->\n"
+"<!--                                <t t-esc=\"company.website\"/>-->\n"
+"<!--                            </a>-->\n"
+"<!--                        </t>-->\n"
+"<!--                    </div>-->\n"
+"<!--                    <div class=\"ml-2\">-->\n"
+"<!--                        <img t-att-src=\"'/logo.png?company=%s' % (company.id or 0)\"-->\n"
+"<!--                             style=\"padding: 0px; margin: 0px; height: 48px;\"-->\n"
+"<!--                             t-att-alt=\"'%s' % company.name\"/>-->\n"
+"<!--                    </div>-->\n"
+"\n"
+"<!--                </div>-->\n"
 "\n"
 "            "
 msgstr ""
@@ -58,6 +262,9 @@ msgid ""
 "A consumable product is a product for which stock is not managed.\n"
 "A service is a non-material product you provide."
 msgstr ""
+"Un produit stockable est un produit dont on gère le stock. L'application \"Inventaire\" doit être installée. \n"
+"Un produit consommable, d'un autre côté, est un produit pour lequel le stock n'est pas géré.\n"
+"Un service est un produit immatériel que vous fournissez."
 
 #. module: tnx_product
 #: model:mail.template,name:tnx_product.send_mail_bat
@@ -68,24 +275,38 @@ msgstr ""
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__sticker
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__sticker
 msgid "Autocollant"
-msgstr "Sticker"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__form__other
+msgid "Autre"
+msgstr ""
 
 #. module: tnx_product
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__other
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__other
 msgid "Autres"
-msgstr "Others"
+msgstr ""
 
 #. module: tnx_product
 #: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
 msgid "Autres informations"
-msgstr "Other informations"
+msgstr ""
 
 #. module: tnx_product
 #: model:mail.template,subject:tnx_product.send_mail_bat
 #: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
 msgid "BAT"
 msgstr ""
+
+#. module: tnx_product
+#: model:mail.template,subject:tnx_product.new_send_email_bat
+msgid ""
+"BAT for {{ object.name }} - {{ object.bat_date }}  {{ object.partner_id.id "
+"}} - {{ object.customer_reference }}"
+msgstr ""
+        "BAT pour {{ object.name }} - {{ object.bat_date }}  {{ object.partner_id.id "
+        "}} - {{ object.customer_reference }}"
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__client_order
@@ -97,7 +318,17 @@ msgstr ""
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__button
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__button
 msgid "Bouton"
-msgstr "Button"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__form__square
+msgid "Carré"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__form__circle
+msgid "Cercle"
+msgstr ""
 
 #. module: tnx_product
 #: model:ir.model.fields,help:tnx_product.field_product_product__color
@@ -115,7 +346,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__color
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__color
 msgid "Couleur"
-msgstr "Color"
+msgstr ""
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_hscode_product__create_uid
@@ -132,6 +363,17 @@ msgid "Created on"
 msgstr ""
 
 #. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__side
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__side
+msgid "Côté (mm)"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__dp
+msgid "DP"
+msgstr ""
+
+#. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__bat_date
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__bat_date
 msgid "Date"
@@ -142,6 +384,7 @@ msgstr ""
 #: model:ir.model.fields,help:tnx_product.field_product_template__uom_id
 msgid "Default unit of measure used for all stock operations."
 msgstr ""
+"Unité de mesure par défaut utilisée pour toutes les opérations de stock"
 
 #. module: tnx_product
 #: model:ir.model.fields,help:tnx_product.field_product_product__uom_po_id
@@ -150,6 +393,8 @@ msgid ""
 "Default unit of measure used for purchase orders. It must be in the same "
 "category as the default unit of measure."
 msgstr ""
+"Unité de mesure par défaut utilisée pour les bons de commande. Elle doit "
+"être dans la même catégorie que l'unité de mesure par défaut."
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__devise
@@ -161,7 +406,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__diameter
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__diameter
 msgid "Diamètre (mm)"
-msgstr "Diameter (mm)"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__dimension
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__dimension
+msgid "Dimension"
+msgstr ""
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_hscode_product__display_name
@@ -188,6 +439,11 @@ msgid "Désignation"
 msgstr ""
 
 #. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__encre
+msgid "Encre"
+msgstr ""
+
+#. module: tnx_product
 #: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
 msgid "Envoyer BAT par e-mail"
 msgstr ""
@@ -199,10 +455,16 @@ msgid "Epaisseur (mm)"
 msgstr ""
 
 #. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__is_fees
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__is_fees
+msgid "Est un frais?"
+msgstr ""
+
+#. module: tnx_product
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_material__product_type__label
 #: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__label
 msgid "Etiquette"
-msgstr "Label"
+msgstr ""
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__attachment_ids
@@ -211,9 +473,20 @@ msgid "Fichier BAT"
 msgstr ""
 
 #. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__form
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__form
+msgid "Form"
+msgstr ""
+
+#. module: tnx_product
 #: model:ir.actions.act_window,name:tnx_product.action_product_format
 #: model_terms:ir.ui.view,arch_db:tnx_product.view_product_format_tree
 msgid "Format product"
+msgstr ""
+
+#. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
+msgid "Forme"
 msgstr ""
 
 #. module: tnx_product
@@ -228,6 +501,11 @@ msgid "Group By"
 msgstr ""
 
 #. module: tnx_product
+#: model_terms:ir.ui.view,arch_db:tnx_product.inherited_product_template_tnx_view_form
+msgid "HS Code"
+msgstr ""
+
+#. module: tnx_product
 #: model:ir.actions.act_window,name:tnx_product.action_hscode_product
 #: model_terms:ir.ui.view,arch_db:tnx_product.view_hscode_product_tree
 #: model_terms:ir.ui.view,arch_db:tnx_product.view_hscode_product_view
@@ -237,12 +515,6 @@ msgstr ""
 #. module: tnx_product
 #: model:ir.ui.menu,name:tnx_product.hscode_product_menu
 msgid "HS code produit"
-msgstr ""
-
-#. module: tnx_product
-#: model:ir.model.fields,field_description:tnx_product.field_product_product__height
-#: model:ir.model.fields,field_description:tnx_product.field_product_template__height
-msgid "Hauteur"
 msgstr ""
 
 #. module: tnx_product
@@ -263,6 +535,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__info_frs
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__info_frs
 msgid "Info frs"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__wide
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__wide
+msgid "Largeur (mm)"
 msgstr ""
 
 #. module: tnx_product
@@ -295,7 +573,7 @@ msgstr ""
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__length
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__length
-msgid "Longueur"
+msgid "Longueur (mm)"
 msgstr ""
 
 #. module: tnx_product
@@ -336,6 +614,11 @@ msgid "Nombre de trous"
 msgstr ""
 
 #. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__nylon
+msgid "Nylon"
+msgstr ""
+
+#. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__origin
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__origin
 msgid "Origine"
@@ -367,13 +650,13 @@ msgstr ""
 #. module: tnx_product
 #: model:ir.model,name:tnx_product.model_product_template
 msgid "Product Template"
-msgstr ""
+msgstr "Modèle d'article"
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__detailed_type
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__detailed_type
 msgid "Product Type"
-msgstr ""
+msgstr "Type d'article"
 
 #. module: tnx_product
 #: model:ir.ui.menu,name:tnx_product.product_format_menu
@@ -394,7 +677,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__uom_po_id
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__uom_po_id
 msgid "Purchase UoM"
-msgstr ""
+msgstr "Unité d'achat"
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__qty_min
@@ -403,9 +686,45 @@ msgid "Quantité minimum"
 msgstr ""
 
 #. module: tnx_product
+#: model:ir.model.fields,field_description:tnx_product.field_product_product__radius
+#: model:ir.model.fields,field_description:tnx_product.field_product_template__radius
+msgid "Rayon (mm)"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__form__rectangle
+msgid "Rectangle"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__ruban
+msgid "Ruban"
+msgstr ""
+
+#. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__customer_reference
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__customer_reference
 msgid "Référence Client"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__satin
+msgid "Satin"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__satin_recycle
+msgid "Satin recyclé"
+msgstr ""
+
+#. module: tnx_product
+#: model:ir.model.fields.selection,name:tnx_product.selection__product_template__product_type__satin_a_lysiere
+msgid "Satin à Lysière"
+msgstr ""
+
+#. module: tnx_product
+#: model:mail.template,name:tnx_product.new_send_email_bat
+msgid "Send mail bat"
 msgstr ""
 
 #. module: tnx_product
@@ -417,7 +736,7 @@ msgstr ""
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__surface
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__surface
-msgid "Surface"
+msgid "Surface (m²)"
 msgstr ""
 
 #. module: tnx_product
@@ -447,7 +766,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__uom_id
 #: model:ir.model.fields,field_description:tnx_product.field_product_template__uom_id
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unité de mesure"
 
 #. module: tnx_product
 #: model:ir.model.fields,field_description:tnx_product.field_product_product__employee_validator_id
