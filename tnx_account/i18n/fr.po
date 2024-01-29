@@ -1109,7 +1109,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Total Amount"
-msgstr "Montant total"
+msgstr "Montant Total"
 
 #. module: tnx_account
 #: model:ir.model,name:tnx_account.model_stock_picking

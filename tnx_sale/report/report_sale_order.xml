@@ -964,8 +964,8 @@
                             <div style="text-align:right">
                                 <!-- <t t-set="amount_total_with_air_freight" t-value="doc.total_amount_ex(air_freight_price, doc.amount_total)"/> -->
                                 <b>
-                            Montant:
-                                    <span t-esc="doc.format_number_for_amount(doc.amount_total)"/>
+                            Amount:
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_total).replace('.',',')"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>
@@ -1404,8 +1404,8 @@
                             <div style="text-align:right">
                                 <!-- <t t-set="amount_total_with_air_freight" t-value="doc.total_amount_ex(air_freight_price, doc.amount_total)"/> -->
                                 <b>
-                            Montant:
-                                    <span t-esc="doc.format_number_for_amount(doc.amount_total)"/>
+                            Amount:
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_total).replace('.',',')"/>
                                     <t t-esc="doc.currency_id.symbol"/>
                                 </b>
                             </div>
