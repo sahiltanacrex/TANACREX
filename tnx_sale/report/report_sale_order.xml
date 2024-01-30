@@ -246,7 +246,8 @@
                                                 <span t-field="line.product_id.product_type" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.product_id.default_code" />
+                                                <t t-esc="line.product_id.name" />
+                                                <!--<t t-esc="line.product_id.default_code" />-->
                                             </td>
                                             <td>
                                                 <t t-esc="line.product_id.customer_reference" />
@@ -348,7 +349,7 @@
                                                 <t t-esc="line.product_id.name" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.product_id.default_code" />
+                                                <t t-esc="line.product_id.name" />
                                             </td>
                                             <td>
                                                 <t t-esc="line.product_id.customer_reference" />
@@ -373,7 +374,7 @@
                                                 <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
                                             </td>
                                             <td>
-                                                <t t-esc="o.format_number_for_amount(line.price_subtotal)"/>
+                                                <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
 
                                             </td>
                                         </tr>
@@ -390,12 +391,14 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                     <td>
-                                        <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
+                                        <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
 
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
@@ -415,10 +418,11 @@
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
+                                    <td style="border:none"></td>
+                                    <td style="border:none"></td>
                                     <td style="border: 1px solid #000;">Sub-total</td>
-                                    <td style="border: 1px solid #000;"></td>
                                     <td style="border: 1px solid #000;">
-                                        <t t-esc="o.format_number_for_amount(total_price_type_false)"/>
+                                        <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
 
                                     </td>
                                 </tr>
@@ -436,7 +440,7 @@
                                         <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Amount untaxed</td>
                                         <td style="border: 1px solid #000;">
-                                            <t t-esc="o.format_number_for_amount(o.amount_untaxed)"/>
+                                            <t t-esc="o.format_number_for_amount(o.amount_untaxed).replace('.',',')"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -451,7 +455,7 @@
                                         <td style="border:none"></td>
                                         <td style="border: 1px solid #000;">Taxes 20%</td>
                                         <td style="border: 1px solid #000;">
-                                            <t t-esc="o.format_number_for_amount(o.amount_tax)"/>
+                                            <t t-esc="o.format_number_for_amount(o.amount_tax).replace('.',',')"/>
 
                                         </td>
                                     </tr>
@@ -925,7 +929,7 @@
 
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
 
                                                 </td>
                                             </tr>
@@ -1337,7 +1341,7 @@
 
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
 
                                                 </td>
                                             </tr>
@@ -1743,7 +1747,7 @@
                                             <td>Sous-total</td>
                                             <td></td>
                                             <td>
-                                                <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(total_price_type))"/>
+                                                <t t-esc="doc.format_number_for_amount(doc.amount_ttc_ls(total_price_type)).replace('.',',')"/>
                                                 <t t-esc="doc.currency_id.symbol"/>
                                             </td>
                                         </tr>
@@ -1788,7 +1792,7 @@
                                                 </td>
                                                 <td>
 
-                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal)"/>
+                                                    <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
 
                                                 </td>
                                             </tr>
@@ -1862,7 +1866,7 @@
                             <div style="text-align:right">
                                 <b>
                                     TVA 20%:
-                                    <span t-esc="doc.format_number_for_amount(doc.amount_tax)"/>
+                                    <span t-esc="doc.format_number_for_amount(doc.amount_tax).replace('.',',')"/>
 
                                 </b>
                             </div>
