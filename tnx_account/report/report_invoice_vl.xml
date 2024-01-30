@@ -87,7 +87,7 @@
                             </div>
                             <div style="font-size:18px;">
                                 <b>Invoice date: </b>
-                                <span t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
+                                <span t-if="o and o.invoice_date" t-esc="o.invoice_date.strftime('%d/%m/%Y')" />
                             </div>
                         </div>
                         <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
@@ -305,7 +305,8 @@
                                                     <t t-esc="line.product_id.name" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.product_id.product_type" />
+                                                    <t t-esc="line.product_id.name" />
+<!--                                                    <t t-esc="line.product_id.product_type" />-->
                                                 </td>
                                                 <td>
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
@@ -313,10 +314,21 @@
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
+                                                <!--UoM-->
+                                                <td>
+                                                    <t t-if="line.product_id.product_type in ['button','label','sticker']">
+                                                        <span>Pieces</span>
+                                                    </t>
+                                                    <t t-elif="line.product_id.product_type == 'ruban'">
+                                                        <span>Rolls</span>
+                                                    </t>
+                                                    <t t-else="">
+                                                    </t>
+                                                </td>
                                                 <td style="text-align:right">
 <!--                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t-->
 <!--                                                        t-esc="o.currency_id.symbol"/>-->
-                                                    <t t-esc="o.format_number_for_amount(line.punit)"/>
+                                                    <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
                                                 </td>
                                                 <td style="text-align:right">
                                                     <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
@@ -359,7 +371,7 @@
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
                                         <td style="border-top: 1px black;border-left: 1px solid black;border-bottom: 1px solid;">Total Amount</td>
-                                        <td style="border-top: 1px black;border: 1px solid;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total)"/> </td>
+                                        <td style="border-top: 1px black;border: 1px solid;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/> </td>
                                     </tr>
                             </tbody>
                         </table>
