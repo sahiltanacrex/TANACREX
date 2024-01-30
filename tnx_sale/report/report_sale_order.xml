@@ -321,8 +321,9 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>Sous-total</td>
                                         <td></td>
+                                        <td></td>
+                                        <td>Sous-total</td>
                                         <td>
                                             <t t-esc="o.format_number_for_amount(total_price_type)"/>
                                         </td>
@@ -545,7 +546,7 @@
                                                 p {margin-bottom: 0em;}
                                     </style>
                                     <span t-if="o.payment_method"> Payment: </span>
-                                    <span t-field="o.payment_method"/> -- <span>Payment term: </span> <span t-if="o.payment_term_id.with_context(lang=o.partner_id.lang)" t-field="o.payment_term_id" />
+                                    <span t-field="o.payment_method"/> -- <span>Payment term: </span> <span t-if="o.payment_term_id" t-field="o.payment_term_id" />
                                     <div>
                                         <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     </div>
@@ -886,8 +887,9 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Sous-total</td>
                                             <td></td>
+                                            <td></td>
+                                            <td>Sous-total</td>
                                             <td>
                                                 <t t-esc="doc.format_number_for_amount(total_price_type)"/>
                                                 <t t-esc="doc.currency_id.symbol"/>
