@@ -250,20 +250,20 @@ class AccountMoveInherit(models.Model):
         values = "".join([str(item) for item in list_info])
         return values
 
-    def action_invoice_sent(self):
-        res = super(AccountMoveInherit, self).action_invoice_sent()
-        template = self.env["mail.template"].browse(
-            res["context"]["default_template_id"]
-        )
-        partner_type = {
-            "ex": "tnx_account.invoice_ex",
-            "ls": "tnx_account.invoice_ls",
-            "vl": "tnx_account.invoice_vl",
-        }
-        template.report_template = self.env.ref(
-            partner_type.get(self.partner_id.partner_type, "tnx_account.invoice_ex")
-        )
-        return res
+    # def action_invoice_sent(self):
+    #     res = super(AccountMoveInherit, self).action_invoice_sent()
+    #     template = self.env["mail.template"].browse(
+    #         res["context"]["default_template_id"]
+    #     )
+    #     partner_type = {
+    #         "ex": "tnx_account.invoice_ex",
+    #         "ls": "tnx_account.invoice_ls",
+    #         "vl": "tnx_account.invoice_vl",
+    #     }
+    #     template.report_template = self.env.ref(
+    #         partner_type.get(self.partner_id.partner_type, "tnx_account.invoice_ex")
+    #     )
+    #     return res
 
     def get_right_number(self, val):
         val = round(val, 2)
