@@ -242,16 +242,18 @@
                                                 <td style="text-align:right;">
                                                     <t t-if="line.product_id.is_fees == True">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                        <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>-->
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                     </t>
                                                     <t t-else="">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
-                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
+                                                        <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>-->
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right;">
-                                                    <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>-->
-                                                    <t t-options='{"widget": "float", "precision": 2}' t-esc="line.price_subtotal"/>
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
+                                                    <!--<t t-options='{"widget": "float", "precision": 2}' t-esc="line.price_subtotal"/>-->
                                                 </td>
                                             </tr>
 
@@ -328,11 +330,12 @@
                                                 <td style="text-align:right">
 <!--                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t-->
 <!--                                                        t-esc="o.currency_id.symbol"/>-->
-                                                    <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                    <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                 </td>
                                                 <td style="text-align:right">
                                                     <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
-                                                    <t t-options='{"widget": "float", "precision": 2}' t-esc="line.price_subtotal"/>
+                                                    <!--<t t-options='{"widget": "float", "precision": 2}' t-esc="line.price_subtotal"/>-->
+                                                    <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
                                                 </td>
                                             </tr>
                                             </t>

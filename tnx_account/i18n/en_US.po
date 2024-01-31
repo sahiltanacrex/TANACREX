@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-12 15:03+0000\n"
-"PO-Revision-Date: 2024-01-12 15:03+0000\n"
+"POT-Creation-Date: 2024-01-31 14:44+0000\n"
+"PO-Revision-Date: 2024-01-31 14:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+msgid "-- <span>Due date: </span>"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -108,6 +113,47 @@ msgid ""
 msgstr ""
 
 #. module: tnx_account
+#: model:mail.template,body_html:tnx_account.email_template_edi_invoice_inherit
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        ATTN :\n"
+"                        <t t-if=\"object.partner_id.parent_id\">\n"
+"                            <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t> (<t t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+"                        </t>\n"
+"                        <t t-else=\"\">\n"
+"                            <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"                        </t>\n"
+"                        <br/><br/>\n"
+"                        Dear Sir/Madam,\n"
+"                        <br/><br/>\n"
+"                        Please find attached the\n"
+"                        <t t-if=\"object.name\">\n"
+"                            invoice <strong t-out=\"object.name or ''\">INV/2021/05/0005</strong>\n"
+"                        </t>\n"
+"                        <t t-else=\"\">\n"
+"                            invoice\n"
+"                        </t>\n"
+"                        <t t-if=\"object.origin_sale_id.sale_order_partner\">\n"
+"                            (with reference: <t t-out=\"object.origin_sale_id.sale_order_partner or ''\">SUB003</t>)\n"
+"                        </t>\n"
+"                        amounting to a total of <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">$ 143,750.00</strong>\n"
+"\n"
+"                        . The invoice is due by : <strong t-out=\"object.invoice_date_due.strftime('%d/%m/%Y') or ''\"/>\n"
+"                        <br/><br/>\n"
+"                        We look forward to hearing from you soon,\n"
+"                        <br/><br/>\n"
+"                        Best Regards,\n"
+"                        <t t-if=\"object.invoice_user_id.signature\">\n"
+"                            <br/>\n"
+"                            <t t-out=\"object.invoice_user_id.signature or ''\">--<br/>Mitchell Admin</t>\n"
+"                        </t>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
@@ -162,7 +208,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>B.P: 11064 - Tél : </span>"
-msgstr "<span>B.P.:11064 - Tel : </span>"
+msgstr "<span>B.P: 11064 - Tel : </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -185,6 +231,12 @@ msgstr "<span>This is not VL invoice</span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "<span>Cette facture n'est pas une facture EX</span>"
 msgstr "<span>This is not EX invoice</span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Due date: </span>"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -225,6 +277,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Pieces</span>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>RCS 2003B00674 - STAT:</span>"
 msgstr ""
 
@@ -233,6 +292,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>RCS: </span>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "<span>Rolls</span>"
 msgstr ""
 
 #. module: tnx_account
@@ -255,6 +321,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.view_sequences_vl_tree
 msgid "Abonnement"
 msgstr "Subscription"
+
+#. module: tnx_account
+#: model:ir.model,name:tnx_account.model_account_invoice_send
+msgid "Account Invoice Send"
+msgstr ""
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__account_move_id
@@ -311,6 +382,11 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
+msgid "Avoir la signature"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "BC"
@@ -358,7 +434,7 @@ msgstr "Company Bank"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Bon de livraison"
-msgstr "Delivery Note"
+msgstr "Delivery note"
 
 #. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__picking_ids
@@ -501,6 +577,13 @@ msgid "Has Message"
 msgstr ""
 
 #. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__have_signature
+#: model:ir.model.fields,field_description:tnx_account.field_account_move__have_signature
+#: model:ir.model.fields,field_description:tnx_account.field_account_payment__have_signature
+msgid "Have Signature"
+msgstr ""
+
+#. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_move_line__hs_code
 msgid "Hs Code"
 msgstr ""
@@ -564,6 +647,18 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.view_move_form
 #: model_terms:ir.ui.view,arch_db:tnx_account.view_move_picking_form
 msgid "Invoice Lines"
+msgstr ""
+
+#. module: tnx_account
+#: model:mail.template,name:tnx_account.email_template_edi_invoice_inherit
+msgid "Invoice: Send by email inherit"
+msgstr ""
+
+#. module: tnx_account
+#: model:mail.template,report_name:tnx_account.email_template_edi_invoice_inherit
+msgid ""
+"Invoice_{{ (object.name or '').replace('/','_') }}{{ object.state == 'draft'"
+" and '_draft' or '' }}"
 msgstr ""
 
 #. module: tnx_account
@@ -798,6 +893,7 @@ msgid "Price rental"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "Prix Unitaire"
@@ -808,6 +904,11 @@ msgstr "Unit Price"
 #: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 msgid "Prix/UDM"
 msgstr "Price/UOM"
+
+#. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_account_move_line__punit
+msgid "Punit"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -965,7 +1066,8 @@ msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
-msgid "Total amount"
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Total Amount"
 msgstr ""
 
 #. module: tnx_account
@@ -993,6 +1095,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_unread_counter
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_unread_counter
 msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "UoM"
 msgstr ""
 
 #. module: tnx_account
@@ -1076,4 +1185,9 @@ msgstr ""
 #. module: tnx_account
 #: model:ir.model,name:tnx_account.model_tnx_vl
 msgid "tnx.vl"
+msgstr ""
+
+#. module: tnx_account
+#: model:mail.template,subject:tnx_account.email_template_edi_invoice_inherit
+msgid "{{ object.company_id.name }} Invoice (Ref {{ object.name or 'n/a' }})"
 msgstr ""
