@@ -430,7 +430,7 @@
                             <div class="col-7" style="text-align: center;">
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
                                 <span t-field="o.delivery_adress.name"/> &#x9;
-                            </div>
+                            </div><br></br>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street">
                                 <span t-field="o.delivery_adress.street"/> &#x9;
                             </div>
@@ -452,12 +452,12 @@
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.phone">
                                 <span>Tel: </span>
                                 <span t-field="o.delivery_adress.phone"/> &#x9;
-                            </div>
+                            </div><br/>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.nif">
                                 <span>NIF: </span>
-                                <span t-field="o.partner_id.nif"/> &#x9;
+                                <span t-field="o.delivery_adress.nif"/> &#x9;
                             </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.stat">
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.stat">
                                 <span>STAT: </span>
                                 <span t-field="o.delivery_adress.stat"/> &#x9;
                             </div>
@@ -469,7 +469,7 @@
                                 <span>CIF: </span>
                                 <span t-field="o.delivery_adress.cif"/> &#x9;
                             </div>
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.partner_id.free_val">
+                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.free_val">
                                 <span t-field="o.delivery_adress.free_val"/> &#x9;
                             </div>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.fax_number">

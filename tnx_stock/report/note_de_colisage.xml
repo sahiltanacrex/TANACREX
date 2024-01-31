@@ -107,7 +107,7 @@
               <br/>
               <span t-esc="o.partner_id.name"/>
             </h5>
-            <h6>Invoice <span t-field="o.move_id.name"/></h6>
+            <h6>Invoice <span t-field="o.move_id.name_bis"/></h6>
             <h6>Reference <span t-field="o.move_id.seq_bis"/></h6>
             <t t-set="about_total" t-value="o.get_article_total_by_category()"/>
             <p style="max-width: 250px; margin:auto">

@@ -87,17 +87,17 @@ class Product_template(models.Model):
     # ! add fields
     product_type = fields.Selection(
         [
-            ("ruban", "Ruban"),
-            ("button", "Bouton"),
-            ("label", "Etiquette"),
-            ("sticker", "Autocollant"),
-            ("satin_a_lysiere", "Satin à Lysière"),
-            ("satin", "Satin"),
-            ("satin_recycle", "Satin recyclé"),
-            ("encre", "Encre"),
-            ("nylon", "Nylon"),
-            ("dp", "DP"),
-            ("other", "Autres"),
+            ("ruban", _("Ruban")),
+            ("button", _("Bouton")),
+            ("label", _("Etiquette")),
+            ("sticker", _("Autocollant")),
+            ("satin_a_lysiere", _("Satin à Lysière")),
+            ("satin", _("Satin")),
+            ("satin_recycle", _("Satin recyclé")),
+            ("encre", _("Encre")),
+            ("nylon", _("Nylon")),
+            ("dp", _("DP")),
+            ("other", _("Autres")),
         ],
         string="Type du produit",
     )
@@ -116,7 +116,7 @@ class Product_template(models.Model):
     line = fields.Float("Ligne")
     diameter = fields.Float(string="Diamètre (mm)", required=False)
     surface = fields.Float(
-        "Surface (m²)",
+        "Surface (mm²)",
     )
     dimension = fields.Char(sting="Dimension", compute="_compute_dimension")
     form = fields.Selection(
