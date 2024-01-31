@@ -373,8 +373,8 @@
                                         <td style="border-color: white;border-top: black;"></td>
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
-                                        <td style="border-top: 1px black;border-left: 1px solid black;border-bottom: 1px solid;">Total Amount</td>
-                                        <td style="border-top: 1px black;border: 1px solid;text-align:right;"><span t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/> </td>
+                                        <td style="border-top: 1px black;border-left: 1px solid black;border-bottom: 1px solid;font-weight: bold;">Total Amount</td>
+                                        <td style="border-top: 1px black;border: 1px solid;text-align:right;font-weight: bold;"><span t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/> </td>
                                     </tr>
                             </tbody>
                         </table>
