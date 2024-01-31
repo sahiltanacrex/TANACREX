@@ -206,7 +206,7 @@
                                                 <td style="text-align: left">
                                                     <span t-field="line.product_id.name" />
                                                 </td>
-                                                <td style="text-align: right">
+                                                <td style="text-align: left">
                                                     <t t-if="line.product_id.product_type == 'button'">
                                                         <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
