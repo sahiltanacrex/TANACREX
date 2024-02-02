@@ -232,7 +232,7 @@
                                                     <t t-if="line.product_id.product_type in ['button','label','sticker']">
                                                         <span>Pieces</span>
                                                     </t>
-                                                    <t t-elif="line.product_id.product_type == 'ruban'">
+                                                    <t t-elif="line.product_id.product_type in ['ruban','encre']">
                                                         <span>Rolls</span>
                                                     </t>
                                                     <t t-else="">
