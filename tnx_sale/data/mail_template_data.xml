@@ -40,7 +40,10 @@
                         We look forward to receiving your approval and confirmation,
                         <br/><br/>
                         Best Regards,
-                        <br/><br/>
+                        <t t-if="object.user_id.signature">
+                            <br />
+                            <t t-out="object.user_id.signature or ''">--<br/>Mitchell Admin</t>
+                        </t>
                     </p>
                 </div>
             </field>
