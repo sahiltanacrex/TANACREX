@@ -24,6 +24,7 @@ class MrpProduction(models.Model):
     bc_client = fields.Char(
         "Bc Client", compute='_set_fields_depends_on_origin',inverse="inverse_bc_client_fields",store=True)
     line_product = fields.Float("Ligne", related="product_id.line")
+    dimension = fields.Char(sting="Dimension", related="product_id.product_tmpl_id.dimension")
     material_product = fields.Char(store=True, compute="_compute_material_product", default=lambda self: self.product_id.material_id.name if self.product_id else False)
     product_type = fields.Selection(
         "Type de produit", related="product_id.product_type", store=True
@@ -37,6 +38,7 @@ class MrpProduction(models.Model):
     )
     end_of_production = fields.Date(compute="_compute_end_of_production")
     product_qty_delivered = fields.Float('Delivered Quantity', compute='_compute_qty_delivered_product', store=True , default=0.0)
+    product_qty_still_to_be_delivered = fields.Float(compute='_compute_qty_still_to_be_delivered' , default=0.0)
 
     @api.depends('order_id')
     def _compute_qty_delivered_product(self):
@@ -45,6 +47,12 @@ class MrpProduction(models.Model):
                 production.product_qty_delivered = float(sum(production.order_id.order_line.filtered(lambda line: line.product_id == production.product_id).mapped('qty_delivered')))
             else:
                 production.product_qty_delivered = 0.0
+
+
+    def _compute_qty_still_to_be_delivered(self):
+        for production in self:
+            production.product_qty_still_to_be_delivered = production.product_qty - production.product_qty_delivered
+
 
 
     def _compute_qty_development(self):

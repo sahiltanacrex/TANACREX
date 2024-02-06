@@ -70,14 +70,16 @@
                     <field name="end_of_production" string="Fin Prod" />
                 </xpath>
                 <xpath expr="//field[@name='product_qty']" position="after">
-                    <field name="product_qty_delivered" string="Qtté livré" />
+                    <field name="product_qty_delivered" string="Qté livré" />
+                    <field name="product_qty_still_to_be_delivered" string="Qté reste à livrer" />
                 </xpath>
                 <xpath expr="//field[@name='product_qty']" position="attributes">
-                    <attribute name="string">Qtté commander</attribute>
+                    <attribute name="string">Qté commander</attribute>
                 </xpath>
                 <xpath expr="//field[@name='product_id']" position="after">
 
-                    <field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" string='Taille'/>
+                    <!--<field name="line_product" attrs="{'invisible': [('check_bc','=',False)]}" optional="show" string='Taille'/>-->
+                    <field name="dimension" optional="show" string='Taille'/>
                     <field name="product_type" optional="show" readonly="1" string="Type"/>
                     <field name="material_product" optional="show" readonly="1" string="Matière"/>
                     <field name="color_product" widget="color" readonly="1" />
