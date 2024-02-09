@@ -73,7 +73,10 @@
                     <br/>
                     Best Regards,
                     <br/>
-                    <t t-esc="object.env.user.name"></t>,
+                    <t t-if="object.env.user.signature">
+                        <br />
+                        <t t-out="object.env.user.signature or ''">--<br/>Mitchell Admin</t>
+                    </t>
 
                 </p>
 
