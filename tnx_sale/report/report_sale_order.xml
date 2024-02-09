@@ -246,7 +246,8 @@
                                                 <span t-field="line.product_id.product_type" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.product_id.name" />
+                                                <t t-esc="line.name" />
+                                                <!--<t t-esc="line.product_id.name" />-->
                                                 <!--<t t-esc="line.product_id.default_code" />-->
                                             </td>
                                             <td>
