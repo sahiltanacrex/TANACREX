@@ -16,6 +16,7 @@ class ResPartner(models.Model):
         required=False)
 
     cif = fields.Char('CIF')
+    siret = fields.Char('SIRET')
     free_val = fields.Char(string='')
 
     partner_type = fields.Selection([

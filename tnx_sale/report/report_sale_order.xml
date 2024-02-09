@@ -303,7 +303,7 @@
                                                     <span style="font-size: 30px;">-></span>
                                                 </t>
                                                 <t t-else="">
-                                                    <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                    <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                 </t>
                                             </td>
                                             <td>
@@ -371,8 +371,8 @@
                                             </td>
 
                                             <td>
-                                                <!--<t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                <t t-esc="o.format_number_for_amount_four(line.price_unit).replace('.',',')"/>
+                                                <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
                                             </td>
                                             <td>
                                                 <t t-esc="o.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
@@ -541,7 +541,7 @@
 
                         <div class="row">
                             <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <style type="text/css">
                                                 p {margin-bottom: 0em;}
                                     </style>
@@ -556,6 +556,9 @@
 
                                 </div>
                             </t>
+                            <div class="col-3" t-if="o.have_signature">
+                                <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
+                            </div>
                         </div>
 
 
@@ -870,7 +873,7 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-esc="doc.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                            <t t-esc="doc.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
@@ -927,8 +930,7 @@
                                                     <t t-esc="line.product_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
-
+                                                    <t t-esc="doc.format_number_for_amount_four(line.price_unit).replace('.',',')"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
@@ -996,7 +998,7 @@
 
                             <div class="row">
                                 <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
-                                    <div class="col-6">
+                                    <div class="col-9">
                                         <style type="text/css">
                                     p {margin-bottom: 0em;}
                                         </style>
@@ -1010,6 +1012,9 @@
 
                                     </div>
                                 </t>
+                                <div class="col-3" t-if="doc.have_signature">
+                                    <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
+                                </div>
                             </div>
 
 
@@ -1280,7 +1285,7 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-esc="doc.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                            <t t-esc="doc.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
@@ -1339,8 +1344,7 @@
                                                     <t t-esc="line.product_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <t t-esc="doc.format_number_for_amount(line.price_unit)"/>
-
+                                                    <t t-esc="doc.format_number_for_amount_four(line.price_unit).replace('.',',')"/>
                                                 </td>
                                                 <td>
                                                     <t t-esc="doc.format_number_for_amount(line.price_subtotal).replace('.',',')"/>
@@ -1446,7 +1450,7 @@
 
                             <div class="row">
                                 <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
-                                    <div class="col-6">
+                                    <div class="col-9">
                                         <style type="text/css">
                                     p {margin-bottom: 0em;}
                                         </style>
@@ -1460,6 +1464,9 @@
 
                                     </div>
                                 </t>
+                                <div class="col-3" t-if="doc.have_signature">
+                                    <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
+                                </div>
                             </div>
 
 
@@ -1729,7 +1736,7 @@
                                                             <span style="font-size: 30px;">-></span>
                                                         </t>
                                                         <t t-else="">
-                                                            <t t-esc="doc.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                            <t t-esc="doc.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                         </t>
                                                     </td>
                                                     <td>
@@ -1789,8 +1796,8 @@
                                                     <t t-esc="line.product_id.name"/>
                                                 </td>
                                                 <td>
-                                                    <!--<t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                    <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>
+                                                    <t t-esc="o.format_number_for_amount_four(line.price_unit).replace('.',',')"/>
+                                                   <!-- <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
                                                 </td>
                                                 <td>
 
@@ -1913,7 +1920,7 @@
 
                             <div class="row">
                                 <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank">
-                                    <div class="col-6">
+                                    <div class="col-9">
                                         <style type="text/css">
                                             p {margin-bottom: 0em;}
                                         </style>
@@ -1927,6 +1934,9 @@
 
                                     </div>
                                 </t>
+                                <div class="col-3" t-if="doc.have_signature">
+                                    <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
+                                </div>
                             </div>
 
 

@@ -14,6 +14,7 @@ class Sale_order(models.Model):
     )
     payment_method = fields.Selection([('bank_transfer', 'Bank Transfer'), ('check', 'Check'), ('cash', 'Cash')])
     validity_day = fields.Integer()
+    have_signature = fields.Boolean()
 
     def _find_mail_template(self, force_confirmation_template=False):
         self.ensure_one()
@@ -95,6 +96,10 @@ class Sale_order(models.Model):
     
     def format_number_for_amount(self, num):
         formatted = "{:,.2f}".format(num).replace(",", " ")
+        return formatted
+
+    def format_number_for_amount_four(self, num):
+        formatted = "{:,.4f}".format(num).replace(",", " ")
         return formatted
     
     def amount_ttc_ls(self, val):
