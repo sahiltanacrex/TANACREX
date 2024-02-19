@@ -96,6 +96,10 @@ class Sale_order_line(models.Model):
         values["development_expenses"] = self.development_expenses
         values["price_subtotal"] = self.development_expenses + self.price_subtotal
         values["unit_qty"] = self.unit_qty
+        if self.is_flat_rate:
+            values["quantity"] = 1.0
+            values["is_flat_rate"] = True
+            
         # values["move_line_ids"] = [(4, m.id) for m in stock_moves]
 
         return values

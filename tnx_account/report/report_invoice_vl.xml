@@ -226,7 +226,12 @@
                                                     </t>
                                                 </td>
                                                 <td style="text-align: right">
-                                                    <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                    <t t-if="line.is_flat_rate">
+                                                        <t t-esc="o.get_right_number(line.quantity)" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                    </t>
                                                 </td>
                                                 <!--UoM-->
                                                 <td>
