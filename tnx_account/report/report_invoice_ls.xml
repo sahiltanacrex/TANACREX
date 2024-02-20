@@ -196,7 +196,7 @@
 
                                             <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                             <tr>
-                                                <td style="text-align: left">
+                                                <td style="text-align: left;width:180px;">
                                                     <span t-esc="line.order_customer" />
                                                 </td>
                                                 <td style="text-align: left">
@@ -208,7 +208,7 @@
                                                 <td style="text-align: left">
                                                     <span t-field="line.product_id.name" />
                                                 </td>
-                                                <td style="text-align: right">
+                                                <td style="text-align: right;width:100px;">
                                                     <t t-if="line.product_id.product_type == 'button'">
                                                         <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
@@ -227,7 +227,7 @@
                                                         </t>
                                                     </t>
                                                 </td>
-                                                <td style="text-align: right">
+                                                <td style="text-align: right;width:75px;">
                                                     <!--<t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />-->
                                                     <t t-if="line.is_flat_rate">
                                                         <t t-esc="o.get_right_number(line.quantity)" />
