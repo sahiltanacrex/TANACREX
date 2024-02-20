@@ -118,6 +118,10 @@
                                 <span>NIF: </span>
                                 <span t-field="o.partner_id.nif"/> <br/>
                             </t>
+                            <t t-if="o.partner_id.siret">
+                                <span>SIRET: </span>
+                                <span t-field="o.partner_id.siret"/> <br/>
+                            </t>
                             <t t-if="o.partner_id.stat">
                                 <span>STAT: </span>
                                 <span t-field="o.partner_id.stat"/> <br/>
@@ -430,6 +434,10 @@
                                 <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.delivery_adress.nif">
                                     <span>NIF: </span>
                                     <span t-field="o.delivery_adress.nif"/> &#x9;
+                                </div><br></br>
+                                <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.delivery_adress.siret">
+                                    <span>SIRET: </span>
+                                    <span t-field="o.delivery_adress.siret"/> &#x9;
                                 </div><br></br>
                                 <div style="white-space: nowrap; display: inline-block;margin-left: 134px;" t-if="o.delivery_adress.stat">
                                     <span>STAT: </span>

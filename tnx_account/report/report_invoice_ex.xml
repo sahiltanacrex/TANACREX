@@ -117,6 +117,10 @@
                                 <span>NIF: </span>
                                 <b t-field="o.partner_id.nif"/> <br/>
                             </t>
+                            <t t-if="o.partner_id.siret">
+                                <span>SIRET: </span>
+                                <b t-field="o.partner_id.siret"/> <br/>
+                            </t>
                             <t t-if="o.partner_id.stat">
                                 <span>STAT: </span>
                                 <span t-field="o.partner_id.stat"/> <br/>
@@ -233,7 +237,12 @@
                                                     </t>
                                                 </td>
                                                 <td style="text-align: right">
-                                                    <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                    <t t-if="line.is_flat_rate">
+                                                        <t t-esc="o.get_right_number(line.quantity)" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                    </t>
                                                 </td>
                                                 <!--UoM-->
                                                 <td>
