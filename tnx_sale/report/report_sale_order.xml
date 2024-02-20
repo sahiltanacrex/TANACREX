@@ -702,8 +702,9 @@
                                 </div>
                                 <div style="font-size:18px;">
                                     <b>Date: </b>
-                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
-                                    <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
+<!--                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />-->
+<!--                                    <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>-->
+                                    <span t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
@@ -1109,8 +1110,9 @@
                                 </div>
                                 <div style="font-size:18px;">
                                     <b>Invoice date:</b>
-                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
-                                    <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
+                                    <!--<span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
+                                    <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>-->
+                                    <span t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
@@ -1563,8 +1565,9 @@
                                 </div>
                                 <div style="font-size:18px;">
                                     <b>Invoice date:</b>
-                                    <span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
-                                    <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
+                                    <!--<span t-if="doc and doc.invoice_ids and doc.invoice_ids[0].invoice_date" t-esc="doc.invoice_ids[0].invoice_date.strftime('%d/%m/%Y')" />
+                                    <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>-->
+                                    <span t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
                                 </div>
                             </div>
                             <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
