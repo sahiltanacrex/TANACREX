@@ -6,13 +6,47 @@
                     <t t-set="company" t-value="res_company" />
                     <div class="page">
                         <div class="oe_structure" />
-                        <div class="row" style="margin-left: 1px; margin-right: 1px; font-size : 14px; text-align:left; ">
-                            <div class="col-6">
-                                <div>
-                                    <img t-if="company.logo" style="max-height:40px" t-att-src="image_data_uri(company.logo)" />
-                                    <div class="font-weight-bold col-6" style="text-align:center !important;">
-                                        <div>MANUFACTURE DE BOUTONS</div>
-                                        <div>SERVICE ETIQUETAGE</div>
+                        <div class="body_header">
+                            <div> <!--class="container"-->
+                                <div class="row">
+                                    <div class="col-md-6" style="width: 50%;">
+                                        <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
+                                    </div>
+                                    <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;">
+                                        <div>
+                                            <span>
+                                                <t t-if="company.description">
+                                                    <t t-esc="company.description" />
+                                                </t>
+                                                <t t-else=""> <br/> SARL
+                                                    au capital de 30 000 000 AR</t>
+                                            </span>
+                                            <br />
+                                        </div>
+                                        <div t-if="company.stat">
+                                            <span>RCS 2003B00674 - STAT:</span>
+                                            <span t-esc="company.stat" />
+                                        </div>
+                                        <div t-if="company.nif">
+                                            <span>NIF:</span>
+                                            <span t-esc="company.nif" />
+                                        </div>
+                                        <div>
+                                            <span>Lot 18 D Imerinafovoany </span>
+                                        </div>
+                                        <div>
+                                            <span>B.P: 11064 - Tél : </span>
+                                            <span t-esc="company.phone or company.mobile" />
+                                        </div>
+                                        <div>
+                                            <span>Email: contact@tanacrex.com</span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                ANTANANARIVO - MADAGASCAR
+                                            </span>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -32,18 +66,18 @@
                                 <tr>
                                     <th>Image</th>
                                     <th>Date BC</th>
-                                    <th>BC</th>
+                                    <!--<th>BC</th>-->
                                     <th>BC Client</th>
                                     <th>Client</th>
                                     <th>Article</th>
-                                    <th>Type</th>
-                                    <th>Matière</th>
                                     <th>Taille</th>
+                                    <!--<th>Matière</th>-->
+                                    <th>type</th>
                                     <!--<th>Couleur</th>-->
                                     <th>Qté</th>
-                                    <th>Udm</th>
+                                    <th>Qté livré</th>
+                                    <th>Reste à livrer</th>
                                     <th>Fin Prod</th>
-                                    <th>Commentaire</th>
                                 </tr>
                             </thead>
                             <t t-foreach="docs" t-as="line">
@@ -57,9 +91,9 @@
                                     <td>
                                         <span t-field="line.sale_order_date" t-options="{'widget': 'date'}"/>
                                     </td>
-                                    <td>
+                                    <!--<td>
                                         <span t-field="line.order_id" />
-                                    </td>
+                                    </td>-->
                                     <td>
                                         <span t-field="line.bc_client" />
                                     </td>
@@ -73,13 +107,13 @@
                                         <span t-esc="line.product_id.name" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.product_type" />
-                                    </td>
-                                    <td>
-                                        <span t-esc="line.material_product" />
-                                    </td>
-                                    <td>
                                         <span t-esc="line.line_product" />
+                                    </td>
+                                    <!--<td>
+                                        <span t-esc="line.material_product" />
+                                    </td>-->
+                                    <td>
+                                        <span t-esc="line.product_type" />
                                     </td>
                                     <!--<td>
                                         <p t-attf-style="background-color: {{line.color_product}}; width: 25px; height: 25px; border-radius: 50%; border: 1px solid black; margin: auto;" />
@@ -88,13 +122,13 @@
                                         <span t-field="line.product_qty" t-options="{'widget': 'float', 'precision': 0}"/>
                                     </td>
                                     <td>
-                                        <span t-field="line.product_uom_id" />
+                                        <span t-field="line.product_qty_delivered" />
                                     </td>
                                     <td>
-                                        <span t-field="line.end_of_production" />
+                                        <span t-field="line.product_qty_still_to_be_delivered" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.comment" />
+                                        <span t-esc="line.end_of_production" />
                                     </td>
                                 </tr>
                             </t>
