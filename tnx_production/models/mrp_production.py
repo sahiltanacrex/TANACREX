@@ -119,7 +119,7 @@ class MrpProduction(models.Model):
 
         if self.partner_id:
             template_id = self.env.ref(
-                "tnx_production.send_mail_order_manufacture").id
+                "tnx_production.new_send_mail_order_manufacture_inherit").id
             compose_form_id = self.env.ref(
                 "mail.email_compose_message_wizard_form").id
             ctx = {

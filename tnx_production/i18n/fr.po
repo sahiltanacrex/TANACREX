@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20221103\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-12 08:01+0000\n"
-"PO-Revision-Date: 2022-12-12 08:01+0000\n"
+"POT-Creation-Date: 2024-02-21 11:23+0000\n"
+"PO-Revision-Date: 2024-02-21 11:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -41,6 +41,111 @@ msgid "75%"
 msgstr ""
 
 #. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid ""
+"<br/> SARL\n"
+"                                                    au capital de 30 000 000 AR"
+msgstr ""
+
+#. module: tnx_production
+#: model:mail.template,body_html:tnx_production.new_send_mail_order_manufacture_inherit
+msgid ""
+"<p>\n"
+"                    ATTN :\n"
+"                    <t t-if=\"object.partner_id.parent_id\">\n"
+"                        <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t> (<t t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+"                    </t>\n"
+"                    <t t-else=\"\">\n"
+"                        <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+"                    </t>\n"
+"                </p>\n"
+"                <p>\n"
+"                    Dear Sir/Madam,\n"
+"                </p>\n"
+"                <p>\n"
+"                    We would like to hereby notify you the manufacturing status of your order:\n"
+"                </p>\n"
+"                <p>\n"
+"                    <ul style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                        <li>\n"
+"                            <u>Manufacturing Order :</u><span t-out=\"object.name or ''\"/>\n"
+"                        </li>\n"
+"                        <li>\n"
+"                            <u>Article :</u><span t-out=\"object.product_id.name or ''\"/>\n"
+"                        </li>\n"
+"                        <li>\n"
+"                            <u>Customer :</u><span t-out=\"object.partner_id.name or ''\"/>\n"
+"                        </li>\n"
+"                        <li>\n"
+"                            <u>PO Number :</u><span t-out=\"object.bc_client or ''\"/>\n"
+"                        </li>\n"
+"                        <li>\n"
+"                            <u>Dimension :</u><span t-out=\"object.dimension or ''\"/>\n"
+"                        </li><br/><br/>\n"
+"                        <li>\n"
+"                            <u>Completion :</u><span t-out=\"object.advancements or 'O%'\"/>.\n"
+"                        </li>\n"
+"                    </ul>\n"
+"                </p>\n"
+"                <p>\n"
+"                    Best Regards,\n"
+"                </p>\n"
+"                <t t-if=\"object.user_id.signature\">\n"
+"                    <br/>\n"
+"                    <t t-out=\"object.user_id.signature or ''\">--<br/>Mitchell Admin</t>\n"
+"                </t>\n"
+"            "
+msgstr ""
+        "<p>\n"
+        "                    ATTN :\n"
+        "                    <t t-if=\"object.partner_id.parent_id\">\n"
+        "                        <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t> (<t t-out=\"object.partner_id.parent_id.name or ''\">Azure Interior</t>),\n"
+        "                    </t>\n"
+        "                    <t t-else=\"\">\n"
+        "                        <t t-out=\"object.partner_id.name or ''\">Brandon Freeman</t>,\n"
+        "                    </t>\n"
+        "                </p>\n"
+        "                <p>\n"
+        "                    Bonjour,\n"
+        "                </p>\n"
+        "                <p>\n"
+        "                    Par la présente, nous souhaiterions vous notifier que le statut de fabrication de votre commande :\n"
+        "                </p>\n"
+        "                <p>\n"
+        "                    <ul style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+        "                        <li>\n"
+        "                            <u>Ordre de Fabrication :</u><span t-out=\"object.name or ''\"/>\n"
+        "                        </li>\n"
+        "                        <li>\n"
+        "                            <u>Article :</u><span t-out=\"object.product_id.name or ''\"/>\n"
+        "                        </li>\n"
+        "                        <li>\n"
+        "                            <u>Client :</u><span t-out=\"object.partner_id.name or ''\"/>\n"
+        "                        </li>\n"
+        "                        <li>\n"
+        "                            <u>Réf client :</u><span t-out=\"object.bc_client or ''\"/>\n"
+        "                        </li>\n"
+        "                        <li>\n"
+        "                            <u>Dimension :</u><span t-out=\"object.dimension or ''\"/>\n"
+        "                        </li><br/><br/>\n"
+        "                        <li>\n"
+        "                            <u>Avancement :</u><span t-out=\"object.advancements or 'O%'\"/>.\n"
+        "                        </li>\n"
+        "                    </ul>\n"
+        "                </p>\n"
+        "                <p>\n"
+        "                    En vous souhaitant une bonne réception,\n"
+        "                </p>\n"
+        "                <p>\n"
+        "                    Bien Cordialement,\n"
+        "                </p>\n"
+        "                <t t-if=\"object.user_id.signature\">\n"
+        "                    <br/>\n"
+        "                    <t t-out=\"object.user_id.signature or ''\">--<br/>Mitchell Admin</t>\n"
+        "                </t>\n"
+        "            "
+
+#. module: tnx_production
 #: model:mail.template,body_html:tnx_production.send_mail_order_manufacture
 msgid ""
 "<p>\n"
@@ -60,6 +165,104 @@ msgid ""
 "                </p>\n"
 "            "
 msgstr ""
+"<p style=\"margin:0px 0 6px 0;box-sizing:border-box;font-size:31.2px;color:#091124;line-height:1.2;\">\n"
+"                    <span style=\"font-size: 12px;\">ATTN :\n"
+"                    </span><span t-out=\"object.partner_id.name or ''\" style=\"box-sizing:border-box; font-size:12px;\"></span>\n"
+"                </p>\n"
+"<p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                    Bonjour,\n"
+"                </p>\n"
+"                <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                    Par la présente, nous souhaitons vous notifier que le statut de fabrication de votre commande\n"
+"                    <span t-out=\"(ctx['order_origin'] or '')+' - ' +ctx['bc_client'] or ''+')' or ''\"></span>&nbsp;est le suivant&nbsp;:\n"
+"                   \n"
+"                </p>\n"
+" <p style=\"margin:0px 0 12px 0;box-sizing:border-box;\"></p><ul style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                    <li>\n"
+"                        \n"
+"                            <u>Ordre de fabrication :</u>\n"
+"                        \n"
+"                        <span t-out=\"object.name or ''\"></span>\n"
+"                    </li>\n"
+"<li>\n"
+"                        \n"
+"                            <u>Article :</u>\n"
+"                        \n"
+"                        <span t-out=\"object.product_id.name or ''\"></span>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        \n"
+"                            <u>Client :</u>\n"
+"                        \n"
+"                        <span t-out=\"object.partner_id.name or ''\"></span>\n"
+"                    </li>\n"
+"\n"
+"                    <li>\n"
+"                        \n"
+"                            <u>Réf client :</u>\n"
+"                        \n"
+"                        <span t-out=\" ctx['bc_client'] or ''\"></span>\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        \n"
+"                            <u>Dimension :</u>\n"
+"                        \n"
+"\n"
+"                        <span t-out=\"object.dimension or ''\"></span>\n"
+"\n"
+"                    </li>\n"
+"                    <li>\n"
+"                        \n"
+"                            <u>Avancement :</u>\n"
+"                        \n"
+"                        \n"
+"                                  <span t-out=\"ctx['developments_states'] or ''\"></span>.\n"
+"                        \n"
+"                    </li>\n"
+"\n"
+"                </ul><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                </p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\">\n"
+"                    Bien cordialement,\n"
+"                    <t t-if=\"object.env.user.signature\">\n"
+"                        <br>\n"
+"                        <t t-out=\"object.env.user.signature or ''\">--<br>Mitchell Admin</t>\n"
+"                    </t>\n"
+"\n"
+"                </p><p style=\"margin:0px 0 12px 0;box-sizing:border-box;\"></p>\n"
+"            "
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid ""
+"<span>\n"
+"                                                ANTANANARIVO - MADAGASCAR\n"
+"                                            </span>"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "<span>B.P: 11064 - Tél : </span>"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "<span>Email: contact@tanacrex.com</span>"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "<span>Lot 18 D Imerinafovoany </span>"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "<span>NIF:</span>"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "<span>RCS 2003B00674 - STAT:</span>"
+msgstr ""
 
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
@@ -67,14 +270,15 @@ msgid "Article"
 msgstr ""
 
 #. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__advancements
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__developments
 msgid "Avancement"
 msgstr ""
 
 #. module: tnx_production
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__order_id
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
 msgid "BC"
 msgstr ""
 
@@ -120,32 +324,29 @@ msgstr ""
 
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
 msgid "Commentaire"
 msgstr ""
 
 #. module: tnx_production
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__color_product
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
 msgid "Couleur"
 msgstr ""
 
 #. module: tnx_production
-#: model:ir.model.fields,help:tnx_production.field_mrp_production__sale_order_date
-msgid ""
-"Creation date of draft/sent orders,\n"
-"Confirmation date of confirmed orders."
-msgstr ""
-
-#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
 #: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
 msgid "Date BC"
 msgstr ""
 
 #. module: tnx_production
-#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_form
-msgid "Devis confirmé"
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__product_qty_delivered
+msgid "Delivered Quantity"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__dimension
+msgid "Dimension"
 msgstr ""
 
 #. module: tnx_production
@@ -191,11 +392,6 @@ msgid "Ligne"
 msgstr ""
 
 #. module: tnx_production
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
-msgid "MANUFACTURE DE BOUTONS"
-msgstr ""
-
-#. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
 msgid "Mail Ordre de fabrication"
 msgstr ""
@@ -206,15 +402,33 @@ msgid "Manufacture Order"
 msgstr ""
 
 #. module: tnx_production
+#: model:mail.template,name:tnx_production.new_send_mail_order_manufacture_inherit
+msgid "Manufacture Order: Send by email"
+msgstr ""
+
+#. module: tnx_production
+#: model:mail.template,subject:tnx_production.new_send_mail_order_manufacture_inherit
+msgid ""
+"Manufacturing Status [{{ object.name }}] - [{{object.product_id.name}}] | "
+"[{{object.partner_id.name}}] - [{{object.bc_client}}]"
+msgstr ""
+"Status Fabrication [{{ object.name }}] - [{{object.product_id.name}}] | "
+"[{{object.partner_id.name}}] - [{{object.bc_client}}]"
+
+#. module: tnx_production
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__material_product
+msgid "Material Product"
+msgstr ""
+
+#. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+#: model_terms:ir.ui.view,arch_db:tnx_production.mrp_production_search_view_inherit
 msgid "Matière"
 msgstr ""
 
 #. module: tnx_production
-#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__sale_order_date
-msgid "Order Date"
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__product_qty_still_to_be_delivered
+msgid "Product Qty Still To Be Delivered"
 msgstr ""
 
 #. module: tnx_production
@@ -224,7 +438,23 @@ msgstr "Ordre de fabrication"
 
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
-msgid "Quantité"
+msgid "Qté"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+msgid "Qté commander"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Qté livré"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
+msgid "Qté reste à livrer"
 msgstr ""
 
 #. module: tnx_production
@@ -239,7 +469,12 @@ msgstr ""
 
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
-msgid "SERVICE ETIQUETAGE"
+msgid "Reste à livrer"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__sale_order_date
+msgid "Sale Order Date"
 msgstr ""
 
 #. module: tnx_production
@@ -261,18 +496,13 @@ msgstr ""
 
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+#: model_terms:ir.ui.view,arch_db:tnx_production.mrp_production_search_view_inherit
 msgid "Type"
 msgstr ""
 
 #. module: tnx_production
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__product_type
 msgid "Type du produit"
-msgstr ""
-
-#. module: tnx_production
-#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
-msgid "Udm"
 msgstr ""
 
 #. module: tnx_production
@@ -293,6 +523,11 @@ msgstr ""
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
 msgid "ref ordre fab"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "type"
 msgstr ""
 
 #. module: tnx_production
