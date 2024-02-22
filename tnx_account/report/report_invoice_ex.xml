@@ -197,7 +197,7 @@
                                             <!-- <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
                                         <t t-if="line.product_id.product_type == type">
                                             <tr>
-                                                <td style="text-align: left;width:180px;">
+                                                <td style="text-align: left;width:130px;">
                                                     <t t-if="line.order_customer">
                                                         <span style="text-align: center" t-esc="line.order_customer" />
                                                     </t>
@@ -214,7 +214,7 @@
                                                 <td style="text-align: left">
                                                     <span t-field="line.product_id.name" />
                                                 </td>
-                                                <td style="text-align: right">
+                                                <td style="text-align: right;width:140px;">
                                                     <t t-esc="line.product_id.hs_code.hs_code" />
                                                 </td>
                                                 <td style="text-align: right;width:100px;">
@@ -260,12 +260,12 @@
                                                         <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t
                                                             />-->
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>-->
-                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                     </t>
                                                     <t t-else="">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/> <t/>-->
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/> <t/>-->
-                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                         <!--/ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
@@ -293,8 +293,8 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right;font-weight: bold;">Subtotal</td>
                                         <td></td>
+                                        <td style="text-align: right;font-weight: bold;">Subtotal</td>
                                         <td style="text-align:right;font-weight: bold;">
                                             <t t-esc="o.format_number_for_amount(total_price_type).replace('.',',')"/>
                                         </td>
@@ -324,7 +324,7 @@
                                                 <td>
                                                     <t t-esc="line.product_id.product_type" />
                                                 </td>
-                                                <td>
+                                                <td style="width:140px;">
                                                    <t t-if="line.product_id.hs_code">
                                                    <span t-esc="line.product_id.hs_code.hs_code" />
                                                    </t>
@@ -341,11 +341,11 @@
                                                 <td style="text-align:right">
                                                     <t t-if="line.product_id.is_fees == True">
 <!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                     </t>
                                                     <t t-else="">
 <!--                                                        <t t-esc="o.format_number_for_amount(line.price_unit)"/>-->
-                                                        <t t-esc="o.format_number_for_amount(line.punit).replace('.',',')"/>
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                         <!--/\ <t t-esc="line.product_uom_id.name"/>-->
                                                     </t>
                                                 </td>
@@ -364,8 +364,8 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right">Subtotal</td>
                                         <td></td>
+                                        <td style="text-align: right">Subtotal</td>
                                         <td style="text-align:right;">
                                             <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
 
