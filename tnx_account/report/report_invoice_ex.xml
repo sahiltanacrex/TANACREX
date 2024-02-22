@@ -217,7 +217,7 @@
                                                 <td style="text-align: right;width:140px;">
                                                     <t t-esc="line.product_id.hs_code.hs_code" />
                                                 </td>
-                                                <td style="text-align: right;width:100px;">
+                                                <td t-if="line.product_id.detailed_type != 'service'" style="text-align: right;width:100px;">
                                                     <t t-if="line.product_id.product_type == 'button'">
                                                          <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
@@ -235,6 +235,8 @@
                                                             <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.surface)"/>mm²
                                                         </t>
                                                     </t>
+                                                </td>
+                                                <td t-else="">
                                                 </td>
                                                 <td style="text-align: right;width:75px;">
                                                     <t t-if="line.is_flat_rate">

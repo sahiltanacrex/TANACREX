@@ -27,7 +27,7 @@
                             <field name="radius" attrs="{'invisible': ['|', ('product_type',  'in', ['rubban','button', 'other']), ('form', '!=', 'circle')]}"/>
                             <!-- if surface of a button -->
                             <field name="color" widget="color" />
-                            <field name="surface" force_save="1" attrs="{'invisible': [('product_type',  '==', 'button')], 'readonly':[('form', '!=', 'other')]}"/>
+                            <field name="surface" force_save="1" attrs="{'invisible': ['|', ('product_type',  '==', 'button'), ('detailed_type', '==', 'service')], 'readonly':[('form', '!=', 'other')]}"/>
                         </group>
                         <group>
                             <field name="material_id" />
