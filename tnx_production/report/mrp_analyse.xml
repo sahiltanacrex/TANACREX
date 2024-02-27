@@ -77,6 +77,7 @@
                                     <th>Qté</th>
                                     <th>Qté livré</th>
                                     <th>Reste à livrer</th>
+                                    <th>UdM</th>
                                     <th>Fin Prod</th>
                                 </tr>
                             </thead>
@@ -126,6 +127,9 @@
                                     </td>
                                     <td>
                                         <span t-field="line.product_qty_still_to_be_delivered" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="line.product_uom_id.name" />
                                     </td>
                                     <td>
                                         <span t-esc="line.end_of_production" />
