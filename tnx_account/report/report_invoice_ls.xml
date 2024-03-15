@@ -163,6 +163,7 @@
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
+                                    <th style="border: none"></th>
                                     <th><t t-esc="currency" /></th>
                                     <th><t t-esc="currency" /></th>
                                 </tr>
@@ -172,6 +173,7 @@
                                     <th>Designation</th>
                                     <th>Reference</th>
                                     <!-- <th>Réference client</th> -->
+                                    <th>HS Code</th>
                                     <th>Dimension</th>
                                     <th>Qty</th>
                                     <th>UoM</th>
@@ -196,7 +198,7 @@
 
                                             <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                             <tr>
-                                                <td style="text-align: left;width:180px;">
+                                                <td style="text-align: left;width:140px;">
                                                     <span t-esc="line.order_customer" />
                                                 </td>
                                                 <td style="text-align: left">
@@ -207,6 +209,9 @@
                                                 </td>
                                                 <td style="text-align: left">
                                                     <span t-field="line.product_id.name" />
+                                                </td>
+                                                <td style="text-align: left;width:140px;">
+                                                    <span t-field="line.product_id.hs_code.hs_code" />
                                                 </td>
                                                 <td style="text-align: right;width:100px;">
                                                     <t t-if="line.product_id.product_type == 'button'">
@@ -282,6 +287,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
+                                        <td></td>
                                         <td style="text-align: right;font-weight: bold;">Sous-total</td>
                                         <td style="text-align:right;font-weight: bold;">
 <!--                                            <t t-esc="o.format_number_for_amount(total_price_type)"/>-->
@@ -298,8 +304,10 @@
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
+                                    <td style="border-bottom: 1px solid #000;"></td>
                                 </tr>
                                 <tr>
+                                    <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;"></td>
                                     <td style="border-color: white;border-top: black;"></td>
@@ -317,11 +325,13 @@
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
+                                    <td style="border-color: white;"></td>
                                     <td style="border-color: white;border-right: black;"></td>
                                     <td style="border-left: 1px solid black;">TVA 20%</td>
                                     <td style="text-align:right;"> <!--<t t-options='{"widget": "float", "precision": 2}' t-esc="o.amount_tax"/>--><span t-esc="o.format_number_for_amount(o.amount_tax).replace('.',',')"/> </td>
                                 </tr>
                                 <tr>
+                                    <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
                                     <td style="border-color: white;"></td>
@@ -425,7 +435,7 @@
                     <t t-if="o.bank_company_ids">
                         <div class="row">
                             <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-9">
+                                <div class="col-6">
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
@@ -435,6 +445,11 @@
 <!--                                    <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
                                     <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
+                                </div>
+                                <div class="col-3">
+                                    <span  style="font-weight: bold;">Gross weight : </span><span t-if="o.gross_weight" t-field="o.gross_weight"/><br></br>
+                                    <span  style="font-weight: bold;">Net weight : </span><span t-if="o.net_weight" t-field="o.net_weight"/><br></br>
+                                    <span  style="font-weight: bold;">Packing : </span><span t-if="o.seal_serial" t-field="o.seal_serial"/><br></br>
                                 </div>
                                 <div class="col-3" t-if="o.have_signature">
                                     <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
