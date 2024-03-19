@@ -37,14 +37,14 @@ class MrpProduction(models.Model):
         related="product_id.categ_id", store=True
     )
     end_of_production = fields.Date(compute="_compute_end_of_production")
-    product_qty_delivered = fields.Float('Delivered Quantity', compute='_compute_qty_delivered_product', store=True , default=0.0)
+    product_qty_delivered = fields.Float('Delivered Quantity', compute='_compute_qty_delivered_product', default=0.0)
     product_qty_still_to_be_delivered = fields.Float(compute='_compute_qty_still_to_be_delivered' , default=0.0)
 
-    @api.depends('order_id')
+
     def _compute_qty_delivered_product(self):
         for production in self:
             if production.order_id and production.order_id.state == 'sale' and production.order_id.order_line.filtered(lambda line: line.product_id == production.product_id).mapped('qty_delivered'):
-                production.product_qty_delivered = float(sum(production.order_id.order_line.filtered(lambda line: line.product_id == production.product_id).mapped('qty_delivered')))
+                production.product_qty_delivered = float(sum(production.order_id.order_line.filtered(lambda line: line.product_id == production.product_id).mapped('qty_delivered')) * production.order_id.order_line.filtered(lambda line: line.product_id == production.product_id).mapped('product_uom').ratio)
             else:
                 production.product_qty_delivered = 0.0
 
@@ -54,12 +54,13 @@ class MrpProduction(models.Model):
             production.product_qty_still_to_be_delivered = production.product_qty - production.product_qty_delivered
 
 
-
     def _compute_qty_development(self):
         for production in self:
-            production.advancements = float((production.product_qty_delivered / production.product_qty)*100)/100
-
-
+            if float((production.product_qty_delivered / production.product_qty)*100)/100 > 1:
+                production.advancements = 1.00
+            else:
+                production.advancements = float((production.product_qty_delivered / production.product_qty)*100)/100
+                
 
     @api.depends('product_id', 'product_id.material_id')
     def _compute_material_product(self):
