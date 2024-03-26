@@ -198,7 +198,7 @@
 
                                             <t t-set="bl_sub_total" t-value="o.get_bl_subtotal(bl_qty_done, line.price_unit)" />
                                             <tr>
-                                                <td style="text-align: left;width:140px;">
+                                                <td style="text-align: left;width:120px;">
                                                     <span t-esc="line.order_customer" />
                                                 </td>
                                                 <td style="text-align: left">
@@ -210,7 +210,7 @@
                                                 <td style="text-align: left">
                                                     <span t-field="line.product_id.name" />
                                                 </td>
-                                                <td style="text-align: left;width:140px;">
+                                                <td style="text-align: left;width:100px;">
                                                     <span t-field="line.product_id.hs_code.hs_code" />
                                                 </td>
                                                 <td style="text-align: right;width:100px;">
@@ -232,7 +232,7 @@
                                                         </t>
                                                     </t>
                                                 </td>
-                                                <td style="text-align: right;width:75px;">
+                                                <td style="text-align: right;width:50px;">
                                                     <!--<t t-esc="o.format_number_for_amount(bl_qty_done) or ''" />-->
                                                     <t t-if="line.is_flat_rate">
                                                         <t t-esc="o.get_right_number(line.quantity)" />
@@ -252,7 +252,7 @@
                                                     <t t-else="">
                                                     </t>
                                                 </td>
-                                                <td style="text-align:right">
+                                                <td style="text-align:right;width:100px;">
                                                     <t t-if="line.product_id.is_fees == True">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
                                                         <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
@@ -262,7 +262,7 @@
                                                         <t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>
                                                     </t>
                                                 </td>
-                                                <td style="text-align:right">
+                                                <td style="text-align:right;width:110px;">
 <!--                                                    <t t-esc="o.format_number_for_amount(bl_sub_total) or ''"/>-->
                                                     <t t-options='{"widget": "float", "precision": 2}' t-esc="bl_sub_total"/>
                                                 </td>
