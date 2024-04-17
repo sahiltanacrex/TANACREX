@@ -26,7 +26,7 @@
                     </t>
                     <t t-foreach="o.move_line_ids_without_package" t-as="line">
                       <div>
-                            <table class="tg" style="height: 290px !important; width: 650px !important;page-break-inside: avoid;">
+                            <table class="tg" style="height: 290px !important; width: 680px !important;page-break-inside: avoid;">
                                 <colgroup>
                                     <col style="width: 270px" />
                                     <col style="width: 270px" />
@@ -38,8 +38,8 @@
                                                 <div class="col-6" style="text-align: center; !important;">
                                                     <img t-if="company.logo" style="height: 60px;" t-att-src="image_data_uri(company.logo)" />
                                                 </div>
-                                                <div class="col-6 text-center" style="font-size:20px;!important;">
-                                                    <b>SARL au capital de 30 000 000 AR </b>
+                                                <div class="col-6 text-center" style="font-size:19px;!important;">
+                                                    <div>SARL au capital de 30 000 000 AR </div>
                                                     <div> Tel :(261) 034 02 441 35</div>
                                                     <div> contact@tanacrex.com</div>
                                                     <div> www.tanacrex.com</div>
