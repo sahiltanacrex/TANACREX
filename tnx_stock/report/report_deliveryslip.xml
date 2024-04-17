@@ -58,7 +58,7 @@
                 <div class="col-md-6" style="width: 50%;">
                   <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                 </div>
-                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;">
+                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;font-size: 17px;">
                   <div>
                     <span>
                       <t t-if="company.description">
@@ -115,7 +115,7 @@
                 <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"/>
               </div>
             </div>
-            <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px;">
+            <div class="col-5" style="border: 1px solid; text-align: center;margin-left: 64px; font-size: 17px;">
               <span style="font-size: 18px;font-weight:bold" t-field="o.partner_id.parent_id.name"/><br/>
               <b t-if="o.partner_id.name">Delivery address: </b><span t-field="o.partner_id.name"/>
               <br/>
@@ -253,12 +253,12 @@
                 </tr>
               </tbody>
             </table>
-            <div>
-              <span style="font-size:14x;">
+            <div style="height: 25px;font-size: 17px!important;">
+              <span>
                 No complaints will be accepted after validation. The goods delivered stay here property of the seller until full payment of the invoice.
               </span>
             </div>
-            <br/>
+            <br/><br/>
             <div class=" row text-center">
               <div class=" col-4">
                 <b>
