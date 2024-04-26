@@ -58,7 +58,7 @@
                 <div class="col-md-6" style="width: 50%;">
                   <img t-if="company.logo" style="max-height:80px" t-att-src="image_data_uri(company.logo)" />
                 </div>
-                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 39px;padding-left: 67px;font-size: 17px;">
+                <div class="col-md-4" style="text-align:center; width: 50%;margin-left: 25px;padding-left: 67px;font-size: 16px;">
                   <div>
                     <span>
                       <t t-if="company.description">
