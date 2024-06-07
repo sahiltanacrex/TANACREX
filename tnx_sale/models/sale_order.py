@@ -6,6 +6,18 @@ from datetime import timedelta
 
 class Sale_order(models.Model):
     _inherit = "sale.order"
+
+    date_order = fields.Datetime(
+        string="Order Date",
+        required=True,
+        readonly=True,
+        index=True,
+        states={"draft": [("readonly", False)], "sent": [("readonly", False)]},
+        copy=False,
+        default=fields.Datetime.now,
+        help="Creation date of draft/sent orders,\nConfirmation date of confirmed orders.",
+        tracking=True,
+    )
     sale_order_partner = fields.Char("BC client")
     production_duration = fields.Integer("Indicatif de fabrication", required=True)
     delivery_time = fields.Integer("Indicatif de livraison", required=True)
@@ -15,6 +27,15 @@ class Sale_order(models.Model):
     payment_method = fields.Selection([('bank_transfer', 'Bank Transfer'), ('check', 'Check'), ('cash', 'Cash')])
     validity_day = fields.Integer()
     have_signature = fields.Boolean()
+
+    @api.depends("pricelist_id", "date_order", "company_id", "state")
+    def _compute_currency_rate(self):
+        super()._compute_currency_rate()
+
+    def _prepare_confirmation_values(self):
+        res = super()._prepare_confirmation_values()
+        del res["date_order"]
+        return res
 
     def _find_mail_template(self, force_confirmation_template=False):
         self.ensure_one()
