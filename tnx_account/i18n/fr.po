@@ -711,6 +711,11 @@ msgid "Infos transfert"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "Invoice"
+msgstr "Facture"
+
+#. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_stock_move__invoice_line_ids
 msgid "Invoice Line"
 msgstr "Ligne de facturation"
@@ -1248,6 +1253,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__name_bis
 msgid "name_bis"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "refund"
+msgstr "d'avoir"
 
 #. module: tnx_account
 #: model:ir.model,name:tnx_account.model_tnx_ex

@@ -77,7 +77,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div style="font-size:18px; margin-top:20px">
-                                <b>Facture:</b>
+                                <b>Facture <span t-if="o.move_type in ['out_refund', 'in_refund']">d'avoir</span>:</b>
                                 <b t-esc="o.name_bis" />
                             </div>
                             <div style="font-size:18px;">
@@ -439,11 +439,20 @@
                                     <style type="text/css">
                                         p {margin-bottom: 0em;}
                                     </style>
-                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> <span>Due date: </span> <span t-if="o.invoice_payment_term_id.line_ids.days == 0" t-field="o.invoice_payment_term_id"/> <span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> 
+                                    <t t-if="o.move_type in ['out_refund', 'in_refund']">
+                                        
+                                    </t>
+                                    <t t-else="">
+                                        <span>Due date: </span> 
+                                        <span t-if="o.invoice_payment_term_id.line_ids.days == 0" t-field="o.invoice_payment_term_id"/> 
+                                        <span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
 
-                                    <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-<!--                                    <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
-                                    <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                        <!-- <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
+                                        <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    </t>
+                                    
 
                                 </div>
                                 <div class="col-3">
