@@ -529,36 +529,28 @@
                             </div> -->
                     <br/>
                     <t t-if="o.bank_company_ids">
-                        <!-- <div style="font-size:13px;margin-top:20px">
-                            <span>Compte N°: </span>
-                            <t t-set="bank_info" t-value="o.get_bank(o.bank_company_ids,o.currency_id.id)" />
-                            <span t-esc="bank_info" />
-                        </div> -->
                         <div class="row" ><!--style="page-break-before: always;"-->
-                            <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-5">
-                                    <style type="text/css">
-                                        p {margin-bottom: 0em;}
-                                    </style>
-                                    <!-- <span> Payment method: <span/><span t-esc="o.sale_id.payment_method"/> -->
-                                    <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- 
-                                    <t t-if="o.move_type in ['out_refund', 'in_refund']">
-                                        
+                            <div class="col-5">
+                                <style type="text/css">
+                                    p {margin-bottom: 0em;}
+                                    p br {display:none;}
+                                </style>
+                                <span> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> -- 
+                                <t t-if="o.move_type in ['out_refund', 'in_refund']">
+                                    
+                                </t>
+                                <t t-else="">
+                                    <span>Due date: </span> <span t-if="o.invoice_payment_term_id.line_ids.days == 0" t-field="o.invoice_payment_term_id"/> 
+                                    <span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <t t-foreach="o.bank_company_ids" t-as="bank">
+                                        <div style="margin-bottom:15px; page-break-inside: avoid;">
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                            <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                        </div>
                                     </t>
-                                    <t t-else="">
-                                        <span>Due date: </span> <span t-if="o.invoice_payment_term_id.line_ids.days == 0" t-field="o.invoice_payment_term_id"/> 
-                                        <span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
-                                        <!--<span t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>-->
-
-                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                        <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
-                                        <!-- <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
-                                    </t>
-
-                                </div>
-                            </t>
+                                </t>
+                            </div>
                             <div class="col-4">
-<!--                                <span t-if="o.origin_sale_id" style="font-weight: bold;">BO Origin : </span><span t-if="o.origin_sale_id" t-field="o.origin_sale_id"/><br t-if="o.origin_sale_id"></br>-->
                                 <span t-if="o.origin_tnx" style="font-weight: bold;">Origin : </span><span t-if="o.origin_tnx" t-field="o.origin_tnx"/><br t-if="o.origin_tnx"></br>
                                 <span t-if="o.c_f" style="font-weight: bold;">Incoterm : </span><span t-if="o.c_f" t-field="o.c_f"/><br t-if="o.c_f"></br>
                                 <span t-if="o.gross_weight" style="font-weight: bold;">Gross weight : </span><span t-if="o.gross_weight" t-field="o.gross_weight"/><br t-if="o.gross_weight"></br>

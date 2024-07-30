@@ -434,36 +434,36 @@
                             
                     <t t-if="o.bank_company_ids">
                         <div class="row">
-                            <t t-foreach="o.bank_company_ids" t-as="bank">
-                                <div class="col-6">
-                                    <style type="text/css">
-                                        p {margin-bottom: 0em;}
-                                    </style>
-                                    <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> 
-                                    <t t-if="o.move_type in ['out_refund', 'in_refund']">
-                                        
-                                    </t>
-                                    <t t-else="">
-                                        <span>Due date: </span> 
-                                        <span t-if="o.invoice_payment_term_id.line_ids.days == 0" t-field="o.invoice_payment_term_id"/> 
-                                        <span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
-
-                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                        <!-- <div style="font-weight: bold;font-weight: bold;margin-top: -20px;font-size: 13px;" t-esc="bank.bank_company_line_ids[0].account_registration"/>-->
-                                        <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
-                                    </t>
+                            <div class="col-6">
+                                <span t-if="o.origin_sale_id.payment_method"> Paiement: </span> <span t-field="o.origin_sale_id.payment_method"/> <span t-if="o.invoice_date_due and o.origin_sale_id.payment_method"> -- </span> 
+                                <style type="text/css">
+                                    p {margin-bottom: 0em;}
+                                    p br {display:none;}
+                                </style>
+                                
+                                <t t-if="o.move_type in ['out_refund', 'in_refund']">
                                     
-
-                                </div>
-                                <div class="col-3">
-                                    <span  style="font-weight: bold;">Gross weight : </span><span t-if="o.gross_weight" t-field="o.gross_weight"/><br></br>
-                                    <span  style="font-weight: bold;">Net weight : </span><span t-if="o.net_weight" t-field="o.net_weight"/><br></br>
-                                    <span  style="font-weight: bold;">Packing : </span><span t-if="o.seal_serial" t-field="o.seal_serial"/><br></br>
-                                </div>
-                                <div class="col-3" t-if="o.have_signature">
-                                    <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
-                                </div>
-                            </t>
+                                </t>
+                                <t t-else="">
+                                    <span>Due date: </span> 
+                                    <span t-if="o.invoice_payment_term_id.line_ids.days == 0" t-field="o.invoice_payment_term_id"/> 
+                                    <span t-else="" t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"/>
+                                    <t t-foreach="o.bank_company_ids" t-as="bank">
+                                        <div style="margin-bottom:15px; page-break-inside: avoid;">
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                            <span style="font-weight: bold;">IBAN : </span><span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                            <div class="col-3">
+                                <span  style="font-weight: bold;">Gross weight : </span><span t-if="o.gross_weight" t-field="o.gross_weight"/><br></br>
+                                <span  style="font-weight: bold;">Net weight : </span><span t-if="o.net_weight" t-field="o.net_weight"/><br></br>
+                                <span  style="font-weight: bold;">Packing : </span><span t-if="o.seal_serial" t-field="o.seal_serial"/><br></br>
+                            </div>
+                            <div class="col-3" t-if="o.have_signature">
+                                <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
+                            </div>
                         </div>
                     </t>
                 </div>
