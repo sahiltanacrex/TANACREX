@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_tnx_purchase_tnx_purchase,tnx_purchase.tnx_purchase,model_tnx_purchase_tnx_purchase,base.group_user,1,1,1,1
