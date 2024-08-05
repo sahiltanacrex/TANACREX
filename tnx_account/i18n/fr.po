@@ -241,7 +241,7 @@ msgid ""
 "                        <span>The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, these products are of Madagascar preferential origin according to rules of origin of the Generalized System of Preferences of the European Union and the origin criterion met is \"W9606\" .</span>"
 msgstr ""
 "<span> Origine: </span>\n"
-"                        <span>L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, ces produits proviennent de Madagascar selon les règles d'origine du Système de Préférences Généralisées de l'Union Européenne et du le critère d'origine rempli est \"W9606\" .</span>"
+"                        <span>L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, ces produits proviennent de Madagascar selon les règles d'origine du Système de Préférences Généralisées de l'Union Européenne et le critère d'origine rempli est \"W9606\" .</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
