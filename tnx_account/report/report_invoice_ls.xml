@@ -183,7 +183,7 @@
                             </thead>
                             <tbody>
                                 <t t-set="all_type" t-value="o.get_all_type(o.invoice_line_ids)"/>
-                                <t t-foreach="all_type" t-as="type">
+                                <!-- <t t-foreach="all_type" t-as="type"> -->
                                     <t t-set="total_price_type" t-value="o.get_total_price_type(o.invoice_line_ids,type)"/>
                                     <t t-set="has_different_values" t-value="False"/>
                                     <t t-set="has_duplicates" t-value="False"/>
@@ -294,7 +294,7 @@
                                             <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type"/>
                                         </td>
                                     </tr>
-                                </t>
+                                <!-- </t> -->
                                 <tr>
                                     <td style="border-bottom: 1px solid #000;"></td>
                                     <td style="border-bottom: 1px solid #000;"></td>
