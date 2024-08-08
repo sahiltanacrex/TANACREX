@@ -841,28 +841,31 @@
                                                     </td>
                                                     <td>
                                                         <t t-if="line.product_id.product_type == 'button'">
-                                                    <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.line)"/>
-                                                    L
-                                                </t>
-                                                <t t-elif="line.product_id.product_type == 'other'">
-                                                    <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.surface)"/>
-                                                    mm²
-                                                </t>
-                                                <t t-else="">
-                                                    <t t-if="line.product_id.product_tmpl_id.form == 'rectangle'">
-                                                        <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.length)"/>
-                                                    mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.wide)"/>
-                                                    mm
-                                                    </t>
-                                                    <t t-elif="line.product_id.product_tmpl_id.form == 'square'">
-                                                        <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
-                                                        mm
-                                                    </t>
-                                                    <t t-else="">
-                                                        <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.surface)"/>
-                                                        mm²
-                                                    </t>
-                                                </t>
+                                                            <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.line)"/>
+                                                                L
+                                                        </t>
+                                                        <t t-elif="line.product_id.detailed_type == 'consu'">
+                                                            
+                                                        </t>
+                                                        <t t-elif="line.product_id.product_type == 'other'">
+                                                            <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.surface)"/>
+                                                            mm²
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-if="line.product_id.product_tmpl_id.form == 'rectangle'">
+                                                                <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.length)"/>
+                                                            mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.wide)"/>
+                                                            mm
+                                                            </t>
+                                                            <t t-elif="line.product_id.product_tmpl_id.form == 'square'">
+                                                                <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
+                                                                mm
+                                                            </t>
+                                                            <t t-else="">
+                                                                <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.surface)"/>
+                                                                mm²
+                                                            </t>
+                                                        </t>
                                                     </td>
                                                     <td>
                                                         <t t-esc="doc.get_right_number(line.unit_qty)"/>
