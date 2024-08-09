@@ -428,20 +428,21 @@
                     <div style="text-align:right;font-weight: bold;">
                         <!-- <span>A approuvé cette facture pour la somme de </span> -->
                         <!-- <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(amount_total_with_air_freight).upper()" /> -->
+                        <span t-if="o.move_type in ['out_refund', 'in_refund']" style="padding-right: 10px;">NOTE DE CRÉDIT: </span>
                         <span t-esc="o.currency_id.with_context(lang=o.partner_id.lang or 'en_US').amount_to_text(o.amount_total).upper().replace(',','')" />
                     </div>
                     
                     <t t-if="o.delivery_adress">
                         <div class="row">
                             <div class="col-3">
-                            <b>
-                                <span>Delivery address : </span>
-                            </b>
+                                <b>
+                                    <span>Delivery address : </span>
+                                </b>
                             </div>
                             <div class="col-7" style="text-align: center;">
-                            <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
-                                <span t-field="o.delivery_adress.name"/> &#x9;
-                            </div><br></br>
+                                <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.name">
+                                    <span t-field="o.delivery_adress.name"/> &#x9;
+                                </div><br></br>
                             <div style="white-space: nowrap; display: inline-block;" t-if="o.delivery_adress.street">
                                 <span t-field="o.delivery_adress.street"/> &#x9;
                             </div>

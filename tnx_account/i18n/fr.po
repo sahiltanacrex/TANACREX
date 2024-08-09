@@ -27,6 +27,9 @@ msgid ""
 "                                <span>Delivery address : </span>\n"
 "                            </b>"
 msgstr ""
+"<b>\n"
+"                                <span>Adresse de livraison : </span>\n"
+"                            </b>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
