@@ -534,6 +534,12 @@ msgid "Email Thread"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "Facture"
+msgstr "Invoice"
+
+#. module: tnx_account
 #: model:ir.actions.report,name:tnx_account.invoice_ex
 msgid "Facture (EX)"
 msgstr "Invoice (EX)"
@@ -757,6 +763,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "Montant TTC"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+msgid "NOTE DE CRÉDIT:"
+msgstr "CREDIT NOTE:"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -1143,6 +1156,12 @@ msgstr ""
 #: model:ir.model,name:tnx_account.model_bank_company_line
 msgid "bank.company.line"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+msgid "d'avoir"
+msgstr "refund"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
