@@ -370,6 +370,7 @@
                     </h6>-->
                     <h6>
                     <div style="text-align:right;font-weight: bold;">
+                        <span t-if="o.move_type in ['out_refund', 'in_refund']" style="padding-right: 10px;">NOTE DE CRÉDIT: </span>
                         <t t-esc="o.currency_id.amount_to_text(o.amount_total).upper()" />
                     </div>
                     </h6>
