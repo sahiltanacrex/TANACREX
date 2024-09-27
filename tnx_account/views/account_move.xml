@@ -96,11 +96,11 @@
         </record>
 
         <record id="account.account_invoices" model="ir.actions.report">
-            <field name="binding_model_id" eval="False" />
+            <field name="binding_model_id" ref="account.model_account_move" />
         </record>
 
         <record id="account.account_invoices_without_payment" model="ir.actions.report">
-            <field name="binding_model_id" eval="False" />
+            <field name="binding_model_id" eval="True" />
         </record>
 
 
