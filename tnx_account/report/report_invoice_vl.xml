@@ -164,6 +164,7 @@
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
                                     <th style="border: none"></th>
+                                    <th style="border: none"></th>
                                     <th><t t-esc="currency" /></th>
                                     <th><t t-esc="currency" /></th>
                                 </tr>
@@ -172,6 +173,7 @@
                                     <th>Bon de livraison</th>
                                     <th>Designation</th>
                                     <th>Reference</th>
+                                    <th>HS Code</th>
                                     <th>Dimension</th>
                                     <th>Qty</th>
                                     <th>UoM</th>
@@ -193,24 +195,32 @@
                                             <t t-set="bl_name" t-value="o.get_bl_name(id_bl)" /> -->
                                         <t t-if="line.product_id.product_type == type">
                                             <tr>
-                                                <td style="text-align: left;width:180px;">
-                                                <t t-if="line.order_customer">
-                                                    <span t-esc="line.order_customer" />
-                                                </t>
-                                                <t t-else="">
-                                                    <span>-</span>
-                                                </t>
+                                                <td style="text-align: center;width:180px;">
+                                                    <t t-if="line.order_customer">
+                                                        <span t-esc="line.order_customer" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>-</span>
+                                                    </t>
                                                 </td>
-                                                <td style="text-align: left">
+                                                <td style="text-align: center">
                                                     <span t-esc="line.picking_name" />
                                                 </td>
-                                                <td style="text-align: left">
+                                                <td style="text-align: center">
                                                     <span t-field="line.product_id.product_type" />
                                                 </td>
-                                                <td style="text-align: left">
+                                                <td style="text-align: center">
                                                     <span t-field="line.product_id.name" />
                                                 </td>
-                                                <td style="text-align: left;width:100px;">
+                                                <td style="text-align: center;width:100px;">
+                                                    <t t-if="line.product_id.hs_code.hs_code">
+                                                        <span t-field="line.product_id.hs_code.hs_code" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span></span>
+                                                    </t>
+                                                </td>
+                                                <td style="text-align: center;width:100px;">
                                                     <t t-if="line.product_id.product_type == 'button'">
                                                         <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.line)"/>L
                                                     </t>
@@ -229,7 +239,7 @@
                                                         </t>
                                                     </t>
                                                 </td>
-                                                <td style="text-align: right;width:75px;">
+                                                <td style="text-align: center;width:75px;">
                                                     <t t-if="line.is_flat_rate">
                                                         <t t-esc="o.get_right_number(line.quantity)" />
                                                     </t>
@@ -286,8 +296,9 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right;font-weight: bold;">Sous-total</td>
-                                        <td style="text-align:right;font-weight: bold;">
+                                        <td></td>
+                                        <td style="text-align: center;font-weight: bold;">Sous-total</td>
+                                        <td style="text-align:center;font-weight: bold;">
                                             <!--<t t-esc="o.format_number_for_amount(total_price_type)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
                                             <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type"/>
                                         </td>
@@ -373,8 +384,10 @@
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
+                                        <td style="border-bottom: 1px solid #000;"></td>
                                     </tr>
                                     <tr>
+                                        <td style="border-color: white;border-top: black;"></td>
                                         <td style="border-color: white;border-top: black;"></td>
                                         <td style="border-color: white;border-top: black;"></td>
                                         <td style="border-color: white;border-top: black;"></td>
@@ -383,7 +396,7 @@
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
                                         <td style="border-color: white;border-top: black;border-right: black;"></td>
                                         <td style="border-top: 1px black;border-left: 1px solid black;border-bottom: 1px solid;font-weight: bold;">Total Amount</td>
-                                        <td style="border-top: 1px black;border: 1px solid;text-align:right;font-weight: bold;"><span t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/> </td>
+                                        <td style="border-top: 1px black;border: 1px solid;text-align:center;font-weight: bold;"><span t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/> </td>
                                     </tr>
                             </tbody>
                         </table>

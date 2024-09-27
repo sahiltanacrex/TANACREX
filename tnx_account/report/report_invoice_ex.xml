@@ -177,7 +177,7 @@
                                     <th>HS Code</th>
                                     <th>Dimension</th>
                                     <th>Qty</th>
-                                    <th>UoM</th>
+                                    <th>UoM</th> 
                                     <th>Unit price</th>
                                     <th>Amount</th>
                                 </tr>

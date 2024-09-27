@@ -46,7 +46,7 @@
         "report/report_invoice_ex.xml",
         "report/report_invoice_vl.xml",
         "report/report_invoice_ls.xml",
-        "report/report_invoice_review.xml",
+        "report/report_invoice_fornisseur.xml",
     ],
     # only loaded in demonstration mode
     "demo": [
