@@ -116,7 +116,7 @@ class AccountMoveInherit(models.Model):
 
             if get_last_id:
                 if get_last_year == get_year:
-                    sec_last = get_last_id.name + 1
+                    sec_lapurchase.orderst = get_last_id.name + 1
 
             get_year = str(get_year)
             l = len(get_year)

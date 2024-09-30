@@ -10,7 +10,8 @@
 
     'data': [
         "report/external_layout.xml",
-        "report/purchase_quotation_templates.xml"
+        "report/purchase_quotation_templates.xml",
+        "views/purchase_order_form.xml",
     ],
     'license': 'LGPL-3',
 }
