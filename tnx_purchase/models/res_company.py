@@ -19,9 +19,9 @@ class ResCompany(models.Model):
             if not is_html_empty(company.company_details):
                 company_details = str(company.company_details).replace("</p>", "")
                 company.company_details_with_nif_stat = Markup(
-                    f"{company_details}<br/>NIF: {company.nif}<br/>STAT: {company.stat}</p>"
+                    f"{company_details}<br/>NIF: {company.nif}<br/>STAT: {company.stat}<br/>Contact: {company.mobile}</p>"
                 )
             else:
                 company.company_details_with_nif_stat = Markup(
-                    f"<p>{company_details}<br/>NIF: {company.nif}<br/>STAT: {company.stat}</p>"
+                    f"<p>{company_details}<br/>NIF: {company.nif}<br/>STAT: {company.stat}<br/>Contact: {company.mobile}</p>"
                 )
