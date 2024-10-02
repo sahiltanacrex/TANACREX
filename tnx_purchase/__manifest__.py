@@ -6,7 +6,7 @@
     'website': "http://www.nexources.com",
     'version': '0.1',
 
-    'depends': ['tnx_base', 'purchase'],
+    'depends': ['tnx_base', 'purchase','purchase_stock'],
 
     'data': [
         "report/external_layout.xml",
