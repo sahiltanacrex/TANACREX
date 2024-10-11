@@ -10,3 +10,4 @@ from . import sequences
 from . import bank_company
 from . import sale_order
 from . import mail_thread
+from . import account_bank_statement
