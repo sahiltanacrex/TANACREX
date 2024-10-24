@@ -15,7 +15,7 @@
                     <field name="sale_order_date" string="Date BC"/>
                     <field name="order_id" string="BC"/>
                     <field name="bc_client" string="BC Client"/>
-                    <field name="developments" widget="selection" />
+                    <field name="developments" widget="selection"/>
                     <field name="check_bc" invisible="1" />
                 </xpath>
                 <xpath expr="//label[@for='date_planned_start']" position="attributes">
