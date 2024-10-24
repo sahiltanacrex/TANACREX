@@ -39,7 +39,12 @@ class MrpProduction(models.Model):
     end_of_production = fields.Date(compute="_compute_end_of_production")
     product_qty_delivered = fields.Float('Delivered Quantity', compute='_compute_qty_delivered_product', default=0.0)
     product_qty_still_to_be_delivered = fields.Float(compute='_compute_qty_still_to_be_delivered' , default=0.0)
-
+    
+    def write(self, vals):
+        res = super().write(vals)
+        if 'state' in vals and vals['state'] == 'done':
+            self.developments = '5'
+        return res
 
     def _compute_qty_delivered_product(self):
         for production in self:
@@ -53,7 +58,7 @@ class MrpProduction(models.Model):
         for production in self:
             production.product_qty_still_to_be_delivered = production.product_qty - production.product_qty_delivered
 
-
+ 
     def _compute_qty_development(self):
         for production in self:
             if float((production.product_qty_delivered / production.product_qty)*100)/100 > 1:

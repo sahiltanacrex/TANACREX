@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-
+ 
         <record id="infoadditional_tnx_inherit_account_move" model="ir.ui.view">
             <field name="name">account.move.view.form.inherit</field>
             <field name="model">account.move</field>
@@ -59,6 +59,17 @@
 <!--                <xpath expr="//field[@name='invoice_line_ids']//field[@name='price_unit']" position="replace">-->
 <!--                    <field name="price_unit_udm" />-->
 <!--                </xpath>-->
+            </field>
+        </record>
+
+        <record id="inherit_view_invoice_tree" model="ir.ui.view">
+            <field name="name">model.name.view.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total_in_currency_signed']" position="replace">
+                    <field name="amount_total_in_currency_signed" string="Total in Currency" sum="Total in Currency" groups="base.group_multi_currency"  optional="show"/>
+                </xpath>
             </field>
         </record>
 
