@@ -34,17 +34,30 @@
                                 <thead>
                                     <tr>
                                         <th class="tg-0pky" colspan="2" style="padding: 6px !important">
-                                            <div class="row">
-                                                <div class="col-6" style="text-align: center; !important;">
-                                                    <img t-if="company.logo" style="height: 60px;" t-att-src="image_data_uri(company.logo)" />
-                                                </div>
-                                                <div class="col-6 text-center" style="font-size:19px;!important;">
-                                                    <div>SARL au capital de 30 000 000 AR </div>
-                                                    <div> Tel :(261) 034 02 441 35</div>
-                                                    <div> contact@tanacrex.com</div>
-                                                    <div> www.tanacrex.com</div>
-                                                </div>
-                                            </div>
+                                          <div class="row">
+                                              <div class="col-6" style="text-align: center !important;">
+                                                  <img t-if="company.logo" style="height: 60px;" t-att-src="image_data_uri(company.logo)" />
+                                                  
+                                                  <t t-if="len(o.partner_id.name) > 10">
+                                                      <div style="font-size:25px; text-align: left!important; padding-left: 3px!important;">
+                                                          <span t-field="o.partner_id.name"/>
+                                                      </div>
+                                                  </t>
+                                                  
+                                                  <t t-else="">
+                                                      <div style="font-size:60px; text-align: left!important; padding-left: 3px!important;">
+                                                          <span t-field="o.partner_id.name"/>
+                                                      </div>
+                                                  </t>
+                                              </div>
+
+                                              <div class="col-6 text-center" style="font-size:19px;!important;">
+                                                  <div>SARL au capital de 30 000 000 AR </div>
+                                                  <div> Tel :(261) 034 02 441 35</div>
+                                                  <div> contact@tanacrex.com</div>
+                                                  <div> www.tanacrex.com</div>
+                                              </div>
+                                          </div>
                                         </th>
                                     </tr>
                                 </thead>
@@ -70,7 +83,7 @@
                                             <u>
                                                 <b style="font-size:20px;">QTY :</b>
                                             </u>
-                                            <span style="font-size:60px;font-weight: bold;" t-if="line.product_id" t-esc="o.get_right_number(line.unit_done)" />
+                                            <span style="font-size:60px;font-weight: bold;" t-if="line.product_id" t-esc="o.get_right_number(line.unit_done)" /> <span t-field="line.product_uom_id.name"/>
 
                                         </td>
                                     </tr>
