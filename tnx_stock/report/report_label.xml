@@ -43,9 +43,8 @@
                                                           <span t-field="o.partner_id.name"/>
                                                       </div>
                                                   </t>
-                                                  
                                                   <t t-else="">
-                                                      <div style="font-size:60px; text-align: left!important; padding-left: 3px!important;">
+                                                      <div style="font-size:40px; text-align: left!important; padding-left: 3px!important;">
                                                           <span t-field="o.partner_id.name"/>
                                                       </div>
                                                   </t>
