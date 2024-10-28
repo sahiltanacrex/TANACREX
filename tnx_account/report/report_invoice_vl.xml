@@ -314,12 +314,12 @@
                                             <t t-if="line.product_id.product_type == False and line.price_unit != 0">
                                             <tr>
                                                 <td>
-                                                <t t-if="line.order_customer">
-                                                    <span t-esc="line.order_customer" />
-                                                </t>
-                                                <t t-else="">
-                                                    <span>-</span>
-                                                </t>
+                                                    <t t-if="line.order_customer">
+                                                        <span t-esc="line.order_customer" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>-</span>
+                                                    </t>
                                                 </td>
                                                 <td>
                                                     <span t-esc="line.picking_name" />
@@ -331,13 +331,19 @@
                                                     <t t-esc="line.product_id.name" />
 <!--                                                    <t t-esc="line.product_id.product_type" />-->
                                                 </td>
-                                                <td>
+                                                <td style="text-align: center;width:100px;">
+                                                    <t t-if="line.product_id.hs_code.hs_code">
+                                                        <span t-field="line.product_id.hs_code.hs_code" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span></span>
+                                                    </t>
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
+                                                <td></td>
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
-                                                <td></td>
                                                 <!--UoM-->
                                                 <td>
                                                     <t t-if="line.product_id.product_type in ['button','label','sticker']">
