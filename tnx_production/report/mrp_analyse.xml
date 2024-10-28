@@ -110,7 +110,7 @@
                                     <td>
 
                                         <t t-if="line.product_type == 'button'">
-                                            <span t-esc="line.line_product"/>
+                                            <span t-esc="str(line.line_product)+'L'"/>
                                         </t>
                                         <t t-elif="line.product_type == 'other'">
                                             <span t-esc="str(line.surface_product)+'mm²'"/>
