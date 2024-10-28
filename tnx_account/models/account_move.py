@@ -116,7 +116,7 @@ class AccountMoveInherit(models.Model):
 
             if get_last_id:
                 if get_last_year == get_year:
-                    sec_lapurchase.orderst = get_last_id.name + 1
+                    sec_last = get_last_id.name + 1
 
             get_year = str(get_year)
             l = len(get_year)
@@ -134,6 +134,7 @@ class AccountMoveInherit(models.Model):
             seq_bis = f"{check_partner_type.upper()} {sec_last}/{get_year}"
             self.write({"seq_bis": seq_bis})
             # self.update({'name':self.name + '-' + check_partner_type.upper()})
+            
 
     @api.depends("invoice_line_ids", "invoice_line_ids.move_line_ids")
     def _compute_picking_ids(self):
