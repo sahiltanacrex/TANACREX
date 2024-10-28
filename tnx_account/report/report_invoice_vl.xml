@@ -242,7 +242,7 @@
                                                 <td style="text-align: center;width:75px;">
                                                     <t t-if="line.is_flat_rate">
                                                         <!-- <t t-esc="o.get_right_number(line.quantity)" /> -->
-                                                        <t t-esc="o.get_right_number(line.sale_line_ids.qty_delivered)" />
+                                                        <t t-esc="o.get_right_number(sum(line.sale_line_ids.mapped('qty_delivered')))" />
                                                     </t>
                                                     <t t-else="">
                                                         <t t-esc="o.get_right_number(line.unit_qty)" />
