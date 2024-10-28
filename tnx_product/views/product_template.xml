@@ -14,7 +14,7 @@
                         <group>
                             <field name="hs_code" string="HS Code" />
 
-                            <field name="new_type" options="{'no_quick_create': True}"/>
+                            <field name="new_type" options="{'no_quick_create': True}" attrs="{'invisible': True}"/>
                             <field name="product_type" />
                             <field name="form" string="Forme" attrs="{'invisible': [('product_type', 'in', ['rubban','button', 'other'])]}"/>
                             <!-- if square -->
