@@ -342,7 +342,13 @@
                                                 </td>
                                                 <td></td>
                                                 <td>
-                                                    <t t-esc="o.get_right_number(line.quantity)" />
+                                                    <t t-if="line.is_flat_rate">
+                                                        <!-- <t t-esc="o.get_right_number(line.quantity)" /> -->
+                                                        <t t-esc="o.get_right_number(sum(line.sale_line_ids.mapped('qty_delivered')))" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-esc="o.get_right_number(line.unit_qty)" />
+                                                    </t>
                                                 </td>
                                                 <!--UoM-->
                                                 <td>
@@ -358,7 +364,7 @@
                                                 <td style="text-align:right">
 <!--                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t-->
 <!--                                                        t-esc="o.currency_id.symbol"/>-->
-                                                    <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
+                                                    <t t-if="not line.is_flat_rate" t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                 </td>
                                                 <td style="text-align:right">
                                                     <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
