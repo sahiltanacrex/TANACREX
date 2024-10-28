@@ -337,6 +337,7 @@
                                                 <td>
                                                     <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
+                                                <td></td>
                                                 <!--UoM-->
                                                 <td>
                                                     <t t-if="line.product_id.product_type in ['button','label','sticker']">
