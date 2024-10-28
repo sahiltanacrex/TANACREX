@@ -32,7 +32,8 @@
         'security/ir.model.access.csv',
         # send mail
         'data/mail_templates/template_bat.xml',
-        'data/uom_data/uom_data.xml'
+        'data/uom_data/uom_data.xml',
+        'views/product_type_views.xml',
 
     ],
     # only loaded in demonstration mode

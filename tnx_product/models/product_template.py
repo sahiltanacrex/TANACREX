@@ -41,6 +41,7 @@ class Product_template(models.Model):
     donneur_ordre = fields.Many2one("res.partner", string="Donneur d'ordre")
     ref_donneur_ordre = fields.Char(string=" Réf. donneur d'ordre")
     is_fees = fields.Boolean(string="Est un frais?")
+    new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
 
     # matiere_id = domain("[('type_id', '=', type_id)]")
 
@@ -86,21 +87,25 @@ class Product_template(models.Model):
 
     # ! add fields
     product_type = fields.Selection(
-        [
-            ("ruban", _("Ruban")),
-            ("button", _("Bouton")),
-            ("label", _("Etiquette")),
-            ("sticker", _("Autocollant")),
-            ("satin_a_lysiere", _("Satin à Lysière")),
-            ("satin", _("Satin")),
-            ("satin_recycle", _("Satin recyclé")),
-            ("encre", _("Encre")),
-            ("nylon", _("Nylon")),
-            ("dp", _("DP")),
-            ("other", _("Autres")),
-        ],
+        selection=lambda self: self._get_product_type_selection(),
         string="Type du produit",
     )
+    # product_type = fields.Selection(
+    #     [
+    #         ("ruban", _("Ruban")),
+    #         ("button", _("Bouton")),
+    #         ("label", _("Etiquette")),
+    #         ("sticker", _("Autocollant")),
+    #         ("satin_a_lysiere", _("Satin à Lysière")),
+    #         ("satin", _("Satin")),
+    #         ("satin_recycle", _("Satin recyclé")),
+    #         ("encre", _("Encre")),
+    #         ("nylon", _("Nylon")),
+    #         ("dp", _("DP")),
+    #         ("other", _("Autres")),
+    #     ],
+    #     string="Type du produit",
+    # )
 
     material = fields.Char("Matière", related='material_id.name')
     material_id = fields.Many2one(
@@ -127,6 +132,27 @@ class Product_template(models.Model):
             ("other", "Autre")
         ], default="rectangle"
             )
+    
+    def _get_product_type_selection(self):
+        # Default hard-coded options
+        default_types = [
+            ("ruban", _("Ruban")),
+            ("button", _("Bouton")),
+            ("label", _("Etiquette")),
+            ("sticker", _("Autocollant")),
+            ("satin_a_lysiere", _("Satin à Lysière")),
+            ("satin", _("Satin")),
+            ("satin_recycle", _("Satin recyclé")),
+            ("encre", _("Encre")),
+            ("nylon", _("Nylon")),
+            ("dp", _("DP")),
+            ("other", _("Autres")),
+        ]
+        # Load dynamic options
+        dynamic_types = self.env['product.type'].search([])
+        dynamic_options = [(type_record.code, type_record.name) for type_record in dynamic_types]
+        
+        return default_types + dynamic_options
     
     def get_right_number(self, val):
         val_string = str(val)
@@ -277,3 +303,10 @@ class HsCode(models.Model):
     _rec_name = "hs_code"
     name = fields.Char("Désignation")
     hs_code = fields.Char("Hs Code")
+
+class ProductTypeConfig(models.Model):
+    _name = 'product.type'
+    _description = 'Product Type Configuration'
+
+    name = fields.Char("Product Type", required=True)
+    code = fields.Char("Code", required=True, unique=True)
