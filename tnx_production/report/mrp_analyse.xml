@@ -108,13 +108,35 @@
                                         <span t-esc="line.product_id.name" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.line_product" />
+
+                                        <t t-if="line.product_type == 'button'">
+                                            <span t-esc="line.line_product"/>
+                                        </t>
+                                        <t t-elif="line.product_type == 'other'">
+                                            <span t-esc="str(line.surface_product)+'mm²'"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-esc="str(line.length_product)+'mm' + ' x ' + str(line.wide_product)+'mm'"/>
+                                        </t>
+
                                     </td>
                                     <!--<td>
                                         <span t-esc="line.material_product" />
                                     </td>-->
                                     <td>
-                                        <span t-esc="line.product_type" />
+                                        <t t-if="line.product_type == 'label'">
+                                            <span t-esc="'Etiquette'"/>
+                                        </t>
+                                        <t t-elif="line.product_type == 'button'">
+                                            <span t-esc="'Bouton'"/>
+                                        </t>
+                                        <t t-elif="line.product_type == 'sticker'">
+                                            <span t-esc="'Autocollant'"/>
+                                        </t>
+                                        <t t-elif="line.product_type == 'other'">
+                                            <span t-esc="'Autres'"/>
+                                        </t>
+                                        <!-- <span t-esc="line.product_type" /> -->
                                     </td>
                                     <!--<td>
                                         <p t-attf-style="background-color: {{line.color_product}}; width: 25px; height: 25px; border-radius: 50%; border: 1px solid black; margin: auto;" />
@@ -156,7 +178,7 @@
             <field name="margin_left">2</field>
             <field name="header_line" eval=" False" />
             <field name="header_spacing">1</field>
-            <field name="dpi">90</field>
+            <field name="dpi">90</field> 
         </record>
         <record id="action_production_nexource_report" model="ir.actions.report">
             <field name="name">analyse.production.nexources</field>
