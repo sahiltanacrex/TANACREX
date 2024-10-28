@@ -370,14 +370,16 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td style="text-align: right">Sous-total</td>
                                         <td></td>
+                                        <td></td>
+                                        <td style="text-align: right">Sous-total</td>
                                         <td style="text-align:right">
                                             <!--<t t-esc="o.format_number_for_amount(total_price_type_false)"/>-->
                                             <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type_false"/>
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
