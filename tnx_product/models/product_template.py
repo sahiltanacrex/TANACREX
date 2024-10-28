@@ -113,9 +113,9 @@ class Product_template(models.Model):
 
     # field based on condition
     # ?if button_type = button
-    line = fields.Float("Ligne")
+    line = fields.Integer("Ligne")
     diameter = fields.Float(string="Diamètre (mm)", required=False)
-    surface = fields.Float(
+    surface = fields.Integer(
         "Surface (mm²)",
     )
     dimension = fields.Char(sting="Dimension", compute="_compute_dimension")
@@ -189,10 +189,10 @@ class Product_template(models.Model):
 
     # ? if sticker or a label
     # ! search surface  by this fields
-    length = fields.Float(string="Longueur (mm)", required=False)
+    length = fields.Integer(string="Longueur (mm)", required=False)
     # height = fields.Float(string="Hauteur", required=False)
     side = fields.Float(string="Côté (mm)", required=False)
-    wide = fields.Float(string="Largeur (mm)", required=False)
+    wide = fields.Integer(string="Largeur (mm)", required=False)
     radius = fields.Float(string="Rayon (mm)", required=False)
 
 
