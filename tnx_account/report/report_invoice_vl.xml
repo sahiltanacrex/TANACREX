@@ -241,8 +241,7 @@
                                                 </td>
                                                 <td style="text-align: center;width:75px;">
                                                     <t t-if="line.is_flat_rate">
-                                                        <!-- <t t-esc="o.get_right_number(line.quantity)" /> -->
-                                                        <t t-esc="o.get_right_number(sum(line.sale_line_ids.mapped('qty_delivered')))" />
+                                                        <t t-esc="o.get_right_number(line.quantity)" />
                                                     </t>
                                                     <t t-else="">
                                                         <t t-esc="o.get_right_number(line.unit_qty)" />
@@ -263,12 +262,12 @@
                                                     <t t-if="line.product_id.is_fees == True">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
                                                         <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>-->
-                                                        <t t-if="not line.is_flat_rate" t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                     </t>
                                                     <t t-else="">
 <!--                                                        <t t-options='{"widget": "float", "precision": 4}' t-esc="line.price_unit"/>-->
                                                         <!--<t t-options='{"widget": "float", "precision": 4}' t-esc="line.punit"/>-->
-                                                        <t t-if="not line.is_flat_rate" t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
+                                                        <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                     </t>
                                                 </td>
                                                 <td style="text-align:right;">
@@ -314,12 +313,12 @@
                                             <t t-if="line.product_id.product_type == False and line.price_unit != 0">
                                             <tr>
                                                 <td>
-                                                    <t t-if="line.order_customer">
-                                                        <span t-esc="line.order_customer" />
-                                                    </t>
-                                                    <t t-else="">
-                                                        <span>-</span>
-                                                    </t>
+                                                <t t-if="line.order_customer">
+                                                    <span t-esc="line.order_customer" />
+                                                </t>
+                                                <t t-else="">
+                                                    <span>-</span>
+                                                </t>
                                                 </td>
                                                 <td>
                                                     <span t-esc="line.picking_name" />
@@ -331,24 +330,11 @@
                                                     <t t-esc="line.product_id.name" />
 <!--                                                    <t t-esc="line.product_id.product_type" />-->
                                                 </td>
-                                                <td style="text-align: center;width:100px;">
-                                                    <t t-if="line.product_id.hs_code.hs_code">
-                                                        <span t-field="line.product_id.hs_code.hs_code" />
-                                                    </t>
-                                                    <t t-else="">
-                                                        <span></span>
-                                                    </t>
+                                                <td>
                                                     <!-- <t t-if="line.product_id.product_tmpl_id.length != 0 and line.product_id.product_tmpl_id.height != 0" t-esc="line.product_id.product_tmpl_id.length"/>mm x <t t-esc="line.product_id.product_tmpl_id.height"/>mm -->
                                                 </td>
-                                                <td></td>
                                                 <td>
-                                                    <t t-if="line.is_flat_rate">
-                                                        <!-- <t t-esc="o.get_right_number(line.quantity)" /> -->
-                                                        <t t-esc="o.get_right_number(sum(line.sale_line_ids.mapped('qty_delivered')))" />
-                                                    </t>
-                                                    <t t-else="">
-                                                        <t t-esc="o.get_right_number(line.unit_qty)" />
-                                                    </t>
+                                                    <t t-esc="o.get_right_number(line.quantity)" />
                                                 </td>
                                                 <!--UoM-->
                                                 <td>
@@ -364,7 +350,7 @@
                                                 <td style="text-align:right">
 <!--                                                    <t t-esc="o.format_number_for_amount(line.price_unit)"/> <t-->
 <!--                                                        t-esc="o.currency_id.symbol"/>-->
-                                                    <t t-if="not line.is_flat_rate" t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
+                                                    <t t-esc="o.format_number_for_amount_four(line.punit).replace('.',',')"/>
                                                 </td>
                                                 <td style="text-align:right">
                                                     <!--<t t-esc="o.format_number_for_amount(line.price_subtotal)"/>--> <!--<t t-esc="o.currency_id.symbol"/>-->
@@ -382,16 +368,14 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td style="text-align: right">Sous-total</td>
+                                        <td></td>
                                         <td style="text-align:right">
                                             <!--<t t-esc="o.format_number_for_amount(total_price_type_false)"/>-->
                                             <t t-options='{"widget": "float", "precision": 2}' t-esc="total_price_type_false"/>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
                                         <td style="border-bottom: 1px solid #000;"></td>
