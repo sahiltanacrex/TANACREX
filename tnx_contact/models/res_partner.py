@@ -29,9 +29,11 @@ class ResPartner(models.Model):
         string='FAX',
         required=False)
 
-    ref_client = fields.Char(string='ref')
+    ref_client = fields.Char(string='ref') 
 
     without_origin_report_ex = fields.Boolean()
+    european_union_ex = fields.Boolean()
+    turkey_ex = fields.Boolean()
     # partner_type = fields.Selection(selection_add=[
     #     ('ex','EX'),('vl','VL'),('ls','LS')
     # ])
