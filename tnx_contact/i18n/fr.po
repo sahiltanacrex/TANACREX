@@ -1,0 +1,113 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tnx_contact
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e-20240826\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-11 08:11+0000\n"
+"PO-Revision-Date: 2024-12-11 08:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__cif
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__cif
+msgid "CIF"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model,name:tnx_contact.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields.selection,name:tnx_contact.selection__res_partner__partner_type__ex
+msgid "EX"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__european_union_ex
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__european_union_ex
+msgid "European Union Ex"
+msgstr "European Union"
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__fax_number
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__fax_number
+msgid "FAX"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__free_val
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__free_val
+msgid "Free Val"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields.selection,name:tnx_contact.selection__res_partner__partner_type__ls
+msgid "LS"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__nif
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__nif
+msgid "NIF"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__rcs
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__rcs
+msgid "RCS"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__siret
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__siret
+msgid "SIRET"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__stat
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__stat
+msgid "STAT"
+msgstr ""
+
+#. module: tnx_contact
+#: model_terms:ir.ui.view,arch_db:tnx_contact.inherited_res_partner_view_form
+msgid "Sans origine dans le rapport"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__turkey_ex
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__turkey_ex
+msgid "Turkey Ex"
+msgstr "Turkey"
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__partner_type
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__partner_type
+msgid "Type de client"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields.selection,name:tnx_contact.selection__res_partner__partner_type__vl
+msgid "VL"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__without_origin_report_ex
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__without_origin_report_ex
+msgid "Without Origin Report Ex"
+msgstr ""
+
+#. module: tnx_contact
+#: model:ir.model.fields,field_description:tnx_contact.field_res_partner__ref_client
+#: model:ir.model.fields,field_description:tnx_contact.field_res_users__ref_client
+msgid "ref"
+msgstr ""
