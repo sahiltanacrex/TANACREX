@@ -551,24 +551,25 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
 
                     <div class="row">
                         <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
-                        <t t-foreach="bank_company_ids" t-as="bank">
+                        
                             <div class="col-9">
                                 <style type="text/css">
                                                 p {margin-bottom: 0em;}
                                 </style>
-                                <span t-if="o.payment_method"> Payment: </span>
-                                <span t-field="o.payment_method"/>
- --                                <span>Payment term: </span>
-                                <span t-if="o.payment_term_id" t-field="o.payment_term_id" />
-                                <div>
-                                    <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                </div>
-                                <span style="font-weight: bold;">IBAN : </span>
-                                <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
-
+                                <t t-foreach="bank_company_ids" t-as="bank">
+                                    <span t-if="o.payment_method"> Payment: </span>
+                                    <span t-field="o.payment_method"/>
+    --                                <span>Payment term: </span>
+                                    <span t-if="o.payment_term_id" t-field="o.payment_term_id" />
+                                    <div>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                    </div>
+                                    <span style="font-weight: bold;">IBAN : </span>
+                                    <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                </t>
 
                             </div>
-                        </t>
+                        
                         <div class="col-3" t-if="o.have_signature">
                             <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
                         </div>
@@ -1026,21 +1027,21 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
 
                         <div class="row">
                             <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
-                            <t t-foreach="bank_company_ids" t-as="bank">
+                            
                                 <div class="col-9">
                                     <style type="text/css">
                                     p {margin-bottom: 0em;}
                                     </style>
-
-                                    <div>
-                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                    </div>
-                                    <span style="font-weight: bold;">IBAN : </span>
-                                    <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
-
+                                    <t t-foreach="bank_company_ids" t-as="bank">
+                                        <div>
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                        </div>
+                                        <span style="font-weight: bold;">IBAN : </span>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
+                                    </t>
 
                                 </div>
-                            </t>
+                            
                             <div class="col-3" t-if="doc.have_signature">
                                 <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
                             </div>
@@ -1492,21 +1493,21 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
 
                         <div class="row">
                             <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
-                            <t t-foreach="bank_company_ids" t-as="bank">
+                            
                                 <div class="col-9">
                                     <style type="text/css">
                                     p {margin-bottom: 0em;}
                                     </style>
+                                    <t t-foreach="bank_company_ids" t-as="bank">
+                                        <div>
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                        </div>
+                                        <span style="font-weight: bold;">IBAN : </span>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
-                                    <div>
-                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                    </div>
-                                    <span style="font-weight: bold;">IBAN : </span>
-                                    <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
-
-
+                                    </t>
                                 </div>
-                            </t>
+                            
                             <div class="col-3" t-if="doc.have_signature">
                                 <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
                             </div>
@@ -1977,21 +1978,22 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
 
                         <div class="row">
                             <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
-                            <t t-foreach="bank_company_ids" t-as="bank">
+                            
                                 <div class="col-9">
+                                    
                                     <style type="text/css">
                                             p {margin-bottom: 0em;}
                                     </style>
+                                    <t t-foreach="bank_company_ids" t-as="bank">
+                                        <div>
+                                            <span style="font-weight: bold;" t-esc="bank.bank_address"/>
+                                        </div>
+                                        <span style="font-weight: bold;">IBAN : </span>
+                                        <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
 
-                                    <div>
-                                        <span style="font-weight: bold;" t-esc="bank.bank_address"/>
-                                    </div>
-                                    <span style="font-weight: bold;">IBAN : </span>
-                                    <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
-
-
+                                    </t>
                                 </div>
-                            </t>
+                            
                             <div class="col-3" t-if="doc.have_signature">
                                 <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
                             </div>
