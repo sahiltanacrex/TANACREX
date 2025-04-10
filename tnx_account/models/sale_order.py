@@ -6,6 +6,10 @@ from odoo import models, fields, api
 class Sale_order(models.Model):
     _inherit = "sale.order"
 
+    bank_company_ids = fields.Many2many(
+        "bank.company", "account_move_id", string="Bank"
+    )
+
     def _create_invoices(self, grouped=False, final=False, date=None):
         for order in self:
             get_currency = order.pricelist_id.currency_id

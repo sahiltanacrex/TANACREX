@@ -25,7 +25,7 @@
         "views/sale_order_line.xml",
         "views/account_move_line.xml",
         # report
-        "report/report_sale_order.xml",
+        # "report/report_sale_order.xml",
         #data
         "data/product_data.xml",
         "data/mail_template_data.xml",

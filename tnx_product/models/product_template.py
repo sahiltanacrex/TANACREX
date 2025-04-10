@@ -42,6 +42,7 @@ class Product_template(models.Model):
     ref_donneur_ordre = fields.Char(string=" Réf. donneur d'ordre")
     is_fees = fields.Boolean(string="Est un frais?")
     new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
+    new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
 
     # matiere_id = domain("[('type_id', '=', type_id)]")
 
@@ -287,6 +288,13 @@ class HsCode(models.Model):
     _rec_name = "hs_code"
     name = fields.Char("Désignation")
     hs_code = fields.Char("Hs Code")
+
+class ProductTypeConfig(models.Model):
+    _name = 'product.type'
+    _description = 'Product Type Configuration'
+
+    name = fields.Char("Product Type", required=True)
+    code = fields.Char("Code", required=True, unique=True)
 
 class ProductTypeConfig(models.Model):
     _name = 'product.type'
