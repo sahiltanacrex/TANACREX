@@ -7,7 +7,7 @@ class Sale_order(models.Model):
     _inherit = "sale.order"
 
     bank_company_ids = fields.Many2many(
-        "bank.company", "account_move_id", string="Bank"
+        "bank.company", "sale_order_id", string="Bank"
     )
 
     def _create_invoices(self, grouped=False, final=False, date=None):

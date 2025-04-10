@@ -14,7 +14,7 @@ class Bank(models.Model):
         track_visibility="onchange",
     )
     account_move_id = fields.Many2one("account.move", string="Account move")
-    sale_order_id = fields.Many2one("account.move", string="Salse order")
+    sale_order_id = fields.Many2one("sale.order", string="Salse order")
     bank_info = fields.Text("Information banque")
     bank_address = fields.Html(string="Bank address", help="")
 
