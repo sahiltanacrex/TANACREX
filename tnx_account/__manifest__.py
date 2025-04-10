@@ -18,12 +18,12 @@
     "depends": [
         "base",
         "tnx_base",
-        "tnx_product",
+        # "tnx_product",
         "tnx_sale",
-        "tnx_contact",
+        # "tnx_contact",
         "account",
-        "sale",
-        "stock",
+        # "sale",
+        # "stock",
         "sale_stock",
         "mail",
     ],
@@ -32,6 +32,7 @@
         "views/views.xml",
         "views/templates.xml",
         "views/account_move.xml",
+        "views/sale_order.xml",
         "views/stock_view.xml",
         "views/account_invoice_view.xml",
         "views/bank_company.xml",
@@ -40,13 +41,14 @@
         "views/config_seq_ls.xml",
         "views/config_seq_vl.xml",
         "security/ir.model.access.csv",
-        #data
+        # data
         "data/mail_template_data.xml",
         # reporting
         "report/report_invoice_ex.xml",
         "report/report_invoice_vl.xml",
         "report/report_invoice_ls.xml",
         "report/report_invoice_fornisseur.xml",
+        "report/report_sale_order.xml",
     ],
     # only loaded in demonstration mode
     "demo": [
