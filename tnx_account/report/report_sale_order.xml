@@ -614,10 +614,10 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                 <t t-foreach="docs" t-as="o">
                     <t t-if="env.context.get('proforma', False)">
                         <t t-set="doc" t-value="o"/>
-                        <t t-call="tnx_sale.report_saleorder_document_proforma" t-lang="o.partner_id.lang"/>
+                        <t t-call="tnx_account.report_saleorder_document_proforma" t-lang="o.partner_id.lang"/>
                     </t>
                     <t t-else="">
-                        <t t-call="tnx_sale.report_saleorder_document" t-lang="o.partner_id.lang"/>
+                        <t t-call="tnx_account.report_saleorder_document" t-lang="o.partner_id.lang"/>
                     </t>
 
                 </t>
@@ -631,7 +631,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                 <!-- <t t-set="is_pro_forma" t-value="True"/> -->
                 <t t-set="docs" t-value="docs.with_context(proforma=True)"/>
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="tnx_sale.report_saleorder_document_proforma" t-lang="doc.partner_id.lang"/>
+                    <t t-call="tnx_account.report_saleorder_document_proforma" t-lang="doc.partner_id.lang"/>
                 </t>
             </t>
         </xpath>
