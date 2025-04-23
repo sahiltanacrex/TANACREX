@@ -43,6 +43,8 @@ class Product_template(models.Model):
     is_fees = fields.Boolean(string="Est un frais?")
     new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
     new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
+    new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
+    new_type = fields.Many2one('product.type', string="Nouvelle type de produit")
 
     # matiere_id = domain("[('type_id', '=', type_id)]")
 
@@ -88,6 +90,7 @@ class Product_template(models.Model):
 
     # ! add fields
     product_type = fields.Selection(
+        selection=lambda self: self._get_product_type_selection(),
         selection=lambda self: self._get_product_type_selection(),
         string="Type du produit",
     )
@@ -304,6 +307,20 @@ class HsCode(models.Model):
     _rec_name = "hs_code"
     name = fields.Char("Désignation")
     hs_code = fields.Char("Hs Code")
+
+class ProductTypeConfig(models.Model):
+    _name = 'product.type'
+    _description = 'Product Type Configuration'
+
+    name = fields.Char("Product Type", required=True)
+    code = fields.Char("Code", required=True, unique=True)
+
+class ProductTypeConfig(models.Model):
+    _name = 'product.type'
+    _description = 'Product Type Configuration'
+
+    name = fields.Char("Product Type", required=True)
+    code = fields.Char("Code", required=True, unique=True)
 
 class ProductTypeConfig(models.Model):
     _name = 'product.type'

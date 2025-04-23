@@ -1039,7 +1039,10 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                         <span style="font-weight: bold;">IBAN : </span>
                                         <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
                                     </t>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ticket#2711
                                 </div>
                             
                             <div class="col-3" t-if="doc.have_signature">
@@ -1980,7 +1983,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                             <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
                             
                                 <div class="col-9">
-                                    
+
                                     <style type="text/css">
                                             p {margin-bottom: 0em;}
                                     </style>
