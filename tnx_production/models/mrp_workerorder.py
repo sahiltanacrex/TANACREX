@@ -8,4 +8,4 @@ class MrpWorkorder(models.Model):
 
     partner_production_id = fields.Many2one(related="production_id.partner_id")
     product_qty_production_id = fields.Float(related="production_id.product_qty")
-    priority_production_id = fields.Float(related="production_id.priority")
+    priority_production = fields.Selection(related="production_id.priority")

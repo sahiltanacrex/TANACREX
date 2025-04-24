@@ -6,7 +6,7 @@
     <field name="inherit_id" ref="mrp.mrp_production_workorder_tree_view"/>
     <field name="arch" type="xml">
       <field name="name" position="before">
-        <field name="priority_production_id"/>
+        <field name="priority_production" string="Priorité"/>
       </field>
       <field name="production_id" position="after">
         <field name="partner_production_id"/>
