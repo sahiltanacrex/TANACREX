@@ -64,6 +64,7 @@
                         <table class="text-center">
                             <thead>
                                 <tr>
+                                    <th>Priorité</th>
                                     <th>Image</th>
                                     <th>Date BC</th>
                                     <!--<th>BC</th>-->
@@ -79,11 +80,15 @@
                                     <th>Reste à livrer</th>
                                     <th>UdM</th>
                                     <th>Fin Prod</th>
+                                    <th>Etape</th>
                                 </tr>
                             </thead>
                             <t t-foreach="docs" t-as="line">
                                 <t t-if="not line" t-set="line" t-value="line" />
                                 <tr>
+                                    <td>
+                                        <span t-field="line.priority" />
+                                    </td>
                                     <td>
                                         <t t-if="line.product_id.image_256">
                                             <img t-att-src="image_data_uri(line.product_id.image_256)" style="max-with:70px;max-height:70px; padding: 2px 2px;" />
@@ -108,7 +113,8 @@
                                         <span t-esc="line.product_id.name" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.line_product" />
+                                        <!-- <span t-esc="line.line_product" /> -->
+                                        <span t-esc="line.dimension" />
                                     </td>
                                     <!--<td>
                                         <span t-esc="line.material_product" />
@@ -123,16 +129,19 @@
                                         <span t-field="line.product_qty" t-options="{'widget': 'float', 'precision': 0}"/>
                                     </td>
                                     <td>
-                                        <span t-field="line.product_qty_delivered" />
+                                        <span t-field="line.product_qty_delivered" t-options="{'widget': 'float', 'precision': 0}"/>
                                     </td>
                                     <td>
-                                        <span t-field="line.product_qty_still_to_be_delivered" />
+                                        <span t-field="line.product_qty_still_to_be_delivered" t-options="{'widget': 'float', 'precision': 0}"/>
                                     </td>
                                     <td>
                                         <span t-esc="line.product_uom_id.name" />
                                     </td>
                                     <td>
-                                        <span t-esc="line.end_of_production" />
+                                        <span t-field="line.end_of_production" />
+                                    </td>
+                                    <td>
+                                        <span t-esc=", '.join(line.workorder_ids.filtered(lambda x: x.is_user_working).mapped('name'))" />
                                     </td>
                                 </tr>
                             </t>
