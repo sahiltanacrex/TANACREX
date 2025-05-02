@@ -141,7 +141,7 @@
                                         <span t-field="line.end_of_production" />
                                     </td>
                                     <td>
-                                        <span t-esc=", '.join(line.workorder_ids.filtered(lambda x: x.is_user_working).mapped('name'))" />
+                                        <span t-esc="', '.join(line.workorder_ids.filtered(lambda x: x.is_user_working).mapped('name'))" />
                                     </td>
                                 </tr>
                             </t>
