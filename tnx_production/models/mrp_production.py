@@ -23,7 +23,7 @@ class MrpProduction(models.Model):
     image_1920 = fields.Image("Image", related="product_id.image_1920")
     bc_client = fields.Char(
         "Bc Client", compute='_set_fields_depends_on_origin',inverse="inverse_bc_client_fields",store=True)
-    line_product = fields.Integer("Ligne", related="product_id.line")
+    line_product = fields.Float("Ligne", related="product_id.line")
     dimension = fields.Char(sting="Dimension", related="product_id.product_tmpl_id.dimension")
     material_product = fields.Char(store=True, compute="_compute_material_product", default=lambda self: self.product_id.material_id.name if self.product_id else False)
     product_type = fields.Selection(
