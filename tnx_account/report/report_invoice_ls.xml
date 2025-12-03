@@ -211,7 +211,7 @@
                                                     <span t-field="line.product_id.name" />
                                                 </td>
                                                 <td style="text-align: left;width:100px;">
-                                                    <span t-field="line.product_id.hs_code.hs_code" />
+                                                    <span t-field="line.hs_code" />
                                                 </td>
                                                 <td style="text-align: right;width:100px;">
                                                     <t t-if="line.product_id.product_type == 'button'">

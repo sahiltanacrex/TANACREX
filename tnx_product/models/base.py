@@ -128,7 +128,6 @@ class Base(models.AbstractModel):
 
         # possibly raise exception for the records that could not be read
         missing = self - fetched
-        print(self, fields, fetched)
         if missing:
             extras = fetched - self
             if extras:
