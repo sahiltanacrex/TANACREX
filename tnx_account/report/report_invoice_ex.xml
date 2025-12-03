@@ -215,7 +215,7 @@
                                                     <span t-field="line.product_id.name" />
                                                 </td>
                                                 <td style="text-align: right;width:140px;">
-                                                    <t t-esc="line.product_id.hs_code.hs_code" />
+                                                    <t t-esc="line.hs_code" />
                                                 </td>
                                                 <td t-if="line.product_id.detailed_type != 'service'" style="text-align: right;width:100px;">
                                                     <t t-if="line.product_id.product_type == 'button'">
@@ -327,8 +327,8 @@
                                                     <t t-esc="line.product_id.product_type" />
                                                 </td>
                                                 <td style="width:140px;">
-                                                   <t t-if="line.product_id.hs_code">
-                                                   <span t-esc="line.product_id.hs_code.hs_code" />
+                                                   <t t-if="line.hs_code">
+                                                   <span t-esc="line.hs_code" />
                                                    </t>
                                                 </td>
                                                 <td>
