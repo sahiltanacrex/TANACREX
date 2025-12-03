@@ -409,6 +409,7 @@ class Product_template(models.Model):
 
         # possibly raise exception for the records that could not be read
         missing = self - fetched
+        print(self, fields, ids, fetched)
         if missing:
             extras = fetched - self
             if extras:
