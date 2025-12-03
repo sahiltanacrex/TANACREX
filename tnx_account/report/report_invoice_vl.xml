@@ -213,8 +213,8 @@
                                                     <span t-field="line.product_id.name" />
                                                 </td>
                                                 <td style="text-align: center;width:100px;">
-                                                    <t t-if="line.product_id.hs_code.hs_code">
-                                                        <span t-field="line.product_id.hs_code.hs_code" />
+                                                    <t t-if="line.hs_code">
+                                                        <span t-field="line.hs_code" />
                                                     </t>
                                                     <t t-else="">
                                                         <span></span>
