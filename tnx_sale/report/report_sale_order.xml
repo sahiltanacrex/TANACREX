@@ -259,7 +259,7 @@
                                                 <t t-esc="line.product_id.customer_reference" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.hs_code" />
+                                                <t t-esc="line.product_id.hs_code.hs_code" />
                                             </td>
                                             <td>
                                                 <span t-field="line.product_id.product_type" />
@@ -362,7 +362,7 @@
                                                 <t t-esc="line.product_id.customer_reference" />
                                             </td>
                                             <td>
-                                                <t t-esc="line.product_id.hs_code.name" />
+                                                <t t-esc="line.product_id.hs_code.hs_code" />
                                             </td>
                                             <td>
                                                  <span t-field="line.product_id.product_type" />
@@ -1259,7 +1259,7 @@
                                                         <span t-field="line.product_id.product_type" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.hs_code"/>
+                                                        <t t-esc="line.product_id.hs_code.hs_code" />
                                                     </td>
                                                     <td>
                                                         <t t-if="line.product_id.product_type == 'button'">
@@ -1720,7 +1720,7 @@
                                                         <span t-field="line.product_id.product_type" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="line.hs_code"/>
+                                                        <t t-esc="line.product_id.hs_code.hs_code" />
                                                     </td>
                                                     <td>
                                                         <t t-if="line.product_id.product_type == 'button'">
