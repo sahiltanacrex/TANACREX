@@ -559,7 +559,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <span t-if="o.payment_method"> Payment: </span>
                                     <span t-field="o.payment_method"/>
      --                                    <span>Payment term: </span>
-                                    <span t-if="o.payment_term_id" t-field="o.payment_term_id" />
+                                    <span t-if="o.payment_term_id" t-esc="o.payment_term_id.name" />
                                     <div>
                                         <span style="font-weight: bold;" t-esc="bank.bank_address"/>
                                     </div>
@@ -1015,7 +1015,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                         <span>Payment:</span>
                         <span t-field="doc.payment_method"/>
                             --                        <span>Payment term: </span>
-                        <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
+                        <span t-if="doc.payment_term_id" t-esc="doc.payment_term_id.name" />
                         <!--<t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>-->
                         <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
@@ -1480,7 +1480,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                         <span>Payment:</span>
                         <span t-field="doc.payment_method"/>
                             --                        <span>Payment term: </span>
-                        <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
+                        <span t-if="doc.payment_term_id" t-out="doc.payment_term_id.name" />
                         <!--<t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>-->
                         <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>
@@ -1965,7 +1965,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                         <span>Payment:</span>
                         <span t-field="doc.payment_method"/>
                             --                        <span>Payment term: </span>
-                        <span t-if="doc.payment_term_id" t-field="doc.payment_term_id" />
+                        <span t-if="doc.payment_term_id" t-out="doc.payment_term_id.name"  />
                         <!--<t t-set="validity_date" t-value="doc.get_validity_date()"/>
                             <span>&amp;nbsp; &amp;nbsp; Date d'échéance:</span>-->
                         <span t-else="" t-esc="doc.get_validity_date().strftime('%d/%m/%Y')"/>

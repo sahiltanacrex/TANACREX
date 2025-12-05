@@ -23,7 +23,7 @@ msgstr "--                                    <span>Conditions de paiement: </sp
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "--                        <span>Payment term: </span>"
-msgstr ""
+msgstr "--                        <span>Conditions de paiement: </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
