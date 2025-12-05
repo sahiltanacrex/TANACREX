@@ -206,7 +206,7 @@
                                 <th style="border: none"></th>
                                 <th style="border: none"></th>
                                 <th style="border: none"></th>
-                                <th style="border: none"></th>
+                                <!-- <th style="border: none"></th> -->
                                 <th>
                                     <t t-esc="currency" />
                                 </th>
@@ -219,7 +219,7 @@
                                 <!-- <th>BON DE LIVRAISON</th> -->
                                 <th>Designation</th>
                                 <th>Ref Interne</th>
-                                <th>Ref Client</th>
+                                <!-- <th>Ref Client</th> -->
                                 <th>HS Code</th>
                                 <th>Type</th>
                                 <th>Dimension</th>
@@ -257,11 +257,11 @@
                                                 <!--<t t-esc="line.product_id.name" />-->
                                                 <!--<t t-esc="line.product_id.default_code" />-->
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <t t-esc="line.product_id.customer_reference" />
-                                            </td>
+                                            </td> -->
                                             <td>
-                                                <t t-esc="line.product_id.hs_code.hs_code" />
+                                                <t t-esc="line.product_id.hs_code.hs_code or line.product_id.product_tmpl_id.hs_code.hs_code"/>
                                             </td>
                                             <td>
                                                 <span t-field="line.product_id.product_type" />
@@ -365,7 +365,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                             <t t-esc="line.product_id.customer_reference" />
                                         </td>
                                         <td>
-                                            <t t-esc="line.product_id.hs_code.hs_code" />
+                                            <t t-esc="line.product_id.hs_code.name" />
                                         </td>
                                         <td>
                                             <span t-field="line.product_id.product_type" />
@@ -401,7 +401,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
+                                <!-- <td></td> -->
                                 <td>
                                     <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
 
@@ -418,7 +418,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
-                                <td style="border-bottom: 1px solid #000;"></td>
+                                <!-- <td style="border-bottom: 1px solid #000;"></td> -->
                             </tr>
                             <tr t-if="total_price_type_false">
                                 <td style="border:none"></td>
@@ -429,7 +429,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <td style="border:none"></td>
                                 <td style="border:none"></td>
                                 <td style="border:none"></td>
-                                <td style="border:none"></td>
+                                <!-- <td style="border:none"></td> -->
                                 <td style="border: 1px solid #000;">Sub-total</td>
                                 <td style="border: 1px solid #000;">
                                     <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
@@ -447,7 +447,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border: 1px solid #000;">Amount untaxed</td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(o.amount_untaxed).replace('.',',')"/>
@@ -462,7 +462,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border: 1px solid #000;">Taxes 20%</td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(o.amount_tax).replace('.',',')"/>
@@ -478,7 +478,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border: 1px solid #000;">Montant TTC</td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/>
@@ -495,7 +495,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border:none"></td>
                                     <td style="border: 1px solid #000;">Total Amount</td>
 
@@ -551,7 +551,6 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
 
                     <div class="row">
                         <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
-                        
                             <div class="col-9">
                                 <style type="text/css">
                                                 p {margin-bottom: 0em;}
@@ -559,7 +558,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <t t-foreach="bank_company_ids" t-as="bank">
                                     <span t-if="o.payment_method"> Payment: </span>
                                     <span t-field="o.payment_method"/>
-    --                                <span>Payment term: </span>
+     --                                    <span>Payment term: </span>
                                     <span t-if="o.payment_term_id" t-field="o.payment_term_id" />
                                     <div>
                                         <span style="font-weight: bold;" t-esc="bank.bank_address"/>
@@ -568,8 +567,8 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <span style="font-weight: bold;" t-esc="bank.bank_company_line_ids[0].account_registration"/>
                                 </t>
 
+
                             </div>
-                        
                         <div class="col-3" t-if="o.have_signature">
                             <img t-attf-src="/tnx_account/static/src/img/sign_tnx.png" alt="Logo" style="height:170px;" />
                         </div>
@@ -1275,7 +1274,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                                     <span t-field="line.product_id.product_type" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.product_id.hs_code.hs_code"/>
+                                                    <t t-esc="line.product_id.hs_code.hs_code or line.product_id.product_tmpl_id.hs_code.hs_code"/>
                                                 </td>
                                                 <td>
                                                     <t t-if="line.product_id.product_type == 'button'">
@@ -1743,7 +1742,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                                     <span t-field="line.product_id.product_type" />
                                                 </td>
                                                 <td>
-                                                    <t t-esc="line.product_id.hs_code.hs_code"/>
+                                                    <t t-esc="line.product_id.hs_code.hs_code or line.product_id.product_tmpl_id.hs_code.hs_code"/>
                                                 </td>
                                                 <td>
                                                     <t t-if="line.product_id.product_type == 'button'">
@@ -1979,7 +1978,6 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                             <!-- <t t-foreach="bank_company_ids.filtered(lambda company_bank: 'MCB' in company_bank.bank)" t-as="bank"> -->
                             
                                 <div class="col-9">
-
                                     <style type="text/css">
                                             p {margin-bottom: 0em;}
                                     </style>

@@ -16,6 +16,16 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "--                                    <span>Payment term: </span>"
+msgstr "--                                    <span>Conditions de paiement: </span>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "--                        <span>Payment term: </span>"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid ""
 "<b>\n"
@@ -204,6 +214,8 @@ msgstr "<span style=\"font-weight: bold;\">Poids brut : </span>"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span style=\"font-weight: bold;\">IBAN : </span>"
 msgstr ""
 
@@ -249,6 +261,18 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>-</span>"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid ""
+"<span>All bank charges of the foreign bank must be paid by the buyer, "
+"including reimbursement of corresponding bank charges, commissions, taxes "
+"and postage.</span>"
+msgstr ""
+"<span>Tous les frais bancaires de la banque étrangère doivent être payés par "
+"l'acheteur, y compris le correspondant remboursant les frais bancaires,les "
+"commissions,les taxes et les frais postaux correspondants.</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -333,6 +357,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span>NIF:</span>"
 msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "<span>Payment:</span>"
+msgstr "<span>Paiement:</span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -444,6 +473,16 @@ msgid "Amount"
 msgstr "Montant"
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "Amount untaxed"
+msgstr "Montant hors taxes"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "Amount:"
+msgstr "Montant"
+
+#. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company__message_attachment_count
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__message_attachment_count
 msgid "Attachment Count"
@@ -475,6 +514,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:tnx_account.field_account_move__origin_sale_id
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__origin_sale_id
 #: model:ir.model.fields,field_description:tnx_account.field_bank_company_line__bank_id
+#: model:ir.model.fields,field_description:tnx_account.field_sale_order__bank_company_ids
 msgid "Bank"
 msgstr "Banque"
 
@@ -587,6 +627,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Designation"
 msgstr "Désignation"
 
@@ -599,6 +641,8 @@ msgstr "Diamètre"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Dimension"
 msgstr ""
 
@@ -614,6 +658,11 @@ msgstr "Nom affiché"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_document
 msgid "Draft Invoice"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "Désignation"
 msgstr ""
 
 #. module: tnx_account
@@ -664,6 +713,8 @@ msgstr "Poids brut :"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "HS Code"
 msgstr ""
 
@@ -991,6 +1042,11 @@ msgid "Paiement:"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "Payment:"
+msgstr "Paiement"
+
+#. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_account_bank_statement_line__gross_weight
 #: model:ir.model.fields,field_description:tnx_account.field_account_move__gross_weight
 #: model:ir.model.fields,field_description:tnx_account.field_account_payment__gross_weight
@@ -1035,6 +1091,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
 msgid "Qty"
 msgstr "Qté"
 
@@ -1042,6 +1099,7 @@ msgstr "Qté"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Reference"
 msgstr "Référence"
 
@@ -1171,6 +1229,11 @@ msgid "Sous-total"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "Sub-total"
+msgstr "ous-total"
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid "Subtotal"
 msgstr "Sous-total"
@@ -1186,8 +1249,19 @@ msgid "TVA 20%"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "TVA 20%:"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "Taxes 20%"
+msgstr "TVA 20%"
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
 msgid "Total Amount"
 msgstr "Montant Total"
 
@@ -1227,6 +1301,8 @@ msgstr "Compteur de messages non lus"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "UoM"
 msgstr "UdM"
 
