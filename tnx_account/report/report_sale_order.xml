@@ -206,7 +206,7 @@
                                 <th style="border: none"></th>
                                 <th style="border: none"></th>
                                 <th style="border: none"></th>
-                                <th style="border: none"></th>
+                                <!-- <th style="border: none"></th> -->
                                 <th>
                                     <t t-esc="currency" />
                                 </th>
@@ -219,7 +219,7 @@
                                 <!-- <th>BON DE LIVRAISON</th> -->
                                 <th>Designation</th>
                                 <th>Ref Interne</th>
-                                <th>Ref Client</th>
+                                <!-- <th>Ref Client</th> -->
                                 <th>HS Code</th>
                                 <th>Type</th>
                                 <th>Dimension</th>
@@ -257,9 +257,9 @@
                                                 <!--<t t-esc="line.product_id.name" />-->
                                                 <!--<t t-esc="line.product_id.default_code" />-->
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <t t-esc="line.product_id.customer_reference" />
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 <t t-esc="line.product_id.hs_code.hs_code or line.product_id.product_tmpl_id.hs_code.hs_code"/>
                                             </td>
@@ -401,7 +401,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
+                                <!-- <td></td> -->
                                 <td>
                                     <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
 
@@ -418,7 +418,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
                                 <td style="border-bottom: 1px solid #000;"></td>
-                                <td style="border-bottom: 1px solid #000;"></td>
+                                <!-- <td style="border-bottom: 1px solid #000;"></td> -->
                             </tr>
                             <tr t-if="total_price_type_false">
                                 <td style="border:none"></td>
@@ -429,7 +429,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                 <td style="border:none"></td>
                                 <td style="border:none"></td>
                                 <td style="border:none"></td>
-                                <td style="border:none"></td>
+                                <!-- <td style="border:none"></td> -->
                                 <td style="border: 1px solid #000;">Sub-total</td>
                                 <td style="border: 1px solid #000;">
                                     <t t-esc="o.format_number_for_amount(total_price_type_false).replace('.',',')"/>
@@ -447,7 +447,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border: 1px solid #000;">Amount untaxed</td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(o.amount_untaxed).replace('.',',')"/>
@@ -462,7 +462,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border: 1px solid #000;">Taxes 20%</td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(o.amount_tax).replace('.',',')"/>
@@ -478,7 +478,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border: 1px solid #000;">Montant TTC</td>
                                     <td style="border: 1px solid #000;">
                                         <t t-esc="o.format_number_for_amount(o.amount_total).replace('.',',')"/>
@@ -495,7 +495,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
                                     <td style="border:none"></td>
-                                    <td style="border:none"></td>
+                                    <!-- <td style="border:none"></td> -->
                                     <td style="border:none"></td>
                                     <td style="border: 1px solid #000;">Total Amount</td>
 
