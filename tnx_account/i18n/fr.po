@@ -475,7 +475,7 @@ msgstr "Montant"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
 msgid "Amount untaxed"
-msgstr "Montant hors taxes"
+msgstr "Montant HT"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma

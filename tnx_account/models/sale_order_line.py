@@ -61,7 +61,7 @@ class SaleOrderLine(models.Model):
         values["order_origin"] = self.order_id.name
         values["price_unit"] = self.price_unit
         values["diameter"] = self.product_id.diameter
-        values["hs_code"] = self.product_id.hs_code or self.product_id.product_tmpl_id.hs_code
+        values["hs_code"] = self.product_id.hs_code.hs_code or self.product_id.product_tmpl_id.hs_code.hs_code
         values["picking_name"] = all_picking
 
         return values
