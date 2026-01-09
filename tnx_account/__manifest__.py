@@ -44,6 +44,7 @@
         # data
         "data/mail_template_data.xml",
         # reporting
+        "report/external_layout_standard.xml",
         "report/report_invoice_ex.xml",
         "report/report_invoice_vl.xml",
         "report/report_invoice_ls.xml",
