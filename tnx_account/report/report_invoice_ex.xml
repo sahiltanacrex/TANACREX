@@ -580,6 +580,13 @@
             </div>
             <div class="footer" style="border-top: 2px solid black; font-size:16px;">
                 <div class="row text-center">
+                    <style>
+                        @page:first {
+                            .hide-on-first-page {
+                                display: none;
+                            }
+                        }
+                    </style>
                     <div class="col col-12 text-center">
                         <ul class="list-inline">
                             <li class="list-inline-item">Page:</li>
@@ -591,6 +598,7 @@
                                 <span class="topage" />
                             </li>
                         </ul>
+                        <span class="hide-on-first-page" t-field="o.name"/>
                     </div>
                 </div>
             </div>
