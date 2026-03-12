@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 15.0+e-20240826\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-24 07:50+0000\n"
-"PO-Revision-Date: 2025-04-24 07:50+0000\n"
+"POT-Creation-Date: 2026-03-12 09:09+0000\n"
+"PO-Revision-Date: 2026-03-12 09:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
 msgid ""
 "<br/> SARL\n"
-"                                                    au capital de 30 000 000 AR"
+"                                                    au capital de 90 000 000 AR"
 msgstr ""
 
 #. module: tnx_production
@@ -328,6 +328,12 @@ msgid "Commentaire"
 msgstr ""
 
 #. module: tnx_production
+#: model:ir.model.fields,help:tnx_production.field_mrp_workorder__priority_production
+msgid ""
+"Components will be reserved first for the MO with the highest priorities."
+msgstr ""
+
+#. module: tnx_production
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__color_product
 msgid "Couleur"
 msgstr ""
@@ -370,6 +376,11 @@ msgid "Envoyer mail Ordre de fabrication"
 msgstr ""
 
 #. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Etape"
+msgstr ""
+
+#. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
 #: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
 msgid "Fin Prod"
@@ -387,18 +398,8 @@ msgid "Image"
 msgstr ""
 
 #. module: tnx_production
-#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__wide_product
-msgid "Largeur"
-msgstr ""
-
-#. module: tnx_production
 #: model:ir.model.fields,field_description:tnx_production.field_mrp_production__line_product
 msgid "Ligne"
-msgstr ""
-
-#. module: tnx_production
-#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__length_product
-msgid "Longueur"
 msgstr ""
 
 #. module: tnx_production
@@ -434,6 +435,17 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree
 #: model_terms:ir.ui.view,arch_db:tnx_production.mrp_production_search_view_inherit
 msgid "Matière"
+msgstr ""
+
+#. module: tnx_production
+#: model:ir.model.fields,field_description:tnx_production.field_mrp_workorder__priority_production
+msgid "Priority"
+msgstr ""
+
+#. module: tnx_production
+#: model_terms:ir.ui.view,arch_db:tnx_production.mrp_production_workorder_inherit_tree_view
+#: model_terms:ir.ui.view,arch_db:tnx_production.report_production_nexource
+msgid "Priorité"
 msgstr ""
 
 #. module: tnx_production
@@ -502,11 +514,6 @@ msgstr ""
 #, python-format
 msgid "Status fabrication BC Client {}"
 msgstr "Ordre de fabrication BC Client {}"
-
-#. module: tnx_production
-#: model:ir.model.fields,field_description:tnx_production.field_mrp_production__surface_product
-msgid "Surface"
-msgstr ""
 
 #. module: tnx_production
 #: model_terms:ir.ui.view,arch_db:tnx_production.inherit_mrp_tree

@@ -31,7 +31,7 @@
                                             <t t-esc="company.description" />
                                         </t>
                                         <t t-else=""> <br/> SARL
-                                            au capital de 30 000 000 AR</t>
+                                            au capital de 90 000 000 AR</t>
                                     </span>
                                     <br />
                                 </div>
@@ -661,7 +661,7 @@
                                                     <t t-esc="company.description" />
                                                 </t>
                                                 <t t-else=""> <br/> SARL
-                                                    au capital de 30 000 000 AR</t>
+                                                    au capital de 90 000 000 AR</t>
                                             </span>
                                             <br />
                                         </div>
@@ -1077,7 +1077,7 @@
                                                     <t t-esc="company.description" />
                                                 </t>
                                                 <t t-else=""> <br/> SARL
-                                                    au capital de 30 000 000 AR</t>
+                                                    au capital de 90 000 000 AR</t>
                                             </span>
                                             <br />
                                         </div>
@@ -1537,7 +1537,7 @@
                                                     <t t-esc="company.description" />
                                                 </t>
                                                 <t t-else=""> <br/> SARL
-                                                    au capital de 30 000 000 AR</t>
+                                                    au capital de 90 000 000 AR</t>
                                             </span>
                                             <br />
                                         </div>

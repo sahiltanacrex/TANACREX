@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0+e-20240826\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-11 08:04+0000\n"
-"PO-Revision-Date: 2024-12-11 08:04+0000\n"
+"POT-Creation-Date: 2026-03-12 09:07+0000\n"
+"PO-Revision-Date: 2026-03-12 09:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,8 @@ msgstr ""
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
 msgid "--                                    <span>Payment term: </span>"
-msgstr "--                                    <span>Conditions de paiement: </span>"
+msgstr ""
+"--                                    <span>Conditions de paiement: </span>"
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
@@ -73,15 +74,52 @@ msgid "<b>Adresse de livraison : </b>"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "<b>Date de fabrication:</b>"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 msgid "<b>Date de facturation:</b>"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "<b>Date de livraison :</b>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "<b>Date: </b>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "<b>Date:</b>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "<b>Devis:</b>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid ""
+"<b>Facture: </b>\n"
+"                                <span>PROFORMA /</span>"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<b>Invoice date: </b>"
 msgstr "<b>Date de facturation: </b>"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "<b>Invoice date:</b>"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
@@ -91,6 +129,7 @@ msgstr "<b>Référence: </b>"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<b>Référence:</b>"
 msgstr ""
 
@@ -114,10 +153,26 @@ msgstr ""
 "                                    <span style=\"font-weight: bold;\">Cartons : </span>"
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid ""
+"<br/>\n"
+" SARL\n"
+"                                                    au capital de 90 000 000 AR"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid ""
+"<br/>\n"
+" SARL\n"
+"                                            au capital de 90 000 000 AR"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 msgid ""
 "<br/> SARL\n"
-"                                                    au capital de 30 000 000 AR"
+"                                                    au capital de 90 000 000 AR"
 msgstr ""
 
 #. module: tnx_account
@@ -125,7 +180,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid ""
 "<br/> SARL\n"
-"                                                au capital de 30 000 000 AR"
+"                                                au capital de 90 000 000 AR"
 msgstr ""
 
 #. module: tnx_account
@@ -206,6 +261,12 @@ msgstr ""
 "            "
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "<span style=\"font-size: 30px;\">-&gt;</span>"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
 msgid "<span style=\"font-weight: bold;\">Gross weight : </span>"
@@ -225,6 +286,14 @@ msgid "<span style=\"text-align: center\">-</span>"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid ""
+"<span>\n"
+"                                                ANTANANARIVO - MADAGASCAR\n"
+"                                        </span>"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
@@ -232,6 +301,14 @@ msgid ""
 "<span>\n"
 "                                            ANTANANARIVO - MADAGASCAR\n"
 "                                        </span>"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid ""
+"<span>\n"
+"                                        ANTANANARIVO - MADAGASCAR\n"
+"                                    </span>"
 msgstr ""
 
 #. module: tnx_account
@@ -248,7 +325,8 @@ msgstr ""
 msgid ""
 "<span> Origin: </span>\n"
 "                        <span>The exporter of the products covered by this document (customs authorization MGREX1000002056) declares that, except where otherwise clearly indicated, these products are of Madagascar preferential origin according to rules of origin of the Generalized System of Preferences of the Turkey and the origin criterion met is \"W9606\" .</span>"
-msgstr "<span> Origine: </span>\n"
+msgstr ""
+"<span> Origine: </span>\n"
 "                        <span>L'exportateur des produits couverts par le présent document (autorisation douanière MGREX1000002056) déclare que, sauf indication claire du contraire, ces produits proviennent de Madagascar selon les règles d'origine du Système de Préférences Généralisées de la Turquie et le critère d'origine rempli est \"W9606\" .</span>"
 
 #. module: tnx_account
@@ -259,6 +337,7 @@ msgstr ""
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>-</span>"
 msgstr ""
 
@@ -270,8 +349,8 @@ msgid ""
 "including reimbursement of corresponding bank charges, commissions, taxes "
 "and postage.</span>"
 msgstr ""
-"<span>Tous les frais bancaires de la banque étrangère doivent être payés par "
-"l'acheteur, y compris le correspondant remboursant les frais bancaires,les "
+"<span>Tous les frais bancaires de la banque étrangère doivent être payés par"
+" l'acheteur, y compris le correspondant remboursant les frais bancaires,les "
 "commissions,les taxes et les frais postaux correspondants.</span>"
 
 #. module: tnx_account
@@ -291,6 +370,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>B.P: 11064 - Tél : </span>"
 msgstr "B.P.:11064 - Tél : "
 
@@ -298,6 +379,8 @@ msgstr "B.P.:11064 - Tél : "
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>CIF: </span>"
 msgstr ""
 
@@ -327,6 +410,8 @@ msgstr "-- <span>Echéance: </span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>Email: contact@tanacrex.com</span>"
 msgstr ""
 
@@ -341,6 +426,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>Lot 18 D Imerinafovoany </span>"
 msgstr ""
 
@@ -348,6 +435,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>NIF: </span>"
 msgstr ""
 
@@ -355,6 +444,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>NIF:</span>"
 msgstr ""
 
@@ -367,6 +458,8 @@ msgstr "<span>Paiement:</span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>Pieces</span>"
 msgstr "<span>Pièces</span>"
 
@@ -374,6 +467,8 @@ msgstr "<span>Pièces</span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>RCS 2003B00674 - STAT:</span>"
 msgstr ""
 
@@ -381,6 +476,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>RCS: </span>"
 msgstr ""
 
@@ -388,6 +485,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>Rolls</span>"
 msgstr "<span>Rouleaux</span>"
 
@@ -395,6 +494,8 @@ msgstr "<span>Rouleaux</span>"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>SIRET: </span>"
 msgstr ""
 
@@ -402,6 +503,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>STAT: </span>"
 msgstr ""
 
@@ -409,6 +512,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "<span>Tel: </span>"
 msgstr ""
 
@@ -496,6 +601,7 @@ msgstr ""
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "BC"
 msgstr ""
 
@@ -767,6 +873,11 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "Image"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 msgid "Incoterm"
 msgstr ""
@@ -886,6 +997,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Logo"
 msgstr ""
 
@@ -910,6 +1023,8 @@ msgstr ""
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Montant"
 msgstr ""
 
@@ -919,8 +1034,20 @@ msgid "Montant HT"
 msgstr ""
 
 #. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "Montant HT:"
+msgstr ""
+
+#. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Montant TTC"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "Montant TTC:"
 msgstr ""
 
 #. module: tnx_account
@@ -1032,6 +1159,8 @@ msgstr "Colisage :"
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Page:"
 msgstr ""
 
@@ -1073,6 +1202,8 @@ msgstr "Prix de location"
 #: model_terms:ir.ui.view,arch_db:tnx_account.infoadditional_tnx_inherit_account_move
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Prix Unitaire"
 msgstr ""
 
@@ -1094,6 +1225,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
 msgid "Qty"
 msgstr "Qté"
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "Qté"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+msgid "Ref Interne"
+msgstr ""
 
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
@@ -1172,6 +1313,11 @@ msgid "Sales Order Line"
 msgstr "Ligne de bons de commande"
 
 #. module: tnx_account
+#: model:ir.model.fields,field_description:tnx_account.field_bank_company__sale_order_id
+msgid "Salse order"
+msgstr ""
+
+#. module: tnx_account
 #: model:ir.model.fields,field_description:tnx_account.field_tnx_ls__sequences_year
 msgid "Sequence année"
 msgstr ""
@@ -1225,6 +1371,8 @@ msgstr ""
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "Sous-total"
 msgstr ""
 
@@ -1278,6 +1426,12 @@ msgstr "Transfert"
 #. module: tnx_account
 #: model_terms:ir.ui.view,arch_db:tnx_account.invoice_form
 msgid "Transfert"
+msgstr ""
+
+#. module: tnx_account
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
+msgid "Type"
 msgstr ""
 
 #. module: tnx_account
@@ -1361,6 +1515,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "mm"
 msgstr ""
 
@@ -1368,6 +1524,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "mm x"
 msgstr ""
 
@@ -1375,6 +1533,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_ex_document
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_ls
 #: model_terms:ir.ui.view,arch_db:tnx_account.report_invoice_vl
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:tnx_account.report_saleorder_document_proforma
 msgid "mm²"
 msgstr ""
 

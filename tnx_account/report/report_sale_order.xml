@@ -33,7 +33,7 @@
                                         <t t-else="">
                                             <br/>
  SARL
-                                            au capital de 30 000 000 AR</t>
+                                            au capital de 90 000 000 AR</t>
                                     </span>
                                     <br />
                                 </div>
@@ -670,7 +670,7 @@ mm x <t t-esc="o.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                             <t t-else="">
                                                 <br/>
  SARL
-                                                    au capital de 30 000 000 AR</t>
+                                                    au capital de 90 000 000 AR</t>
                                         </span>
                                         <br />
                                     </div>
@@ -1091,7 +1091,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                             <t t-else="">
                                                 <br/>
  SARL
-                                                    au capital de 30 000 000 AR</t>
+                                                    au capital de 90 000 000 AR</t>
                                         </span>
                                         <br />
                                     </div>
@@ -1558,7 +1558,7 @@ mm x <t t-esc="doc.get_right_number(line.product_id.product_tmpl_id.side)"/>
                                             <t t-else="">
                                                 <br/>
  SARL
-                                                    au capital de 30 000 000 AR</t>
+                                                    au capital de 90 000 000 AR</t>
                                         </span>
                                         <br />
                                     </div>
