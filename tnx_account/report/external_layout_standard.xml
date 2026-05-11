@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="tnx_account_external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="//span[@class='topage']/.." position="after">
+            <style>
+                @page:first {
+                    .hide-on-first-page {
+                        display: none;
+                    }
+                }
+            </style>
+            <t t-if="o._name=='account.move'">
+                <span class="hide-on-first-page" t-field="o.name"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>
